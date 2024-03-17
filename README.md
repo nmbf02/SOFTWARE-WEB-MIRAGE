@@ -35,5 +35,3 @@ Además de las funcionalidades para la inscripción de vehículos y participaci�
 
 
 Para más información, contacta a nathalyberroaf@gmail.com - esmeilintw@gmail.com.
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
