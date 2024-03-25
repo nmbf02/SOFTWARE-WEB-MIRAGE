@@ -1,5 +1,5 @@
 <div>
-    <div class="flex overflow-hidden bg-white pt-16">
+    <div class="flex overflow-hidden bg-white">
         <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
         <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
             <footer
@@ -7,8 +7,7 @@
                 <ul class="flex items-center flex-wrap mb-6 md:mb-0">
                     <li><a href="#" class="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Términos y condiciones</a></li>
                     <li><a href="#" class="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Política de privacidad</a></li>
-                    <li><a href="#"
-                            class="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Licencia</a></li>
+                    <li><a href="#" class="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Licencia</a></li>
                     <li><a href="#" class="text-sm font-normal text-gray-500 hover:underline mr-4 md:mr-6">Política de cookie</a></li>
                     <li><a href="#" class="text-sm font-normal text-gray-500 hover:underline">¡Contactanos!</a></li>
                 </ul>
@@ -50,7 +49,7 @@
                 </div>
             </footer>
             <p class="text-center text-sm text-gray-500 my-10">
-                &copy; 2024 <a href="#" class="hover:underline" target="_blank">MIRAGE</a>.Todos los derechos reservados
+                &copy; 2024 <a href="#" class="hover:underline" target="_blank"><b>MIRAGE</b></a>. Todos los derechos reservados
             </p>
         </div>
     </div>
