@@ -1,96 +1,493 @@
-<div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-    <x-application-logo class="block h-12 w-auto" />
-
-    <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
-        Welcome to your Jetstream application!
-    </h1>
-
-    <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-        Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-        to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-        you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-        ecosystem to be a breath of fresh air. We hope you love it.
-    </p>
-</div>
-
-<div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                <a href="https://laravel.com/docs">Documentation</a>
-            </h2>
+<div>
+    <div class="flex overflow-hidden bg-white">
+        {{-- <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div> --}}
+        <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+            <main>
+                <div class="pt-6 px-4">
+                    <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+                        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex-shrink-0">
+                                    <span
+                                        class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">$45,385</span>
+                                    <h3 class="text-base font-normal text-gray-500">Sales this week</h3>
+                                </div>
+                                <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+                                    12.5%
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div id="main-chart"></div>
+                        </div>
+                        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                            <div class="mb-4 flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2">Latest Transactions</h3>
+                                    <span class="text-base font-normal text-gray-500">This is a list of latest
+                                        transactions</span>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <a href="#"
+                                        class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View
+                                        all</a>
+                                </div>
+                            </div>
+                            <div class="flex flex-col mt-8">
+                                <div class="overflow-x-auto rounded-lg">
+                                    <div class="align-middle inline-block min-w-full">
+                                        <div class="shadow overflow-hidden sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col"
+                                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            Transaction
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            Date & Time
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            Amount
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white">
+                                                    <tr>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                            Payment from <span class="font-semibold">Bonnie Green</span>
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                            Apr 23 ,2021
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                            $2300
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="bg-gray-50">
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
+                                                            Payment refund to <span class="font-semibold">#00910</span>
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                            Apr 23 ,2021
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                            -$670
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                            Payment failed from <span
+                                                                class="font-semibold">#087651</span>
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                            Apr 18 ,2021
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                            $234
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="bg-gray-50">
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
+                                                            Payment from <span class="font-semibold">Lana Byrd</span>
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                            Apr 15 ,2021
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                            $5000
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                            Payment from <span class="font-semibold">Jese Leos</span>
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                            Apr 15 ,2021
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                            $2300
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="bg-gray-50">
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
+                                                            Payment from <span class="font-semibold">THEMESBERG
+                                                                LLC</span>
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                            Apr 11 ,2021
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                            $560
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                            Payment from <span class="font-semibold">Lana Lysle</span>
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                            Apr 6 ,2021
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                            $1437
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">2,340</span>
+                                    <h3 class="text-base font-normal text-gray-500">New products this week</h3>
+                                </div>
+                                <div
+                                    class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+                                    14.6%
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">5,355</span>
+                                    <h3 class="text-base font-normal text-gray-500">Visitors this week</h3>
+                                </div>
+                                <div
+                                    class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+                                    32.9%
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">385</span>
+                                    <h3 class="text-base font-normal text-gray-500">User signups this week</h3>
+                                </div>
+                                <div
+                                    class="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
+                                    -2.7%
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+                        <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold leading-none text-gray-900">Latest Customers</h3>
+                                <a href="#"
+                                    class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg inline-flex items-center p-2">
+                                    View all
+                                </a>
+                            </div>
+                            <div class="flow-root">
+                                <ul role="list" class="divide-y divide-gray-200">
+                                    <li class="py-3 sm:py-4">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex-shrink-0">
+                                                <img class="h-8 w-8 rounded-full"
+                                                    src="https://demo.themesberg.com/windster/images/users/neil-sims.png"
+                                                    alt="Neil image">
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 truncate">
+                                                    Neil Sims
+                                                </p>
+                                                <p class="text-sm text-gray-500 truncate">
+                                                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                        data-cfemail="17727a767e7b57607e7973646372653974787a">[email&#160;protected]</a>
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="inline-flex items-center text-base font-semibold text-gray-900">
+                                                $320
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="py-3 sm:py-4">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex-shrink-0">
+                                                <img class="h-8 w-8 rounded-full"
+                                                    src="https://demo.themesberg.com/windster/images/users/bonnie-green.png"
+                                                    alt="Neil image">
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 truncate">
+                                                    Bonnie Green
+                                                </p>
+                                                <p class="text-sm text-gray-500 truncate">
+                                                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                        data-cfemail="d4b1b9b5bdb894a3bdbab0a7a0b1a6fab7bbb9">[email&#160;protected]</a>
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="inline-flex items-center text-base font-semibold text-gray-900">
+                                                $3467
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="py-3 sm:py-4">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex-shrink-0">
+                                                <img class="h-8 w-8 rounded-full"
+                                                    src="https://demo.themesberg.com/windster/images/users/michael-gough.png"
+                                                    alt="Neil image">
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 truncate">
+                                                    Michael Gough
+                                                </p>
+                                                <p class="text-sm text-gray-500 truncate">
+                                                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                        data-cfemail="57323a363e3b17203e3933242332257934383a">[email&#160;protected]</a>
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="inline-flex items-center text-base font-semibold text-gray-900">
+                                                $67
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="py-3 sm:py-4">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex-shrink-0">
+                                                <img class="h-8 w-8 rounded-full"
+                                                    src="https://demo.themesberg.com/windster/images/users/thomas-lean.png"
+                                                    alt="Neil image">
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 truncate">
+                                                    Thomes Lean
+                                                </p>
+                                                <p class="text-sm text-gray-500 truncate">
+                                                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                        data-cfemail="284d45494144685f41464c5b5c4d5a064b4745">[email&#160;protected]</a>
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="inline-flex items-center text-base font-semibold text-gray-900">
+                                                $2367
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="pt-3 sm:pt-4 pb-0">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex-shrink-0">
+                                                <img class="h-8 w-8 rounded-full"
+                                                    src="https://demo.themesberg.com/windster/images/users/lana-byrd.png"
+                                                    alt="Neil image">
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-medium text-gray-900 truncate">
+                                                    Lana Byrd
+                                                </p>
+                                                <p class="text-sm text-gray-500 truncate">
+                                                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                        data-cfemail="a2c7cfc3cbcee2d5cbccc6d1d6c7d08cc1cdcf">[email&#160;protected]</a>
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="inline-flex items-center text-base font-semibold text-gray-900">
+                                                $367
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                            <h3 class="text-xl leading-none font-bold text-gray-900 mb-10">Acquisition Overview</h3>
+                            <div class="block w-full overflow-x-auto">
+                                <table class="items-center w-full bg-transparent border-collapse">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                                                Top Channels</th>
+                                            <th
+                                                class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                                                Users</th>
+                                            <th
+                                                class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-100">
+                                        <tr class="text-gray-500">
+                                            <th
+                                                class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+                                                Organic Search</th>
+                                            <td
+                                                class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
+                                                5,649</td>
+                                            <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
+                                                <div class="flex items-center">
+                                                    <span class="mr-2 text-xs font-medium">30%</span>
+                                                    <div class="relative w-full">
+                                                        <div class="w-full bg-gray-200 rounded-sm h-2">
+                                                            <div class="bg-cyan-600 h-2 rounded-sm"
+                                                                style="width: 30%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-gray-500">
+                                            <th
+                                                class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+                                                Referral</th>
+                                            <td
+                                                class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
+                                                4,025</td>
+                                            <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
+                                                <div class="flex items-center">
+                                                    <span class="mr-2 text-xs font-medium">24%</span>
+                                                    <div class="relative w-full">
+                                                        <div class="w-full bg-gray-200 rounded-sm h-2">
+                                                            <div class="bg-orange-300 h-2 rounded-sm"
+                                                                style="width: 24%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-gray-500">
+                                            <th
+                                                class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+                                                Direct</th>
+                                            <td
+                                                class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
+                                                3,105</td>
+                                            <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
+                                                <div class="flex items-center">
+                                                    <span class="mr-2 text-xs font-medium">18%</span>
+                                                    <div class="relative w-full">
+                                                        <div class="w-full bg-gray-200 rounded-sm h-2">
+                                                            <div class="bg-teal-400 h-2 rounded-sm"
+                                                                style="width: 18%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-gray-500">
+                                            <th
+                                                class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+                                                Social</th>
+                                            <td
+                                                class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
+                                                1251</td>
+                                            <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
+                                                <div class="flex items-center">
+                                                    <span class="mr-2 text-xs font-medium">12%</span>
+                                                    <div class="relative w-full">
+                                                        <div class="w-full bg-gray-200 rounded-sm h-2">
+                                                            <div class="bg-pink-600 h-2 rounded-sm"
+                                                                style="width: 12%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-gray-500">
+                                            <th
+                                                class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+                                                Other</th>
+                                            <td
+                                                class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
+                                                734</td>
+                                            <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
+                                                <div class="flex items-center">
+                                                    <span class="mr-2 text-xs font-medium">9%</span>
+                                                    <div class="relative w-full">
+                                                        <div class="w-full bg-gray-200 rounded-sm h-2">
+                                                            <div class="bg-indigo-600 h-2 rounded-sm"
+                                                                style="width: 9%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-gray-500">
+                                            <th
+                                                class="border-t-0 align-middle text-sm font-normal whitespace-nowrap p-4 pb-0 text-left">
+                                                Email</th>
+                                            <td
+                                                class="border-t-0 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4 pb-0">
+                                                456</td>
+                                            <td class="border-t-0 align-middle text-xs whitespace-nowrap p-4 pb-0">
+                                                <div class="flex items-center">
+                                                    <span class="mr-2 text-xs font-medium">7%</span>
+                                                    <div class="relative w-full">
+                                                        <div class="w-full bg-gray-200 rounded-sm h-2">
+                                                            <div class="bg-purple-500 h-2 rounded-sm"
+                                                                style="width: 7%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
-        </p>
-
-        <p class="mt-4 text-sm">
-            <a href="https://laravel.com/docs" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
-                Explore the documentation
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
-                    <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </p>
     </div>
-
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                <a href="https://laracasts.com">Laracasts</a>
-            </h2>
-        </div>
-
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-        </p>
-
-        <p class="mt-4 text-sm">
-            <a href="https://laracasts.com" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
-                Start watching Laracasts
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
-                    <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </p>
-    </div>
-
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                <a href="https://tailwindcss.com/">Tailwind</a>
-            </h2>
-        </div>
-
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.
-        </p>
-    </div>
-
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                Authentication
-            </h2>
-        </div>
-
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started with what matters most: building your application.
-        </p>
-    </div>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
 </div>
