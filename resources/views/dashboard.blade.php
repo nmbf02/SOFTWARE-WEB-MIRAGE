@@ -273,33 +273,33 @@
                             </div>
                         </div>
                         {{-- Inventario --}}
-                        <div x-data="{ inventarioOpen: false, mantenimientoOpen: false }">
+                        <div x-data="{ InventarioOpen: false, mantenimientoOpen: false }">
                             <a href="#"
-                                class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2"
-                                @click.prevent="inventarioOpen = !inventarioOpen">
+                                class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
+                                @click.prevent="InventarioOpen = !InventarioOpen">
+                                <!-- Icono de Mantenimiento -->
                                 @include('icons/inventario')
-                                <span class="ml-4">Inventario</span>
-                                <svg :class="{ 'rotate-180': inventarioOpen }"
+                                <span class="ml-3">Inventario</span>
+                                <svg :class="{ 'rotate-180': InventarioOpen }"
                                     class="ml-auto h-5 w-5 transform transition-transform duration-200"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 001.414 0L10 3.586l3.293 3.707a1 1 0 101.414-1.414l-4-4a1 1 0 00-1.414 0l-4 4a1 1 0 000 1.414z"
-                                        clip-rule="evenodd" />
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
                                 </svg>
                             </a>
-                            <!-- Submenú para Inventario -->
-                            <div x-show="inventarioOpen" class="bg-gray-100 rounded-lg">
+                            <!-- Submenú de inventario -->
+                            <div x-show="InventarioOpen" class="pl-10 bg-gray-100 rounded-lg">
                                 <a href="#"
-                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
+                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                     @click.prevent="mantenimientoOpen = !mantenimientoOpen">
-                                    <span class="flex-grow">Mantenimiento</span>
+                                    Mantenimiento
                                     <svg :class="{ 'rotate-180': mantenimientoOpen }"
-                                        class="h-5 w-5 transform transition-transform duration-200"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <!-- Ícono desplegable para el menú de Mantenimiento -->
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 7.293a1 1 0 001.414 0L10 3.586l3.293 3.707a1 1 0 101.414-1.414l-4-4a1 1 0 00-1.414 0l-4 4a1 1 0 000 1.414z"
-                                            clip-rule="evenodd" />
+                                        class="ml-auto h-5 w-5 transform transition-transform duration-200"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </a>
                                 <!-- Submenú para Mantenimiento -->
