@@ -39,11 +39,11 @@
     @if (Gate::check('update', $team))
         <x-slot name="actions">
             <x-action-message class="me-3" on="saved">
-                {{ __('Saved.') }}
+                {{ __('SALVADO.') }}
             </x-action-message>
 
             <x-button>
-                {{ __('Save') }}
+                {{ __('SALVAR') }}
             </x-button>
         </x-slot>
     @endif
