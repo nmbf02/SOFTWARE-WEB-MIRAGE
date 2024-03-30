@@ -138,7 +138,7 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Registrar
                                     </a>
-                                    <a href="#"
+                                    <a href="{{ route('consultar-cotizacion-factura') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Consultar
                                     </a>
