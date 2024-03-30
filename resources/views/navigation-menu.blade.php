@@ -17,8 +17,8 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
-                    <img src="{{ asset('img/LogoMirageNegro.png') }}" class="h-6 mr-2" alt="Mirage Logo">
+                <a href="{{ url('/') }}" class="text-xl font-bold flex items-center lg:ml-2.5">
+                    <img src="{{ asset('ico/LogoMirageNegro.png') }}" class="h-9 mr-2" alt="Mirage Logo">
                     <span class="self-center whitespace-nowrap">Mirage</span>
                 </a>
                 <form action="#" method="GET" class="hidden lg:block lg:pl-32">
@@ -165,7 +165,6 @@
                         </x-dropdown>
                     </div>
                 </div>
-
                 {{-- <!-- Hamburger -->
                 <div class="-me-2 flex items-center sm:hidden">
                     <button @click="open = ! open"
@@ -280,7 +279,6 @@
                 </div>
             </div>
         </div>
-
-
+    </div>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </nav>
-<script src="//unpkg.com/alpinejs" defer></script>

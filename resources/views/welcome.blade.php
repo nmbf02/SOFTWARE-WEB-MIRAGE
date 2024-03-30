@@ -11,29 +11,16 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Favicon predeterminado para navegadores que no soportan la detección de esquema de color -->
-    <link rel="icon" href="{{ asset('img/ico/logomirageblanco.ico') }}" type="image/x-icon" id="favicon">
-    <script>
-        // Cambiar favicon según el esquema de color preferido
-        function changeFavicon() {
-            const favicon = document.getElementById('favicon');
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // Tema oscuro
-                favicon.href = "@{{ asset('img/ico/logomirageblanco.ico') }}";
-            } else {
-                // Tema claro
-                favicon.href = "@{{ asset('img/ico/logomiragenegro.ico) }}";
-            }
-        }
+    <link rel="icon" href="{{ asset('ico/LogoMirageNegro.ico') }}" type="image/x-icon" id="favicon">
 
-        // Ejecutar al cargar y en caso de cambio en la preferencia de esquema de color
-        changeFavicon();
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeFavicon);
-    </script>
 </head>
 
 <body>
+    @include('aside')
     @include ('dashboard')
     @include ('footer')
+    {{-- Cambiar icono segun el tema --}}
+    <script src="{{ asset('resources/js/cambioicono.js') }}"></script>
 </body>
 
 </html>
