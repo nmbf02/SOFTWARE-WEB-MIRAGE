@@ -65,11 +65,11 @@
 
                 <x-slot name="actions">
                     <x-action-message class="me-3" on="saved">
-                        {{ __('Added.') }}
+                        {{ __('AGREGADO.') }}
                     </x-action-message>
 
                     <x-button>
-                        {{ __('Add') }}
+                        {{ __('AGREGAR') }}
                     </x-button>
                 </x-slot>
             </x-form-section>
@@ -211,7 +211,7 @@
             </x-secondary-button>
 
             <x-button class="ms-3" wire:click="updateRole" wire:loading.attr="disabled">
-                {{ __('Save') }}
+                {{ __('SALVAR') }}
             </x-button>
         </x-slot>
     </x-dialog-modal>
