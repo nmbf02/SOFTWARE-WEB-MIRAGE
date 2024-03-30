@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\consultarFacturaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,3 +16,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/consultar-factura/{numerofactura?}', [consultarFacturaController::class, 'consultarFactura'])
+     ->middleware(['auth'])
+     ->name('consultar-factura');
