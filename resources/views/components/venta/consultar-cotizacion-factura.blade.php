@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Consulta de cotización') }}
+            {{ __('Consulta de cotización factura') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -18,7 +18,7 @@
                                 <div class="mt-1 relative lg:w-64">
                                     <input type="text" name="email" id="topbar-search"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-2 p-2.5"
-                                        placeholder="Número de cotizacion ">
+                                        placeholder="Número de cotizacion Venta ">
                                 </div>
                             </form>
                         </div>

@@ -41,6 +41,35 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Historial
                                 </a>
+                                
+                                <div x-data="{ CotizacionOpen: false }">
+                                    <a href="#"
+                                        class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
+                                        @click.prevent="CotizacionOpen = !CotizacionOpen">
+                                        <span class="flex-grow">Cotización</span>
+                                        <svg :class="{ 'rotate-180': CotizacionOpen }"
+                                            class="h-5 w-5 transform transition-transform duration-200"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 001.414 0L10 3.586l3.293 3.707a1 1 0 101.414-1.414l-4-4a1 1 0 00-1.414 0l-4 4a1 1 0 000 1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                    <!-- Submenu for Cotización -->
+                                    <div x-show="CotizacionOpen" class="pl-10 bg-gray-200 rounded-lg">
+                                        <a href="#"
+                                            class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                            Registrar
+                                        </a>
+                                        <a href="{{ route('consultar-cotizacion-subasta') }}"
+                                            class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                            Consultar
+                                        </a>
+                                    </div>
+                                </div>
+                               
+                               
+                                
                             </div>
                         </div>
 
@@ -87,7 +116,7 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Registrar
                                     </a>
-                                    <a href="#"
+                                    <a href="{{ route('consultar-renta') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Consultar
                                     </a>
@@ -214,7 +243,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Registrar
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('consultavehiculo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Consultar
                                 </a>

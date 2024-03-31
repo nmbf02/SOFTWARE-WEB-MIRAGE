@@ -11,6 +11,9 @@ use App\Http\Controllers\registrarvehiculoController;
 use App\Http\Controllers\consultarSubastaController;
 use App\Http\Controllers\consultarNominaController;
 use App\Http\Controllers\consultarRentaController;
+use App\Http\Controllers\consultarVehiculoController;
+use App\Http\Controllers\consultarcotizacionRentaController;
+use App\Http\Controllers\consultarCotizacionSubastaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -81,3 +84,15 @@ Route::get('/consultar-renta/{numerorenta?}', [consultarRentaController::class, 
 Route::get('/consultar-nomina/{numeronomina?}', [consultarNominaController::class, 'consultarNomina'])
     ->middleware(['auth'])
     ->name('consultar-nomina');
+    
+    Route::get('/consultavehiculo/{numerovehiculo?}', [consultarVehiculoController::class, 'consultarVehiculo'])
+    ->middleware(['auth'])
+    ->name('consultavehiculo');
+
+    Route::get('/consultar-renta-cotizacion/{numerocotizacionRenta?}', [consultarcotizacionRentaController::class, 'consultarcotizacionRenta'])
+    ->middleware(['auth'])
+    ->name('consultar-renta-cotizacion');
+
+    Route::get('/consultar-cotizacion-subasta/{numerocotizacionsubasta?}', [consultarCotizacionSubastaController::class, 'consultarCotizacionSubasta'])
+    ->middleware(['auth'])
+    ->name('consultar-cotizacion-subasta');
