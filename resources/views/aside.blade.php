@@ -210,9 +210,13 @@
                                         Aseguradora
                                     </a>
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('registrar-vehiculo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Registrar
+                                </a>
+                                <a href="#"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
+                                    Consultar
                                 </a>
                             </div>
                         </div>
