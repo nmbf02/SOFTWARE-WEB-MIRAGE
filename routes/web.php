@@ -8,7 +8,9 @@ use App\Http\Controllers\registrarClienteController;
 use App\Http\Controllers\registrarUsuarioController;
 use App\Http\Controllers\registrarSuplidorController;
 use App\Http\Controllers\registrarvehiculoController;
-
+use App\Http\Controllers\consultarSubastaController;
+use App\Http\Controllers\consultarNominaController;
+use App\Http\Controllers\consultarRentaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,9 +27,6 @@ Route::middleware([
 });
 
 Route::get('/consultar-factura/{numerofactura?}', [consultarFacturaController::class, 'consultarFactura'])
-    ->middleware(['auth'])
-    ->name('consultar-factura');
-    
     ->middleware(['auth'])
     ->name('consultar-factura');
 
