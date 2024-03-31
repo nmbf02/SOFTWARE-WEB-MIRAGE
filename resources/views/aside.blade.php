@@ -29,7 +29,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Registrar
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('consultar-subasta') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Consultar
                                 </a>
@@ -61,11 +61,11 @@
                             </a>
                             <!-- Submenú para renta -->
                             <div x-show="RentaOpen" class="bg-gray-100 rounded-lg">
-                                <a href="#"
+                                <a href="{{ route('registro-renta') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Rentar
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('consultar-renta') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Consultar
                                 </a>
@@ -349,7 +349,7 @@
                                         </svg>
                                     </a>
                                     <div x-show="MantenimientoCXC" class="bg-gray-200 rounded-lg">
-                                        <a href="#"
+                                        <a href="{{ route('registro-cliente') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar cliente
                                         </a>
@@ -412,7 +412,7 @@
                                         </svg>
                                     </a>
                                     <div x-show="MantenimientoCXP" class="bg-gray-200 rounded-lg">
-                                        <a href="#"
+                                        <a href="{{ route('registro-suplidor') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar suplidor
                                         </a>
@@ -596,7 +596,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                     Registrar
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('consultar-nomina') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                     Consultar
                                 </a>
@@ -643,9 +643,9 @@
                             </a>
                             <!-- Submenú para Usuario -->
                             <div x-show="usuarioOpen" class="bg-gray-100 rounded-lg">
-                                <a href="#"
+                                <a href="{{ route('registro-usuario') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Usuario
+                                    Registrar Usuario
                                 </a>
                                 <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
