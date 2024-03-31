@@ -163,7 +163,7 @@
                                 </a>
                                 <!-- Submenú para Cotización -->
                                 <div x-show="CotizacionOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="#"
+                                    <a href="{{ route('registrarCotizacionFactura') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Registrar
                                     </a>

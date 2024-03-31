@@ -53,15 +53,15 @@
                                                             <!-- Team Settings -->
                                                             <x-dropdown-link
                                                                 href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                                                {{ __('PDF') }}
+                                                                {{ __('Venta') }}
                                                             </x-dropdown-link>
                                                             <x-dropdown-link
                                                                 href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                                                {{ __('Excel') }}
+                                                                {{ __('Cotización') }}
                                                             </x-dropdown-link>
                                                             <x-dropdown-link
                                                                 href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                                                {{ __('Compartir') }}
+                                                                {{ __('Préstamo de solicitud') }}
                                                             </x-dropdown-link>
                                                         </div>
                                                     </x-slot>
@@ -77,130 +77,116 @@
                             <form>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos del cliente</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                         <div>
                                             <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Genero</label>
-                                            <input type="text" placeholder="VIN" class="border p-2 rounded w-full">
+                                                class="block text-sm font-medium text-gray-700">Código</label>
+                                            <input type="text" placeholder="Código" class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Cumpleanos</label>
-                                                <input id="fechaExpedicion" type="date"
+                                                class="block text-sm font-medium text-gray-700">Nombre</label>
+                                            <input type="text" placeholder="Nombre"
                                                 class="border p-2 rounded w-full">
                                         </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Edad</label>
-                                            <input type="text" placeholder="Descripción"
-                                                class="border p-2 rounded w-full">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Número
+                                                    de identidad</label>
+                                                <input type="number" placeholder="Documento"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Licencia</label>
+                                                <input type="number" placeholder="Licencia"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Condición de
+                                                    factura</label>
+                                                <input type="text" placeholder="Condición de fact."
+                                                    class="border p-2 rounded w-full">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Telefono</label>
-                                            <input type="text" placeholder="VIN" class="border p-2 rounded w-full">
+                                            <input type="text" placeholder="Teléfono"
+                                                class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Email</label>
-                                            <input type="text" placeholder="Descripción"
-                                                class="border p-2 rounded w-full">
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                        <div>
-                                            <label for="transmision"
-                                                class="block text-sm font-medium text-gray-700">Member Status</label>
-                                            <select id="transmision" class="border p-2 rounded w-full mt-1">
-                                                <option value="manual">Activo</option>
-                                                <option value="automatica">Inactivo</option>
-                                            </select>
+                                            <input type="text" placeholder="Email" class="border p-2 rounded w-full">
                                         </div>
                                         <div>
-                                            <label for="color" class="block text-sm font-medium text-gray-700">Dia de
-                                                registro</label>
-                                            <input id="fechaExpedicion" type="date"
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Dirección</label>
+                                            <input type="text" placeholder="Dirección"
                                                 class="border p-2 rounded w-full">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Vehiculo</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">VEHÍCULO</h6>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                         <div>
-                                            <label for="marca"
-                                                class="block text-sm font-medium text-gray-700">Marca</label>
-                                            <select id="marca" class="border p-2 rounded w-full mt-1">
-                                                <option value="toyota">Toyota</option>
-                                                <option value="ford">Ford</option>
-                                                <option value="chevrolet">Chevrolet</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label for="modelo"
-                                                class="block text-sm font-medium text-gray-700">Modelo</label>
-                                            <select id="modelo" class="border p-2 rounded w-full mt-1">
-                                                <option value="corolla">Corolla</option>
-                                                <option value="mustang">Mustang</option>
-                                                <option value="camaro">Camaro</option>
-                                            </select>
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">VIN</label>
+                                            <input type="text" placeholder="VIN" class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Color</label>
-                                            <select id="color" class="border p-2 rounded w-full mt-1">
-                                                <option value="blanco">Blanco</option>
-                                                <option value="negro">Negro</option>
-                                                <option value="rojo">Rojo</option>
-                                            </select>
+                                                class="block text-sm font-medium text-gray-700">Descripción</label>
+                                            <input type="text" placeholder="Nombre del vehículo" class="border p-2 rounded w-full">
                                         </div>
-                                        <div>
-                                            <label for="acabado"
-                                                class="block text-sm font-medium text-gray-700">Acabado</label>
-                                            <select id="acabado" class="border p-2 rounded w-full mt-1">
-                                                <option value="estandar">Estándar</option>
-                                                <option value="premium">Premium</option>
-                                                <option value="deportivo">Deportivo</option>
-                                            </select>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Cantidad</label>
+                                                <input type="number" placeholder="Cant."
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Descuento</label>
+                                                <input type="number" placeholder="Desc."
+                                                    class="border p-2 rounded w-full">
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                         <div>
-                                            <label for="tipo"
-                                                class="block text-sm font-medium text-gray-700">Tipo</label>
-                                            <select id="tipo" class="border p-2 rounded w-full mt-1">
-                                                <option value="sedan">Sedán</option>
-                                                <option value="suv">SUV</option>
-                                                <option value="hatchback">Hatchback</option>
-                                            </select>
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Precio</label>
+                                            <input type="number" placeholder="Precio"
+                                                class="border p-2 rounded w-full">
                                         </div>
-                                        <div>
-                                            <label for="traccion"
-                                                class="block text-sm font-medium text-gray-700">Tracción</label>
-                                            <select id="traccion" class="border p-2 rounded w-full mt-1">
-                                                <option value="delantera">Delantera</option>
-                                                <option value="trasera">Trasera</option>
-                                                <option value="integral">Integral</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label for="transmision"
-                                                class="block text-sm font-medium text-gray-700">Transmisión</label>
-                                            <select id="transmision" class="border p-2 rounded w-full mt-1">
-                                                <option value="manual">Manual</option>
-                                                <option value="automatica">Automática</option>
-                                                <option value="cvt">CVT</option>
-                                            </select>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">ITBIS</label>
+                                                <input type="text" placeholder="Subtotal"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Subtotal</label>
+                                                <input type="text" placeholder="Subtotal"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
                                         </div>
                                         <div>
                                             <label for="transmision"
-                                                class="block text-sm font-medium text-gray-700">Condición</label>
-                                            <select id="transmision" class="border p-2 rounded w-full mt-1">
-                                                <option value="manual">Nuevo</option>
-                                                <option value="automatica">Usado</option>
-                                                <option value="cvt">Arreglado</option>
-                                            </select>
+                                                class="block text-sm font-medium text-gray-700">Total</label>
+                                            <input type="number" placeholder="TOTAL"
+                                                class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full">
                                         </div>
                                     </div>
                                 </div>
@@ -209,13 +195,69 @@
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Forma de pago</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                         <div>
-                                            <label for="transmision"
-                                                class="block text-sm font-medium text-gray-700">Uso</label>
-                                            <select id="transmision" class="border p-2 rounded w-full mt-1">
-                                                <option value="manual">Renta</option>
-                                                <option value="automatica">Venta</option>
-                                                <option value="cvt">Subasta</option>
-                                            </select>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Modalidades de pago</label>
+                                            <div class="flex items-center mb-4">
+                                                <input id="contado" type="radio" name="modalidadPago" value="contado" class="text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                                <label for="contado" class="ml-2 block text-sm text-gray-900">Al contado</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="prestamo" type="radio" name="modalidadPago" value="prestamo" class="text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                                <label for="prestamo" class="ml-2 block text-sm text-gray-900">Préstamo</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Monto a pagar</label>
+                                            <input type="number" placeholder="Monto a pagar"
+                                                class="border p-2 rounded w-full">
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                        <div>
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Monto inicial</label>
+                                            <input type="number" placeholder="Monto inicial"
+                                                class="border p-2 rounded w-full">
+                                        </div>
+                                        <div>
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Monto solicitado</label>
+                                            <input type="text" placeholder="Monto solicitado"
+                                                class="border p-2 rounded w-full">
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Fecha de pago</label>
+                                                <input type="number" placeholder="Fecha de pago"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Plazo</label>
+                                                <input type="text" placeholder="Plazo"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Plazo máximo</label>
+                                                <input type="text" placeholder="Plazo máximo"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Plazo mínimo</label>
+                                                <input type="text" placeholder="Plazo mínimo"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Tasa de interés</label>
+                                                <input type="text" placeholder="Tasa de interés"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
