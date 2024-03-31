@@ -3,9 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\consultarFacturaController;
 use App\Http\Controllers\consultarCotizacionController;
-use App\Http\Controllers\consultarSubastaController;
-use App\Http\Controllers\consultarRentaController;
-use App\Http\Controllers\consultarNominaController;
 use App\Http\Controllers\registrarRentaController;
 use App\Http\Controllers\registrarClienteController;
 use App\Http\Controllers\registrarUsuarioController;
@@ -28,6 +25,9 @@ Route::middleware([
 });
 
 Route::get('/consultar-factura/{numerofactura?}', [consultarFacturaController::class, 'consultarFactura'])
+    ->middleware(['auth'])
+    ->name('consultar-factura');
+    
     ->middleware(['auth'])
     ->name('consultar-factura');
 
