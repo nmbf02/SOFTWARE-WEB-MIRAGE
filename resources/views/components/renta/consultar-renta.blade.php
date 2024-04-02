@@ -18,7 +18,7 @@
                                 <div class="mt-1 relative lg:w-64">
                                     <input type="text" name="email" id="topbar-search"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-2 p-2.5"
-                                        placeholder="Número de cotizacion Renta ">
+                                        placeholder="Número de cotizacion renta ">
                                 </div>
                             </form>
                         </div>
@@ -46,7 +46,7 @@
                                                     <button type="button"
                                                         class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
                                                         <span class="ml-2 hidden sm:inline-block">Descargar
-                                                            Renta</span>
+                                                            renta</span>
                                                         <svg class="ml-2 -mr-0.5 h-4 w-4 hidden sm:inline-block"
                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5"
