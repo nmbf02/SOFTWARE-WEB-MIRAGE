@@ -13,9 +13,10 @@ use App\Http\Controllers\consultarNominaController;
 use App\Http\Controllers\consultarRentaController;
 use App\Http\Controllers\consultarVehiculoController;
 use App\Http\Controllers\consultarcotizacionRentaController;
-use App\Http\Controllers\consultarCotizacionSubastaController;
 use App\Http\Controllers\registrarFacturaController;
 use App\Http\Controllers\registrarCotizacionFacturaController;
+use App\Http\Controllers\registrarCotizacionRentaController;
+use App\Http\Controllers\registrarSubastaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -95,10 +96,6 @@ Route::get('/consultar-renta-cotizacion/{numerocotizacionRenta?}', [consultarcot
     ->middleware(['auth'])
     ->name('consultar-renta-cotizacion');
 
-Route::get('/consultar-cotizacion-subasta/{numerocotizacionsubasta?}', [consultarCotizacionSubastaController::class, 'consultarCotizacionSubasta'])
-    ->middleware(['auth'])
-    ->name('consultar-cotizacion-subasta');
-
 Route::get('/factura/{factura?}', [registrarFacturaController::class, 'registrarFactura'])
     ->middleware(['auth'])
     ->name('factura');
@@ -106,3 +103,11 @@ Route::get('/factura/{factura?}', [registrarFacturaController::class, 'registrar
 Route::get('/registrarCotizacionFactura/{numerocotizacionfactura?}', [registrarCotizacionFacturaController::class, 'registrarCotizacionFactura'])
     ->middleware(['auth'])
     ->name('registrarCotizacionFactura');
+
+Route::get('/cotizacion-renta', [registrarCotizacionRentaController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('cotizacion-renta');
+
+Route::get('/subasta', [registrarSubastaController::class, 'registrarSubasta'])
+    ->middleware(['auth'])
+    ->name('registrarSubasta');

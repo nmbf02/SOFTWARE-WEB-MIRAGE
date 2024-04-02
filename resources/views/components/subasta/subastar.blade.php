@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Rentar') }}
+            {{ __('Subastar') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -15,7 +15,7 @@
                         <div class="bg-white dark:bg-gray-700 {{-- shadow rounded-lg --}} p-6">
                             <div class="flex flex-wrap items-center justify-between">
                                 <div class="flex items-center justify-start">
-                                    <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Rentar
+                                    <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Subastar
                                     </h1>
                                 </div>
                                 <div class="inline-flex items-center justify-center space-x-2 mr-3">
@@ -27,8 +27,8 @@
                                                         <span class="inline-flex rounded-md">
                                                             <button type="button"
                                                                 class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
-                                                                <span class="ml-2 hidden sm:inline-block">Cargar
-                                                                    datos</span>
+                                                                <span class="ml-2 hidden sm:inline-block">Actualizar
+                                                                    subasta</span>
                                                                 <svg class="ml-2 -mr-0.5 h-4 w-4 hidden sm:inline-block"
                                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -53,7 +53,15 @@
                                                             <!-- Team Settings -->
                                                             <x-dropdown-link
                                                                 href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                                                {{ __('Venta') }}
+                                                            </x-dropdown-link>
+                                                            <x-dropdown-link
+                                                                href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
                                                                 {{ __('Cotización') }}
+                                                            </x-dropdown-link>
+                                                            <x-dropdown-link
+                                                                href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                                                {{ __('Préstamo de solicitud') }}
                                                             </x-dropdown-link>
                                                         </div>
                                                     </x-slot>
@@ -98,8 +106,8 @@
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Condición de
-                                                    renta</label>
-                                                <input type="text" placeholder="Condición de renta"
+                                                    factura</label>
+                                                <input type="text" placeholder="Condición de fact."
                                                     class="border p-2 rounded w-full">
                                             </div>
                                         </div>
@@ -184,44 +192,6 @@
                                 </div>
                                 <div class="p-2"></div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Configuración de renta</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Fecha inicio</label>
-                                            <input type="date" placeholder="Fecha inicio" class="border p-2 rounded w-full">
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Fecha fin</label>
-                                            <input type="date" placeholder="Fecha fin" class="border p-2 rounded w-full">
-                                        </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Cant. de días</label>
-                                                <input type="text" placeholder="Cant. de días" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div class="mb-4">
-                                                <label for="SegmentoMercado"
-                                                    class="block text-sm font-medium text-gray-700">Lapso de tiempo</label>
-                                                <select id="SegmentoMercado" class="border p-2 rounded w-full">
-                                                    <option value="1">Días</option>
-                                                    <option value="2">Meses</option>
-                                                    <option value="3">Años</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Válido hasta</label>
-                                                <input type="date" placeholder="Válido hasta<"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-2"></div>
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Forma de pago</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                         <div>
@@ -294,7 +264,7 @@
 
                                 <div class="p-2"></div>
                                 <x-button class="px-4 py-2">
-                                    {{ __('Registrar renta') }}
+                                    {{ __('Registrar factura') }}
                                 </x-button>
                             </form>
                         </div>

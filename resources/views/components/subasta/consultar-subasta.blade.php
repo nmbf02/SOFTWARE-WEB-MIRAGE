@@ -18,7 +18,7 @@
                                 <div class="mt-1 relative lg:w-64">
                                     <input type="text" name="email" id="topbar-search"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-2 p-2.5"
-                                        placeholder="Número de Subasta">
+                                        placeholder="Número de subasta">
                                 </div>
                             </form>
                         </div>
