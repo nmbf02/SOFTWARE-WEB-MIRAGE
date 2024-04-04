@@ -90,8 +90,26 @@
                             <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                 <button type="button"
                                     class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
+                                    @include('icons/oferta')
+                                    <span class="ml-2 hidden sm:inline-block">Ofertas</span>
+                                </button>
+                            </div>
+                            <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                <button type="button"
+                                    class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
                                     @include('icons/imprimir')
                                     <span class="ml-2 hidden sm:inline-block">Imprimir</span>
+                                </button>
+                            </div>
+                            <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                <button type="button"
+                                    class="group inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-red-600 hover:border-red-600 hover:text-white focus:outline-none focus:bg-red-600 focus:border-red-600 focus:text-white active:bg-red-700 active:border-red-700 transition ease-in-out duration-150">
+                                    <div class="group-hover:hidden">
+                                        @include('icons/borrar-negro') <!-- Icono visible por defecto -->
+                                    </div>
+                                    <div class="hidden group-hover:block">
+                                        @include('icons/borrar-blanco') <!-- Icono que se muestra en hover -->
+                                    </div>
                                 </button>
                             </div>
                         </div>

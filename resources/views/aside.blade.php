@@ -33,14 +33,6 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Consultar
                                 </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Ofertas
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Historial
-                                </a>
                             </div>
                         </div>
 
@@ -87,7 +79,7 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Registrar
                                     </a>
-                                    <a href="{{ route('consultar-renta') }}"
+                                    <a href="{{ route('consultar-renta-cotizacion') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Consultar
                                     </a>
@@ -355,6 +347,10 @@
                                         </a>
                                     </div>
                                 </div>
+                                <a href="#"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                    Consultar cliente
+                                </a>
                                 <!-- Submenú para Compra -->
                                 {{-- <div x-data="{ compraOpen: false }" class="pl-10">
                             <a href="#"
@@ -418,6 +414,10 @@
                                         </a>
                                     </div>
                                 </div>
+                                <a href="#"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                    Consultar suplidor
+                                </a>
                                 <!-- Submenú para Orden de compra -->
                                 <div x-data="{ ordenCompraOpen: false }" class="pl-10">
                                     <a href="#"
