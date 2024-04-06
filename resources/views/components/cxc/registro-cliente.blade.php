@@ -25,7 +25,7 @@
                           receive mail.</p> --}}
                             <form>
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">
-                                    Informacion del Cliente
+                                    Información del Cliente
                                 </h6>
                                 <div class="w-full lg:w-4/12 px-4">
                                     <div class="relative w-full mb-3">
@@ -178,7 +178,7 @@
                                 <hr class="mt-6 border-b-1 border-blueGray-300">
 
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">
-                                    Informacion Adicional
+                                    Información Adicional
                                 </h6>
                                 <div class="flex flex-wrap">
                                     <div class="w-full lg:w-4/12 px-4">
@@ -187,20 +187,49 @@
                                                 htmlfor="grid-password">
                                                 Clasificación
                                             </label>
-                                            <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300  bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                placeholder="Clasificación">
+                                            <div class="flex gap-2 items-center">
+                                                <input type="text"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    value="" placeholder="Clasificación"
+                                                    style="margin-right: 2px;">
+                                                <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                                    <button onclick="document.getElementById('authentication-modal').showModal()" type="button"
+                                                        class="group inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-white focus:outline-none focus:text-white transition ease-in-out duration-150">
+                                                        <div class="group-hover:hidden">
+                                                            @include('icons/adiccion')
+                                                        </div>
+                                                        <div class="hidden group-hover:block">
+                                                            @include('icons/adiccionazul')
+                                                        </div>
+                                                    </button>
+                                                    @include('modals.agregar-clasificacion-tipopersona')
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-xs font-bold mb-2"
                                                 htmlfor="grid-password">
-                                                Categoría
+                                                Categoría de la licencia
                                             </label>
-                                            <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                value="" placeholder="Categoría">
+                                            <div class="flex gap-2 items-center">
+                                                <input type="text"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    value="" placeholder="Categoría de la licencia"
+                                                    style="margin-right: 2px;">
+                                                <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                                    <button type="button"
+                                                        class="group inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-white focus:outline-none focus:text-white transition ease-in-out duration-150">
+                                                        <div class="group-hover:hidden">
+                                                            @include('icons/adiccion')
+                                                        </div>
+                                                        <div class="hidden group-hover:block">
+                                                            @include('icons/adiccionazul')
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
@@ -228,8 +257,6 @@
     </div>
     </div>
     </div>
-
-
     @include ('footer')
     <script src="/js/paginacion.js"></script>
 </x-app-layout>

@@ -21,6 +21,7 @@
     @include ('footer')
     {{-- Cambiar icono segun el tema --}}
     <script src="{{ asset('resources/js/cambioicono.js') }}"></script>
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </body>
 
 </html>
