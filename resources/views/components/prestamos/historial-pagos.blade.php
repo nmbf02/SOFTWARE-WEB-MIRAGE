@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Consulta de subasta') }}
+            {{ __('Historial de pagos') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -18,7 +18,7 @@
                                 <div class="mt-1 relative lg:w-64">
                                     <input type="text" name="email" id="topbar-search"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-2 p-2.5"
-                                        placeholder="Número de subasta">
+                                        placeholder="Número de pago">
                                 </div>
                             </form>
                         </div>
@@ -46,7 +46,7 @@
                                                     <button type="button"
                                                         class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
                                                         <span class="ml-2 hidden sm:inline-block">Descargar
-                                                            Subasta</span>
+                                                            pago</span>
                                                         <svg class="ml-2 -mr-0.5 h-4 w-4 hidden sm:inline-block"
                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5"
@@ -86,13 +86,6 @@
                                         </x-dropdown>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="flex-end flex flex-col space-y-0.3 justify-end">
-                                <button type="button"
-                                    class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
-                                    @include('icons/oferta')
-                                    <span class="ml-2 hidden sm:inline-block">Ofertas</span>
-                                </button>
                             </div>
                             <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                 <button type="button"

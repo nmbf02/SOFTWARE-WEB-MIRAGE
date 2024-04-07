@@ -17,6 +17,12 @@ use App\Http\Controllers\registrarFacturaController;
 use App\Http\Controllers\registrarCotizacionFacturaController;
 use App\Http\Controllers\registrarCotizacionRentaController;
 use App\Http\Controllers\registrarSubastaController;
+use App\Http\Controllers\consultarClienteController;
+use App\Http\Controllers\consultarSuplidorController;
+use App\Http\Controllers\historialPagosController;
+use App\Http\Controllers\solicitudPrestamoVehiculoController;
+use App\Http\Controllers\retroalimentacionClienteController;
+use App\Http\Controllers\retroalimentacionEmpleadoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -111,3 +117,27 @@ Route::get('/cotizacion-renta', [registrarCotizacionRentaController::class, 'ind
 Route::get('/subasta', [registrarSubastaController::class, 'registrarSubasta'])
     ->middleware(['auth'])
     ->name('registrarSubasta');
+
+Route::get('/consultar-cliente/{datocliente?}', [consultarClienteController::class, 'consultarCliente'])
+    ->middleware(['auth'])
+    ->name('consultar-cliente');
+
+Route::get('/consultar-suplidor/{datosuplidor?}', [consultarSuplidorController::class, 'consultarsuplidor'])
+    ->middleware(['auth'])
+    ->name('consultar-suplidor');
+
+Route::get('/historial-pagos/{numeropago?}', [historialPagosController::class, 'historialpagos'])
+    ->middleware(['auth'])
+    ->name('historial-pagos');
+
+Route::get('/solicitud-prestamos-vehiculo/{numerosolicitudprestamo?}', [solicitudPrestamoVehiculoController::class, 'solicitudPrestamoVehiculo'])
+    ->middleware(['auth'])
+    ->name('solicitud-prestamos-vehiculo');
+
+Route::get('/retroalimentacion-cliente/{documentocliente?}', [retroalimentacionClienteController::class, 'documentoCliente'])
+    ->middleware(['auth'])
+    ->name('retroalimentacion-cliente');
+
+Route::get('/retroalimentacion-empleado/{documentoempleado?}', [retroalimentacionEmpleadoController::class, 'documentoEmpleado'])
+    ->middleware(['auth'])
+    ->name('retroalimentacion-empleado');

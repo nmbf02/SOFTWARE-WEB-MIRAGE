@@ -6,9 +6,9 @@
     </x-slot>
     @include ('aside')
     <!-- component -->
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    {{-- <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"> --}}
 
     <div>
         <div class="flex overflow-hidden bg-white">
@@ -188,10 +188,10 @@
                                                 Clasificación
                                             </label>
                                             <div class="flex gap-2 items-center">
-                                                <input type="text"
-                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    value="" placeholder="Clasificación"
-                                                    style="margin-right: 2px;">
+                                                <select id="sector-select" name="sector"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                                <option value="">Seleccione una clasificación</option>
+                                            </select>
                                                 <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                                     <button onclick="document.getElementById('authentication-modal').showModal()" type="button"
                                                         class="group inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-white focus:outline-none focus:text-white transition ease-in-out duration-150">
@@ -214,10 +214,10 @@
                                                 Categoría de la licencia
                                             </label>
                                             <div class="flex gap-2 items-center">
-                                                <input type="text"
-                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    value="" placeholder="Categoría de la licencia"
-                                                    style="margin-right: 2px;">
+                                                <select id="sector-select" name="sector"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                                <option value="">Seleccione una categoría</option>
+                                            </select>
                                                 <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                                     <button type="button"
                                                         class="group inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-white focus:outline-none focus:text-white transition ease-in-out duration-150">
@@ -239,7 +239,7 @@
                                                 Condición de la factura
                                             </label>
                                             <select id="sector-select" name="sector"
-                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                                 <option value="">Seleccione una condición</option>
                                             </select>
                                         </div>
@@ -247,7 +247,7 @@
                                 </div>
                             </form>
                             <div class="p-2"></div>
-                            <x-button class="px-4 py-2 mb-3">npm
+                            <x-button class="px-4 py-2 mb-3">
                                 {{ __('Registrar cliente') }}
                             </x-button>
                         </div>
@@ -261,5 +261,4 @@
     @include ('footer')
     <script src="/js/paginacion.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ mix('js/app.js') }}"></script>
 </x-app-layout>

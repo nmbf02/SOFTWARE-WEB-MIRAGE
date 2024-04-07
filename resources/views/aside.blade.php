@@ -347,7 +347,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('consultar-cliente') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                     Consultar cliente
                                 </a>
@@ -414,7 +414,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('consultar-suplidor') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                     Consultar suplidor
                                 </a>
@@ -504,8 +504,12 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Porcentaje mora
                                     </a>
+                                    <a href="#"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Tipo de préstamo
+                                    </a>
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('solicitud-prestamos-vehiculo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Solicitud
                                 </a>
@@ -513,7 +517,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Abonar
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('historial-pagos') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Historial de Pagos
                                 </a>
@@ -535,11 +539,11 @@
                             </a>
                             <!-- Submenú para Reporte - Análisis -->
                             <div x-show="reporteAnalisisOpen" class="bg-gray-100 rounded-lg pl-10">
-                                <a href="#"
+                                <a href="{{ route('retroalimentacion-cliente') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Retroalimentación cliente
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('retroalimentacion-empleado') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Retroalimentación empleado
                                 </a>

@@ -6,9 +6,9 @@
     </x-slot>
     @include ('aside')
     <!-- component -->
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    {{-- <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"> --}}
 
     <div>
         <div class="flex overflow-hidden bg-white">
@@ -174,11 +174,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <hr class="mt-6 border-b-1 border-blueGray-300">
-
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">
-                                    Informacion Adicional
+                                    Información Adicional
                                 </h6>
                                 <div class="flex flex-wrap">
                                     <div class="w-full lg:w-4/12 px-4">
@@ -187,9 +185,27 @@
                                                 htmlfor="grid-password">
                                                 Clasificación
                                             </label>
-                                            <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300  bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                placeholder="Clasificación">
+                                            <div class="flex gap-2 items-center">
+                                                <select id="sector-select" name="sector"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    required>
+                                                    <option value="">Seleccione una clasificación</option>
+                                                </select>
+                                                <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                                    <button
+                                                        onclick="document.getElementById('authentication-modal').showModal()"
+                                                        type="button"
+                                                        class="group inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-white focus:outline-none focus:text-white transition ease-in-out duration-150">
+                                                        <div class="group-hover:hidden">
+                                                            @include('icons/adiccion')
+                                                        </div>
+                                                        <div class="hidden group-hover:block">
+                                                            @include('icons/adiccionazul')
+                                                        </div>
+                                                    </button>
+                                                    @include('modals.agregar-clasificacion-tipopersona')
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
@@ -198,9 +214,37 @@
                                                 htmlfor="grid-password">
                                                 Empresa
                                             </label>
-                                            <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                value="" placeholder="Empresa">
+                                            <div class="flex gap-2 items-center">
+                                                <select id="sector-select" name="sector"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    required>
+                                                    <option value="">Empresa</option>
+                                                </select>
+                                                <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                                    <button type="button"
+                                                        class="group inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-white focus:outline-none focus:text-white transition ease-in-out duration-150">
+                                                        <div class="group-hover:hidden">
+                                                            @include('icons/adiccion')
+                                                        </div>
+                                                        <div class="hidden group-hover:block">
+                                                            @include('icons/adiccionazul')
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-full lg:w-4/12 px-4">
+                                        <div class="relative w-full mb-3">
+                                            <label class="block uppercase text-xs font-bold mb-2"
+                                                htmlfor="grid-password">
+                                                Condición de la factura
+                                            </label>
+                                            <select id="sector-select" name="sector"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                required>
+                                                <option value="">Seleccione una condición</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
