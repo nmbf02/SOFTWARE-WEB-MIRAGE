@@ -238,15 +238,16 @@
                                                 htmlfor="grid-password">
                                                 Condición de la factura
                                             </label>
-                                            <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                value="" placeholder="Condición de la factura">
+                                            <select id="sector-select" name="sector"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                                <option value="">Seleccione una condición</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <div class="p-2"></div>
-                            <x-button class="px-4 py-2 mb-3">
+                            <x-button class="px-4 py-2 mb-3">npm
                                 {{ __('Registrar cliente') }}
                             </x-button>
                         </div>
@@ -259,4 +260,6 @@
     </div>
     @include ('footer')
     <script src="/js/paginacion.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </x-app-layout>
