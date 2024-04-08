@@ -175,7 +175,7 @@
                                 </svg>
                             </a>
                             <div x-show="VehiculoOpen" class="bg-gray-100 rounded-lg">
-                                <a href="#"
+                                {{-- <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
                                     @click.prevent="MantenimientoOpen = !MantenimientoOpen">
                                     Mantenimiento
@@ -201,7 +201,11 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Aseguradora
                                     </a>
-                                </div>
+                                </div> --}}
+                                <a href="{{ route('configurar-vehiculo') }}"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
+                                    Configuración
+                                </a>
                                 <a href="{{ route('registrar-vehiculo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Registrar
@@ -415,7 +419,7 @@
                                     </div>
                                 </div>
                                 <a href="{{ route('consultar-suplidor') }}"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Consultar suplidor
                                 </a>
                                 <!-- Submenú para Orden de compra -->
@@ -437,7 +441,7 @@
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar
                                         </a>
-                                        <a href="#"
+                                        <a href="{{ route('consultar-orden-compra') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Consultar
                                         </a>
@@ -462,7 +466,7 @@
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar
                                         </a>
-                                        <a href="#"
+                                        <a href="{{ route('consultar-compra') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Consultar
                                         </a>
@@ -546,6 +550,10 @@
                                 <a href="{{ route('retroalimentacion-empleado') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Retroalimentación empleado
+                                </a>
+                                <a href="{{ route('consultar-retroalimentacion') }}"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
+                                    Consultar retroalimentación
                                 </a>
                             </div>
                         </div>
@@ -631,6 +639,11 @@
                         </div>
                     </div>
                     <div class="space-y-2 pt-2">
+                        <a href="{{ route('configuracion-general') }}"
+                                class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
+                                @include('icons/configuracion')
+                                <span class="ml-3">Configuración</span>
+                            </a>
                         <div x-data="{ usuarioOpen: false, grupoOpen: false }">
                             <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
@@ -665,7 +678,7 @@
                                 </a>
                                 <!-- Submenú para Grupo -->
                                 <div x-show="grupoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="#"
+                                    <a ref="#"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Crear grupo
                                     </a>
@@ -677,7 +690,7 @@
                             </div>
                         </div>
                         <div x-data="{ configuracionOpen: false, LocalizacionOpen: false }">
-                            <a href="#"
+                            {{-- <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
                                 @click.prevent="configuracionOpen = !configuracionOpen">
                                 @include('icons/configuracion')
@@ -762,21 +775,28 @@
                                 </a>
                                 <a href="#"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
+                                    Garantía
+                                </a>
+                                <a href="#"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Canal de comunicación
                                 </a>
-                            </div>
-
-                            <a href="resources\views\auth\login.blade.php" target=""
+                            </div> --}}
+                        </div>
+                        <form method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();" target=""
                                 class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
                                 @include('icons/cerrarsesion')
                                 <span class="ml-3">Cerrar sesión</span>
                             </a>
-                            <a href="#" target="_blank"
-                                class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
-                                @include('icons/ayuda')
-                                <span class="ml-3">Ayuda</span>
-                            </a>
-                        </div>
+                        </form>
+                        <a href="#" target="_blank"
+                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
+                            @include('icons/ayuda')
+                            <span class="ml-3">Ayuda</span>
+                        </a>
                     </div>
                 </div>
             </div>

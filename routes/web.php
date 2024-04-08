@@ -23,6 +23,12 @@ use App\Http\Controllers\historialPagosController;
 use App\Http\Controllers\solicitudPrestamoVehiculoController;
 use App\Http\Controllers\retroalimentacionClienteController;
 use App\Http\Controllers\retroalimentacionEmpleadoController;
+use App\Http\Controllers\consultarRetroalimentacionController;
+use App\Http\Controllers\configurarVehiculoController;
+use App\Http\Controllers\configuracionGeneralController;
+use App\Http\Controllers\consultarOrdenCompraController;
+use App\Http\Controllers\consultarCompraController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -141,3 +147,25 @@ Route::get('/retroalimentacion-cliente/{documentocliente?}', [retroalimentacionC
 Route::get('/retroalimentacion-empleado/{documentoempleado?}', [retroalimentacionEmpleadoController::class, 'documentoEmpleado'])
     ->middleware(['auth'])
     ->name('retroalimentacion-empleado');
+
+Route::get('/consultar-retroalimentacion/{casoretroalimentacion?}', [consultarRetroalimentacionController::class, 'casoRetroalimentacion'])
+    ->middleware(['auth'])
+    ->name('consultar-retroalimentacion');
+
+Route::post('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+Route::get('/configurar-vehiculo/{configuracionvehiculo?}', [configurarVehiculoController::class, 'configuracionVehiculo'])
+    ->middleware(['auth'])
+    ->name('configurar-vehiculo');
+
+Route::get('/configuracion-general/{configuraciongeneral?}', [configuracionGeneralController::class, 'configuracionGeneral'])
+    ->middleware(['auth'])
+    ->name('configuracion-general');
+
+Route::get('/consultar-orden-compra/{codigoordencompra?}', [consultarOrdenCompraController::class, 'codigoOrdenCompra'])
+    ->middleware(['auth'])
+    ->name('consultar-orden-compra');
+
+Route::get('/consultar-compra/{codigocompra?}', [consultarCompraController::class, 'codigoCompra'])
+    ->middleware(['auth'])
+    ->name('consultar-compra');
