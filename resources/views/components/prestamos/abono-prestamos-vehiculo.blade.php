@@ -15,11 +15,11 @@
                         <div class="bg-white dark:bg-gray-700 {{-- shadow rounded-lg --}} p-6">
                             <div class="flex flex-wrap items-center justify-between">
                                 <div class="flex items-center justify-start">
-                                    <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Solicitud de
+                                    <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Abono de
                                         préstamos de vehículo
                                     </h1>
                                 </div>
-                                <div class="inline-flex items-center justify-center space-x-2 mr-3">
+                                {{-- <div class="inline-flex items-center justify-center space-x-2 mr-3">
                                     <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                         <div class="sm:flex sm:items-center ">
                                             <div class="relative">
@@ -62,7 +62,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
                             {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
@@ -146,8 +146,7 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">VIN</label>
-                                            <input type="text" placeholder="VIN"
-                                                class="border p-2 rounded w-full">
+                                            <input type="text" placeholder="VIN" class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
@@ -180,7 +179,8 @@
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Cantidad de pasajeros</label>
+                                                    class="block text-sm font-medium text-gray-700">Cantidad de
+                                                    pasajeros</label>
                                                 <input type="number" placeholder="Cant. de pasajeros"
                                                     class="border p-2 rounded w-full">
                                             </div>
@@ -202,8 +202,8 @@
                                 <div class="p-2"></div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Modalidad de pago</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                        {{-- <div>
+                                    {{-- <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                        <div>
                                             <label class="block text-sm font-medium text-gray-700 mb-2">Modalidades de
                                                 pago</label>
                                             {{-- <div class="flex items-center mb-4">
@@ -241,8 +241,8 @@
                                                 class="block text-sm font-medium text-gray-700">Monto a pagar</label>
                                             <input type="number" placeholder="TOTAL"
                                                 class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full">
-                                        </div> --}}
-                                    </div>
+                                        </div>
+                                    </div> --}}
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                         <div>
                                             <label for="color"
@@ -261,7 +261,8 @@
                                             </div>
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Fecha de aprobación</label>
+                                                    class="block text-sm font-medium text-gray-700">Fecha de
+                                                    aprobación</label>
                                                 <input type="date" placeholder="Plazo"
                                                     class="border p-2 rounded w-full">
                                             </div>
@@ -275,7 +276,8 @@
                                             </div>
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Lapso de tiempo</label>
+                                                    class="block text-sm font-medium text-gray-700">Lapso de
+                                                    tiempo</label>
                                                 <input type="text" placeholder="Lapso de tiempo"
                                                     class="border p-2 rounded w-full">
                                             </div>

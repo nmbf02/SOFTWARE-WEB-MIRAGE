@@ -28,6 +28,8 @@ use App\Http\Controllers\configurarVehiculoController;
 use App\Http\Controllers\configuracionGeneralController;
 use App\Http\Controllers\consultarOrdenCompraController;
 use App\Http\Controllers\consultarCompraController;
+use App\Http\Controllers\prestamosVehiculoController;
+use App\Http\Controllers\abonoPrestamosVehiculoController;
 
 
 Route::get('/', function () {
@@ -169,3 +171,11 @@ Route::get('/consultar-orden-compra/{codigoordencompra?}', [consultarOrdenCompra
 Route::get('/consultar-compra/{codigocompra?}', [consultarCompraController::class, 'codigoCompra'])
     ->middleware(['auth'])
     ->name('consultar-compra');
+
+Route::get('/mantenimiento-prestamos-vehiculo{mantenimientoPrestamosVehiculo?}', [prestamosVehiculoController::class, 'mantenimientoPrestamosVehiculo'])
+    ->middleware(['auth'])
+    ->name('mantenimiento-prestamos-vehiculo');
+
+Route::get('/Abonar-prestamo{abonarprestamo?}', [abonoPrestamosVehiculoController::class, 'abonarPrestamo'])
+    ->middleware(['auth'])
+    ->name('Abonar-prestamo');

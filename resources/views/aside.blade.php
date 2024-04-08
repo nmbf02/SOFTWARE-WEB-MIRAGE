@@ -490,7 +490,11 @@
                             </a>
                             <!-- Submenú para prestamos -->
                             <div x-show="PrestamosOpen" class="bg-gray-100 rounded-lg">
-                                <a href="#"
+                                <a href="{{ route('mantenimiento-prestamos-vehiculo') }}"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
+                                    Mantenimiento
+                                </a>
+                                {{-- <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
                                     @click.prevent="grupoOpen = !grupoOpen">
                                     Mantenimiento
@@ -512,12 +516,12 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Tipo de préstamo
                                     </a>
-                                </div>
+                                </div> --}}
                                 <a href="{{ route('solicitud-prestamos-vehiculo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Solicitud
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('Abonar-prestamo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Abonar
                                 </a>
