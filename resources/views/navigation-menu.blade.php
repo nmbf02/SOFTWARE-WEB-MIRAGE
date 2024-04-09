@@ -57,8 +57,7 @@
                                     <span class="inline-flex rounded-md">
                                         <button type="button"
                                             class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
-                                            {{ Auth::user()->currentTeam->name }}
-
+                                            {{ optional(Auth::user())->currentTeam->name }}
                                             <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                                 fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor">
@@ -73,18 +72,18 @@
                                     <div class="w-60">
                                         <!-- Team Management -->
                                         <div class="block px-4 py-2 text-xs text-gray-400">
-                                            {{ __('Manage Team') }}
+                                            {{ __('Configuración de grupo') }}
                                         </div>
 
                                         <!-- Team Settings -->
                                         <x-dropdown-link
                                             href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                            {{ __('Team Settings') }}
+                                            {{ __('Ajustes del grupo') }}
                                         </x-dropdown-link>
 
                                         @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                                             <x-dropdown-link href="{{ route('teams.create') }}">
-                                                {{ __('Create New Team') }}
+                                                {{ __('Crear nuevo grupo') }}
                                             </x-dropdown-link>
                                         @endcan
 

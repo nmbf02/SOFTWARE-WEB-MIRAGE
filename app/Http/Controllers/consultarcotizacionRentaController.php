@@ -12,6 +12,6 @@ class consultarcotizacionRentaController extends Controller
      */
     public function consultarcotizacionRenta($numerocotizacionRenta = null)
     {
-        return view('components.venta.consultar-renta-cotizacion', compact('numerocotizacionRenta'));
+        return view('components.renta.consultar-renta-cotizacion', compact('numerocotizacionRenta'));
     }
 }

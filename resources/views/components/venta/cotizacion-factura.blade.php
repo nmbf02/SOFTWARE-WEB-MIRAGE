@@ -29,7 +29,7 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Código</label>
-                                            <input type="text" placeholder="VIN" class="border p-2 rounded w-full">
+                                            <input type="text" placeholder="Código del cliente" class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"

@@ -73,7 +73,7 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Código</label>
-                                            <input type="text" placeholder="Código" class="border p-2 rounded w-full">
+                                            <input type="text" placeholder="Código del cliente" class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
@@ -235,11 +235,25 @@
                                                 <label for="prestamo" class="ml-2 block text-sm text-gray-900">Préstamo</label>
                                             </div>
                                         </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Descuento a factura</label>
+                                                <input type="number" placeholder="Fecha de pago"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">ITBIS total</label>
+                                                <input type="text" placeholder="Plazo"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                        </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Monto a pagar</label>
-                                            <input type="number" placeholder="Monto a pagar"
-                                                class="border p-2 rounded w-full">
+                                            <input type="number" placeholder="TOTAL"
+                                                class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full">
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
@@ -251,8 +265,8 @@
                                         </div>
                                         <div>
                                             <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Monto solicitado</label>
-                                            <input type="text" placeholder="Monto solicitado"
+                                                class="block text-sm font-medium text-gray-700">Monto faltante</label>
+                                            <input type="text" placeholder="Monto faltante"
                                                 class="border p-2 rounded w-full">
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
