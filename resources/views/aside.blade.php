@@ -417,6 +417,12 @@
                                             Registrar suplidor
                                         </a>
                                     </div>
+                                    <div x-show="MantenimientoCXP" class="bg-gray-200 rounded-lg">
+                                        <a href="{{ route('registro-suplidor') }}"
+                                            class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                            Ajustes
+                                        </a>
+                                    </div>
                                 </div>
                                 <a href="{{ route('consultar-suplidor') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
@@ -437,7 +443,7 @@
                                         </svg>
                                     </a>
                                     <div x-show="ordenCompraOpen" class="bg-gray-200 rounded-lg">
-                                        <a href="#"
+                                        <a href="{{ route('registrar-orden-compra') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar
                                         </a>

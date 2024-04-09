@@ -26,7 +26,7 @@
                             <form class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                 {{-- Tipo porcentaje mora --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipop porcentaje mora</h6>
+                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo porcentaje mora</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                             <div>

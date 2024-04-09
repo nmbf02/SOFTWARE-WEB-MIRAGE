@@ -30,6 +30,7 @@ use App\Http\Controllers\consultarOrdenCompraController;
 use App\Http\Controllers\consultarCompraController;
 use App\Http\Controllers\prestamosVehiculoController;
 use App\Http\Controllers\abonoPrestamosVehiculoController;
+use App\Http\Controllers\registrarOrdenCompraController;
 
 
 Route::get('/', function () {
@@ -179,3 +180,7 @@ Route::get('/mantenimiento-prestamos-vehiculo{mantenimientoPrestamosVehiculo?}',
 Route::get('/Abonar-prestamo{abonarprestamo?}', [abonoPrestamosVehiculoController::class, 'abonarPrestamo'])
     ->middleware(['auth'])
     ->name('Abonar-prestamo');
+
+Route::get('/registrar-orden-compra{numeroordencompra?}', [registrarOrdenCompraController::class, 'registrarOrdenCompra'])
+    ->middleware(['auth'])
+    ->name('registrar-orden-compra');
