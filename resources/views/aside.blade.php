@@ -412,15 +412,15 @@
                                         </svg>
                                     </a>
                                     <div x-show="MantenimientoCXP" class="bg-gray-200 rounded-lg">
-                                        <a href="{{ route('registro-suplidor') }}"
+                                        <a href="{{ route('configuracion-cxp') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                            Registrar suplidor
+                                            Configuración
                                         </a>
                                     </div>
                                     <div x-show="MantenimientoCXP" class="bg-gray-200 rounded-lg">
                                         <a href="{{ route('registro-suplidor') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                            Ajustes
+                                            Registrar suplidor
                                         </a>
                                     </div>
                                 </div>
@@ -468,7 +468,7 @@
                                         </svg>
                                     </a>
                                     <div x-show="compraOpen" class="bg-gray-200 rounded-lg">
-                                        <a href="#"
+                                        <a href="{{ route('registrar-compra') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar
                                         </a>
@@ -650,10 +650,10 @@
                     </div>
                     <div class="space-y-2 pt-2">
                         <a href="{{ route('configuracion-general') }}"
-                                class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
-                                @include('icons/configuracion')
-                                <span class="ml-3">Configuración</span>
-                            </a>
+                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
+                            @include('icons/configuracion')
+                            <span class="ml-3">Configuración</span>
+                        </a>
                         <div x-data="{ usuarioOpen: false, grupoOpen: false }">
                             <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
