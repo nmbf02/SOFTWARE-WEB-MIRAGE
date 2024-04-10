@@ -597,11 +597,15 @@
                                 </a>
                                 <!-- Submenú de Mantenimiento -->
                                 <div x-show="mantenimientoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="#"
+                                    <a href="{{ route('configurar-nomina') }}"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Configuración
+                                    </a>
+                                    <a href="{{ route('registrar-empleado') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Registrar empleado
                                     </a>
-                                    <a href="#"
+                                    {{-- <a href="#"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Beneficio empleado
                                     </a>
@@ -612,7 +616,7 @@
                                     <a href="#"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Deducciones
-                                    </a>
+                                    </a> --}}
                                 </div>
                                 <a href="#"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">

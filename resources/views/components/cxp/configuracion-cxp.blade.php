@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Configuraciones de cunetas por pagar') }}
+            {{ __('Configuración de cuentas por pagar') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -16,7 +16,7 @@
                             <div class="flex flex-wrap items-center justify-between">
                                 <div class="flex items-center justify-start">
                                     <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                                        Configuraciones de cuentas por pagar
+                                        Configuración de cuentas por pagar
                                     </h1>
                                 </div>
                                 
