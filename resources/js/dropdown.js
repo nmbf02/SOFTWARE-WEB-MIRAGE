@@ -4,4 +4,3 @@ document.addEventListener('alpine:init', () => {
         subastaOpen: false,
     }));
 });
-

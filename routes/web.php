@@ -30,7 +30,11 @@ use App\Http\Controllers\consultarOrdenCompraController;
 use App\Http\Controllers\consultarCompraController;
 use App\Http\Controllers\prestamosVehiculoController;
 use App\Http\Controllers\abonoPrestamosVehiculoController;
-
+use App\Http\Controllers\registrarOrdenCompraController;
+use App\Http\Controllers\registrarCompraController;
+use App\Http\Controllers\configuracionCXPController;
+use App\Http\Controllers\configurarNominaController;
+use App\Http\Controllers\registrarEmpleadoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -179,3 +183,23 @@ Route::get('/mantenimiento-prestamos-vehiculo{mantenimientoPrestamosVehiculo?}',
 Route::get('/Abonar-prestamo{abonarprestamo?}', [abonoPrestamosVehiculoController::class, 'abonarPrestamo'])
     ->middleware(['auth'])
     ->name('Abonar-prestamo');
+
+Route::get('/registrar-orden-compra{numeroordencompra?}', [registrarOrdenCompraController::class, 'registrarOrdenCompra'])
+    ->middleware(['auth'])
+    ->name('registrar-orden-compra');
+
+Route::get('/registrar-compra{numerocompra?}', [registrarCompraController::class, 'registrarCompra'])
+    ->middleware(['auth'])
+    ->name('registrar-compra');
+
+Route::get('/configuracion-cxp/{configuracioncxp?}', [configuracionCXPController::class, 'configuracionCXP'])
+    ->middleware(['auth'])
+    ->name('configuracion-cxp');
+
+Route::get('/configurar-nomina/{configurarnomina?}', [configurarNominaController::class, 'configurarNomina'])
+    ->middleware(['auth'])
+    ->name('configurar-nomina');
+
+Route::get('/registrar-empleado{codigoempleado?}', [registrarEmpleadoController::class, 'codigoEmpleado'])
+    ->middleware(['auth'])
+    ->name('registrar-empleado');

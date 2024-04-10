@@ -412,6 +412,12 @@
                                         </svg>
                                     </a>
                                     <div x-show="MantenimientoCXP" class="bg-gray-200 rounded-lg">
+                                        <a href="{{ route('configuracion-cxp') }}"
+                                            class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                            Configuración
+                                        </a>
+                                    </div>
+                                    <div x-show="MantenimientoCXP" class="bg-gray-200 rounded-lg">
                                         <a href="{{ route('registro-suplidor') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar suplidor
@@ -437,7 +443,7 @@
                                         </svg>
                                     </a>
                                     <div x-show="ordenCompraOpen" class="bg-gray-200 rounded-lg">
-                                        <a href="#"
+                                        <a href="{{ route('registrar-orden-compra') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar
                                         </a>
@@ -462,7 +468,7 @@
                                         </svg>
                                     </a>
                                     <div x-show="compraOpen" class="bg-gray-200 rounded-lg">
-                                        <a href="#"
+                                        <a href="{{ route('registrar-compra') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Registrar
                                         </a>
@@ -591,11 +597,15 @@
                                 </a>
                                 <!-- Submenú de Mantenimiento -->
                                 <div x-show="mantenimientoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="#"
+                                    <a href="{{ route('configurar-nomina') }}"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Configuración
+                                    </a>
+                                    <a href="{{ route('registrar-empleado') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Registrar empleado
                                     </a>
-                                    <a href="#"
+                                    {{-- <a href="#"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Beneficio empleado
                                     </a>
@@ -606,7 +616,7 @@
                                     <a href="#"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Deducciones
-                                    </a>
+                                    </a> --}}
                                 </div>
                                 <a href="#"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
@@ -644,10 +654,10 @@
                     </div>
                     <div class="space-y-2 pt-2">
                         <a href="{{ route('configuracion-general') }}"
-                                class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
-                                @include('icons/configuracion')
-                                <span class="ml-3">Configuración</span>
-                            </a>
+                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
+                            @include('icons/configuracion')
+                            <span class="ml-3">Configuración</span>
+                        </a>
                         <div x-data="{ usuarioOpen: false, grupoOpen: false }">
                             <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"

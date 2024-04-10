@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Configuraciones de vehículos') }}
+            {{ __('Configuración de vehículo') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -16,7 +16,7 @@
                             <div class="flex flex-wrap items-center justify-between">
                                 <div class="flex items-center justify-start">
                                     <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                                        Configuraciones de vehículos
+                                        Configuración de vehículo
                                     </h1>
                                 </div>
                                 {{-- <div class="inline-flex items-center justify-center space-x-2 mr-3">
@@ -83,6 +83,12 @@
                                                 vehiculo</label>
                                             <input type="text" placeholder="Renta, venta o subasta..."
                                                 class="border p-2 rounded w-full">
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
+                                                class="rounded">
+                                            <label for="Estado_modelo"
+                                                class="text-sm font-medium text-gray-700">Estado</label>
                                         </div>
                                         <x-button class="px-4 py-2">
                                             {{ __('Salvar') }}
