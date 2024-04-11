@@ -138,6 +138,7 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Buscar --}}
                     <ul class="space-y-2 pb-2">
                         <li>
                             <form action="#" method="GET" class="lg:hidden">
@@ -309,12 +310,13 @@
                                     </a>
                                 </div>
                                 <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Registrar
                                 </a>
                             </div>
                         </div>
-                        <div x-data="{ cuentasPorCobrarOpen: false, ordenCompraOpen: false, compraOpen: false }">
+                        {{-- Cuentas por cobrar --}}
+                        <div x-data="{ cuentasPorCobrarOpen: false, ordenCompraOpen: false, compraOpen: false, registrarCXCOpen: false, consultarCXCOpen: false }">
                             <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
                                 @click.prevent="cuentasPorCobrarOpen = !cuentasPorCobrarOpen">
@@ -330,13 +332,12 @@
                             </a>
                             <!-- Submenú para Cuentas por cobrar -->
                             <div x-show="cuentasPorCobrarOpen" class="bg-gray-100 rounded-lg">
-                                <!-- Submenú para mantenimiento de cuentas por pagar -->
-                                <div x-data="{ MantenimientoCXC: false }" class="pl-10">
+                                <div x-data="{ registrarCXCOpen: false }" class="pl-10">
                                     <a href="#"
                                         class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
-                                        @click.prevent="MantenimientoCXC = !MantenimientoCXC">
-                                        Mantenimiento
-                                        <svg :class="{ 'rotate-180': MantenimientoCXC }"
+                                        @click.prevent="registrarCXCOpen = !registrarCXCOpen">
+                                        Registrar
+                                        <svg :class="{ 'rotate-180': registrarCXCOpen }"
                                             class="ml-auto h-5 w-5 transform transition-transform duration-200"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke="currentColor">
@@ -344,45 +345,37 @@
                                                 d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </a>
-                                    <div x-show="MantenimientoCXC" class="bg-gray-200 rounded-lg">
+                                    <div x-show="registrarCXCOpen" class="bg-gray-200 rounded-lg">
                                         <a href="{{ route('registro-cliente') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                            Registrar cliente
+                                            Cliente
                                         </a>
                                     </div>
                                 </div>
-                                <a href="{{ route('consultar-cliente') }}"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                    Consultar cliente
-                                </a>
-                                <!-- Submenú para Compra -->
-                                {{-- <div x-data="{ compraOpen: false }" class="pl-10">
-                            <a href="#"
-                                class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
-                                @click.prevent="compraOpen = !compraOpen">
-                                Compra
-                                <svg :class="{ 'rotate-180': compraOpen }"
-                                    class="ml-auto h-5 w-5 transform transition-transform duration-200"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </a>
-                            <div x-show="compraOpen" class="bg-gray-200 rounded-lg">
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                    Registrar
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                    Consultar
-                                </a>
-                            </div>
-                        </div> --}}
+                                <div x-data="{ consultarCXCOpen: false }" class="pl-10">
+                                    <a href="#"
+                                        class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
+                                        @click.prevent="consultarCXCOpen = !consultarCXCOpen">
+                                        Consultar
+                                        <svg :class="{ 'rotate-180': consultarCXCOpen }"
+                                            class="ml-auto h-5 w-5 transform transition-transform duration-200"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </a>
+                                    <div x-show="consultarCXCOpen" class="bg-gray-200 rounded-lg">
+                                        <a href="{{ route('consultar-cliente') }}"
+                                            class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                            Cliente
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div x-data="{ cuentasPorPagarOpen: false, ordenCompraOpen: false, compraOpen: false }">
+                        {{-- Cuentas por pagar --}}
+                        <div x-data="{ cuentasPorPagarOpen: false, ordenCompraOpen: false, compraOpen: false, consultarCXPOpen: false, registrarCXPOpen: false }">
                             <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
                                 @click.prevent="cuentasPorPagarOpen = !cuentasPorPagarOpen">
@@ -417,17 +410,47 @@
                                             Configuración
                                         </a>
                                     </div>
-                                    <div x-show="MantenimientoCXP" class="bg-gray-200 rounded-lg">
+                                </div>
+                                <div x-data="{ registrarCXPOpen: false }" class="pl-10">
+                                    <a href="#"
+                                        class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
+                                        @click.prevent="registrarCXPOpen = !registrarCXPOpen">
+                                        Registrar
+                                        <svg :class="{ 'rotate-180': registrarCXPOpen }"
+                                            class="ml-auto h-5 w-5 transform transition-transform duration-200"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </a>
+                                    <div x-show="registrarCXPOpen" class="bg-gray-200 rounded-lg">
                                         <a href="{{ route('registro-suplidor') }}"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                            Registrar suplidor
+                                            Suplidor
                                         </a>
                                     </div>
                                 </div>
-                                <a href="{{ route('consultar-suplidor') }}"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Consultar suplidor
-                                </a>
+                                <div x-data="{ consultarCXPOpen: false }" class="pl-10">
+                                    <a href="#"
+                                        class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
+                                        @click.prevent="consultarCXPOpen = !consultarCXPOpen">
+                                        Consultar
+                                        <svg :class="{ 'rotate-180': consultarCXPOpen }"
+                                            class="ml-auto h-5 w-5 transform transition-transform duration-200"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </a>
+                                    <div x-show="consultarCXPOpen" class="bg-gray-200 rounded-lg">
+                                        <a href="{{ route('consultar-suplidor') }}"
+                                            class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                            Suplidor
+                                        </a>
+                                    </div>
+                                </div>
                                 <!-- Submenú para Orden de compra -->
                                 <div x-data="{ ordenCompraOpen: false }" class="pl-10">
                                     <a href="#"
@@ -480,6 +503,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- Prestamo --}}
                         <div x-data="{ PrestamosOpen: false, grupoOpen: false }">
                             <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
@@ -500,29 +524,6 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Mantenimiento
                                 </a>
-                                {{-- <a href="#"
-                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
-                                    @click.prevent="grupoOpen = !grupoOpen">
-                                    Mantenimiento
-                                    <svg :class="{ 'rotate-180': grupoOpen }"
-                                        class="ml-auto h-5 w-5 transform transition-transform duration-200"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </a>
-                                <!-- Submenú para Grupo -->
-                                <div x-show="grupoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Porcentaje mora
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Tipo de préstamo
-                                    </a>
-                                </div> --}}
                                 <a href="{{ route('solicitud-prestamos-vehiculo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Solicitud
@@ -537,6 +538,7 @@
                                 </a>
                             </div>
                         </div>
+                        {{-- Reporte - analisis --}}
                         <div x-data="{ reporteAnalisisOpen: false }">
                             <a href="#"
                                 class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group"
@@ -567,7 +569,8 @@
                                 </a>
                             </div>
                         </div>
-                        <div x-data="{ nominaOpen: false, mantenimientoOpen: false, ReporteOpen: false }">
+                        {{-- Nomina --}}
+                        <div x-data="{ nominaOpen: false, mantenimientoOpen: false, ReporteOpen: false, ConsultarOpen: false, registrarNominaOpen: false }">
                             <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
                                 @click.prevent="nominaOpen = !nominaOpen">
@@ -601,31 +604,53 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Configuración
                                     </a>
-                                    <a href="{{ route('registrar-empleado') }}"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Registrar empleado
-                                    </a>
-                                    {{-- <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Beneficio empleado
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Otros ingresos
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Deducciones
-                                    </a> --}}
                                 </div>
                                 <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
+                                    @click.prevent="registrarNominaOpen = !registrarNominaOpen">
                                     Registrar
+                                    <svg :class="{ 'rotate-180': registrarNominaOpen }"
+                                        class="ml-auto h-5 w-5 transform transition-transform duration-200"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
                                 </a>
-                                <a href="{{ route('consultar-nomina') }}"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                <!-- Submenú para Reporte -->
+                                <div x-show="registrarNominaOpen" class="pl-10 bg-gray-200 rounded-lg">
+                                    <a href="{{ route('registrar-empleado') }}"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Empleado
+                                    </a>
+                                    <a href="#"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Nomina
+                                    </a>
+                                </div>
+                                <a href="#"
+                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
+                                    @click.prevent="ConsultarOpen = !ConsultarOpen">
                                     Consultar
+                                    <svg :class="{ 'rotate-180': ConsultarOpen }"
+                                        class="ml-auto h-5 w-5 transform transition-transform duration-200"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
                                 </a>
+                                <!-- Submenú para Consultar -->
+                                <div x-show="ConsultarOpen" class="pl-10 bg-gray-200 rounded-lg">
+                                    <a href="{{ route('consultar-empleado') }}"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Empleado
+                                    </a>
+                                    <a href="{{ route('consultar-nomina') }}"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Nomina
+                                    </a>
+                                </div>
                                 <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
                                     @click.prevent="ReporteOpen = !ReporteOpen">
@@ -642,23 +667,29 @@
                                 <div x-show="ReporteOpen" class="pl-10 bg-gray-200 rounded-lg">
                                     <a href="#"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Empleados
+                                    </a>
+                                    <a href="#"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Deducciones empleados
                                     </a>
                                     <a href="#"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Horas Extrs por empleados
+                                        Horas extras por empleados
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="space-y-2 pt-2">
+                        {{-- Configuracion --}}
                         <a href="{{ route('configuracion-general') }}"
                             class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
                             @include('icons/configuracion')
                             <span class="ml-3">Configuración</span>
                         </a>
-                        <div x-data="{ usuarioOpen: false, grupoOpen: false }">
+                        {{-- Usuarios --}}
+                        <div x-data="{ usuarioOpen: false, grupoOpen: false, registrarUsuarioOpen: false }">
                             <a href="#"
                                 class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
                                 @click.prevent="usuarioOpen = !usuarioOpen">
@@ -674,10 +705,25 @@
                             </a>
                             <!-- Submenú para Usuario -->
                             <div x-show="usuarioOpen" class="bg-gray-100 rounded-lg">
-                                <a href="{{ route('registro-usuario') }}"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Registrar Usuario
+                                <a href="#"
+                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
+                                    @click.prevent="registrarUsuarioOpen = !registrarUsuarioOpen">
+                                    Registrar
+                                    <svg :class="{ 'rotate-180': registrarUsuarioOpen }"
+                                        class="ml-auto h-5 w-5 transform transition-transform duration-200"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7" />
+                                    </svg>
                                 </a>
+                                <!-- Submenú para Grupo -->
+                                <div x-show="registrarUsuarioOpen" class="pl-10 bg-gray-200 rounded-lg">
+                                    <a href="{{ route('registro-usuario') }}"
+                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
+                                        Usuario
+                                    </a>
+                                </div>
                                 <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
                                     @click.prevent="grupoOpen = !grupoOpen">
@@ -704,99 +750,8 @@
                             </div>
                         </div>
                         <div x-data="{ configuracionOpen: false, LocalizacionOpen: false }">
-                            {{-- <a href="#"
-                                class="flex items-center text-base text-gray-900 font-normal rounded-lg p-2 hover:bg-gray-100 group"
-                                @click.prevent="configuracionOpen = !configuracionOpen">
-                                @include('icons/configuracion')
-                                <span class="ml-3">Configuración</span>
-                                <svg :class="{ 'rotate-180': configuracionOpen }"
-                                    class="ml-auto h-5 w-5 transform transition-transform duration-200"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </a>
-                            <!-- Submenú para Configuración -->
-                            <div x-show="configuracionOpen" class="bg-gray-100 p-2 rounded-lg">
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Sucursal
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Empresa
-                                </a>
-                                <!-- Localización -->
-                                <a href="#"
-                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
-                                    @click.prevent="LocalizacionOpen = !LocalizacionOpen">
-                                    Localización
-                                    <svg :class="{ 'rotate-180': LocalizacionOpen }"
-                                        class="ml-auto h-5 w-5 transform transition-transform duration-200"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </a>
-                                <!-- Submenú de Mantenimiento -->
-                                <div x-show="LocalizacionOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Sector
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Ciudad
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Provincia
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        País
-                                    </a>
-                                </div>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Seguro
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Moneda
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Cuenta bancaria
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Banco
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Condición factura
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Forma de pago
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Métodos de pago
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Garantía
-                                </a>
-                                <a href="#"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                    Canal de comunicación
-                                </a>
-                            </div> --}}
                         </div>
+                        {{-- Configuracion --}}
                         <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
                             <a href="{{ route('logout') }}"
@@ -806,6 +761,7 @@
                                 <span class="ml-3">Cerrar sesión</span>
                             </a>
                         </form>
+                        {{-- Ayuda --}}
                         <a href="#" target="_blank"
                             class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
                             @include('icons/ayuda')

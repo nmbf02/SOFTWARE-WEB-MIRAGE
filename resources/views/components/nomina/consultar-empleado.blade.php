@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Consulta de vehículos') }}
+            {{ __('Consulta de empleado') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -14,11 +14,11 @@
                     <div class="flex flex-wrap items-center justify-between">
                         <div class="flex items-center justify-start">
                             <form action="#" method="GET" class="lg:block lg:pl">
-                                <label for="topbar-search" class="sr-only">Buscar vehículo</label>
+                                <label for="topbar-search" class="sr-only">Buscar</label>
                                 <div class="mt-1 relative lg:w-64">
                                     <input type="text" name="email" id="topbar-search"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-2 p-2.5"
-                                        placeholder="VIN del vehículo">
+                                        placeholder="Dato del empleado">
                                 </div>
                             </form>
                         </div>
@@ -46,7 +46,8 @@
                                                     <button type="button"
                                                         class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
                                                         <span class="ml-2 hidden sm:inline-block">Descargar
-                                                            datos del vehículo</span>
+                                                            contrato
+                                                        </span>
                                                         <svg class="ml-2 -mr-0.5 h-4 w-4 hidden sm:inline-block"
                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5"

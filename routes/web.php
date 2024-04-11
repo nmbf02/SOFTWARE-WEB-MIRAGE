@@ -35,6 +35,7 @@ use App\Http\Controllers\registrarCompraController;
 use App\Http\Controllers\configuracionCXPController;
 use App\Http\Controllers\configurarNominaController;
 use App\Http\Controllers\registrarEmpleadoController;
+use App\Http\Controllers\consultarEmpleadoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -203,3 +204,7 @@ Route::get('/configurar-nomina/{configurarnomina?}', [configurarNominaController
 Route::get('/registrar-empleado{codigoempleado?}', [registrarEmpleadoController::class, 'codigoEmpleado'])
     ->middleware(['auth'])
     ->name('registrar-empleado');
+
+Route::get('/consultar-empleado/{datoempleado?}', [consultarEmpleadoController::class, 'consultarEmpleado'])
+    ->middleware(['auth'])
+    ->name('consultar-empleado');
