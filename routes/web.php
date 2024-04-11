@@ -36,6 +36,9 @@ use App\Http\Controllers\configuracionCXPController;
 use App\Http\Controllers\configurarNominaController;
 use App\Http\Controllers\registrarEmpleadoController;
 use App\Http\Controllers\consultarEmpleadoController;
+use App\Http\Controllers\configurarInventarioController;
+use App\Http\Controllers\registrarInventarioController;
+use App\Http\Controllers\consultarInventarioController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -208,3 +211,15 @@ Route::get('/registrar-empleado{codigoempleado?}', [registrarEmpleadoController:
 Route::get('/consultar-empleado/{datoempleado?}', [consultarEmpleadoController::class, 'consultarEmpleado'])
     ->middleware(['auth'])
     ->name('consultar-empleado');
+
+Route::get('/configurar-inventario/{vehiculo?}', [configurarInventarioController::class, 'configurarInventario'])
+    ->middleware(['auth'])
+    ->name('configurar-inventario');
+
+Route::get('/registrar-inventario/{vehiculo?}', [registrarInventarioController::class, 'registrarInventario'])
+    ->middleware(['auth'])
+    ->name('registrar-inventario');
+
+Route::get('/consultar-inventario/{vehiculo?}', [consultarInventarioController::class, 'consultarInventario'])
+    ->middleware(['auth'])
+    ->name('consultar-inventario');

@@ -176,33 +176,6 @@
                                 </svg>
                             </a>
                             <div x-show="VehiculoOpen" class="bg-gray-100 rounded-lg">
-                                {{-- <a href="#"
-                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10"
-                                    @click.prevent="MantenimientoOpen = !MantenimientoOpen">
-                                    Mantenimiento
-                                    <svg :class="{ 'rotate-180': MantenimientoOpen }"
-                                        class="ml-auto h-5 w-5 transform transition-transform duration-200"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </a>
-                                <!-- Submenú para vehiculo -->
-                                <div x-show="MantenimientoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Grupo
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Garantia
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
-                                        Aseguradora
-                                    </a>
-                                </div> --}}
                                 <a href="{{ route('configurar-vehiculo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Configuración
@@ -286,32 +259,17 @@
                             </a>
                             <!-- Submenú de inventario -->
                             <div x-show="InventarioOpen" class="pl-10 bg-gray-100 rounded-lg">
-                                <a href="#"
-                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
-                                    @click.prevent="mantenimientoOpen = !mantenimientoOpen">
-                                    Mantenimiento
-                                    <svg :class="{ 'rotate-180': mantenimientoOpen }"
-                                        class="ml-auto h-5 w-5 transform transition-transform duration-200"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg>
+                                <a href="{{ route('configurar-inventario') }}"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
+                                    Configuración
                                 </a>
-                                <!-- Submenú para Mantenimiento -->
-                                <div x-show="mantenimientoOpen" class="pl-10">
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                        Almacén
-                                    </a>
-                                    <a href="#"
-                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
-                                        Ubicación
-                                    </a>
-                                </div>
-                                <a href="#"
+                                <a href="{{ route('registrar-inventario') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Registrar
+                                </a>
+                                <a href="{{ route('consultar-inventario') }}"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
+                                    Consultar
                                 </a>
                             </div>
                         </div>
