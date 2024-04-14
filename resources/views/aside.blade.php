@@ -154,7 +154,7 @@
                                     </div>
                                     <input type="text" name="email" id="mobile-search"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-600 block w-full pl-10 p-2.5"
-                                        placeholder="Search">
+                                        placeholder="Buscar">
                                 </div>
                             </form>
                         </li>
@@ -208,6 +208,10 @@
                             </a>
                             <!-- Submenú de Mantenimiento -->
                             <div x-show="MantenimientoOpen" class="pl-10 bg-gray-100 rounded-lg">
+                                <a href="{{ route('configuracion-mantenimiento') }}"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
+                                    Configuración
+                                </a>
                                 <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                     @click.prevent="PruebaConduccionOpen = !PruebaConduccionOpen">
@@ -222,20 +226,20 @@
                                 </a>
                                 <!-- Submenú de Prueba de conducción -->
                                 <div x-show="PruebaConduccionOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="#"
+                                    <a href="{{ route('solicitud-cita') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Solicitud de cita
                                     </a>
-                                    <a href="#"
+                                    <a href="{{ route('prueba-conduccion') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Prueba de conducción
                                     </a>
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('orden-reparacion') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Orden de reparación
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('mantenimiento-vehiculo') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Mantenimiento de vehículo
                                 </a>

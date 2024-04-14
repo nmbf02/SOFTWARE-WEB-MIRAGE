@@ -21,39 +21,52 @@
                                 </div>
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
-                            {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
-                                receive mail.</p> --}}
                             <form class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                 {{-- Tipo porcentaje mora --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo porcentaje mora</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                    <div class="inline-flex justify-between items-center w-full">
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo porcentaje mora</h6>
+                                        <button type="button"
+                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                            data-target="toggleContent1">
+                                            <div class="icon">
+                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                            </div>
+                                            <div class="icon hidden">
+                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <!-- Sección a mostrar/ocultar -->
+                                    <div id="toggleContent1" class="hidden">
+                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Código</label>
+                                                    <input type="text" placeholder="Código"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                            </div>
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código</label>
-                                                <input type="text" placeholder="Código"
+                                                    class="block text-sm font-medium text-gray-700">Nombre</label>
+                                                <input type="text" placeholder="Nombre"
                                                     class="border p-2 rounded w-full">
                                             </div>
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Nombre</label>
-                                            <input type="text" placeholder="Nombre"
-                                                class="border p-2 rounded w-full">
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <input type="text" placeholder="Descripción"
-                                                class="border p-2 rounded w-full">
-                                        </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between">
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Rango</label>
-                                                <input type="int" placeholder="Rango de dias" class="border p-2 rounded w-full">
+                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                <input type="text" placeholder="Descripción"
+                                                    class="border p-2 rounded w-full">
                                             </div>
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between">
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Rango</label>
+                                                    <input type="int" placeholder="Rango de dias"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Porcentaje</label>
@@ -62,179 +75,233 @@
                                                 </div>
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Incremento anual</label>
+                                                        class="block text-sm font-medium text-gray-700">Incremento
+                                                        anual</label>
                                                     <input type="number" placeholder="Incremento anual"
                                                         class="border p-2 rounded w-full">
                                                 </div>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
+                                                    class="rounded">
+                                                <label for="Estado_modelo"
+                                                    class="text-sm font-medium text-gray-700">Estado</label>
+                                            </div>
+                                            <x-button class="px-4 py-2">
+                                                {{ __('Salvar tipo porcentaje mora') }}
+                                            </x-button>
                                         </div>
-                                        <div>
-                                            <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                class="rounded">
-                                            <label for="Estado_modelo"
-                                                class="text-sm font-medium text-gray-700">Estado</label>
-                                        </div>
-                                        <x-button class="px-4 py-2">
-                                            {{ __('Salvar tipo porcentaje mora') }}
-                                        </x-button>
                                     </div>
                                 </div>
                                 {{-- Porcentaje mora --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Porcentaje mora</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código</label>
-                                                <input type="text" placeholder="Código"
-                                                    class="border p-2 rounded w-full">
+                                    <div class="inline-flex justify-between items-center w-full">
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Porcentaje mora</h6>
+                                        <button type="button"
+                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                            data-target="toggleContent2">
+                                            <div class="icon">
+                                                @include('icons/show') <!-- Icono visible por defecto -->
                                             </div>
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <input type="text" placeholder="Descripción"
-                                                class="border p-2 rounded w-full">
-                                        </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 justify-between">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Porcentaje</label>
-                                                <input type="int" placeholder="%" class="border p-2 rounded w-full">
+                                            <div class="icon hidden">
+                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
                                             </div>
-                                            <h6 class="block text-sm font-medium text-gray-700">Dias de retraso</h6>
+                                        </button>
+                                    </div>
+                                    <!-- Sección a mostrar/ocultar -->
+                                    <div id="toggleContent2" class="hidden">
+                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Desde</label>
-                                                    <input type="date" placeholder="Desde"
-                                                        class="border p-2 rounded w-full">
-                                                </div>
-                                                <div>
-                                                    <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Hasta</label>
-                                                    <input type="date" placeholder="Hasta"
+                                                        class="block text-sm font-medium text-gray-700">Código</label>
+                                                    <input type="text" placeholder="Código"
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                             </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                <input type="text" placeholder="Descripción"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 justify-between">
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Porcentaje</label>
+                                                    <input type="int" placeholder="%"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                                <h6 class="block text-sm font-medium text-gray-700">Dias de retraso</h6>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Desde</label>
+                                                        <input type="date" placeholder="Desde"
+                                                            class="border p-2 rounded w-full">
+                                                    </div>
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Hasta</label>
+                                                        <input type="date" placeholder="Hasta"
+                                                            class="border p-2 rounded w-full">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
+                                                    class="rounded">
+                                                <label for="Estado_modelo"
+                                                    class="text-sm font-medium text-gray-700">Aplicable sobre
+                                                    cuotas</label>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
+                                                    class="rounded">
+                                                <label for="Estado_modelo"
+                                                    class="text-sm font-medium text-gray-700">Aplicable sobre total
+                                                    adeudado</label>
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Tipo
+                                                    porcentaje</label>
+                                                <select id="sector-select" name="sector"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    required>
+                                                    <option value="">Seleccione un tipo</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
+                                                    class="rounded">
+                                                <label for="Estado_modelo"
+                                                    class="text-sm font-medium text-gray-700">Estado</label>
+                                            </div>
+                                            <x-button class="px-4 py-2">
+                                                {{ __('Salvar porcentaje mora') }}
+                                            </x-button>
                                         </div>
-                                        <div>
-                                            <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                class="rounded">
-                                            <label for="Estado_modelo"
-                                                class="text-sm font-medium text-gray-700">Aplicable sobre cuotas</label>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                class="rounded">
-                                            <label for="Estado_modelo"
-                                                class="text-sm font-medium text-gray-700">Aplicable sobre total adeudado</label>
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Tipo porcentaje</label>
-                                            <select id="sector-select" name="sector"
-                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                required>
-                                                <option value="">Seleccione un tipo</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                class="rounded">
-                                            <label for="Estado_modelo"
-                                                class="text-sm font-medium text-gray-700">Estado</label>
-                                        </div>
-                                        <x-button class="px-4 py-2">
-                                            {{ __('Salvar porcentaje mora') }}
-                                        </x-button>
                                     </div>
                                 </div>
                                 {{-- Tipo prestamo --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo préstamo</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código
+                                    <div class="inline-flex justify-between items-center w-full">
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo préstamo</h6>
+                                        <button type="button"
+                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                            data-target="toggleContent3">
+                                            <div class="icon">
+                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                            </div>
+                                            <div class="icon hidden">
+                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <!-- Sección a mostrar/ocultar -->
+                                    <div id="toggleContent3" class="hidden">
+                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Código
                                                     </label>
-                                                <input type="text" placeholder="Código"
-                                                    class="border p-2 rounded w-full">
+                                                    <input type="text" placeholder="Código"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Nombre</label>
-                                            <input type="text" placeholder="Nombre"
-                                                class="border p-2 rounded w-full">
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <input type="text" placeholder="Descripción"
-                                                class="border p-2 rounded w-full">
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Tasa de interés</label>
-                                            <input type="number" placeholder="%"
-                                                class="border p-2 rounded w-full">
-                                        </div>
-                                        <h6 class="text-sm font-medium text-gray-700">Plazos en días</h6>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-between">
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Plazo mínimo</label>
-                                                <input type="number" placeholder="mínimo"
+                                                    class="block text-sm font-medium text-gray-700">Nombre</label>
+                                                <input type="text" placeholder="Nombre"
                                                     class="border p-2 rounded w-full">
                                             </div>
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Plazo máximo</label>
-                                                <input type="number" placeholder="máximo"
+                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                <input type="text" placeholder="Descripción"
                                                     class="border p-2 rounded w-full">
                                             </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Tasa
+                                                    de interés</label>
+                                                <input type="number" placeholder="%"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <h6 class="text-sm font-medium text-gray-700">Plazos en días</h6>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-between">
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Plazo
+                                                        mínimo</label>
+                                                    <input type="number" placeholder="mínimo"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Plazo
+                                                        máximo</label>
+                                                    <input type="number" placeholder="máximo"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
+                                                    class="rounded">
+                                                <label for="Estado_modelo"
+                                                    class="text-sm font-medium text-gray-700">Estado</label>
+                                            </div>
+                                            <x-button class="px-4 py-2">
+                                                {{ __('Salvar tipo préstamo') }}
+                                            </x-button>
                                         </div>
-                                        <div>
-                                            <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                class="rounded">
-                                            <label for="Estado_modelo"
-                                                class="text-sm font-medium text-gray-700">Estado</label>
-                                        </div>
-                                        <x-button class="px-4 py-2">
-                                            {{ __('Salvar tipo préstamo') }}
-                                        </x-button>
                                     </div>
                                 </div>
                                 {{-- Tipo abono prestamo --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo abono préstamo</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                    <div class="inline-flex justify-between items-center w-full">
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo abono préstamo</h6>
+                                        <button type="button"
+                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                            data-target="toggleContent4">
+                                            <div class="icon">
+                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                            </div>
+                                            <div class="icon hidden">
+                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <!-- Sección a mostrar/ocultar -->
+                                    <div id="toggleContent4" class="hidden">
+                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Código
+                                                    </label>
+                                                    <input type="text" placeholder="Código"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                            </div>
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código
-                                                    </label>
-                                                <input type="text" placeholder="Código"
+                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                <input type="text" placeholder="Descripción"
                                                     class="border p-2 rounded w-full">
                                             </div>
+                                            <div>
+                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
+                                                    class="rounded">
+                                                <label for="Estado_modelo"
+                                                    class="text-sm font-medium text-gray-700">Estado</label>
+                                            </div>
+                                            <x-button class="px-4 py-2">
+                                                {{ __('Salvar tipo abono préstamo') }}
+                                            </x-button>
                                         </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <input type="text" placeholder="Descripción"
-                                                class="border p-2 rounded w-full">
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                class="rounded">
-                                            <label for="Estado_modelo"
-                                                class="text-sm font-medium text-gray-700">Estado</label>
-                                        </div>
-                                        <x-button class="px-4 py-2">
-                                            {{ __('Salvar tipo abono préstamo') }}
-                                        </x-button>
                                     </div>
                                 </div>
                             </form>
@@ -245,4 +312,5 @@
         </div>
     </div>
     @include ('footer')
+    <script src="{{ asset('js/show-hidden.js') }}"></script>
 </x-app-layout>
