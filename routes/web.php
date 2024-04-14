@@ -1,40 +1,49 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\consultarFacturaController;
-use App\Http\Controllers\consultarCotizacionController;
 use App\Http\Controllers\registrarRentaController;
 use App\Http\Controllers\registrarClienteController;
 use App\Http\Controllers\registrarUsuarioController;
 use App\Http\Controllers\registrarSuplidorController;
 use App\Http\Controllers\registrarvehiculoController;
-use App\Http\Controllers\consultarSubastaController;
-use App\Http\Controllers\consultarNominaController;
-use App\Http\Controllers\consultarRentaController;
-use App\Http\Controllers\consultarVehiculoController;
-use App\Http\Controllers\consultarcotizacionRentaController;
 use App\Http\Controllers\registrarFacturaController;
 use App\Http\Controllers\registrarCotizacionFacturaController;
 use App\Http\Controllers\registrarCotizacionRentaController;
 use App\Http\Controllers\registrarSubastaController;
+use App\Http\Controllers\registrarSolicitudcitaController;
+use App\Http\Controllers\registrarPruebaConduccionController;
+use App\Http\Controllers\registrarOrdenReparacionController;
+use App\Http\Controllers\registrarMantenimientoVehiculoController;
+use App\Http\Controllers\registrarInventarioController;
+use App\Http\Controllers\registrarOrdenCompraController;
+use App\Http\Controllers\registrarCompraController;
 use App\Http\Controllers\consultarClienteController;
+use App\Http\Controllers\consultarFacturaController;
+use App\Http\Controllers\consultarCotizacionController;
+use App\Http\Controllers\consultarRetroalimentacionController;
+use App\Http\Controllers\consultarSubastaController;
+use App\Http\Controllers\consultarNominaController;
+use App\Http\Controllers\consultarRentaController;
+use App\Http\Controllers\consultarVehiculoController;
+use App\Http\Controllers\consultarOrdenCompraController;
+use App\Http\Controllers\consultarCompraController;
+use App\Http\Controllers\consultarcotizacionRentaController;
 use App\Http\Controllers\consultarSuplidorController;
 use App\Http\Controllers\historialPagosController;
 use App\Http\Controllers\solicitudPrestamoVehiculoController;
 use App\Http\Controllers\retroalimentacionClienteController;
 use App\Http\Controllers\retroalimentacionEmpleadoController;
-use App\Http\Controllers\consultarRetroalimentacionController;
 use App\Http\Controllers\configurarVehiculoController;
 use App\Http\Controllers\configuracionGeneralController;
-use App\Http\Controllers\consultarOrdenCompraController;
-use App\Http\Controllers\consultarCompraController;
 use App\Http\Controllers\prestamosVehiculoController;
 use App\Http\Controllers\abonoPrestamosVehiculoController;
-use App\Http\Controllers\registrarOrdenCompraController;
-use App\Http\Controllers\registrarCompraController;
 use App\Http\Controllers\configuracionCXPController;
 use App\Http\Controllers\configurarNominaController;
 use App\Http\Controllers\registrarEmpleadoController;
+use App\Http\Controllers\consultarEmpleadoController;
+use App\Http\Controllers\configurarInventarioController;
+use App\Http\Controllers\consultarInventarioController;
+use App\Http\Controllers\configuracionMantenimientoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -203,3 +212,39 @@ Route::get('/configurar-nomina/{configurarnomina?}', [configurarNominaController
 Route::get('/registrar-empleado{codigoempleado?}', [registrarEmpleadoController::class, 'codigoEmpleado'])
     ->middleware(['auth'])
     ->name('registrar-empleado');
+
+Route::get('/consultar-empleado/{datoempleado?}', [consultarEmpleadoController::class, 'consultarEmpleado'])
+    ->middleware(['auth'])
+    ->name('consultar-empleado');
+
+Route::get('/configurar-inventario/{vehiculo?}', [configurarInventarioController::class, 'configurarInventario'])
+    ->middleware(['auth'])
+    ->name('configurar-inventario');
+
+Route::get('/registrar-inventario/{vehiculo?}', [registrarInventarioController::class, 'registrarInventario'])
+    ->middleware(['auth'])
+    ->name('registrar-inventario');
+
+Route::get('/consultar-inventario/{vehiculo?}', [consultarInventarioController::class, 'consultarInventario'])
+    ->middleware(['auth'])
+    ->name('consultar-inventario');
+
+Route::get('/solicitud-cita/{solicitudcita?}', [registrarSolicitudcitaController::class, 'solicitudCita'])
+    ->middleware(['auth'])
+    ->name('solicitud-cita');
+
+Route::get('/prueba-conduccion/{pruebaconduccion?}', [registrarPruebaConduccionController::class, 'pruebaConduccion'])
+    ->middleware(['auth'])
+    ->name('prueba-conduccion');
+
+Route::get('/orden-reparacion/{ordenreparacion?}', [registrarOrdenReparacionController::class, 'ordenReparacion'])
+    ->middleware(['auth'])
+    ->name('orden-reparacion');
+
+Route::get('/mantenimiento-vehiculo/{mantenimientovehiculo?}', [registrarMantenimientoVehiculoController::class, 'mantenimientoVehiculo'])
+    ->middleware(['auth'])
+    ->name('mantenimiento-vehiculo');
+
+    Route::get('/configuracion-mantenimiento/{configuracionmantenimiento?}', [configuracionMantenimientoController::class, 'configuracionMantenimiento'])
+    ->middleware(['auth'])
+    ->name('configuracion-mantenimiento');

@@ -22,6 +22,86 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="inline-flex items-center justify-center space-x-2 mr-3">
+                            <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                <button type="button"
+                                    class="inline-flex items-center px-3 py-2 border text-sm leading-4 font-medium rounded-md text-black transition ease-in-out duration-150"
+                                    style="background-color: #FF914D; border-color: white;"
+                                    onmouseover="this.style.backgroundColor='#E7814D'"
+                                    onmouseout="this.style.backgroundColor='#FF914D'"
+                                    onfocus="this.style.backgroundColor='#E7814D'"
+                                    onblur="this.style.backgroundColor='#FF914D'"
+                                    onmousedown="this.style.backgroundColor='#CC6C3B'"
+                                    onmouseup="this.style.backgroundColor='#E7814D'">
+                                    @include('icons/registrar')
+                                </button>
+                            </div>
+
+                            <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                <div class="sm:flex sm:items-center ">
+                                    <div class="relative">
+                                        <x-dropdown align="right" width="60">
+                                            <x-slot name="trigger">
+                                                <span class="inline-flex rounded-md">
+                                                    <button type="button"
+                                                        class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
+                                                        <span class="ml-2 hidden sm:inline-block">Descargar
+                                                            datos del vehículo</span>
+                                                        <svg class="ml-2 -mr-0.5 h-4 w-4 hidden sm:inline-block"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                                        </svg>
+                                                        <div class="block sm:hidden">
+                                                            @include('icons/descargar')
+                                                        </div>
+                                                    </button>
+                                                </span>
+                                            </x-slot>
+
+                                            <x-slot name="content">
+                                                <div class="w-60">
+                                                    <!-- Team Management -->
+                                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                                        {{ __('Formatos') }}
+                                                    </div>
+
+                                                    <!-- Team Settings -->
+                                                    <x-dropdown-link
+                                                        href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                                        {{ __('PDF') }}
+                                                    </x-dropdown-link>
+                                                    <x-dropdown-link
+                                                        href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                                        {{ __('Compartir') }}
+                                                    </x-dropdown-link>
+                                                </div>
+                                            </x-slot>
+                                        </x-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                <button type="button"
+                                    class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
+                                    @include('icons/imprimir')
+                                    <span class="ml-2 hidden sm:inline-block">Imprimir</span>
+                                </button>
+                            </div>
+                            <div class="flex-end flex flex-col space-y-0.3 justify-end">
+                                <button type="button"
+                                    class="group inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-red-600 hover:border-red-600 hover:text-white focus:outline-none focus:bg-red-600 focus:border-red-600 focus:text-white active:bg-red-700 active:border-red-700 transition ease-in-out duration-150">
+                                    <div class="group-hover:hidden">
+                                        @include('icons/borrar-negro') <!-- Icono visible por defecto -->
+                                    </div>
+                                    <div class="hidden group-hover:block">
+                                        @include('icons/borrar-blanco') <!-- Icono que se muestra en hover -->
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

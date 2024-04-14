@@ -39,7 +39,7 @@ class almacenSeeder extends Seeder
                 $descripcion = $descripcionesDisponibles[$descripcionIndex]; // Obtener la descripción correspondiente al índice seleccionado
 
                 // Crear un registro con la descripción seleccionada
-                almacen::create([
+                Almacen::create([
                     'IdAlmacen' => $i,
                     'IdSucursal' => $i,
                     'Descripcion' => $descripcion,
