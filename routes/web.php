@@ -44,6 +44,9 @@ use App\Http\Controllers\consultarEmpleadoController;
 use App\Http\Controllers\configurarInventarioController;
 use App\Http\Controllers\consultarInventarioController;
 use App\Http\Controllers\configuracionMantenimientoController;
+use App\Http\Controllers\ManualDeUsuarioController;
+
+Route::get('/download-manual', [ManualDeUsuarioController::class, 'downloadFile']);
 
 Route::get('/', function () {
     return view('welcome');
