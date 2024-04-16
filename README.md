@@ -34,4 +34,4 @@ El sistema busca optimizar la rotación de inventario y mejorar las relaciones c
 Además de las funcionalidades para la inscripción de vehículos y participación en subastas, este sistema permite a los usuarios gestionar la renta de vehículos, incluyendo la reserva, entrega y devolución. Detalla cómo utilizar estas nuevas características junto con las ya existentes.
 
 
-Para más información, contacta a nathalyberroaf@gmail.com - esmeilintw@gmail.com.
+Para más información, contacta a nathalyberroaf@gmail.com.
