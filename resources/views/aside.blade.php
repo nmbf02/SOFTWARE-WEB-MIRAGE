@@ -1,4 +1,5 @@
 <!-- Sidebar -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <div class="flex overflow-hidden bg-white">
     {{-- <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div> --}}
     <aside id="sidebar"
@@ -724,14 +725,23 @@
                             </a>
                         </form>
                         {{-- Ayuda --}}
-                        <a href="#" target="_blank"
-                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
+                        <a href="javascript:void(0)"
+                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2"
+                            id="helpButton">
                             @include('icons/ayuda')
                             <span class="ml-3">Ayuda</span>
                         </a>
+                        {{-- <a href="#" target="_blank"
+                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
+                            @include('icons/ayuda')
+                            <span class="ml-3">Ayuda</span>
+                        </a> --}}
                     </div>
                 </div>
             </div>
         </div>
     </aside>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('js/downloadHelper.js') }}"></script>
