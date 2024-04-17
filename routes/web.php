@@ -45,6 +45,7 @@ use App\Http\Controllers\configurarInventarioController;
 use App\Http\Controllers\consultarInventarioController;
 use App\Http\Controllers\configuracionMantenimientoController;
 use App\Http\Controllers\ManualDeUsuarioController;
+use App\Http\Controllers\EstadocompraController;
 
 Route::get('/download-manual', [ManualDeUsuarioController::class, 'downloadFile']);
 
@@ -248,6 +249,16 @@ Route::get('/mantenimiento-vehiculo/{mantenimientovehiculo?}', [registrarManteni
     ->middleware(['auth'])
     ->name('mantenimiento-vehiculo');
 
-    Route::get('/configuracion-mantenimiento/{configuracionmantenimiento?}', [configuracionMantenimientoController::class, 'configuracionMantenimiento'])
+Route::get('/configuracion-mantenimiento/{configuracionmantenimiento?}', [configuracionMantenimientoController::class, 'configuracionMantenimiento'])
     ->middleware(['auth'])
     ->name('configuracion-mantenimiento');
+
+    Route::Post('/Estadocompras/create', [EstadocompraController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Estadocompras.store');
+
+    Route::get('/Estadocompras', [EstadocompraController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Estadocompras');
+
+// Route::resource('Estadocompras',EstadocompraController::class);

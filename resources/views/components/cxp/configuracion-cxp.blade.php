@@ -24,7 +24,8 @@
                             <hr style="border-color: #FF914D" class="p-2">
                             {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
                                 receive mail.</p> --}}
-                            <form class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                            <form method="POST" action="{{route('Estadocompras.store')}}" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
                                         <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Estado compra</h6>
@@ -42,73 +43,31 @@
                                     <!-- Sección a mostrar/ocultar -->
                                     <div id="toggleContent1" class="hidden">
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
+                                            {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Código</label>
-                                                <input type="text" placeholder="Código"
+                                                <input name="Idestadocompra" type="text" placeholder="Código"
                                                     class="border p-2 rounded w-full">
-                                            </div>
+                                            </div> --}}
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
+                                                <input name="descripcion" type="text" placeholder="Descripción"
                                                     class="border p-2 rounded w-full">
                                             </div>
                                             <div>
-                                                <input type="checkbox" id="Estado-compra" name="Estado-compra"
+                                                <input type="checkbox" name="status"
                                                     class="rounded">
                                                 <label for="Estado-compra"
                                                     class="text-sm font-medium text-gray-700">Estado</label>
                                             </div>
-                                            <x-button class="px-4 py-2">
+                                            <x-button type="submit" class="px-4 py-2">
                                                 {{ __('Salvar estado compra') }}
                                             </x-button>
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- Prueba --}}
-                                {{-- <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Prueba</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent2">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent2" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código</label>
-                                                <input type="text" placeholder="Código"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado-compra" name="Estado-compra"
-                                                    class="rounded">
-                                                <label for="Estado-compra"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar estado compra') }}
-                                            </x-button>
-                                        </div>
-                                    </div>
-                                </div> --}}
                             </form>
                         </div>
                     </div>
