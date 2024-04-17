@@ -46,6 +46,7 @@ use App\Http\Controllers\consultarInventarioController;
 use App\Http\Controllers\configuracionMantenimientoController;
 use App\Http\Controllers\ManualDeUsuarioController;
 use App\Http\Controllers\EstadocompraController;
+use App\Http\Controllers\TipovehiculoconcesionarioController;
 
 Route::get('/download-manual', [ManualDeUsuarioController::class, 'downloadFile']);
 
@@ -253,12 +254,26 @@ Route::get('/configuracion-mantenimiento/{configuracionmantenimiento?}', [config
     ->middleware(['auth'])
     ->name('configuracion-mantenimiento');
 
-    Route::Post('/Estadocompras/create', [EstadocompraController::class, 'store'])
+Route::Post('/Estadocompras/create', [EstadocompraController::class, 'store'])
     ->middleware(['auth'])
     ->name('Estadocompras.store');
 
-    Route::get('/Estadocompras', [EstadocompraController::class, 'index'])
+Route::get('/Estadocompras', [EstadocompraController::class, 'index'])
     ->middleware(['auth'])
     ->name('Estadocompras');
 
-// Route::resource('Estadocompras',EstadocompraController::class);
+// Route::get('/Tipovehiculoconcesionario/create', [TipovehiculoconcesionarioController::class, 'store'])
+//     ->middleware(['auth'])
+//     ->name('Tipovehiculoconcesionario.store');
+
+Route::Post('/Tipovehiculoconcesionario/create', [TipovehiculoconcesionarioController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Tipovehiculoconcesionario.store');
+
+Route::get('/Tipovehiculoconcesionario', [TipovehiculoconcesionarioController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Tipovehiculoconcesionario');
+
+// Route::get('/Tipovehiculoconcesionario/create', [TipovehiculoconcesionarioController::class, 'index'])
+//     ->middleware(['auth'])
+//     ->name('Tipovehiculoconcesionario');

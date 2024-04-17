@@ -23,7 +23,8 @@
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
                             {{-- Destino --}}
-                            <form class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                            <form method="POST" action="{{ route('Tipovehiculoconcesionario.store') }}"
+                                class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
                                         <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Destino</h6>
@@ -41,22 +42,22 @@
                                     <!-- Sección a mostrar/ocultar -->
                                     <div id="toggleContent1" class="hidden">
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
+                                            {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Código</label>
                                                 <input type="text" placeholder="Código"
                                                     class="border p-2 rounded w-full">
-                                            </div>
+                                            </div> --}}
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Finalidad del
                                                     vehiculo</label>
-                                                <input type="text" placeholder="Renta, venta o subasta..."
+                                                <input name="descripcion" type="text"
+                                                    placeholder="Renta, venta o subasta..."
                                                     class="border p-2 rounded w-full">
                                             </div>
                                             <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
+                                                <input type="checkbox" name="estadomodelo" class="rounded">
                                                 <label for="Estado_modelo"
                                                     class="text-sm font-medium text-gray-700">Estado</label>
                                             </div>
