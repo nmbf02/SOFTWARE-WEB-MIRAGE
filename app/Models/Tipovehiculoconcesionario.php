@@ -9,5 +9,5 @@ class Tipovehiculoconcesionario extends Model
 {
     use HasFactory;
     protected $table = 'tipovehiculoconcesionario';
-    protected $fillable = ['Descripcion','Status'];   
+    protected $fillable = ['descripcion','status'];     
 }

@@ -47,6 +47,7 @@ use App\Http\Controllers\configuracionMantenimientoController;
 use App\Http\Controllers\ManualDeUsuarioController;
 use App\Http\Controllers\EstadocompraController;
 use App\Http\Controllers\TipovehiculoconcesionarioController;
+use App\Http\Controllers\TipoitbisController;
 
 Route::get('/download-manual', [ManualDeUsuarioController::class, 'downloadFile']);
 
@@ -262,10 +263,6 @@ Route::get('/Estadocompras', [EstadocompraController::class, 'index'])
     ->middleware(['auth'])
     ->name('Estadocompras');
 
-// Route::get('/Tipovehiculoconcesionario/create', [TipovehiculoconcesionarioController::class, 'store'])
-//     ->middleware(['auth'])
-//     ->name('Tipovehiculoconcesionario.store');
-
 Route::Post('/Tipovehiculoconcesionario/create', [TipovehiculoconcesionarioController::class, 'store'])
     ->middleware(['auth'])
     ->name('Tipovehiculoconcesionario.store');
@@ -274,6 +271,10 @@ Route::get('/Tipovehiculoconcesionario', [TipovehiculoconcesionarioController::c
     ->middleware(['auth'])
     ->name('Tipovehiculoconcesionario');
 
-// Route::get('/Tipovehiculoconcesionario/create', [TipovehiculoconcesionarioController::class, 'index'])
-//     ->middleware(['auth'])
-//     ->name('Tipovehiculoconcesionario');
+Route::Post('/Tipoitbis/create', [TipoitbisController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Tipoitbis.store');
+
+Route::get('/Tipoitbis', [TipoitbisController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Tipoitbis');

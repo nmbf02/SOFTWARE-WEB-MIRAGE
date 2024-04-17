@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\EstadoCompra;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log; 
 
 class EstadocompraController extends Controller
 {
@@ -14,7 +12,6 @@ class EstadocompraController extends Controller
      */
     public function index()
     {
-        Log::info('La función fue ejecutada por el usuario:');
         $estados = EstadoCompra::all();
         // return view('estado_compras.index', compact('estados'));
         return view('components.cxp.configuracion-cxp', compact('estados'));
@@ -34,7 +31,6 @@ class EstadocompraController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info('La función fue ejecutada por el usuario:');
         try{
 
             $request->validate([
@@ -83,6 +79,7 @@ class EstadocompraController extends Controller
         return view('estado_compras.edit', compact('estadoCompra'));
     }
 
+
     /**
      * Update the specified resource in storage.
      */
@@ -98,6 +95,7 @@ class EstadocompraController extends Controller
 
         return redirect()->route('estado_compras.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

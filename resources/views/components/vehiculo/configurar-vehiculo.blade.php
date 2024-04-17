@@ -25,6 +25,7 @@
                             {{-- Destino --}}
                             <form method="POST" action="{{ route('Tipovehiculoconcesionario.store') }}"
                                 class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
                                         <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Destino</h6>
@@ -57,7 +58,7 @@
                                                     class="border p-2 rounded w-full">
                                             </div>
                                             <div>
-                                                <input type="checkbox" name="estadomodelo" class="rounded">
+                                                <input type="checkbox" name="status" class="rounded">
                                                 <label for="Estado_modelo"
                                                     class="text-sm font-medium text-gray-700">Estado</label>
                                             </div>
@@ -453,7 +454,7 @@
                                                 <label for="Estado_modelo"
                                                     class="text-sm font-medium text-gray-700">Estado</label>
                                             </div>
-                                            <x-button class="px-4 py-2">
+                                            <x-button type="submit" class="px-4 py-2">
                                                 {{ __('Salvar almacén') }}
                                             </x-button>
                                         </div>
@@ -727,62 +728,66 @@
                                     </div>
                                 </div>
                                 {{-- Tipo Itbis --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo Itbis</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent15">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent15" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                <form method="POST" action="{{ route('Tipoitbis.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo Itbis</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent15">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent15" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                <div
+                                                    class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                    {{-- <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Codigo del
+                                                            ITBIS</label>
+                                                        <input type="text" placeholder="Código del ITBIS"
+                                                            class="border p-2 rounded w-full">
+                                                    </div> --}}
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Porcentaje</label>
+                                                        <input name="porcentajeitibis" type="number"
+                                                            placeholder="% ITBIS" class="border p-2 rounded w-full">
+                                                    </div>
+                                                </div>
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Codigo del
-                                                        ITBIS</label>
-                                                    <input type="text" placeholder="Código del ITBIS"
+                                                        class="block text-sm font-medium text-gray-700">Nombre</label>
+                                                    <input name="nombreitbis" type="text" placeholder="Nombre"
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Porcentaje</label>
-                                                    <input type="number" placeholder="% ITBIS"
-                                                        class="border p-2 rounded w-full">
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcionitbis" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
                                                 </div>
+                                                <div>
+                                                    <input name="statusitbis" type="checkbox" id="Estado_modelo"
+                                                        name="Estado_modelo" class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar ITBIS') }}
+                                                </x-button>
                                             </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Nombre</label>
-                                                <input type="text" placeholder="Nombre"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar ITBIS') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </form>
                         </div>
                     </div>
