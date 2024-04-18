@@ -48,6 +48,15 @@ use App\Http\Controllers\ManualDeUsuarioController;
 use App\Http\Controllers\EstadocompraController;
 use App\Http\Controllers\TipovehiculoconcesionarioController;
 use App\Http\Controllers\TipoitbisController;
+use App\Http\Controllers\ClasificacionvehiculoController;
+use App\Http\Controllers\SegmentomercadoController;
+use App\Http\Controllers\TipovehiculoController;
+use App\Http\Controllers\TraccionvehiculoController;
+use App\Http\Controllers\TransmisionvehiculoController;
+use App\Http\Controllers\EstadovehiculoController;
+use App\Http\Controllers\AcabadocolorvehiculoController;
+use App\Http\Controllers\GrupovehiculoController;
+use App\Http\Controllers\MarcavehiculoController;
 
 Route::get('/download-manual', [ManualDeUsuarioController::class, 'downloadFile']);
 
@@ -278,3 +287,75 @@ Route::Post('/Tipoitbis/create', [TipoitbisController::class, 'store'])
 Route::get('/Tipoitbis', [TipoitbisController::class, 'index'])
     ->middleware(['auth'])
     ->name('Tipoitbis');
+
+Route::Post('/Clasificacionvehiculo/create', [ClasificacionvehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Clasificacionvehiculo.store');
+
+Route::get('/Clasificacionvehiculo', [ClasificacionvehiculoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Clasificacionvehiculo');
+
+Route::Post('/Segmentomercado/create', [SegmentomercadoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Segmentomercado.store');
+
+Route::get('/Segmentomercado', [SegmentomercadoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Segmentomercado');
+
+Route::Post('/Tipovehiculo/create', [TipovehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Tipovehiculo.store');
+
+Route::get('/Tipovehiculo', [TipovehiculoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Tipovehiculo');
+
+Route::Post('/Traccionvehiculo/create', [TraccionvehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Traccionvehiculo.store');
+
+Route::get('/Traccionvehiculo', [TraccionvehiculoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Traccionvehiculo');
+
+Route::Post('/Transmisionvehiculo/create', [TransmisionvehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Transmisionvehiculo.store');
+
+Route::get('/Transmisionvehiculo', [TransmisionvehiculoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Transmisionvehiculo');
+
+Route::Post('/Estadovehiculo/create', [EstadovehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Estadovehiculo.store');
+
+Route::get('/Estadovehiculo', [EstadovehiculoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Estadovehiculo');
+
+Route::Post('/Acabadocolorvehiculo/create', [AcabadocolorvehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Acabadocolorvehiculo.store');
+
+Route::get('/Acabadocolorvehiculo', [AcabadocolorvehiculoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Acabadocolorvehiculo');
+
+Route::Post('/Grupovehiculo/create', [GrupovehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Grupovehiculo.store');
+
+Route::get('/Grupovehiculo', [GrupovehiculoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Grupovehiculo');
+
+Route::Post('/Marcavehiculo/create', [MarcavehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Marcavehiculo.store');
+
+Route::get('/Marcavehiculo', [MarcavehiculoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Marcavehiculo');

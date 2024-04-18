@@ -3,18 +3,18 @@
 // Models aqui
 namespace App\Http\Controllers;
 
-use App\Models\Tipoitbis;
+use App\Models\Clasificacionvehiculo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class TipoitbisController extends Controller
+class ClasificacionvehiculoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $estados = Tipoitbis::all();
+        $estados = Clasificacionvehiculo::all();
         // return view('estado_compras.index', compact('estados'));
         return view('components.vehiculo.configurar-vehiculo', compact('estados'));
     }
@@ -36,24 +36,20 @@ class TipoitbisController extends Controller
         try {
             // Validating the input data
             $request->validate([
-                'porcentajeitibis' => 'required|numeric|between:0,99.99',
-                'nombreitbis' => 'required|string',
-                'descripcionitbis' => 'required|string',
-                'statusitbis' => 'sometimes|boolean',
+                'descripcion' => 'required|string',
+                'status' => 'sometimes|boolean',
             ]);
 
-            // Creating a new instance of Tipoitbis
-            $itbis = new Tipoitbis();
-            $itbis->Nombre = $request->nombreitbis; // Ensuring the 'Nombre' field is assigned
-            $itbis->Descripcion = $request->descripcionitbis; // Correcting the field name for 'Descripcion'
-            $itbis->Porcentaje = $request->porcentajeitibis; // Ensuring the 'Porcentaje' field is assigned
+            // Creating a new instance of Clasificacionvehiculo
+            $itbis = new Clasificacionvehiculo();
+            $itbis->Descripcion = $request->descripcion; // Correcting the field name for 'Descripcion'
 
-            $itbis->Status = $request->statusitbis ? 1 : 0;
+            $itbis->Status = $request->status ? 1 : 0;
 
             $itbis->save();
 
-            return redirect()->route('Tipoitbis')->with('success', 'Estado de ITBIS guardado con éxito.');
-            // return redirect()->route('Tipoitbis.index')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect()->route('Clasificacionvehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
+            // return redirect()->route('Clasificacionvehiculo.index')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }
@@ -65,7 +61,7 @@ class TipoitbisController extends Controller
      */
     public function show(string $id)
     {
-        $itbis = Tipoitbis::findOrFail($id);
+        $itbis = Clasificacionvehiculo::findOrFail($id);
         return view('estado_compras.show', compact('itbis'));
     }
 
@@ -75,7 +71,7 @@ class TipoitbisController extends Controller
      */
     public function edit(string $id)
     {
-        $itbis = Tipoitbis::findOrFail($id);
+        $itbis = Clasificacionvehiculo::findOrFail($id);
         return view('estado_compras.edit', compact('itbis'));
     }
 
@@ -90,7 +86,7 @@ class TipoitbisController extends Controller
             'Status' => 'required|boolean',
         ]);
 
-        $itbis = Tipoitbis::findOrFail($id);
+        $itbis = Clasificacionvehiculo::findOrFail($id);
         $itbis->update($request->all());
 
         return redirect()->route('estado_compras.index');
@@ -102,7 +98,7 @@ class TipoitbisController extends Controller
      */
     public function destroy(string $id)
     {
-        $itbis = Tipoitbis::findOrFail($id);
+        $itbis = Clasificacionvehiculo::findOrFail($id);
         $itbis->delete();
 
         return redirect()->route('estado_compras.index');
