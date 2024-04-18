@@ -413,6 +413,8 @@ Route::Post('/Moneda/create', [MonedaController::class, 'store'])
     ->name('Moneda.store');
 
 Route::get('/Moneda', [MonedaController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Moneda');
 
 // CANAL DE COMUNICACION
 Route::Post('/Canalcomunicacion/create', [CanalcomunicacionController::class, 'store'])

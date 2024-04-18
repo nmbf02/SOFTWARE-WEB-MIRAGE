@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Marcavehiculo;
-// use App\Models\Grupovehiculo;
+use App\Models\Grupovehiculo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+// use App\Http\Controllers\Grupovehiculo;
 
 class MarcavehiculoController extends Controller
 {
@@ -29,46 +30,58 @@ class MarcavehiculoController extends Controller
     //     return view('components.vehiculo.configurar-vehiculo', ['gruposVehiculo' => $gruposVehiculo]);
     // }
 
+    // public function create()
+    // {
+    //     try {
+    //         $gruposVehiculo = Marcavehiculo::all() ?? collect(); // Ensures it's never null
+    //         return view('components.vehiculo.configurar-vehiculo', ['gruposVehiculo' => $gruposVehiculo]);
+    //     } catch (QueryException $ex) {
+    //         dd($ex);
+    //     }
+    // }
     public function create()
     {
         try {
-            $gruposVehiculo = Marcavehiculo::all() ?? collect(); // Ensures it's never null
+            $gruposVehiculo = GrupoVehiculo::all() ?? collect(); // Ensures it's never null
             return view('components.vehiculo.configurar-vehiculo', ['gruposVehiculo' => $gruposVehiculo]);
         } catch (QueryException $ex) {
             dd($ex);
         }
     }
 
-
     public function store(Request $request)
     {
+        $request->validate([
+            'descripcion' => 'required|string',
+            'grupoVehiculo' => 'required|exists:grupovehiculo,id',
+            'status' => 'nullable|boolean',
+        ]);
+
+        $marcavehiculo = new Marcavehiculo();
+        $marcavehiculo->Descripcion = $request->descripcion;
+        $marcavehiculo->GrupoVehiculo = $request->grupoVehiculo;
+        $marcavehiculo->Status = $request->status ? 1 : 0;
+
         try {
-            $request->validate([
-                'descripcion' => 'required|string',
-                'status' => 'nullable|boolean',
-            ]);
-
-            $itbis = new Marcavehiculo();
-            $itbis->Descripcion = $request->descripcion;
-
-            $itbis->Status = $request->status ? 1 : 0;
-
-            $itbis->save();
-
-            $gruposVehiculo = Marcavehiculo::all();
-            return redirect()->route('Marcavehiculo.create')->with('gruposVehiculo', $gruposVehiculo);
-            return redirect()->route('Marcavehiculo')->with('success', 'Guardado con exito');
+            $marcavehiculo->save();
         } catch (QueryException $ex) {
-            dd($ex);
+            return redirect()->back()->withErrors(['error' => 'Error al guardar: ' . $ex->getMessage()]);
         }
+
+        return redirect()->route('Marcavehiculo')->with('success', 'Guardado con exito');
     }
 
-    public function show(string $id)
+    // public function show(string $id)
+    // {
+    //     $itbis = Marcavehiculo::findOrFail($id);
+    //     return view('estado_compras.show', compact('itbis'));
+    // }
+
+    public function show()
     {
-        $itbis = Marcavehiculo::findOrFail($id);
-        return view('estado_compras.show', compact('itbis'));
+        $gruposVehiculo = Grupovehiculo::all();
+        return view('configurar-vehiculo', ['gruposVehiculo' => $gruposVehiculo]);
     }
-
     public function edit(string $id)
     {
         $itbis = Marcavehiculo::findOrFail($id);

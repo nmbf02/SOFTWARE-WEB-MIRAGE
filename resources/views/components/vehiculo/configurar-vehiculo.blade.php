@@ -210,23 +210,19 @@
                                                     <input name="descripcion" type="text" placeholder="Descripción"
                                                         class="border p-2 rounded w-full">
                                                 </div>
-                                                {{-- <div>
+                                                <div>
                                                     <label for="grupoVehiculo"
                                                         class="block text-sm font-medium text-gray-700">Grupo del
                                                         vehículo</label>
                                                     <select id="grupoVehiculo" name="grupoVehiculo"
                                                         class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                         required placeholder="Seleccione un grupo">
-                                                        @if (count($gruposVehiculo) > 0)
-                                                            @foreach ($gruposVehiculo as $grupo)
-                                                                <option value="{{ $grupo->IdGrupoVehiculo }}">
-                                                                    {{ $grupo->Descripcion }}</option>
-                                                            @endforeach
-                                                        @else
-                                                            <option value="">No hay grupos registrados</option>
-                                                        @endif
+                                                        @foreach ($gruposVehiculo as $grupo)
+                                                            <option value="{{ $grupo->IdGrupoVehiculo }}">
+                                                                {{ $grupo->Descripcion }}</option>
+                                                        @endforeach
                                                     </select>
-                                                </div> --}}
+                                                </div>
                                                 <div class="flex items-center">
                                                     <input name="status" type="checkbox" id="Estado_modelo"
                                                         class="rounded">

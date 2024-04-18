@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Marcavehiculo;
+
 class configurarVehiculoController extends Controller
 {
     /**
@@ -12,6 +14,7 @@ class configurarVehiculoController extends Controller
      */
     public function configuracionVehiculo($configuracionvehiculo = null)
     {
-        return view('components.vehiculo.configurar-vehiculo', compact('configuracionvehiculo'));
+        $gruposVehiculo = Marcavehiculo::all();
+        return view('components.vehiculo.configurar-vehiculo', compact('configuracionvehiculo', 'gruposVehiculo'));
     }
 }
