@@ -23,7 +23,7 @@
                             <hr style="border-color: #FF914D" class="p-2">
                             {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
                                 receive mail.</p> --}}
-                            <form class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                 {{-- Sucursal --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
@@ -566,91 +566,95 @@
                                     </div>
                                 </div>
                                 {{-- pais --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">País</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent8">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent8" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
+                                <form method="POST" action="{{ route('pais.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">País</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent8">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent8" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Código
                                                     del país</label>
                                                 <input type="text" placeholder="Código del grupo"
                                                     class="border p-2 rounded w-full">
+                                            </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar país') }}
+                                                </x-button>
                                             </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar país') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Tipo de seguro --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipos de seguros</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent9">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                <form method="POST" action="{{ route('Tiposeguro.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipos de seguros</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent9">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent9" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Código
+                                                        del seguro</label>
+                                                    <input type="text" placeholder="Código del seguro"
+                                                        class="border p-2 rounded w-full">
+                                                </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar tipo de seguro') }}
+                                                </x-button>
                                             </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent9" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código
-                                                    del seguro</label>
-                                                <input type="text" placeholder="Código del seguro"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar tipo de seguro') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Compania de seguro --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
@@ -789,190 +793,203 @@
                                     </div>
                                 </div>
                                 {{-- Tipo riesgo --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipos de riesgo</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent12">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                <form method="POST" action="{{ route('Tiporiesgo.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipos de riesgo</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent12">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent12" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Código
+                                                        del riesgo</label>
+                                                    <input type="text" placeholder="Código del seguro"
+                                                        class="border p-2 rounded w-full">
+                                                </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        name="Estado_modelo" class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar tipo de riesgo') }}
+                                                </x-button>
                                             </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent12" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código
-                                                    del riesgo</label>
-                                                <input type="text" placeholder="Código del seguro"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar tipo de riesgo') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Estado poliza --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Estado de la poliza</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent13">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                <form method="POST" action="{{ route('Estadopoliza.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Estado de la poliza</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent13">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent13" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Código
+                                                        de la poliza</label>
+                                                    <input type="text" placeholder="Código del seguro"
+                                                        class="border p-2 rounded w-full">
+                                                </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        name="Estado_modelo" class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar estado') }}
+                                                </x-button>
                                             </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent13" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código
-                                                    de la poliza</label>
-                                                <input type="text" placeholder="Código del seguro"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar estado') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Condicion del seguro --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Condición del seguro</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent14">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                <form method="POST" action="{{ route('Condicionseguro.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Condición del seguro</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent14">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent14" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Código
+                                                        de la condición</label>
+                                                    <input type="text" placeholder="Código de la condición"
+                                                        class="border p-2 rounded w-full">
+                                                </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Fecha
+                                                        efectiva</label>
+                                                    <input name="fechaEfectiva" type="date"
+                                                        placeholder="Fecha efectiva"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" name="status" class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar condición') }}
+                                                </x-button>
                                             </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent14" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código
-                                                    de la condición</label>
-                                                <input type="text" placeholder="Código de la condición"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Fecha
-                                                    efectiva</label>
-                                                <input type="date" placeholder="Fecha efectiva"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar condición') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Moneda --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Moneda</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent15">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent15" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
+                                <form method="POST" action="{{ route('Moneda.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Moneda</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent15">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent15" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Código
                                                     de la moneda</label>
                                                 <input type="text" placeholder="Código de la condición"
                                                     class="border p-2 rounded w-full">
+                                            </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="tasa"
+                                                        class="block text-sm font-medium text-gray-700">Tasa</label>
+                                                    <input type="number" name="tasa"
+                                                        step="0.01" placeholder="Tasa"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" name="status"
+                                                        class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar moneda') }}
+                                                </x-button>
                                             </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="tasa"
-                                                    class="block text-sm font-medium text-gray-700">Tasa</label>
-                                                <input type="number" id="tasa" name="tasa" step="0.01"
-                                                    placeholder="Tasa" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar moneda') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Canal de comunicacion --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
@@ -1367,7 +1384,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

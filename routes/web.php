@@ -57,6 +57,15 @@ use App\Http\Controllers\EstadovehiculoController;
 use App\Http\Controllers\AcabadocolorvehiculoController;
 use App\Http\Controllers\GrupovehiculoController;
 use App\Http\Controllers\MarcavehiculoController;
+use App\Http\Controllers\paisController;
+use App\Http\Controllers\TiposeguroController;
+use App\Http\Controllers\TiporiesgoController;
+use App\Http\Controllers\EstadopolizaController;
+use App\Http\Controllers\CondicionseguroController;
+use App\Http\Controllers\MonedaController;
+use App\Http\Controllers\CanalcomunicacionController;
+use App\Http\Controllers\CondicionfacturaController;
+use App\Http\Controllers\MetodopagoController;
 
 Route::get('/download-manual', [ManualDeUsuarioController::class, 'downloadFile']);
 
@@ -183,7 +192,6 @@ Route::get('/consultar-retroalimentacion/{casoretroalimentacion?}', [consultarRe
     ->name('consultar-retroalimentacion');
 
 Route::post('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-
 Route::get('/configurar-vehiculo/{configuracionvehiculo?}', [configurarVehiculoController::class, 'configuracionVehiculo'])
     ->middleware(['auth'])
     ->name('configurar-vehiculo');
@@ -359,3 +367,76 @@ Route::Post('/Marcavehiculo/create', [MarcavehiculoController::class, 'store'])
 Route::get('/Marcavehiculo', [MarcavehiculoController::class, 'index'])
     ->middleware(['auth'])
     ->name('Marcavehiculo');
+
+Route::Post('/pais/create', [paisController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('pais.store');
+
+Route::get('/pais', [paisController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('pais');
+
+Route::Post('/Tiposeguro/create', [TiposeguroController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Tiposeguro.store');
+
+Route::get('/Tiposeguro', [TiposeguroController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Tiposeguro');
+
+Route::Post('/Tiporiesgo/create', [TiporiesgoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Tiporiesgo.store');
+
+Route::get('/Tiporiesgo', [TiporiesgoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Tiporiesgo');
+
+Route::Post('/Estadopoliza/create', [EstadopolizaController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Estadopoliza.store');
+
+Route::get('/Estadopoliza', [EstadopolizaController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Estadopoliza');
+
+Route::Post('/Condicionseguro/create', [CondicionseguroController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Condicionseguro.store');
+
+Route::get('/Condicionseguro', [CondicionseguroController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Condicionseguro');
+
+Route::Post('/Moneda/create', [MonedaController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Moneda.store');
+
+Route::get('/Moneda', [MonedaController::class, 'index'])
+
+// CANAL DE COMUNICACION
+Route::Post('/Canalcomunicacion/create', [CanalcomunicacionController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Canalcomunicacion.store');
+
+Route::get('/Canalcomunicacion', [CanalcomunicacionController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Canalcomunicacion');
+
+// CONDICION DE LA FACTURA 
+Route::Post('/Condicionfactura/create', [CondicionfacturaController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Condicionfactura.store');
+
+Route::get('/Condicionfactura', [CondicionfacturaController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Condicionfactura');
+
+// METODO DE PAGO
+Route::Post('/Metodopago/create', [MetodopagoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Metodopago.store');
+
+Route::get('/Metodopago', [MetodopagoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Metodopago');

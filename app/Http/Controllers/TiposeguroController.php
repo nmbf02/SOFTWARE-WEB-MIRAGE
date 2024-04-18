@@ -1,41 +1,42 @@
 <?php
 
+// Models aqui
 namespace App\Http\Controllers;
 
-use App\Models\Grupovehiculo;
+use App\Models\Tiposeguro;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class GrupovehiculoController extends Controller
+class TiposeguroController extends Controller
 {
     public function index()
     {
-        $estados = Grupovehiculo::all();
-        return view('components.vehiculo.configurar-vehiculo', compact('estados'));
+        $estados = Tiposeguro::all();
+        return view('components.configuracion.configuracion-general', compact('estados'));
     }
 
     public function create()
     {
-        return view('components.vehiculo.configurar-vehiculo');
+        return view('components.configuracion.configuracion-general');
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        // dd('hola');
         try {
             $request->validate([
                 'descripcion' => 'required|string',
-                'status' => 'nullable|boolean',
+                'status' => 'sometimes|boolean',
             ]);
 
-            $itbis = new Grupovehiculo();
-            $itbis->Descripcion = $request->descripcion; 
+            $itbis = new Tiposeguro();
+            $itbis->Descripcion = $request->descripcion;
 
             $itbis->Status = $request->status ? 1 : 0;
 
             $itbis->save();
 
-            return redirect()->route('Grupovehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect()->route('Tiposeguro')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }
@@ -43,13 +44,13 @@ class GrupovehiculoController extends Controller
 
     public function show(string $id)
     {
-        $itbis = Grupovehiculo::findOrFail($id);
+        $itbis = Tiposeguro::findOrFail($id);
         return view('estado_compras.show', compact('itbis'));
     }
 
     public function edit(string $id)
     {
-        $itbis = Grupovehiculo::findOrFail($id);
+        $itbis = Tiposeguro::findOrFail($id);
         return view('estado_compras.edit', compact('itbis'));
     }
 
@@ -60,7 +61,7 @@ class GrupovehiculoController extends Controller
             'Status' => 'required|boolean',
         ]);
 
-        $itbis = Grupovehiculo::findOrFail($id);
+        $itbis = Tiposeguro::findOrFail($id);
         $itbis->update($request->all());
 
         return redirect()->route('estado_compras.index');
@@ -68,7 +69,7 @@ class GrupovehiculoController extends Controller
 
     public function destroy(string $id)
     {
-        $itbis = Grupovehiculo::findOrFail($id);
+        $itbis = Tiposeguro::findOrFail($id);
         $itbis->delete();
 
         return redirect()->route('estado_compras.index');
