@@ -18,4 +18,6 @@ class Grupovehiculo extends Model
     protected $casts = [
         'Status' => 'boolean', // Convertir Status a tipo booleano
     ];
+
+    protected $hidden = ['created_at', 'updated_at']; // Ocultar estos campos cuando se convierta el modelo a array o JSON
 }

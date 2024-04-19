@@ -20,7 +20,7 @@ class EstadovehiculoController extends Controller
         return view('components.vehiculo.configurar-vehiculo');
     }
 
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         // dd($request->all());
         try {

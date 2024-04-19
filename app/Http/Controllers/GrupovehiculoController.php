@@ -35,7 +35,9 @@ class GrupovehiculoController extends Controller
 
             $itbis->save();
 
-            return redirect()->route('Grupovehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
+            
+            return redirect('vehicle-configuration')->with('success', 'Estado de ITBIS guardado con éxito.');
+            // return redirect()->route('Grupovehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

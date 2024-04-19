@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehiculo;
+use Illuminate\Http\Request;
+
 class consultarVehiculoController extends Controller
 {
     /**
@@ -13,5 +16,46 @@ class consultarVehiculoController extends Controller
     public function consultarVehiculo($numerovehiculo = null)
     {
         return view('components.vehiculo.consultavehiculo', compact('numerovehiculo'));
+    }
+
+    public function index()
+    {
+        $vehiculos = Vehiculo::all();
+        return response()->json($vehiculos);
+    }
+
+    public function store(Request $request)
+    {
+        $vehiculo = Vehiculo::create($request->all());
+        return response()->json($vehiculo, 201);
+    }
+
+    public function show($id)
+    {
+        $vehiculo = Vehiculo::find($id);
+        if (!$vehiculo) {
+            return response()->json(['message' => 'Vehículo no encontrado'], 404);
+        }
+        return response()->json($vehiculo);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $vehiculo = Vehiculo::find($id);
+        if (!$vehiculo) {
+            return response()->json(['message' => 'Vehículo no encontrado'], 404);
+        }
+        $vehiculo->update($request->all());
+        return response()->json($vehiculo);
+    }
+
+    public function destroy($id)
+    {
+        $vehiculo = Vehiculo::find($id);
+        if (!$vehiculo) {
+            return response()->json(['message' => 'Vehículo no encontrado'], 404);
+        }
+        $vehiculo->delete();
+        return response()->json(['message' => 'Vehículo eliminado']);
     }
 }
