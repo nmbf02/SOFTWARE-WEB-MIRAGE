@@ -11,8 +11,8 @@ class paisController extends Controller
 {
     public function index()
     {
-        $estados = Pais::all();
-        return view('components.configuracion.configuracion-general', compact('estados'));
+        $estadospais = Pais::all();
+        return view('components.configuracion.configuracion-general', compact('estadospais'));
     }
 
     public function create()
@@ -36,7 +36,8 @@ class paisController extends Controller
 
             $itbis->save();
 
-            return redirect()->route('pais')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
+            // return redirect()->route('pais')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

@@ -36,7 +36,8 @@ class TiporiesgoController extends Controller
 
             $itbis->save();
 
-            return redirect()->route('Tiporiesgo')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
+            // return redirect()->route('Tiporiesgo')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

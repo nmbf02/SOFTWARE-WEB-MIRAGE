@@ -9,8 +9,8 @@ class MetodopagoController extends Controller
 {
     public function index()
     {
-        $metodospago = Metodopago::all();
-        return view('components.configuracion.configuracion-general', compact('metodospago'));
+    $metodospago = Metodopago::all();
+    return view('components.configuracion.configuracion-general', compact('metodospago'));
     }
 
     public function create()
@@ -32,7 +32,8 @@ class MetodopagoController extends Controller
         $metodopago->Status = $request->status ? 1 : 0;
 
         if ($metodopago->save()) {
-            return redirect()->route('Metodopago')->with('success', 'Metodopago creada con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
+            // return redirect()->route('Metodopago')->with('success', 'Metodopago creada con éxito.');
         } else {
             return back()->withInput()->withErrors(['msg' => 'Error al crear la metodopago.']);
         }

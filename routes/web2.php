@@ -72,6 +72,11 @@ use App\Http\Controllers\CondicionfacturaController;
 use App\Http\Controllers\MetodopagoController;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\ModelovehiculoController;
+use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ColorexteriorvehiculoController;
+use App\Http\Controllers\ProvinciaController;
+use App\Http\Controllers\CiudadController;
+use App\Http\Controllers\SectorController;
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -487,3 +492,19 @@ Route::Post('/Clientes/create', [ClientesController::class, 'store'])
 Route::get('/Clientes', [ClientesController::class, 'index'])
     ->middleware(['auth'])
     ->name('Clientes');
+
+Route::Post('/Colorexteriorvehiculo/create', [ColorexteriorvehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Colorexteriorvehiculo.store');
+
+Route::Post('/provincia/create', [ProvinciaController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('provincia.store');
+
+Route::Post('/ciudad/create', [CiudadController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('ciudad.store');
+
+Route::Post('/sector/create', [SectorController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('sector.store');

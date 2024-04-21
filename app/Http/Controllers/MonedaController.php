@@ -32,7 +32,8 @@ class MonedaController extends Controller
         $moneda->Status = $request->status ? 1 : 0;
 
         if ($moneda->save()) {
-            return redirect()->route('Moneda')->with('success', 'Moneda creada con éxito.');
+            // return redirect()->route('Moneda')->with('success', 'Moneda creada con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
         } else {
             return back()->withInput()->withErrors(['msg' => 'Error al crear la moneda.']);
         }

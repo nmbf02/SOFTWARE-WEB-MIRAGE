@@ -39,7 +39,7 @@ class CondicionseguroController extends Controller
 
             $condicion->save();
 
-            return redirect()->route('condicionseguro.index')->with('success', 'Condición de seguro creada con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
         } catch (\Exception $e) {
             return back()->withErrors('Error al guardar la condición de seguro: ' . $e->getMessage());
         }

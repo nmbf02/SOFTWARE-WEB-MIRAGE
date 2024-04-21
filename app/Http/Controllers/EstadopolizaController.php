@@ -38,7 +38,7 @@ class EstadopolizaController extends Controller
 
             $itbis->save();
 
-            return redirect()->route('Estadopoliza')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
         } catch (QueryException $ex) {
             dd($ex);
         }

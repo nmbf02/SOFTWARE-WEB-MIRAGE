@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 class registrarClienteController extends Controller
 {
     /**
-     * Muestra la página de consulta de subasta.
+     * Muestra la página de registrar clientes
      *
      * 
      * 

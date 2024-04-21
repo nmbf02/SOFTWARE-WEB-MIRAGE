@@ -11,8 +11,8 @@ class TiposeguroController extends Controller
 {
     public function index()
     {
-        $estados = Tiposeguro::all();
-        return view('components.configuracion.configuracion-general', compact('estados'));
+        $estadostiposeguro = Tiposeguro::all();
+        return view('components.configuracion.configuracion-general', compact('estadostiposeguro'));
     }
 
     public function create()
@@ -36,7 +36,8 @@ class TiposeguroController extends Controller
 
             $itbis->save();
 
-            return redirect()->route('Tiposeguro')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
+            // return redirect()->route('Tiposeguro')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

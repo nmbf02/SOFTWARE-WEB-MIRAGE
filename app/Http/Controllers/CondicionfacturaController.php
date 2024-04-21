@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class CondicionfacturaController extends Controller
 {
-    public function index()
-    {
-        $estados = Condicionfactura::all();
-        return view('components.configuracion.configuracion-general', compact('estados'));
-    }
+    // public function index()
+    // {
+    //     $estados = Condicionfactura::all();
+    //     return view('components.configuracion.configuracion-general', compact('estados'));
+    // }
 
     public function create()
     {
@@ -37,7 +37,8 @@ class CondicionfacturaController extends Controller
 
             $moneda->save();
 
-            return redirect()->route('Condicionfactura')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
+            // return redirect()->route('Condicionfactura')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

@@ -9,12 +9,6 @@ use Illuminate\Http\Request;
 
 class CanalcomunicacionController extends Controller
 {
-    public function index()
-    {
-        $estados = Canalcomunicacion::all();
-        return view('components.configuracion.configuracion-general', compact('estados'));
-    }
-
     public function create()
     {
         return view('components.configuracion.configuracion-general');
@@ -36,7 +30,8 @@ class CanalcomunicacionController extends Controller
 
             $moneda->save();
 
-            return redirect()->route('Canalcomunicacion')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect('general-configuration')->with('success', 'Guardado con exito');
+            // return redirect()->route('Canalcomunicacion')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

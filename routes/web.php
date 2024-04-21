@@ -4,6 +4,7 @@
  */
 
  use App\Http\Controllers\VehicleConfigurationController;
+ use App\Http\Controllers\GeneralConfigurationController;
  use Illuminate\Support\Facades\Route;
  
  /**
@@ -14,5 +15,6 @@
   * @method index
   */
  Route::get('vehicle-configuration', [VehicleConfigurationController::class, 'index']);
- 
+ Route::get('general-configuration', [GeneralConfigurationController::class, 'index']);
+
  include('web2.php');

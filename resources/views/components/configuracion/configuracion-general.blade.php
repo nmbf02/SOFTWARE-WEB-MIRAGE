@@ -207,6 +207,8 @@
                                     </div>
                                 </div>
                                 {{-- Aseguradora --}}
+                                {{-- <form method="POST" action="{{ route('sector.store') }}">
+                                    @csrf --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
                                         <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Aseguradora de vehículos</h6>
@@ -224,7 +226,7 @@
                                     <!-- Sección a mostrar/ocultar -->
                                     <div id="toggleContent3" class="hidden">
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                            {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Código
@@ -232,7 +234,7 @@
                                                     <input type="text" placeholder="Código de la aseguradora"
                                                         class="border p-2 rounded w-full">
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Nombre</label>
@@ -410,161 +412,184 @@
                                     </div>
                                 </div>
                                 {{-- Sector --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Sector</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent5">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent5" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
+                                <form method="POST" action="{{ route('sector.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Sector</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent5">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent5" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Código
                                                     del sector</label>
                                                 <input type="text" placeholder="Código del sector"
                                                     class="border p-2 rounded w-full">
+                                            </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="provinciasectorconfigracion"
+                                                        class="block text-sm font-medium text-gray-700">Provincia</label>
+                                                    <select name="provinciasectorconfigracion"
+                                                        id="provinciasectorconfigracion"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        placeholder="Seleccione un provincia">
+                                                        @foreach ($provinciasectorconfigracion as $provinciasector)
+                                                            <option value="{{ $provinciasector->IdProvincia }}">
+                                                                {{ $provinciasector->Descripcion }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        name="Estado_modelo" class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar sector') }}
+                                                </x-button>
                                             </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Provincia</label>
-                                                <select id="sector-select" name="sector"
-                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    required>
-                                                    <option value="">Seleccione una provincia</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar sector') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Ciudad --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Ciudad</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent6">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent6" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
+                                <form method="POST" action="{{ route('ciudad.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Ciudad</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent6">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent6" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Código
                                                     de la ciudad</label>
                                                 <input type="text" placeholder="Código de la provincia"
                                                     class="border p-2 rounded w-full">
+                                            </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="provinciaciudadconfiguracion"
+                                                        class="block text-sm font-medium text-gray-700">Provincia</label>
+                                                    <select name="provinciaciudadconfiguracion"
+                                                        id="provinciaciudadconfiguracion"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        placeholder="Seleccione un provincia">
+                                                        @foreach ($provinciaciudadconfiguracion as $provinciaciudad)
+                                                            <option value="{{ $provinciaciudad->IdProvincia }}">
+                                                                {{ $provinciaciudad->Descripcion }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar ciudad') }}
+                                                </x-button>
                                             </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Provincia</label>
-                                                <select id="sector-select" name="sector"
-                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    required>
-                                                    <option value="">Seleccione una provincia</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar ciudad') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Provincia --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Provincia</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent7">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                <form method="POST" action="{{ route('provincia.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Provincia</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent7">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent7" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Código
+                                                        de la provincia</label>
+                                                    <input type="text" placeholder="Código de la provincia"
+                                                        class="border p-2 rounded w-full">
+                                                </div> --}}
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="paisConfiguracion"
+                                                        class="block text-sm font-medium text-gray-700">País</label>
+                                                    <select name="paisConfiguracion" id="paisConfiguracion"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        placeholder="Seleccione un país">
+                                                        @foreach ($paisConfiguracion as $pais)
+                                                            <option value="{{ $pais->IdPais }}">
+                                                                {{ $pais->Descripcion }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        name="Estado_modelo" class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar provincia') }}
+                                                </x-button>
                                             </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent7" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Código
-                                                    de la provincia</label>
-                                                <input type="text" placeholder="Código de la provincia"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">País</label>
-                                                <select id="sector-select" name="sector"
-                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    required>
-                                                    <option value="">Seleccione un país</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar provincia') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- pais --}}
                                 <form method="POST" action="{{ route('pais.store') }}">
                                     @csrf
@@ -1065,8 +1090,8 @@
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                    <input name="descripcion" type="text" placeholder="Descripción"
-                                                        class="border p-2 rounded w-full">
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <label for="color"
@@ -1076,8 +1101,8 @@
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <input name="status" type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                        class="rounded">
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        name="Estado_modelo" class="rounded">
                                                     <label for="Estado_modelo"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
@@ -1124,17 +1149,16 @@
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                    <input name="descripcion" type="text" placeholder="Descripción"
-                                                        class="border p-2 rounded w-full">
+                                                    <input name="descripcion" type="text"
+                                                        placeholder="Descripción" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <input name="status" type="checkbox"
-                                                        class="rounded">
+                                                    <input name="status" type="checkbox" class="rounded">
                                                     <label for="Estado_modelo"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
                                                 <x-button class="px-4 py-2">
-                                                    {{ __('Salvar condición') }}
+                                                    {{ __('Salvar método') }}
                                                 </x-button>
                                             </div>
                                         </div>
@@ -1158,7 +1182,7 @@
                                     <!-- Sección a mostrar/ocultar -->
                                     <div id="toggleContent19" class="hidden">
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                            {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Código
@@ -1166,7 +1190,7 @@
                                                     <input type="text" placeholder="Código de la garantía"
                                                         class="border p-2 rounded w-full">
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Nombre</label>
@@ -1263,14 +1287,14 @@
                                     <!-- Sección a mostrar/ocultar -->
                                     <div id="toggleContent20" class="hidden">
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                            {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Código</label>
                                                     <input type="text" placeholder="Código de la garantía"
                                                         class="border p-2 rounded w-full">
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Descripción</label>
