@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Tiporiesgo extends Model
 {
     use HasFactory;
+
+    protected $table = 'tiporiesgo'; 
+
+    protected $primaryKey = 'IdTipoRiesgo'; 
+
+    protected $fillable = ['Descripcion', 'Status'];
+
+    protected $casts = [
+        'Status' => 'boolean',
+    ];
 }

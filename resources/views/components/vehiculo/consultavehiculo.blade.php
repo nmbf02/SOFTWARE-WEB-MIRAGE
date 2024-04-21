@@ -32,11 +32,11 @@
                                     onfocus="this.style.backgroundColor='#E7814D'"
                                     onblur="this.style.backgroundColor='#FF914D'"
                                     onmousedown="this.style.backgroundColor='#CC6C3B'"
-                                    onmouseup="this.style.backgroundColor='#E7814D'">
+                                    onmouseup="this.style.backgroundColor='#E7814D'"
+                                    onclick="window.location='{{ route('registrar-vehiculo') }}'">
                                     @include('icons/registrar')
                                 </button>
                             </div>
-
                             <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                 <div class="sm:flex sm:items-center ">
                                     <div class="relative">
@@ -110,177 +110,51 @@
                 <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                     <div class="mb-4 flex items-center justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Latest Transactions</h3>
-                            <span class="text-base font-normal text-gray-500">This is a list of latest
-                                transactions</span>
-                        </div>
-                        <div class="flex-shrink-0">
-                            <a href="#"
-                                class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View
-                                all</a>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Gestión de Vehículos</h3>
+                            <span class="text-base font-normal text-gray-500">Consulta</span>
                         </div>
                     </div>
-                    <div class="flex flex-col mt-8">
-                        <div class="overflow-x-auto rounded-lg">
-                            <div class="align-middle inline-block min-w-full">
-                                <div class="shadow overflow-hidden sm:rounded-lg">
-                                    <table class="min-w-full divide-y divide-gray-200">
-                                        <thead class="bg-gray-50">
-                                            <tr>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Transaction
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Date & Time
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Amount
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="bg-white">
-                                            <tr>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    Payment from <span class="font-semibold">Bonnie Green</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 23 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $2300
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-50">
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                                    Payment refund to <span class="font-semibold">#00910</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 23 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    -$670
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    Payment failed from <span class="font-semibold">#087651</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 18 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $234
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-50">
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                                    Payment from <span class="font-semibold">Lana Byrd</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 15 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $5000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    Payment from <span class="font-semibold">Jese Leos</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 15 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $2300
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-50">
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                                    Payment from <span class="font-semibold">THEMESBERG
-                                                        LLC</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 11 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $560
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    Payment from <span class="font-semibold">Lana Lysle</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 6 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $1437
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-50">
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                                    Payment from <span class="font-semibold">THEMESBERG
-                                                        LLC</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 11 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $560
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    Payment from <span class="font-semibold">Lana Lysle</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 6 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $1437
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-50">
-                                                <td
-                                                    class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                                    Payment from <span class="font-semibold">THEMESBERG
-                                                        LLC</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 11 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $560
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    Payment from <span class="font-semibold">Lana Lysle</span>
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    Apr 6 ,2021
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                    $1437
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="flex pt-6 pagination-controls justify-evenly">
-                                    <button onclick="previousPage()">@include('icons/anterior')</button>
-                                    <button onclick="nextPage()">@include('icons/siguiente')</button>
-                                </div>
-                            </div>
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
                         </div>
-                    </div>
+                    @endif
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>VIN</th>
+                                <th>Precio</th>
+                                <th>Año</th>
+                                <th>Placa</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($vehiculos as $vehiculo)
+                                <tr>
+                                    <td>{{ $vehiculo->IdVehiculo }}</td>
+                                    <td>{{ $vehiculo->VIN }}</td>
+                                    <td>{{ $vehiculo->Precio }}</td>
+                                    <td>{{ $vehiculo->AnoVehiculo }}</td>
+                                    <td>{{ $vehiculo->Placa }}</td>
+                                    <td>
+                                        <a href="{{ route('vehiculos.edit', $vehiculo->IdVehiculo) }}"
+                                            class="btn btn-primary">Editar</a>
+                                        <form action="{{ route('vehiculos.destroy', $vehiculo->IdVehiculo) }}"
+                                            method="POST" style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    {!! $vehiculos->links() !!} <!-- Paginación -->
                 </div>
             </div>
         </div>

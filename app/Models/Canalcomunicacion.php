@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Canalcomunicacion extends Model
 {
     use HasFactory;
+
+    protected $table = 'canalcomunicacion';
+
+    protected $primaryKey = 'IdCanalComunicacion'; 
+
+    protected $fillable = [
+        'descripcion',
+        'status',
+    ];
 }

@@ -177,7 +177,7 @@
                                 </svg>
                             </a>
                             <div x-show="VehiculoOpen" class="bg-gray-100 rounded-lg">
-                                <a href="{{ route('configurar-vehiculo') }}"
+                                <a href="/vehicle-configuration"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Configuración
                                 </a>
@@ -646,7 +646,7 @@
                     </div>
                     <div class="space-y-2 pt-2">
                         {{-- Configuracion --}}
-                        <a href="{{ route('configuracion-general') }}"
+                        <a href="/general-configuration"
                             class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
                             @include('icons/configuracion')
                             <span class="ml-3">Configuración</span>
