@@ -36,7 +36,8 @@ class AcabadocolorvehiculoController extends Controller
 
             $itbis->save();
 
-            return redirect()->route('Acabadocolorvehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect('vehicle-configuration')->with('success', 'Guardado con exito');
+            // return redirect()->route('Acabadocolorvehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

@@ -19,20 +19,19 @@
                         <div class="bg-white dark:bg-gray-700 {{-- shadow rounded-lg --}} p-6">
                             <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Registro de clientes
                             </h1>
-
                             <hr style="border-color: #FF914D" class="p-2">
-                            {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
-                          receive mail.</p> --}}
-                            <form>
+                            <form method="POST" action="{{ route('Clientes.store') }}">
+                                @csrf 
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">
                                     Información del Cliente
                                 </h6>
-                                <div class="w-full lg:w-4/12 px-4">
+                                {{-- Codigo del cliente --}}
+                                {{-- <div class="w-full lg:w-4/12 px-4">
                                     <div class="relative w-full mb-3">
                                         <div class="w-full lg:w-6/12">
                                             <div class="relative w-full mb-3">
                                                 <label class="block uppercase text-xs font-bold mb-2"
-                                                    htmlfor="grid-password">
+                                                    for=" ">
                                                     Código del cliente
                                                 </label>
                                                 <input type="text"
@@ -41,52 +40,51 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="flex flex-wrap">
-
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for="">
                                                 Nombre
                                             </label>
-                                            <input type="text"
+                                            <input name="nombrecliente" type="text"
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 value="" placeholder="Nombre">
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for="">
                                                 Apellido
                                             </label>
-                                            <input type="text"
+                                            <input name="apellidocliente" type="text"
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 value="" placeholder="Apellido">
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for="">
                                                 Fecha de nacimiento
                                             </label>
-                                            <input type="date"
+                                            <input name="fechanacimientocliente" type="date"
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300  bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 value="Fecha de nacimiento">
                                         </div>
                                     </div>
-                                    <div class="w-full lg:w-6/12 px-4">
-                                        <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
-                                                Seguro
-                                            </label>
-                                            <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                value="" placeholder="Seguro">
-                                        </div>
+                                    <div>
+                                        <label class="block uppercase text-xs font-bold mb-2" for="seguroPersona">
+                                            Seguro
+                                        </label>
+                                        <select name="seguroPersona" id="seguroPersona"
+                                            class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                            placeholder="Seleccione un seguro">
+                                            @foreach ($seguroPersona as $seguro)
+                                                <option value="{{ $seguro->IdSeguro }}">
+                                                    {{ $seguro->IdSeguro }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
@@ -98,77 +96,67 @@
                                 <div class="flex flex-wrap">
                                     <div class="w-full lg:w-12/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
-                                                Direccion
+                                            <label class="block uppercase text-xs font-bold mb-2" for="">
+                                                Dirección
                                             </label>
-                                            {{-- <input type="text"
+                                            <input name="direccionpersona" type="text"
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"> --}}
+                                                placeholder="direcionPersona">
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for="">
                                                 Casa
                                             </label>
-                                            <input type="text"
+                                            <input name="casapersona" type="text"
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300  bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Casa">
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for="">
                                                 Calle
                                             </label>
-                                            <input type="text"
+                                            <input name="callepersona" type="text"
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 value="" placeholder="Calle">
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
-                                        <div class="relative w-full mb-3">
-                                            <label for="sector-select" class="block uppercase text-xs font-bold mb-2">
+                                        <div>
+                                            <label class="block uppercase text-xs font-bold mb-2" for="sectorPersona">
                                                 Sector
                                             </label>
-                                            <select id="sector-select" name="sector"
-                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                                <option value="">Seleccione un sector</option>
-                                                <option value="zona-colonial">Zona Colonial</option>
-                                                <option value="piantini">Piantini</option>
-                                                <option value="bella-vista">Bella Vista</option>
-                                                <option value="naco">Naco</option>
-                                                <option value="serralles">Serralles</option>
-                                                <option value="gazcue">Gazcue</option>
-                                                <option value="los-prados">Los Prados</option>
-                                                <option value="ensanche-julia">Ensanche Julia</option>
-                                                <option value="el-millón">El Millón</option>
-                                                <option value="arroyo-hondo">Arroyo Hondo</option>
+                                            <select name="sectorPersona" id="sectorPersona"
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un sector">
+                                                @foreach ($sectorPersona as $sector)
+                                                    <option value="{{ $sector->IdSector }}">
+                                                        {{ $sector->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for=" ">
                                                 Teléfono
                                             </label>
-                                            <input type="text"
+                                            <input type="text" name="telefonocliente"
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300  bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Teléfono">
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for=" ">
                                                 Email
                                             </label>
-                                            <input type="email"
+                                            <input type="email" name="emailcliente"
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 value="" placeholder="Email">
                                         </div>
@@ -183,17 +171,26 @@
                                 <div class="flex flex-wrap">
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for=" ">
                                                 Clasificación
                                             </label>
                                             <div class="flex gap-2 items-center">
-                                                <select id="sector-select" name="sector"
-                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
-                                                <option value="">Seleccione una clasificación</option>
-                                            </select>
+                                                <select name="clasificaionCliente" id="clasificaionCliente"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    placeholder="Seleccione una clasificación">
+                                                    @foreach ($clasificaionCliente as $clasificacion)
+                                                        <option value="{{ $clasificacion->IdTipoPersona }}">
+                                                            {{ $clasificacion->Descripcion }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+
+                                                {{-- Aqui me quede y, falta --}}
+
                                                 <div class="flex-end flex flex-col space-y-0.3 justify-end">
-                                                    <button onclick="document.getElementById('authentication-modal').showModal()" type="button"
+                                                    <button
+                                                        onclick="document.getElementById('authentication-modal').showModal()"
+                                                        type="button"
                                                         class="group inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-white focus:outline-none focus:text-white transition ease-in-out duration-150">
                                                         <div class="group-hover:hidden">
                                                             @include('icons/adiccion')
@@ -207,19 +204,31 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    {{-- categoría --}}
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
-                                                Categoría de la licencia
+                                            <label class="block uppercase text-xs font-bold mb-2" for=" ">
+                                                Categoría
                                             </label>
                                             <div class="flex gap-2 items-center">
-                                                <select id="sector-select" name="sector"
-                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
-                                                <option value="">Seleccione una categoría</option>
-                                            </select>
+                                                <select name="categoriaCliente" id="categoriaCliente"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    placeholder="Seleccione una categoría">
+                                                    @foreach ($categoriaCliente as $categoria)
+                                                        <option value="{{ $categoria->IdCategoriaLicencia }}">
+                                                            {{ $categoria->Descripcion }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+
+                                                {{-- Aqui me quede y, falta --}}
+
                                                 <div class="flex-end flex flex-col space-y-0.3 justify-end">
-                                                    <button type="button"
+                                                    <button
+                                                        onclick="document.getElementById('authentication-modal').showModal()"
+                                                        type="button"
                                                         class="group inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-white focus:outline-none focus:text-white transition ease-in-out duration-150">
                                                         <div class="group-hover:hidden">
                                                             @include('icons/adiccion')
@@ -228,28 +237,33 @@
                                                             @include('icons/adiccionazul')
                                                         </div>
                                                     </button>
+                                                    @include('modals.agregar-clasificacion-categorialicencia')
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                            <label class="block uppercase text-xs font-bold mb-2" for=" ">
                                                 Condición de la factura
                                             </label>
-                                            <select id="sector-select" name="sector"
-                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
-                                                <option value="">Seleccione una condición</option>
+                                            <select name="condicionFactura" id="condicionFactura"
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione una condición">
+                                                @foreach ($condicionFactura as $condicion)
+                                                    <option value="{{ $condicion->IdCondicionFactura }}">
+                                                        {{ $condicion->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="p-2"></div>
+                                <x-button class="px-4 py-2 mb-3">
+                                    {{ __('Registrar cliente') }}
+                                </x-button>
                             </form>
-                            <div class="p-2"></div>
-                            <x-button class="px-4 py-2 mb-3">
-                                {{ __('Registrar cliente') }}
-                            </x-button>
                         </div>
                     </div>
                 </div>
@@ -259,6 +273,4 @@
     </div>
     </div>
     @include ('footer')
-    <script src="/js/paginacion.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </x-app-layout>

@@ -318,7 +318,7 @@
                                                 </div>
                                                 <div>
                                                     <input type="checkbox" name="status" class="rounded">
-                                                    <label for="Estado_modelo"
+                                                    <label for="status"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
                                                 <x-button class="px-4 py-2">

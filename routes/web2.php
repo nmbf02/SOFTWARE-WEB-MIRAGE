@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Archivo de rutas para el software web Mirage.
+ */
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registrarRentaController;
 use App\Http\Controllers\registrarClienteController;
@@ -69,17 +73,29 @@ use App\Http\Controllers\MetodopagoController;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\ModelovehiculoController;
 
+/**
+ * Ruta para descargar el manual de usuario.
+ */
 Route::get('/download-manual', [ManualDeUsuarioController::class, 'downloadFile']);
 
+/**
+ * Ruta de inicio.
+ */
 Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * Grupo de rutas que requieren autenticación y verificación.
+ */
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    /**
+     * Ruta del panel de control.
+     */
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -446,7 +462,6 @@ Route::get('/Metodopago', [MetodopagoController::class, 'index'])
     ->name('Metodopago');
 
 Route::get('/configurar-vehiculo', [VehiculoController::class, 'showConfigurarVehiculo']);
-
 Route::apiResource('vehiculos', consultarVehiculoController::class);
 
 Route::Post('/Modelovehiculo/create', [ModelovehiculoController::class, 'store'])
@@ -465,4 +480,10 @@ Route::get('/configurar-vehiculo', [configurarVehiculoController::class, 'index'
     ->middleware(['auth'])
     ->name('configurar-vehiculo');
 
+Route::Post('/Clientes/create', [ClientesController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Clientes.store');
 
+Route::get('/Clientes', [ClientesController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Clientes');
