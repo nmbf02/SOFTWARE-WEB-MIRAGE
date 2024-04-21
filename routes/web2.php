@@ -77,6 +77,7 @@ use App\Http\Controllers\ColorexteriorvehiculoController;
 use App\Http\Controllers\ProvinciaController;
 use App\Http\Controllers\CiudadController;
 use App\Http\Controllers\SectorController;
+use App\Http\Controllers\AseguradoraController;
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -508,3 +509,7 @@ Route::Post('/ciudad/create', [CiudadController::class, 'store'])
 Route::Post('/sector/create', [SectorController::class, 'store'])
     ->middleware(['auth'])
     ->name('sector.store');
+
+Route::Post('/aseguradora/create', [AseguradoraController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('aseguradora.store');

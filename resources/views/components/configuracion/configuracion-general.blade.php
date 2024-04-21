@@ -207,26 +207,27 @@
                                     </div>
                                 </div>
                                 {{-- Aseguradora --}}
-                                {{-- <form method="POST" action="{{ route('sector.store') }}">
-                                    @csrf --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Aseguradora de vehículos</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent3">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent3" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                <form method="POST" action="{{ route('aseguradora.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Aseguradora de vehículos
+                                            </h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent3">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent3" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Código
@@ -235,59 +236,66 @@
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                             </div> --}}
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Nombre</label>
-                                                <input type="text" placeholder="Nombre"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Calle</label>
-                                                    <input type="text" placeholder="Calle"
+                                                        class="block text-sm font-medium text-gray-700">Nombre</label>
+                                                    <input name="nombreaseguradora" type="text" placeholder="Nombre"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                                <div
+                                                    class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Calle</label>
+                                                        <input name="calleaseguradora" type="text" placeholder="Calle"
+                                                            class="border p-2 rounded w-full">
+                                                    </div>
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Edificio</label>
+                                                        <input name="edificioaseguradora" type="text" placeholder="Edificio"
+                                                            class="border p-2 rounded w-full">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label for="sectoraseguradora"
+                                                        class="block text-sm font-medium text-gray-700">Sector</label>
+                                                    <select name="sectoraseguradora"
+                                                        id="sectoraseguradora"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        placeholder="Seleccione un sector">
+                                                        @foreach ($sectoraseguradora as $sector)
+                                                            <option value="{{ $sector->IdSector }}">
+                                                                {{ $sector->Descripcion }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Telefono</label>
+                                                    <input name="telefonoaseguradora" type="text" placeholder="Telefono"
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Edificio</label>
-                                                    <input type="text" placeholder="Edificio"
+                                                        class="block text-sm font-medium text-gray-700">Email</label>
+                                                    <input name="emailaseguradora" type="mail" placeholder="Correo electrónico"
                                                         class="border p-2 rounded w-full">
                                                 </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="Estado_modelo" name="Estado_modelo"
+                                                        class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar aseguradora') }}
+                                                </x-button>
                                             </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Sector</label>
-                                                <select id="sector-select" name="sector"
-                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    required>
-                                                    <option value="">Seleccione un sector</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Telefono</label>
-                                                <input type="text" placeholder="Telefono"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Email</label>
-                                                <input type="mail" placeholder="Correo electrónico"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar aseguradora') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Seguro --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
