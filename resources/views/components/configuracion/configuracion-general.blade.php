@@ -25,24 +25,26 @@
                                 receive mail.</p> --}}
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                 {{-- Sucursal --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Sucursal</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent1">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent1" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                <form method="POST" action="{{ route('sucursal.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Sucursal</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent1">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent1" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Código
@@ -50,162 +52,182 @@
                                                     <input type="text" placeholder="Código de la sucursal"
                                                         class="border p-2 rounded w-full">
                                                 </div>
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Nombre</label>
-                                                <input type="text" placeholder="Nombre"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Empresa</label>
-                                                <select id="sector-select" name="sector"
-                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    required>
-                                                    <option value="">Seleccione una empresa</option>
-                                                </select>
-                                            </div>
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                            </div> --}}
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Calle</label>
-                                                    <input type="text" placeholder="Calle"
+                                                        class="block text-sm font-medium text-gray-700">Nombre</label>
+                                                    <input name="nombresucursal" type="text" placeholder="Nombre"
+                                                        class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="empresasucursal"
+                                                        class="block text-sm font-medium text-gray-700">Empresa</label>
+                                                    <select name="empresasucursal" id="empresasucursal"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        placeholder="Seleccione una empresa">
+                                                        @foreach ($empresasucursal as $empresa)
+                                                            <option value="{{ $empresa->IdEmpresa }}">
+                                                                {{ $empresa->Nombre }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Calle</label>
+                                                        <input name="callesucursal" type="text" placeholder="Calle"
+                                                            class="border p-2 rounded w-full">
+                                                    </div>
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Edificio</label>
+                                                        <input name="edificiosucursal" type="text"
+                                                            placeholder="Edificio" class="border p-2 rounded w-full">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label for="sectorsucursal"
+                                                        class="block text-sm font-medium text-gray-700">Sector</label>
+                                                    <select name="sectorsucursal" id="sectorsucursal"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        placeholder="Seleccione un sector">
+                                                        @foreach ($sectorsucursal as $sector)
+                                                            <option value="{{ $sector->IdSector }}">
+                                                                {{ $sector->Descripcion }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Telefono</label>
+                                                    <input name="telefonosucursal" type="text" placeholder="Telefono"
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Edificio</label>
-                                                    <input type="text" placeholder="Edificio"
+                                                        class="block text-sm font-medium text-gray-700">Email</label>
+                                                    <input name="emailsucursal" type="mail"
+                                                        placeholder="Correo electrónico"
                                                         class="border p-2 rounded w-full">
                                                 </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar sucursal') }}
+                                                </x-button>
                                             </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Sector</label>
-                                                <select id="sector-select" name="sector"
-                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    required>
-                                                    <option value="">Seleccione un sector</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Telefono</label>
-                                                <input type="text" placeholder="Telefono"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Email</label>
-                                                <input type="mail" placeholder="Correo electrónico"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar sucursal') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Empresa --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Empresa</h6>
-                                        <button type="button"
-                                            class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                            data-target="toggleContent2">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent2" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
-                                                <div>
+                                <form method="POST" action="{{ route('empresa.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Empresa</h6>
+                                            <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContent2">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent2" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                    {{-- <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Código
                                                         de la empresa</label>
                                                     <input type="text" placeholder="Código de la empresa"
                                                         class="border p-2 rounded w-full">
+                                                </div> --}}
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">RUC</label>
+                                                        <input name="RUC" type="text"
+                                                            placeholder="Registro Único de Contribuyente"
+                                                            class="border p-2 rounded w-full">
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">RUC</label>
-                                                    <input type="text" placeholder="Registro Único de Contribuyente"
-                                                        class="border p-2 rounded w-full">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Nombre</label>
-                                                <input type="text" placeholder="Nombre"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Abreviatura del
-                                                    nombre</label>
-                                                <input type="text" placeholder="Abreviatura"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
-                                                <div>
-                                                    <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Calle</label>
-                                                    <input type="text" placeholder="Calle"
+                                                        class="block text-sm font-medium text-gray-700">Nombre</label>
+                                                    <input name="nombreempresa" type="text" placeholder="Nombre"
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Edificio</label>
-                                                    <input type="text" placeholder="Edificio"
+                                                        class="block text-sm font-medium text-gray-700">Abreviatura del
+                                                        nombre</label>
+                                                    <input name="abreviaturaempresa" type="text"
+                                                        placeholder="Abreviatura" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div
+                                                    class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Calle</label>
+                                                        <input name="calleempresa" type="text" placeholder="Calle"
+                                                            class="border p-2 rounded w-full">
+                                                    </div>
+                                                    <div>
+                                                        <label for="color"
+                                                            class="block text-sm font-medium text-gray-700">Edificio</label>
+                                                        <input name="edificioempresa" type="text"
+                                                            placeholder="Edificio" class="border p-2 rounded w-full">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label for="sectorempresa"
+                                                        class="block text-sm font-medium text-gray-700">Sector</label>
+                                                    <select name="sectorempresa" id="sectorempresa"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        placeholder="Seleccione un sector">
+                                                        @foreach ($sectorempresa as $sector)
+                                                            <option value="{{ $sector->IdSector }}">
+                                                                {{ $sector->Descripcion }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Telefono</label>
+                                                    <input name="telefonoempresa" type="text"
+                                                        placeholder="Telefono" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color"
+                                                        class="block text-sm font-medium text-gray-700">Email</label>
+                                                    <input name="emailempresa" type="mail"
+                                                        placeholder="Correo electrónico"
                                                         class="border p-2 rounded w-full">
                                                 </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        class="rounded">
+                                                    <label for="Estado_modelo"
+                                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar empresa') }}
+                                                </x-button>
                                             </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Sector</label>
-                                                <select id="sector-select" name="sector"
-                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    required>
-                                                    <option value="">Seleccione un sector</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Telefono</label>
-                                                <input type="text" placeholder="Telefono"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Email</label>
-                                                <input type="mail" placeholder="Correo electrónico"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                    class="rounded">
-                                                <label for="Estado_modelo"
-                                                    class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar empresa') }}
-                                            </x-button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 {{-- Aseguradora --}}
                                 <form method="POST" action="{{ route('aseguradora.store') }}">
                                     @csrf
@@ -239,29 +261,28 @@
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Nombre</label>
-                                                    <input name="nombreaseguradora" type="text" placeholder="Nombre"
-                                                        class="border p-2 rounded w-full">
+                                                    <input name="nombreaseguradora" type="text"
+                                                        placeholder="Nombre" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div
                                                     class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
                                                     <div>
                                                         <label for="color"
                                                             class="block text-sm font-medium text-gray-700">Calle</label>
-                                                        <input name="calleaseguradora" type="text" placeholder="Calle"
-                                                            class="border p-2 rounded w-full">
+                                                        <input name="calleaseguradora" type="text"
+                                                            placeholder="Calle" class="border p-2 rounded w-full">
                                                     </div>
                                                     <div>
                                                         <label for="color"
                                                             class="block text-sm font-medium text-gray-700">Edificio</label>
-                                                        <input name="edificioaseguradora" type="text" placeholder="Edificio"
-                                                            class="border p-2 rounded w-full">
+                                                        <input name="edificioaseguradora" type="text"
+                                                            placeholder="Edificio" class="border p-2 rounded w-full">
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <label for="sectoraseguradora"
                                                         class="block text-sm font-medium text-gray-700">Sector</label>
-                                                    <select name="sectoraseguradora"
-                                                        id="sectoraseguradora"
+                                                    <select name="sectoraseguradora" id="sectoraseguradora"
                                                         class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                         placeholder="Seleccione un sector">
                                                         @foreach ($sectoraseguradora as $sector)
@@ -274,18 +295,19 @@
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Telefono</label>
-                                                    <input name="telefonoaseguradora" type="text" placeholder="Telefono"
-                                                        class="border p-2 rounded w-full">
+                                                    <input name="telefonoaseguradora" type="text"
+                                                        placeholder="Telefono" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Email</label>
-                                                    <input name="emailaseguradora" type="mail" placeholder="Correo electrónico"
+                                                    <input name="emailaseguradora" type="mail"
+                                                        placeholder="Correo electrónico"
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <input name="status" type="checkbox" id="Estado_modelo" name="Estado_modelo"
-                                                        class="rounded">
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
+                                                        name="Estado_modelo" class="rounded">
                                                     <label for="Estado_modelo"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
@@ -1364,7 +1386,7 @@
                                 {{-- Banco --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Compañía del seguro</h6>
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Banco</h6>
                                         <button type="button"
                                             class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
                                             data-target="toggleContent21">

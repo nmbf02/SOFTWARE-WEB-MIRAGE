@@ -77,7 +77,12 @@ use App\Http\Controllers\ColorexteriorvehiculoController;
 use App\Http\Controllers\ProvinciaController;
 use App\Http\Controllers\CiudadController;
 use App\Http\Controllers\SectorController;
+use App\Http\Controllers\AseguradoraVehiculoController;
 use App\Http\Controllers\AseguradoraController;
+use App\Http\Controllers\AlmacenController;
+use App\Http\Controllers\UbicacionController;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\SucursalController;
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -513,3 +518,23 @@ Route::Post('/sector/create', [SectorController::class, 'store'])
 Route::Post('/aseguradora/create', [AseguradoraController::class, 'store'])
     ->middleware(['auth'])
     ->name('aseguradora.store');
+
+Route::Post('/aseguradoravehiculo/create', [AseguradoraVehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('aseguradoravehiculo.store');
+
+Route::Post('/Ubicacion/create', [UbicacionController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Ubicacion.store');
+
+Route::Post('/Almacen/create', [AlmacenController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Almacen.store');
+
+Route::Post('/empresa/create', [EmpresaController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('empresa.store');
+
+Route::Post('/sucursal/create', [SucursalController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('sucursal.store');

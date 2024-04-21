@@ -12,10 +12,7 @@ use App\Models\Provincia;
 use App\Models\Canalcomunicacion;
 use App\Models\Metodopago;
 use App\Models\Condicionfactura;
-use App\Models\AseguradoraVehiculo;
-use App\Models\Aseguradora;
-
-use App\Models\Ciudad;
+use App\Models\Empresa;
 use App\Models\Sector;
 use Illuminate\Http\Request;
 
@@ -36,6 +33,9 @@ class GeneralConfigurationController extends Controller
         $provinciaciudadconfiguracion = Provincia::all();
         $provinciasectorconfigracion = Provincia::all();
         $sectoraseguradora = Sector::all();
+        $sectorempresa = Sector::all();
+        $empresasucursal = Empresa::all();
+        $sectorsucursal = Sector::all();
         // dd($request->all());
         return view('components.configuracion.configuracion-general', [
             'paisConfiguracion' => $paisConfiguracion,
@@ -50,7 +50,10 @@ class GeneralConfigurationController extends Controller
             'condiconfactura' => $condiconfactura,
             'provinciaciudadconfiguracion' => $provinciaciudadconfiguracion,
             'provinciasectorconfigracion' => $provinciasectorconfigracion,
-            'sectoraseguradora' => $sectoraseguradora
+            'sectoraseguradora' => $sectoraseguradora,
+            'sectorempresa' => $sectorempresa,
+            'empresasucursal' => $empresasucursal,
+            'sectorsucursal' => $sectorsucursal,
         ]);
     }
 }
