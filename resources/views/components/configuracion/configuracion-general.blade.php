@@ -1401,16 +1401,16 @@
                                     <!-- Sección a mostrar/ocultar -->
                                     <div id="toggleContent21" class="hidden">
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div>
+                                            {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Código</label>
                                                 <input type="text" placeholder="Código"
                                                     class="border p-2 rounded w-full">
-                                            </div>
+                                            </div> --}}
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Nombre</label>
-                                                <input type="text" placeholder="Nombre"
+                                                <input name="descripcion" type="text" placeholder="Nombre"
                                                     class="border p-2 rounded w-full">
                                             </div>
                                             <div>
