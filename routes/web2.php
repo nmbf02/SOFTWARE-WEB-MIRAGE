@@ -83,6 +83,13 @@ use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\UbicacionController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\SucursalController;
+use App\Http\Controllers\BancoController;
+use App\Http\Controllers\CuentabancoController;
+use App\Http\Controllers\GarantiaController;
+use App\Http\Controllers\CoberturaseguroController;
+use App\Http\Controllers\CompaniaseguroController;
+use App\Http\Controllers\seguroconfiguracionController;
+use App\Http\Controllers\RegitrarVehiculoController;
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -538,3 +545,31 @@ Route::Post('/empresa/create', [EmpresaController::class, 'store'])
 Route::Post('/sucursal/create', [SucursalController::class, 'store'])
     ->middleware(['auth'])
     ->name('sucursal.store');
+
+Route::Post('/Banco/create', [BancoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Banco.store');
+
+Route::Post('/Cuentabanco/create', [CuentabancoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Cuentabanco.store');
+
+Route::Post('/Garantia/create', [GarantiaController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Garantia.store');
+
+Route::Post('/Coberturaseguro/create', [CoberturaseguroController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Coberturaseguro.store');
+
+Route::Post('/companiaseguro/create', [CompaniaseguroController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('companiaseguro.store');
+
+Route::Post('/seguroconfiguracion/create', [seguroconfiguracionController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('seguroconfiguracion.store');
+
+Route::Post('/RegitrarVehiculo/create', [RegitrarVehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('RegitrarVehiculo.store');

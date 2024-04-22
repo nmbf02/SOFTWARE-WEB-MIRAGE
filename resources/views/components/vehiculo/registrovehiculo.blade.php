@@ -18,27 +18,34 @@
                             <hr style="border-color: #FF914D" class="p-2">
                             {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
                                 receive mail.</p> --}}
-                            <form>
+                            <form method="POST" action="{{ route('RegitrarVehiculo.store') }}">
+                                @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Información general</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">VIN</label>
-                                            <input type="text" placeholder="VIN" class="border p-2 rounded w-full">
-                                        </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <input type="text" placeholder="Descripción"
+                                            <input name="VIN" type="text" placeholder="VIN"
                                                 class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Descripción</label>
+                                            <input name="descripcion" type="text" placeholder="Descripción"
+                                                class="border p-2 rounded w-full">
+                                        </div>
+                                        <div>
+                                            <label for="estadoVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Estado</label>
-                                            <select id="color" class="border p-2 rounded w-full mt-1">
-                                                <option>Activo</option>
-                                                <option>Inactivo</option>
+                                            <select name="estadoVehiculo" id="estadoVehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un estado">
+                                                @foreach ($estadoVehiculo as $vehiculoestado)
+                                                    <option value="{{ $vehiculoestado->IdEstadoVehiculo }}">
+                                                        {{ $vehiculoestado->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -47,94 +54,125 @@
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Descripción detallada</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                        <div>
-                                            <label for="marca"
+                                        {{-- <div>
+                                            <label for="marcaVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Marca</label>
-                                            <select id="marca" class="border p-2 rounded w-full mt-1">
-                                                <option value="toyota">Toyota</option>
-                                                <option value="ford">Ford</option>
-                                                <option value="chevrolet">Chevrolet</option>
+                                            <select name="marcaVehiculo" id="marcaVehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione una marca">
+                                                @foreach ($marcaVehiculo as $vehiculomarca)
+                                                    <option value="{{ $vehiculomarca->IdMarcaVehiculo }}">
+                                                        {{ $vehiculomarca->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
-                                        </div>
+                                        </div> --}}
                                         <div>
-                                            <label for="modelo"
+                                            <label for="modeloVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Modelo</label>
-                                            <select id="modelo" class="border p-2 rounded w-full mt-1">
-                                                <option value="corolla">Corolla</option>
-                                                <option value="mustang">Mustang</option>
-                                                <option value="camaro">Camaro</option>
+                                            <select name="modeloVehiculo" id="modeloVehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un modelo">
+                                                @foreach ($modeloVehiculo as $vehiculomodelo)
+                                                    <option value="{{ $vehiculomodelo->IdModeloVehiculo }}">
+                                                        {{ $vehiculomodelo->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div>
-                                            <label for="color"
+                                            <label for="colorvehiculo"
                                                 class="block text-sm font-medium text-gray-700">Color</label>
-                                            <select id="color" class="border p-2 rounded w-full mt-1">
-                                                <option value="blanco">Blanco</option>
-                                                <option value="negro">Negro</option>
-                                                <option value="rojo">Rojo</option>
+                                            <select name="colorvehiculo" id="colorvehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un color">
+                                                @foreach ($colorvehiculo as $vehiculocolor)
+                                                    <option value="{{ $vehiculocolor->IdColorVehiculo }}">
+                                                        {{ $vehiculocolor->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div>
-                                            <label for="acabado"
+                                            <label for="acabadoVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Acabado</label>
-                                            <select id="acabado" class="border p-2 rounded w-full mt-1">
-                                                <option value="estandar">Estándar</option>
-                                                <option value="premium">Premium</option>
-                                                <option value="deportivo">Deportivo</option>
+                                            <select name="acabadoVehiculo" id="acabadoVehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un acabado">
+                                                @foreach ($acabadoVehiculo as $vehiculoacabado)
+                                                    <option value="{{ $vehiculoacabado->IdAcabadoColorVehiculo }}">
+                                                        {{ $vehiculoacabado->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div>
-                                            <label for="tipo"
+                                            <label for="tipoVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Tipo</label>
-                                            <select id="tipo" class="border p-2 rounded w-full mt-1">
-                                                <option value="sedan">Sedán</option>
-                                                <option value="suv">SUV</option>
-                                                <option value="hatchback">Hatchback</option>
+                                            <select name="tipoVehiculo" id="tipoVehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un tipo">
+                                                @foreach ($tipoVehiculo as $vehiculotipo)
+                                                    <option value="{{ $vehiculotipo->IdTipoVehiculo }}">
+                                                        {{ $vehiculotipo->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div>
-                                            <label for="traccion"
+                                            <label for="traccionVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Tracción</label>
-                                            <select id="traccion" class="border p-2 rounded w-full mt-1">
-                                                <option value="delantera">Delantera</option>
-                                                <option value="trasera">Trasera</option>
-                                                <option value="integral">Integral</option>
+                                            <select name="traccionVehiculo" id="traccionVehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione una tracción">
+                                                @foreach ($traccionVehiculo as $vehiculotraccion)
+                                                    <option value="{{ $vehiculotraccion->IdEstadoVehiculo }}">
+                                                        {{ $vehiculotraccion->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div>
-                                            <label for="transmision"
+                                            <label for="trasnmisionVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Transmisión</label>
-                                            <select id="transmision" class="border p-2 rounded w-full mt-1">
-                                                <option value="manual">Manual</option>
-                                                <option value="automatica">Automática</option>
-                                                <option value="cvt">CVT</option>
+                                            <select name="trasnmisionVehiculo" id="trasnmisionVehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione una transmisión">
+                                                @foreach ($trasnmisionVehiculo as $vehiculotrasnmision)
+                                                    <option value="{{ $vehiculotrasnmision->IdTransmisionVehiculo }}">
+                                                        {{ $vehiculotrasnmision->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div>
-                                            <label for="transmision"
-                                                class="block text-sm font-medium text-gray-700">Condición</label>
-                                            <select id="transmision" class="border p-2 rounded w-full mt-1">
-                                                <option value="manual">Nuevo</option>
-                                                <option value="automatica">Usado</option>
-                                                <option value="cvt">Arreglado</option>
+                                            <label for="ClasificacionVehiculo"
+                                                class="block text-sm font-medium text-gray-700">Clasificación</label>
+                                            <select name="ClasificacionVehiculo" id="ClasificacionVehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione una clasificación">
+                                                @foreach ($ClasificacionVehiculo as $clasificacion)
+                                                    <option value="{{ $clasificacion->IdEstadoVehiculo }}">
+                                                        {{ $clasificacion->Descripcion }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Finalidad del vehículo</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                        <div>
-                                            <label for="transmision"
-                                                class="block text-sm font-medium text-gray-700">Uso</label>
-                                            <select id="transmision" class="border p-2 rounded w-full mt-1">
-                                                <option value="manual">Renta</option>
-                                                <option value="automatica">Venta</option>
-                                                <option value="cvt">Subasta</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <label for="finalidadVehiculo"
+                                        class="block text-sm font-medium text-gray-700">Finalidad del vehículo</label>
+                                    <select name="finalidadVehiculo" id="finalidadVehiculo"
+                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Uso">
+                                        @foreach ($finalidadVehiculo as $vehiculofinalidad)
+                                            <option value="{{ $vehiculofinalidad->IdTipoVehiculoConcesionario }}">
+                                                {{ $vehiculofinalidad->Descripcion }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="p-2"></div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
@@ -146,7 +184,7 @@
                                                 <label for="motor-cilindro"
                                                     class="block text-sm font-medium text-gray-700">Motor del
                                                     cilindro</label>
-                                                <input id="motor-cilindro" type="text"
+                                                <input name="motorcilindro" id="motor-cilindro" type="text"
                                                     placeholder="Motor del cilindro"
                                                     class="border p-2 rounded w-full">
                                             </div>
@@ -154,8 +192,8 @@
                                             <div>
                                                 <label for="serie"
                                                     class="block text-sm font-medium text-gray-700">Serie</label>
-                                                <input id="serie" type="text" placeholder="Serie"
-                                                    class="border p-2 rounded w-full">
+                                                <input name="serie" id="serie" type="text"
+                                                    placeholder="Serie" class="border p-2 rounded w-full">
                                             </div>
                                         </div>
                                     </div>
@@ -164,15 +202,17 @@
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Inventario</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                        <div>
-                                            <label for="transmision"
-                                                class="block text-sm font-medium text-gray-700">Ubicación</label>
-                                            <select id="transmision" class="border p-2 rounded w-full mt-1">
-                                                <option value="manual">A1</option>
-                                                <option value="automatica">A2</option>
-                                                <option value="cvt">A3</option>
-                                            </select>
-                                        </div>
+                                        <label for="ubicacioninventario"
+                                            class="block text-sm font-medium text-gray-700">Ubicación</label>
+                                        <select name="ubicacioninventario" id="ubicacioninventario"
+                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                            placeholder="Seleccione una ubicación">
+                                            @foreach ($ubicacioninventario as $ubicacion)
+                                                <option value="{{ $vehiculotrasnmision->IdUbicacion }}">
+                                                    {{ $ubicacion->Descripcion }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
@@ -184,34 +224,34 @@
                                                 <label for="anoVehiculo"
                                                     class="block text-sm font-medium text-gray-700">Año del
                                                     Vehículo</label>
-                                                <input id="anoVehiculo" type="number" placeholder="2024"
-                                                    class="border p-2 rounded w-full">
+                                                <input name="anoVehiculo" id="anoVehiculo" type="number"
+                                                    placeholder="2024" class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="precio"
                                                     class="block text-sm font-medium text-gray-700">Precio</label>
-                                                <input id="precio" type="number" placeholder="0.00"
-                                                    class="border p-2 rounded w-full">
+                                                <input name="precio" id="precio" type="number"
+                                                    placeholder="0.00" class="border p-2 rounded w-full">
                                             </div>
-
-                                            <div class="mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                                 <label for="SeguroVehiculo"
-                                                    class="block text-sm font-medium text-gray-700">Seguro del
-                                                    vehículo</label>
-                                                <select id="SeguroVehiculo" class="border p-2 rounded w-full">
-                                                    <option value="1">Seguro Básico - Cobertura limitada</option>
-                                                    <option value="2">Seguro Total - Cobertura completa</option>
-                                                    <option value="3">Seguro contra Terceros - Daños a terceros
-                                                    </option>
+                                                    class="block text-sm font-medium text-gray-700">Seguro del vehículo</label>
+                                                <select name="SeguroVehiculo" id="SeguroVehiculo"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    placeholder="Seleccione un seguro">
+                                                    @foreach ($SeguroVehiculo as $seguro)
+                                                        <option value="{{ $seguro->IdSeguroVehiculo }}">
+                                                            {{ $seguro->MontoCosto}}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
-
                                             <div class="mb-4">
                                                 <label for="placa"
                                                     class="block text-sm font-medium text-gray-700">Número de
                                                     placa</label>
-                                                <input id="placa" type="text" placeholder="Número de placa"
+                                                <input name="numeroplaca" id="placa" type="text" placeholder="Número de placa"
                                                     class="border p-2 rounded w-full">
                                             </div>
 
@@ -219,7 +259,7 @@
                                                 <label for="placaExhibicion"
                                                     class="block text-sm font-medium text-gray-700">Placa de
                                                     exhibición</label>
-                                                <input id="placaExhibicion" type="text"
+                                                <input name="placaexhibicion" id="placaExhibicion" type="text"
                                                     placeholder="Placa de Exhibición"
                                                     class="border p-2 rounded w-full">
                                             </div>
@@ -227,21 +267,21 @@
                                             <div class="mb-4">
                                                 <label for="chasis"
                                                     class="block text-sm font-medium text-gray-700">Chasis</label>
-                                                <input id="chasis" type="text" placeholder="Chasis"
+                                                <input name="chasis" id="chasis" type="text" placeholder="Chasis"
                                                     class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="matricula"
                                                     class="block text-sm font-medium text-gray-700">Matrícula</label>
-                                                <input id="matricula" type="text" placeholder="Matrícula"
+                                                <input name="matricula" id="matricula" type="text" placeholder="Matrícula"
                                                     class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="marbete"
                                                     class="block text-sm font-medium text-gray-700">Marbete</label>
-                                                <input id="marbete" type="text" placeholder="Marbete"
+                                                <input name="marbete" id="marbete" type="text" placeholder="Marbete"
                                                     class="border p-2 rounded w-full">
                                             </div>
 
@@ -249,7 +289,7 @@
                                                 <label for="capacidadPasajeros"
                                                     class="block text-sm font-medium text-gray-700">Capacidad de
                                                     pasajeros</label>
-                                                <input id="capacidadPasajeros" type="number"
+                                                <input name="capacidadpasajeros" id="capacidadPasajeros" type="number"
                                                     placeholder="Capacidad de Pasajeros"
                                                     class="border p-2 rounded w-full">
                                             </div>
@@ -258,42 +298,50 @@
                                                 <label for="fechaExpedicion"
                                                     class="block text-sm font-medium text-gray-700">Fecha de
                                                     expedición</label>
-                                                <input id="fechaExpedicion" type="date"
+                                                <input name="fechaexpedicion" id="fechaExpedicion" type="date"
                                                     class="border p-2 rounded w-full">
                                             </div>
 
                                             <!-- Dropdowns -->
-                                            <div class="mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                                 <label for="SegmentoMercado"
-                                                    class="block text-sm font-medium text-gray-700">Segmento de
-                                                    Mercado</label>
-                                                <select id="SegmentoMercado" class="border p-2 rounded w-full">
-                                                    <option value="1">Económico - Vehículos accesibles y
-                                                        eficientes en combustible</option>
-                                                    <option value="2">Lujo - Vehículos de alta gama con
-                                                        características premium</option>
-                                                    <option value="3">Deportivo - Vehículos con alto rendimiento y
-                                                        diseño deportivo</option>
+                                                    class="block text-sm font-medium text-gray-700">Segmento de mercado</label>
+                                                <select name="SegmentoMercado" id="SegmentoMercado"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    placeholder="Seleccione un seguro">
+                                                    @foreach ($SegmentoMercado as $segmento)
+                                                        <option value="{{ $segmento->IdSegmentoMercado }}">
+                                                            {{ $segmento->Descripcion}}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 
-                                            <div class="mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                                 <label for="TipoItbis"
                                                     class="block text-sm font-medium text-gray-700">Tipo ITBIS</label>
-                                                <select id="TipoItbis" class="border p-2 rounded w-full">
-                                                    <option value="1">16% - Tasa General</option>
-                                                    <option value="2">0% - Bienes y Servicios Exentos</option>
-                                                    <option value="3">8% - Bienes y Servicios Reducidos</option>
+                                                <select name="TipoItbis" id="TipoItbis"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    placeholder="Seleccione un ITBIS">
+                                                    @foreach ($TipoItbis as $itbis)
+                                                        <option value="{{ $itbis->IdTipoItbis }}">
+                                                            {{ $itbis->Porcentaje}}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 
-                                            <div class="mb-4">
-                                                <label for="Garantia"
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                                <label for="garantiaVehiculo"
                                                     class="block text-sm font-medium text-gray-700">Garantía</label>
-                                                <select id="Garantia" class="border p-2 rounded w-full">
-                                                    <option value="1">Garantía Limitada</option>
-                                                    <option value="2">Garantía Extendida</option>
-                                                    <option value="3">Garantía de Fábrica</option>
+                                                <select name="garantiaVehiculo" id="garantiaVehiculo"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    placeholder="Seleccione una garantía">
+                                                    @foreach ($garantiaVehiculo as $garantia)
+                                                        <option value="{{ $garantia->IdGarantia }}">
+                                                            {{ $garantia->Nombre}}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -307,7 +355,8 @@
                                             <div>
                                                 <label for="Imagen"
                                                     class="block text-sm font-medium text-gray-700">Imagen</label>
-                                                <div class="mt-1 flex justify-center px-6 pt- pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                                <div
+                                                    class="mt-1 flex justify-center px-6 pt- pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                                     <div class="space-y-1 text-center">
                                                         <svg class="mx-auto h-12 w-12 text-white"
                                                             stroke="currentColor" fill="none" viewBox="0 0 48 48"
@@ -334,6 +383,12 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Estado_modelo" name="status"
+                                        class="rounded">
+                                    <label for="Estado_modelo"
+                                        class="text-sm font-medium text-gray-700">Estado</label>
                                 </div>
                                 <div class="p-2"></div>
                                 <x-button class="px-4 py-2">
