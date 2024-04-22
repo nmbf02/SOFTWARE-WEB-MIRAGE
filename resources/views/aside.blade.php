@@ -181,7 +181,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Configuración
                                 </a>
-                                <a href="{{ route('registrar-vehiculo') }}"
+                                <a href="/vehicle-register"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Registrar
                                 </a>

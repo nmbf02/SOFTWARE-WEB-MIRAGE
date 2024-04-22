@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\ModeloVehiculo;
+use App\Models\ColorVehiculo;
+use App\Models\AcabadoColorVehiculo;
+use App\Models\TipoVehiculo;
+use App\Models\ClasificacionVehiculo;
+use App\Models\TraccionVehiculo;
+use App\Models\Transmisionvehiculo;
+use App\Models\TipoVehiculoConcesionario;
+use App\Models\Ubicacion;
+use App\Models\SeguroVehiculo;
+use App\Models\SegmentoMercado;
+use App\Models\TipoItbis;
+use App\Models\Garantia;
+use App\Models\EstadoVehiculo;
+
+use Illuminate\Http\Request;
+
+class VehicleRegisterController extends Controller
+{
+    public function index(Request $request)
+    {
+        $estadoVehiculo = EstadoVehiculo::all();
+        $modeloVehiculo = ModeloVehiculo::all();
+        $colorvehiculo = ColorVehiculo::all();
+        $acabadoVehiculo = Acabadocolorvehiculo::all();
+        $tipoVehiculo = TipoVehiculo::all();
+        $ClasificacionVehiculo = ClasificacionVehiculo::all();
+        $traccionVehiculo = TraccionVehiculo::all();
+        $trasnmisionVehiculo = Transmisionvehiculo::all();
+        $finalidadVehiculo = tipovehiculoconcesionario::all();
+        $ubicacioninventario = Ubicacion::all();
+        $SeguroVehiculo = SeguroVehiculo::all();
+        $SegmentoMercado = SegmentoMercado::all();
+        $TipoItbis = TipoItbis::all();
+        $garantiaVehiculo = Garantia::all();
+
+        // dd($request->all());
+        return view('components.vehiculo.registrovehiculo', [
+            'estadoVehiculo' => $estadoVehiculo,
+            'modeloVehiculo' => $modeloVehiculo,
+            'colorvehiculo' => $colorvehiculo,
+            'acabadoVehiculo' => $acabadoVehiculo,
+            'tipoVehiculo' => $tipoVehiculo,
+            'ClasificacionVehiculo' => $ClasificacionVehiculo,
+            'traccionVehiculo' => $traccionVehiculo,
+            'trasnmisionVehiculo' => $trasnmisionVehiculo,
+            'finalidadVehiculo' => $finalidadVehiculo,
+            'ubicacioninventario' => $ubicacioninventario,
+            'SeguroVehiculo' => $SeguroVehiculo,
+            'SegmentoMercado' => $SegmentoMercado,
+            'TipoItbis' => $TipoItbis,
+            'garantiaVehiculo' => $garantiaVehiculo,
+        ]);
+    }
+}

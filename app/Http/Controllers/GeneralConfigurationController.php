@@ -12,9 +12,12 @@ use App\Models\Provincia;
 use App\Models\Canalcomunicacion;
 use App\Models\Metodopago;
 use App\Models\Condicionfactura;
-
-use App\Models\Ciudad;
-
+use App\Models\Empresa;
+use App\Models\Sector;
+use App\Models\Banco;
+use App\Models\CoberturaSeguro;
+use App\Models\Companiaseguro;
+use App\Models\lapsotiempo;
 use Illuminate\Http\Request;
 
 class GeneralConfigurationController extends Controller
@@ -33,6 +36,22 @@ class GeneralConfigurationController extends Controller
         $canalcomunicaciontipo = Canalcomunicacion::all();
         $provinciaciudadconfiguracion = Provincia::all();
         $provinciasectorconfigracion = Provincia::all();
+        $sectoraseguradora = Sector::all();
+        $sectorempresa = Sector::all();
+        $empresasucursal = Empresa::all();
+        $sectorsucursal = Sector::all();
+        $sectorConfiguracion = Sector::all();
+        $bancocuenta = Banco::all();
+        $monedacuenta = Moneda::all();
+        $garantialapsotiempo = lapsotiempo::all();
+        $sectorcompania = Sector::all();
+        $riesgoseguro = Tiporiesgo::all();
+        $tiposeguro = Tiposeguro::all();
+        $companiaseguro = Companiaseguro::all();
+        $coberturaseguro = CoberturaSeguro::all();
+        $estadopoliza = Estadopoliza::all();
+        $condicionseguro = Condicionseguro::all();
+
         // dd($request->all());
         return view('components.configuracion.configuracion-general', [
             'paisConfiguracion' => $paisConfiguracion,
@@ -46,7 +65,22 @@ class GeneralConfigurationController extends Controller
             'metodospago' => $metodospago,
             'condiconfactura' => $condiconfactura,
             'provinciaciudadconfiguracion' => $provinciaciudadconfiguracion,
-            'provinciasectorconfigracion' => $provinciasectorconfigracion
+            'provinciasectorconfigracion' => $provinciasectorconfigracion,
+            'sectoraseguradora' => $sectoraseguradora,
+            'sectorempresa' => $sectorempresa,
+            'empresasucursal' => $empresasucursal,
+            'sectorsucursal' => $sectorsucursal,
+            'sectorConfiguracion' => $sectorConfiguracion,
+            'bancocuenta' => $bancocuenta,
+            'monedacuenta' => $monedacuenta,
+            'garantialapsotiempo' => $garantialapsotiempo,
+            'sectorcompania' => $sectorcompania,
+            'riesgoseguro' => $riesgoseguro,
+            'tiposeguro' => $tiposeguro,
+            'companiaseguro' => $companiaseguro,
+            'coberturaseguro' => $coberturaseguro,
+            'estadopoliza' => $estadopoliza,
+            'condicionseguro' => $condicionseguro,
         ]);
     }
 }
