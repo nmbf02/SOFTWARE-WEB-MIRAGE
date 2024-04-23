@@ -17,6 +17,7 @@ class Venta extends Model
         'IdCliente',
         'Fecha',
         'Subtotal',
+        'Itbis',
         'Descuento',
         'Total',
         'IdMoneda',
@@ -49,5 +50,10 @@ class Venta extends Model
     public function solicitudPrestamoVehiculo()
     {
         return $this->belongsTo('App\Models\SolicitudPrestamoVehiculo', 'IdSolicitudPrestamoVehiculo');
+    }
+
+    public function detalleVentas() // Método de relación
+    {
+        return $this->hasMany(DetalleVenta::class, 'IdVenta');
     }
 }

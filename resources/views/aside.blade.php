@@ -105,7 +105,7 @@
                             </a>
                             <!-- Submenú para venta -->
                             <div x-show="VentaOpen" class="bg-gray-100 rounded-lg">
-                                <a href="{{ route('factura') }}"
+                                <a href="/sales-register"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Facturar
                                 </a>

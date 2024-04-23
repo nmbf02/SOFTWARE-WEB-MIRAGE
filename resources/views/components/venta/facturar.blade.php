@@ -81,19 +81,46 @@
                                     {{-- Cliente --}}
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos del cliente</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                        <div>
+                                        {{-- <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Código</label>
                                             <input name="codigocliente" type="text" placeholder="Código"
                                                 class="border p-2 rounded w-full">
+                                        </div> --}}
+                                        <div>
+                                            <label for="clienteFactura"
+                                                class="block text-sm font-medium text-gray-700">Cliente</label>
+                                            <select name="clienteFactura" id="clienteFactura"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un cliente">
+                                                @foreach ($clienteFactura as $cliente)
+                                                    <option value="{{ $cliente->IdCliente }}">
+                                                        {{ $cliente->persona->Nombre }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div>
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Licencia</label>
+                                            <input name="licenciacliente" type="number" placeholder="Licencia"
+                                                class="border p-2 rounded w-full" readonly>
+                                        </div>
+                                        <div>
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Condición de
+                                                factura</label>
+                                            <input name="condicioncliente" type="text"
+                                                placeholder="Condición de fact." class="border p-2 rounded w-full"
+                                                readonly>
+                                        </div>
+                                        {{-- <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Nombre</label>
                                             <input name="nombrecliente" type="text" placeholder="Nombre"
                                                 class="border p-2 rounded w-full" readonly>
-                                        </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        </div> --}}
+                                        {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> --}}
                                             {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Número
@@ -101,7 +128,7 @@
                                                 <input name="documentocliente" type="number" placeholder="Documento"
                                                     class="border p-2 rounded w-full">
                                             </div> --}}
-                                            <div>
+                                            {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Licencia</label>
                                                 <input name="licenciacliente" type="number" placeholder="Licencia"
@@ -114,8 +141,8 @@
                                                 <input name="condicioncliente" type="text"
                                                     placeholder="Condición de fact." class="border p-2 rounded w-full"
                                                     readonly>
-                                            </div>
-                                        </div>
+                                            </div> --}}
+                                        {{-- </div> --}}
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                         <div>
@@ -147,14 +174,20 @@
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">VIN</label>
                                             <input name="VINvehiculo" type="text" placeholder="VIN"
-                                                class="border p-2 rounded w-full">
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
-                                            <label for="color"
+                                            <label for="descripcionvehiculo"
                                                 class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <input name="descripcion" type="text"
-                                                placeholder="Nombre del vehículo" class="border p-2 rounded w-full"
-                                                readonly>
+                                            <select name="descripcionvehiculo" id="descripcionvehiculo"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un vehículo">
+                                                @foreach ($descripcionvehiculo as $descripcion)
+                                                    <option value="{{ $descripcion->IdVehiculo }}">
+                                                        {{ $descripcion->Descripcion }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                             <div>
@@ -182,8 +215,9 @@
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">ITBIS</label>
-                                                <input name="itbisbehiculo" type="text" placeholder="Subtotal"
-                                                    class="border p-2 rounded w-full" readonly>
+                                                <input name="itbisvehiculo" type="text"
+                                                    placeholder="ITBIS Vehiculo" class="border p-2 rounded w-full"
+                                                    readonly>
                                             </div>
                                             <div>
                                                 <label for="color"
@@ -224,7 +258,7 @@
                                                     class="ml-2 block text-sm text-gray-900">Préstamo</label>
                                             </div>
                                         </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                             {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> --}}
                                             <div>
                                                 <label for="color"
@@ -233,19 +267,41 @@
                                                 <input name="descuentofactura" type="number"
                                                     placeholder="Fecha de pago" class="border p-2 rounded w-full">
                                             </div>
-                                            {{-- <div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Subtotal</label>
+                                                <input name="subtotalfactura" type="text" placeholder="Subtotal"
+                                                    class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">ITBIS total</label>
-                                                <input name="" type="text" placeholder="Plazo"
+                                                <input name="itbisfactura" type="text" placeholder="ITBIS"
                                                     class="border p-2 rounded w-full">
-                                            </div> --}}
+                                            </div>
                                         </div>
-                                        <div>
-                                            <label for="color"
-                                                class="block text-sm font-medium text-gray-700">Monto a pagar</label>
-                                            <input name="montoapagar" type="number" placeholder="TOTAL"
-                                                class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full"
-                                                readonly>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label for="monedafactura"
+                                                    class="block text-sm font-medium text-gray-700">Moneda</label>
+                                                <select name="monedafactura" id="monedafactura"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    placeholder="Seleccione una moneda">
+                                                    @foreach ($monedafactura as $moneda)
+                                                        <option value="{{ $moneda->IdMoneda }}">
+                                                            {{ $moneda->Descripcion }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Monto a
+                                                    pagar</label>
+                                                <input name="montoapagar" type="number" placeholder="TOTAL"
+                                                    class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full"
+                                                    readonly>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
