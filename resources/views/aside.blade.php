@@ -309,7 +309,7 @@
                                         </svg>
                                     </a>
                                     <div x-show="registrarCXCOpen" class="bg-gray-200 rounded-lg">
-                                        <a href="{{ route('registro-cliente') }}"
+                                        <a href="/customer-register"
                                             class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                             Cliente
                                         </a>

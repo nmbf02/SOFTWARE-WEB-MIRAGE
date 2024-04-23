@@ -2,145 +2,124 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Grupovehiculo;
-use App\Models\Modelovehiculo;
-use App\Models\Marcavehiculo;
-use Illuminate\Database\QueryException;
+use App\Models\Persona;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
-
 
 class ClientesController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $marcasVehiculo = Marcavehiculo::all();
-        $Modelovehiculo = Modelovehiculo::all();
-        $gruposVehiculo = Grupovehiculo::all();
-
-        // Retorna la vista con ambas variables. 
-        return view('components.vehiculo.configurar-vehiculo', compact('marcasVehiculo', 'gruposVehiculo', 'Modelovehiculo'));
-    }
-
-    public function show()
-    {
-        $marcaVehiculo = Marcavehiculo::all();
-        return view('components.vehiculo.configurar-vehiculo')->with('marcaVehiculo', $marcaVehiculo);
-    }
-
-
-    /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        try {
-            // Fetch all records from Grupovehiculo model
-            $marcaVehiculo = Marcavehiculo::all() ?? collect();
-
-            // Return the view with the list of Grupovehiculo records
-            return view('components.vehiculo.configurar-vehiculo', ['marcaVehiculo' => $marcaVehiculo]);
-        } catch (QueryException $ex) {
-            // If there's an exception, dump the exception
-            dd($ex);
-        }
+        return view('clientes.create');
     }
 
     /**
+     * Store a newly created resource in storage.
+     */
+
+    /**
+     * Store a newly created client in storage.
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // Validación de los datos
         $request->validate([
-            'descripcion' => 'required|string',
-            'marcaVehiculo' => 'required|exists:marcavehiculos,IdMarcaVehiculo',
-            'status' => 'nullable|boolean',
-
-
-IdPersona int(11) 
-IdTipoPersona int(11) 
-IdCategoriaLicencia int(11) 
-IdCondicionFactura int(11) 
-Status bit(1)
+            'nombrecliente' => 'required|string',
+            'apellidocliente' => 'required|string',
+            'fechanacimientocliente' => 'required|date',
+            'seguroPersona' =>  'required|exists:seguro,IdSeguro',
+            'casapersona' => 'nullable|string',
+            'callepersona' => 'nullable|string',
+            'sectorPersona' => 'required|exists:sector,IdSector',
+            'telefonocliente' => 'required|string',
+            'emailcliente' => 'required|email',
+            'clasificaionCliente' => 'required|exists:tipopersona,IdTipoPersona',
+            'categoriaCliente' => 'required|exists:categorialicencia,IdCategoriaLicencia',
+            'condicionFactura' => 'required|exists:condicionfactura,IdCondicionFactura',
         ]);
 
-        $Modelovehiculo = new Modelovehiculo();
+        // Crear la Persona
+        $persona = new Persona();
+        $persona->Nombre = $request->nombrecliente;
+        $persona->Apellido = $request->apellidocliente;
+        $persona->FechaNacimiento = $request->fechanacimientocliente;
+        $persona->Telefono = $request->telefonocliente;
+        $persona->Email = $request->emailcliente;
+        $persona->Casa = $request->casapersona;
+        $persona->Calle = $request->callepersona;
+        $persona->IdSector = $request->sectorPersona;
+        $persona->IdCuenta = $request->id_cuenta;
+        $persona->IdSeguro = $request->seguroPersona;
+        $persona->save();  // Guardar la Persona
 
-        // Assign the request data to the Modelovehiculo instance
-        $Modelovehiculo->Descripcion = $request->descripcion;
-        $Modelovehiculo->IdMarcaVehiculo = $request->marcaVehiculo;
-        $Modelovehiculo->Status = $request->status ? 1 : 0;
+        // Crear el Cliente ligado a la Persona
+        $cliente = new Cliente();
+        $cliente->IdPersona = $persona->IdPersona;  // Clave foránea de Persona
+        $cliente->IdTipoPersona = $request->IdTipoPersona;
+        $cliente->IdCategoriaLicencia = $request->IdCategoriaLicencia;
+        $cliente->IdCondicionFactura = $request->IdCondicionFactura;
+        $cliente->save();  // Guardar el Cliente
 
-        // Save the Modelovehiculo instance to the database
-        $Modelovehiculo->save();
-
-        // Redirect the user to the Modelovehiculo index page with a success message
-        return redirect('vehicle-configuration')->with('success', 'Guardado con exito');
+        // Redireccionar con mensaje
+        return redirect()->route('customer-register')->with('success', 'Cliente creado correctamente.');
     }
 
-    /**vehicle-configuration'
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+    /**
+     * Display the specified resource.
      */
-    public function edit($id)
+    public function show(Cliente $cliente)
     {
-        // Fetch the Modelovehiculo record by its id
-        $Modelovehiculo = Modelovehiculo::findOrFail($id);
+        $cliente->load('persona');
+        return view('clientes.show', compact('cliente'));
+    }
 
-        // Return the view with the Modelovehiculo record
-        return view('components.vehiculo.configurar-vehiculo', ['Modelovehiculo' => $Modelovehiculo]);
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Cliente $cliente)
+    {
+        $cliente->load('persona');
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cliente $cliente)
     {
-        // Validate the request data
         $request->validate([
-            'Descripcion' => 'required|string',
-            'Status' => 'required|boolean',
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'fecha_nacimiento' => 'required|date',
+            // Valida otros campos según sea necesario
         ]);
 
-        // Fetch the Modelovehiculo record by its id
-        $Modelovehiculo = Modelovehiculo::findOrFail($id);
+        $cliente->persona->update([
+            'Nombre' => $request->nombre,
+            'Apellido' => $request->apellido,
+            'FechaNacimiento' => $request->fecha_nacimiento,
+            // Actualiza otros campos como necesario
+        ]);
 
-        // Update the Modelovehiculo record with the request data
-        $Modelovehiculo->update($request->all());
+        $cliente->update([
+            // Actualiza los campos específicos del cliente, si es necesario
+        ]);
 
-        // Redirect the user to the Modelovehiculo index page
-        return redirect()->route('Modelovehiculo');
+        return redirect()->route('clientes.index')->with('success', 'Cliente actualizado con éxito.');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cliente $cliente)
     {
-        // Fetch the Modelovehiculo record by its id
-        $Modelovehiculo = Modelovehiculo::findOrFail($id);
-
-        // Delete the Modelovehiculo record from the database
-        $Modelovehiculo->delete();
-
-        // Redirect the user to the Modelovehiculo index page
-        return redirect()->route('Modelovehiculo');
+        $cliente->delete();
+        return redirect()->route('clientes.index')->with('success', 'Cliente eliminado con éxito.');
     }
 }

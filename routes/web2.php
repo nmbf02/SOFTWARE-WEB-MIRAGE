@@ -502,10 +502,6 @@ Route::Post('/Clientes/create', [ClientesController::class, 'store'])
     ->middleware(['auth'])
     ->name('Clientes.store');
 
-Route::get('/Clientes', [ClientesController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('Clientes');
-
 Route::Post('/Colorexteriorvehiculo/create', [ColorexteriorvehiculoController::class, 'store'])
     ->middleware(['auth'])
     ->name('Colorexteriorvehiculo.store');

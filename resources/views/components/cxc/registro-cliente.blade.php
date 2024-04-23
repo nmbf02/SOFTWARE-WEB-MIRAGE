@@ -94,7 +94,7 @@
                                     Contacto
                                 </h6>
                                 <div class="flex flex-wrap">
-                                    <div class="w-full lg:w-12/12 px-4">
+                                    {{-- <div class="w-full lg:w-12/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-xs font-bold mb-2" for="">
                                                 Dirección
@@ -103,7 +103,7 @@
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="direcionPersona">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-xs font-bold mb-2" for="">
@@ -263,7 +263,7 @@
                                 <x-button class="px-4 py-2 mb-3">
                                     {{ __('Registrar cliente') }}
                                 </x-button>
-                            </form>
+                            </form>   
                         </div>
                     </div>
                 </div>
