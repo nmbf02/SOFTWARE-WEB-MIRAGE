@@ -47,7 +47,6 @@ class ClientesController extends Controller
 
         // Crear la Persona
         $persona = new Persona();
-        dd($request->all());
         $persona->Nombre = $request->nombrecliente;
         $persona->Apellido = $request->apellidocliente;
         $persona->FechaNacimiento = $request->fechanacimientocliente;
@@ -62,18 +61,17 @@ class ClientesController extends Controller
 
         // Crear el Cliente ligado a la Persona
         $cliente = new Cliente();
-        dd($cliente->all());
         $cliente->IdPersona = $persona->IdPersona;  // Clave foránea de Persona
-        $cliente->IdTipoPersona = $request->IdTipoPersona;
-        $cliente->IdCategoriaLicencia = $request->IdCategoriaLicencia;
-        $cliente->IdCondicionFactura = $request->IdCondicionFactura;
+        $cliente->IdTipoPersona = $request->clasificaionCliente;
+        $cliente->IdCategoriaLicencia = $request->categoriaCliente;
+        $cliente->IdCondicionFactura = $request->condicionFactura;
 
         
         
         $cliente->save();  // Guardar el Cliente
 
         // Redireccionar con mensaje
-        return redirect()->route('customer-register')->with('success', 'Cliente creado correctamente.');
+        return redirect('customer-register')->with('success', 'Cliente creado correctamente.');
     }
 
     /**

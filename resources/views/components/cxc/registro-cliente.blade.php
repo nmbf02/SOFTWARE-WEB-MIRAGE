@@ -72,7 +72,7 @@
                                                 value="Fecha de nacimiento">
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="w-full lg:w-6/12 px-4">
                                         <label class="block uppercase text-xs font-bold mb-2" for="seguroPersona">
                                             Seguro
                                         </label>

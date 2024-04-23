@@ -140,12 +140,16 @@
                                     <td>{{ $vehiculo->AnoVehiculo }}</td>
                                     <td>{{ $vehiculo->Placa }}</td>
                                     <td>
-                                        <a href="{{ route('vehiculos.edit', $vehiculo->IdVehiculo) }}"
+                                        {{-- <a href="{{ route('vehiculos.edit', $vehiculo->IdVehiculo) }}"
                                             class="btn btn-primary">Editar</a>
                                         <form action="{{ route('vehiculos.destroy', $vehiculo->IdVehiculo) }}"
                                             method="POST" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form> --}}
+                                        <a href="" class="btn btn-primary">Editar</a>
+                                        <form action="" style="display: inline-block;">
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>
                                     </td>
@@ -153,7 +157,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
                     {!! $vehiculos->links() !!} <!-- Paginación -->
                 </div>
             </div>
