@@ -24,7 +24,7 @@ class RegitrarVehiculoController extends Controller
             'estadoVehiculo' => 'required|exists:estadovehiculos,IdEstadoVehiculo',
             'modeloVehiculo' => 'required|exists:modelovehiculos,IdModeloVehiculo',
             'colorvehiculo' => 'required|exists:colorvehiculos,IdColorVehiculo',
-            'acabadoVehiculo' => 'required|exists:acabadocolorvehiculos,IdAcabadoColorVehiculo',
+            // 'acabadoVehiculo' => 'required|exists:acabadocolorvehiculos,IdAcabadoColorVehiculo',
             'tipoVehiculo' => 'required|exists:tipovehiculos,IdTipoVehiculo',
             'ClasificacionVehiculo' => 'required|exists:clasificacionvehiculos,IdClasificacionVehiculo',
             'traccionVehiculo' => 'required|exists:traccionvehiculos,IdTraccionVehiculo',
@@ -32,7 +32,7 @@ class RegitrarVehiculoController extends Controller
             'finalidadVehiculo' => 'required|exists:tipovehiculoconcesionario,IdTipoVehiculoConcesionario',
             'motorcilindro' => 'required|string',
             'serie' => 'required|string',
-            'ubicacioninventario' => 'required|exists:ubicacion,IdUbicacion',
+            'ubicacionInventario' => 'required|exists:ubicacion,IdUbicacion',
             'anoVehiculo' => 'required|integer',
             'precio' => 'required|numeric',
             'SeguroVehiculo' => 'required|exists:segurovehiculos,IdSeguroVehiculo',
@@ -57,7 +57,7 @@ class RegitrarVehiculoController extends Controller
         $crearVehiculo->IdEstadoVehiculo = $request->estadoVehiculo;    
         $crearVehiculo->IdModeloVehiculo = $request->modeloVehiculo;
         $crearVehiculo->IdColorVehiculo = $request->colorvehiculo;
-        $crearVehiculo->IdAcabadoColorVehiculo = $request->acabadoVehiculo;
+        // $crearVehiculo->IdAcabadoColorVehiculo = $request->acabadoVehiculo;
         $crearVehiculo->IdTipoVehiculo = $request->tipoVehiculo;
         $crearVehiculo->IdClasificacionVehiculo = $request->ClasificacionVehiculo;
         $crearVehiculo->IdTransmisionVehiculo = $request->trasnmisionVehiculo;
@@ -65,7 +65,7 @@ class RegitrarVehiculoController extends Controller
         $crearVehiculo->MotorCilindro = $request->motorcilindro;
         $crearVehiculo->IdTipoVehiculoConcesionario = $request->finalidadVehiculo;
         $crearVehiculo->Serie = $request->serie;
-        $crearVehiculo->IdUbicacion = $request->ubicacioninventario;  
+        $crearVehiculo->IdUbicacion = $request->ubicacionInventario;  
         $crearVehiculo->AnoVehiculo = $request->anoVehiculo;
         $crearVehiculo->Precio = $request->precio;
         $crearVehiculo->IdSeguroVehiculo = $request->SeguroVehiculo;
