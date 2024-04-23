@@ -91,6 +91,7 @@ use App\Http\Controllers\CompaniaseguroController;
 use App\Http\Controllers\seguroconfiguracionController;
 use App\Http\Controllers\RegitrarVehiculoController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\RegitrarFacturaController;
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -572,3 +573,7 @@ Route::Post('/RegitrarVehiculo/create', [RegitrarVehiculoController::class, 'sto
     ->name('RegitrarVehiculo.store');
 
 Route::post('/convert-html-to-pdf', [PDFController::class, 'convertHTMLToPDF']);
+
+Route::Post('/RegitrarFactura/create', [RegitrarFacturaController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('RegitrarFactura.store');
