@@ -93,7 +93,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div>
+                                        {{-- <div>
                                             <label for="acabadoVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Acabado</label>
                                             <select name="acabadoVehiculo" id="acabadoVehiculo"
@@ -105,7 +105,7 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> --}}
                                         <div>
                                             <label for="tipoVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Tipo</label>
@@ -126,7 +126,7 @@
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione una tracción">
                                                 @foreach ($traccionVehiculo as $vehiculotraccion)
-                                                    <option value="{{ $vehiculotraccion->IdEstadoVehiculo }}">
+                                                    <option value="{{ $vehiculotraccion->IdTraccionVehiculo }}">
                                                         {{ $vehiculotraccion->Descripcion }}
                                                     </option>
                                                 @endforeach
@@ -152,7 +152,7 @@
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione una clasificación">
                                                 @foreach ($ClasificacionVehiculo as $clasificacion)
-                                                    <option value="{{ $clasificacion->IdEstadoVehiculo }}">
+                                                    <option value="{{ $clasificacion->IdClasificacionVehiculo }}">
                                                         {{ $clasificacion->Descripcion }}
                                                     </option>
                                                 @endforeach
@@ -201,18 +201,20 @@
                                 <div class="p-2"></div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Inventario</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                        <label for="ubicacioninventario"
-                                            class="block text-sm font-medium text-gray-700">Ubicación</label>
-                                        <select name="ubicacioninventario" id="ubicacioninventario"
-                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                            placeholder="Seleccione una ubicación">
-                                            @foreach ($ubicacioninventario as $ubicacion)
-                                                <option value="{{ $vehiculotrasnmision->IdUbicacion }}">
-                                                    {{ $ubicacion->Descripcion }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div>
+                                            <label for="ubicacionInventario"
+                                                class="block text-sm font-medium text-gray-700">Ubicación</label>
+                                            <select name="ubicacionInventario" id="ubicacionInventario"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione una ubicación">
+                                                @foreach ($ubicacionInventario as $ubicacion)
+                                                    <option value="{{ $ubicacion->IdUbicacion }}">
+                                                        {{ $ubicacion->Descripcion }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
@@ -234,15 +236,16 @@
                                                 <input name="precio" id="precio" type="number"
                                                     placeholder="0.00" class="border p-2 rounded w-full">
                                             </div>
-                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                            <div class="mb-4">
                                                 <label for="SeguroVehiculo"
-                                                    class="block text-sm font-medium text-gray-700">Seguro del vehículo</label>
+                                                    class="block text-sm font-medium text-gray-700">Seguro del
+                                                    vehículo</label>
                                                 <select name="SeguroVehiculo" id="SeguroVehiculo"
                                                     class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                     placeholder="Seleccione un seguro">
                                                     @foreach ($SeguroVehiculo as $seguro)
                                                         <option value="{{ $seguro->IdSeguroVehiculo }}">
-                                                            {{ $seguro->MontoCosto}}
+                                                            {{ $seguro->MontoCosto }}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -251,8 +254,8 @@
                                                 <label for="placa"
                                                     class="block text-sm font-medium text-gray-700">Número de
                                                     placa</label>
-                                                <input name="numeroplaca" id="placa" type="text" placeholder="Número de placa"
-                                                    class="border p-2 rounded w-full">
+                                                <input name="numeroplaca" id="placa" type="text"
+                                                    placeholder="Número de placa" class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
@@ -267,30 +270,30 @@
                                             <div class="mb-4">
                                                 <label for="chasis"
                                                     class="block text-sm font-medium text-gray-700">Chasis</label>
-                                                <input name="chasis" id="chasis" type="text" placeholder="Chasis"
-                                                    class="border p-2 rounded w-full">
+                                                <input name="chasis" id="chasis" type="text"
+                                                    placeholder="Chasis" class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="matricula"
                                                     class="block text-sm font-medium text-gray-700">Matrícula</label>
-                                                <input name="matricula" id="matricula" type="text" placeholder="Matrícula"
-                                                    class="border p-2 rounded w-full">
+                                                <input name="matricula" id="matricula" type="text"
+                                                    placeholder="Matrícula" class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="marbete"
                                                     class="block text-sm font-medium text-gray-700">Marbete</label>
-                                                <input name="marbete" id="marbete" type="text" placeholder="Marbete"
-                                                    class="border p-2 rounded w-full">
+                                                <input name="marbete" id="marbete" type="text"
+                                                    placeholder="Marbete" class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="capacidadPasajeros"
                                                     class="block text-sm font-medium text-gray-700">Capacidad de
                                                     pasajeros</label>
-                                                <input name="capacidadpasajeros" id="capacidadPasajeros" type="number"
-                                                    placeholder="Capacidad de Pasajeros"
+                                                <input name="capacidadpasajeros" id="capacidadPasajeros"
+                                                    type="number" placeholder="Capacidad de Pasajeros"
                                                     class="border p-2 rounded w-full">
                                             </div>
 
@@ -303,21 +306,22 @@
                                             </div>
 
                                             <!-- Dropdowns -->
-                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                            <div class="mb-4">
                                                 <label for="SegmentoMercado"
-                                                    class="block text-sm font-medium text-gray-700">Segmento de mercado</label>
+                                                    class="block text-sm font-medium text-gray-700">Segmento de
+                                                    mercado</label>
                                                 <select name="SegmentoMercado" id="SegmentoMercado"
                                                     class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                     placeholder="Seleccione un seguro">
                                                     @foreach ($SegmentoMercado as $segmento)
                                                         <option value="{{ $segmento->IdSegmentoMercado }}">
-                                                            {{ $segmento->Descripcion}}
+                                                            {{ $segmento->Descripcion }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
-                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                            <div class="mb-4">
                                                 <label for="TipoItbis"
                                                     class="block text-sm font-medium text-gray-700">Tipo ITBIS</label>
                                                 <select name="TipoItbis" id="TipoItbis"
@@ -325,13 +329,13 @@
                                                     placeholder="Seleccione un ITBIS">
                                                     @foreach ($TipoItbis as $itbis)
                                                         <option value="{{ $itbis->IdTipoItbis }}">
-                                                            {{ $itbis->Porcentaje}}
+                                                            {{ $itbis->Porcentaje }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
-                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                            <div class="mb-4">
                                                 <label for="garantiaVehiculo"
                                                     class="block text-sm font-medium text-gray-700">Garantía</label>
                                                 <select name="garantiaVehiculo" id="garantiaVehiculo"
@@ -339,7 +343,7 @@
                                                     placeholder="Seleccione una garantía">
                                                     @foreach ($garantiaVehiculo as $garantia)
                                                         <option value="{{ $garantia->IdGarantia }}">
-                                                            {{ $garantia->Nombre}}
+                                                            {{ $garantia->Nombre }}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -370,8 +374,8 @@
                                                             <label for="file-upload"
                                                                 class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                                 <span class=""><b>Archivos</b></span>
-                                                                <input id="file-upload" name="file-upload"
-                                                                    type="file" class="sr-only">
+                                                                <input id="file-upload" type="file"
+                                                                    class="sr-only">
                                                             </label>
                                                             <p class="pl-1"> o arrastrar y soltar.</p>
                                                         </div>
@@ -385,8 +389,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="Estado_modelo" name="status"
-                                        class="rounded">
+                                    <input type="checkbox" id="Estado_modelo" name="status" class="rounded">
                                     <label for="Estado_modelo"
                                         class="text-sm font-medium text-gray-700">Estado</label>
                                 </div>

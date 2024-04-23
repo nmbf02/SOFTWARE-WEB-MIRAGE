@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ModeloVehiculo;
 use App\Models\ColorVehiculo;
-use App\Models\AcabadoColorVehiculo;
+// use App\Models\AcabadoColorVehiculo;
 use App\Models\TipoVehiculo;
 use App\Models\ClasificacionVehiculo;
 use App\Models\TraccionVehiculo;
@@ -23,33 +23,33 @@ class VehicleRegisterController extends Controller
 {
     public function index(Request $request)
     {
+        // dd($request->all());
         $estadoVehiculo = EstadoVehiculo::all();
         $modeloVehiculo = ModeloVehiculo::all();
         $colorvehiculo = ColorVehiculo::all();
-        $acabadoVehiculo = Acabadocolorvehiculo::all();
+        // $acabadoVehiculo = Acabadocolorvehiculo::all();
         $tipoVehiculo = TipoVehiculo::all();
         $ClasificacionVehiculo = ClasificacionVehiculo::all();
         $traccionVehiculo = TraccionVehiculo::all();
         $trasnmisionVehiculo = Transmisionvehiculo::all();
         $finalidadVehiculo = tipovehiculoconcesionario::all();
-        $ubicacioninventario = Ubicacion::all();
+        $ubicacionInventario = Ubicacion::all();
         $SeguroVehiculo = SeguroVehiculo::all();
         $SegmentoMercado = SegmentoMercado::all();
         $TipoItbis = TipoItbis::all();
         $garantiaVehiculo = Garantia::all();
 
-        // dd($request->all());
         return view('components.vehiculo.registrovehiculo', [
             'estadoVehiculo' => $estadoVehiculo,
             'modeloVehiculo' => $modeloVehiculo,
             'colorvehiculo' => $colorvehiculo,
-            'acabadoVehiculo' => $acabadoVehiculo,
+            // 'acabadoVehiculo' => $acabadoVehiculo,
             'tipoVehiculo' => $tipoVehiculo,
             'ClasificacionVehiculo' => $ClasificacionVehiculo,
             'traccionVehiculo' => $traccionVehiculo,
             'trasnmisionVehiculo' => $trasnmisionVehiculo,
             'finalidadVehiculo' => $finalidadVehiculo,
-            'ubicacioninventario' => $ubicacioninventario,
+            'ubicacionInventario' => $ubicacionInventario,
             'SeguroVehiculo' => $SeguroVehiculo,
             'SegmentoMercado' => $SegmentoMercado,
             'TipoItbis' => $TipoItbis,
