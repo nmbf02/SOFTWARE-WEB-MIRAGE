@@ -199,7 +199,8 @@
                                                             @include('icons/adiccionazul')
                                                         </div>
                                                     </button>
-                                                    @include('modals.agregar-clasificacion-tipopersona')
+                                                    {{-- Se hace despues --}}
+                                                    {{-- @include('modals.agregar-clasificacion-tipopersona') --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -237,7 +238,8 @@
                                                             @include('icons/adiccionazul')
                                                         </div>
                                                     </button>
-                                                    @include('modals.agregar-clasificacion-categorialicencia')
+                                                    {{-- Se hace despues --}}
+                                                    {{-- @include('modals.agregar-clasificacion-categorialicencia') --}}
                                                 </div>
                                             </div>
                                         </div>

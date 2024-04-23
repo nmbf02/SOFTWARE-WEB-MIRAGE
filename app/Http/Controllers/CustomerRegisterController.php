@@ -21,7 +21,7 @@ class CustomerRegisterController extends Controller
         $categoriaCliente = CategoriaLicencia::all();
         $condicionFactura = CondicionFactura::all();
 
-        return view('components.vehiculo.registrovehiculo', [
+        return view('components.cxc.registro-cliente', [
             'seguroPersona' => $seguroPersona,
             'sectorPersona' => $sectorPersona,
             'clasificaionCliente' => $clasificaionCliente,
