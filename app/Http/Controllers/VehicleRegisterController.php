@@ -56,11 +56,11 @@ class VehicleRegisterController extends Controller
             'garantiaVehiculo' => $garantiaVehiculo,
         ]);
     }
-    public function edit(Request $request)
+    public function edit($id)
     {
         
         $vehiculos = Vehiculo::all(); 
-        if(!$request->id){
+        if(!$id){
             return 
             
             view('components.vehiculo.consultavehiculo', ["numerovehiculo"=> null, "vehiculos" => $vehiculos]);
@@ -81,10 +81,10 @@ class VehicleRegisterController extends Controller
         $TipoItbis = TipoItbis::all();
         $garantiaVehiculo = Garantia::all();
 
-        $vehiculo = Vehiculo::findOrFail($request->id);
+        $vehiculo = Vehiculo::where('IdVehiculo',$id)->where('Status',1)->first();
 
         if(!$vehiculo){
-            $vehiculos = Vehiculo::all(); 
+            $vehiculos = Vehiculo::where('Status',1)->get(); 
             return view('components.vehiculo.consultavehiculo', ["numerovehiculo"=> null, "vehiculos" => $vehiculos]);
         }
  
