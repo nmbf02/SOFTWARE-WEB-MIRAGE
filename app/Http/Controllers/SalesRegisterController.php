@@ -13,6 +13,10 @@ class SalesRegisterController extends Controller
     public function index(Request $request)
     {
         // dd($request->all());
+        $client = [];
+        if(isset($request->clienteFactura)) {
+            $client = Cliente::findOrFail($request->clienteFactura);
+        }
         $monedafactura = Moneda::all();
         $clienteFactura = Cliente::all();
         $descripcionvehiculo = Vehiculo::all();
@@ -20,8 +24,8 @@ class SalesRegisterController extends Controller
         return view('components.venta.facturar', [
             'monedafactura' => $monedafactura,
             'clienteFactura' => $clienteFactura,
-            'descripcionvehiculo' => $descripcionvehiculo
-
+            'descripcionvehiculo' => $descripcionvehiculo,
+            'client' => $client
         ]);
     }
 }

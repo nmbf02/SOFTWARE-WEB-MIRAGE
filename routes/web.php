@@ -23,6 +23,6 @@ Route::get('general-configuration', [GeneralConfigurationController::class, 'ind
 Route::get('vehicle-register', [VehicleRegisterController::class, 'index'])->name('registerVehicle');
 Route::get('vehicle-register/{id}', [VehicleRegisterController::class, 'edit'])->name('editVehicle');
 Route::get('customer-register', [CustomerRegisterController::class, 'index']);
-Route::get('sales-register', [SalesRegisterController::class, 'index']);
+Route::get('sales-register', [SalesRegisterController::class, 'index']) -> name ('salesRegister') ;
 
 include('web2.php');

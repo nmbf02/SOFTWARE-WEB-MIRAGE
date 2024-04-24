@@ -29,7 +29,8 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         // Validación de los datos
-        
+
+        // dd($request->all());
         $request->validate([
             'nombrecliente' => 'required|string',
             'apellidocliente' => 'required|string',

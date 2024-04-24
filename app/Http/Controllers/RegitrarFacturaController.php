@@ -26,26 +26,36 @@ class RegitrarFacturaController extends Controller
             'itbisvehiculo' => 'required|numeric',
         ]);
 
-        $venta = new Venta([
-            'IdCliente' => $request->clienteFactura,
-            'Subtotal' => $request->subtotalfactura,
-            'Descuento' => $request->descuentofactura,
-            'Itbis' => $request->itbisfactura,
-            'Total' => $request->montoapagar,
-            'IdMoneda' => $request->monedafactura,
-        ]);
+        $venta = new Venta();
+        $venta->IdCliente = $request->clienteFactura;
+        $venta->Subtotal = $request->subtotalfactura;
+        $venta->Descuento = $request->descuentofactura;
+        $venta->Itbis = $request->itbisfactura;
+        $venta->Total = $request->montoapagar;
+        $venta->IdMoneda = $request->monedafactura;
+        // $venta = new Venta([
+        //     'IdCliente' => $request->clienteFactura,
+        //     'Subtotal' => $request->subtotalfactura,
+        //     'Descuento' => $request->descuentofactura,
+        //     'Itbis' => $request->itbisfactura,
+        //     'Total' => $request->montoapagar,
+        //     'IdMoneda' => $request->monedafactura,
+        // ]);
         $venta->save();
 
-        foreach ($request->detalles as $detalle) {
-            $venta->detalleVentas()->create([
-                'IdVehiculo' => $detalle['descripcionvehiculo'],
-                'CantidadVendida' => $detalle['cantidadvehiculo'],
-                'PrecioUnitario' => $detalle['preciovehiculo'],
-                'ItbisVehiculo' => $detalle['itbisvehiculo'],
-                'Subtotal' => $detalle['cantidadvehiculo'] * $detalle['preciovehiculo'],
-                'Descuento' => $detalle['descuentovehiculo'] ?? 0
-            ]);
-        }
+        // foreach ($request->detalles as $detalle) {
+        $venta->detalleVentas()->create([
+            'IdVehiculo' => $request->descripcionvehiculo,
+            'CantidadVendida' => $request->cantidadvehiculo,
+            'PrecioUnitario' => $request->preciovehiculo,
+            'ItbisVehiculo' => $request->itbisvehiculo,
+            'Subtotal' => $request->cantidadvehiculo * $request->preciovehiculo,
+            'Descuento' => $request->descuentovehiculo ?? 0
+        ]);
+
+
+
+
         return redirect('sales-register')->with('success', 'Guardado con exito');
     }
 }
