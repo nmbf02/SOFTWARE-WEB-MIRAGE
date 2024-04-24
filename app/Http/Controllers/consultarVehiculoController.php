@@ -15,7 +15,9 @@ class consultarVehiculoController extends Controller
      */
     public function consultarVehiculo($numerovehiculo = null)
     {
-        return view('components.vehiculo.consultavehiculo', compact('numerovehiculo'));
+        $vehiculos = Vehiculo::all();
+        // return view('components.vehiculo.consultavehiculo', compact('numerovehiculo'));
+        return view('components.vehiculo.consultavehiculo', ["numerovehiculo"=> $numerovehiculo, "vehiculos" => $vehiculos]);
     }
 
     public function index()

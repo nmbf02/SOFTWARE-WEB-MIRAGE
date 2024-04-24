@@ -33,7 +33,7 @@
                                     onblur="this.style.backgroundColor='#FF914D'"
                                     onmousedown="this.style.backgroundColor='#CC6C3B'"
                                     onmouseup="this.style.backgroundColor='#E7814D'"
-                                    onclick="window.location='{{ route('registrar-vehiculo') }}'">
+                                    onclick="window.location='{{ route('registerVehicle') }}'">
                                     @include('icons/registrar')
                                 </button>
                             </div>
@@ -120,26 +120,26 @@
                         </div>
                     @endif
 
-                    <table class="table table-bordered">
-                        <thead>
+                    <table class="table table-bordered w-full border-collapse bg-white text-left text-sm text-gray-500 ">
+                        <thead  class="bg-white">
                             <tr>
-                                <th>ID</th>
-                                <th>VIN</th>
-                                <th>Precio</th>
-                                <th>Año</th>
-                                <th>Placa</th>
-                                <th>Acciones</th>
+                                <th  scope="col" class="px-6 py-4 font-bold text-gray-900 scope=">ID</th>
+                                <th scope="col" class="px-6 py-4 font-bold text-gray-900">VIN</th>
+                                <th scope="col" class="px-6 py-4 font-bold text-gray-900">Precio</th>
+                                <th scope="col" class="px-6 py-4 font-bold text-gray-900">Año</th>
+                                <th scope="col" class="px-6 py-4 font-bold text-gray-900">Placa</th>
+                                <th scope="col" class="px-6 py-4 font-bold text-gray-900">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="divide-y divide-gray-100 border-t border-gray-100">
                             @foreach ($vehiculos as $vehiculo)
-                                <tr>
-                                    <td>{{ $vehiculo->IdVehiculo }}</td>
-                                    <td>{{ $vehiculo->VIN }}</td>
-                                    <td>{{ $vehiculo->Precio }}</td>
-                                    <td>{{ $vehiculo->AnoVehiculo }}</td>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">{{ $vehiculo->IdVehiculo }}</td>
+                                    <td class="px-6 py-4">{{ $vehiculo->VIN }}</td>
+                                    <td class="px-6 py-4">{{ $vehiculo->Precio }}</td>
+                                    <td class="px-6 py-4">{{ $vehiculo->AnoVehiculo }}</td>
                                     <td>{{ $vehiculo->Placa }}</td>
-                                    <td>
+                                    <td class="px-6 py-4">
                                         {{-- <a href="{{ route('vehiculos.edit', $vehiculo->IdVehiculo) }}"
                                             class="btn btn-primary">Editar</a>
                                         <form action="{{ route('vehiculos.destroy', $vehiculo->IdVehiculo) }}"
@@ -148,7 +148,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form> --}}
-                                        <a href="" class="btn btn-primary">Editar</a>
+                                        <a href="{{ route('editVehicle', ['id' => $vehiculo->IdVehiculo]) }}" class="btn btn-primary">Editar</a>
                                         <form action="" style="display: inline-block;">
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>
@@ -157,7 +157,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {!! $vehiculos->links() !!} <!-- Paginación -->
+                     
                 </div>
             </div>
         </div>

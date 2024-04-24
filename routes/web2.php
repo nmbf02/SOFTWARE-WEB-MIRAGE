@@ -572,6 +572,10 @@ Route::Post('/RegitrarVehiculo/create', [RegitrarVehiculoController::class, 'sto
     ->middleware(['auth'])
     ->name('RegitrarVehiculo.store');
 
+Route::Put('/EditarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, 'update'])
+    ->middleware(['auth'])
+    ->name('RegitrarVehiculo.update');
+
 Route::post('/convert-html-to-pdf', [PDFController::class, 'convertHTMLToPDF']);
 
 Route::Post('/RegitrarFactura/create', [RegitrarFacturaController::class, 'store'])
