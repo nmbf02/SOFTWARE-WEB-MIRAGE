@@ -29,6 +29,7 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         // Validación de los datos
+        
         $request->validate([
             'nombrecliente' => 'required|string',
             'apellidocliente' => 'required|string',
@@ -61,13 +62,16 @@ class ClientesController extends Controller
         // Crear el Cliente ligado a la Persona
         $cliente = new Cliente();
         $cliente->IdPersona = $persona->IdPersona;  // Clave foránea de Persona
-        $cliente->IdTipoPersona = $request->IdTipoPersona;
-        $cliente->IdCategoriaLicencia = $request->IdCategoriaLicencia;
-        $cliente->IdCondicionFactura = $request->IdCondicionFactura;
+        $cliente->IdTipoPersona = $request->clasificaionCliente;
+        $cliente->IdCategoriaLicencia = $request->categoriaCliente;
+        $cliente->IdCondicionFactura = $request->condicionFactura;
+
+        
+        
         $cliente->save();  // Guardar el Cliente
 
         // Redireccionar con mensaje
-        return redirect()->route('customer-register')->with('success', 'Cliente creado correctamente.');
+        return redirect('customer-register')->with('success', 'Cliente creado correctamente.');
     }
 
     /**

@@ -18,7 +18,14 @@
                             <hr style="border-color: #FF914D" class="p-2">
                             {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
                                 receive mail.</p> --}}
+
+                                @if (request()->routeIs('registerVehicle' ))   
                             <form method="POST" action="{{ route('RegitrarVehiculo.store') }}">
+                                @else
+                            <form method="POST" action="{{ route('RegitrarVehiculo.update', $vehiculo->IdVehiculo) }}">
+                                @method('PUT')
+                                @endif
+
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Información general</h6>
@@ -26,13 +33,13 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">VIN</label>
-                                            <input name="VIN" type="text" placeholder="VIN"
+                                            <input name="VIN" value="{{@$vehiculo->VIN}}" type="text" placeholder="VIN"
                                                 class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <input name="descripcion" type="text" placeholder="Descripción"
+                                            <input name="descripcion" value="{{@$vehiculo->Descripcion}}" type="text" placeholder="Descripción"
                                                 class="border p-2 rounded w-full">
                                         </div>
                                         <div>
