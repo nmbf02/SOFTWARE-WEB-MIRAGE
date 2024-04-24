@@ -75,6 +75,23 @@
                             <hr style="border-color: #FF914D" class="p-2">
                             {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
                                 receive mail.</p> --}}
+                            <form method="GET" action="{{ route('salesRegister') }}">
+                                <div>
+                                    <label for="clienteFactura"
+                                        class="block text-sm font-medium text-gray-700">Cliente</label>
+                                    <select name="clienteFactura" id="clienteFactura"
+                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Seleccione un cliente" onchange="this.form.submit() ">
+                                        <option value="">Seleccionar cliente</option>
+                                        @foreach ($clienteFactura as $cliente)
+                                            <option value="{{ $cliente->IdCliente }}">
+                                                {{ $cliente->persona->Nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </form>
+                            
                             <form method="POST" action="{{ route('RegitrarFactura.store') }}">
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
@@ -103,36 +120,35 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Licencia</label>
-                                            <input name="licenciacliente" type="number" placeholder="Licencia"
-                                                class="border p-2 rounded w-full" readonly>
+                                            <input value="{{ $client['IdCategoriaLicencia']}}" name="licenciacliente" type="number" placeholder="Licencia"
+                                                class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Condición de
                                                 factura</label>
                                             <input name="condicioncliente" type="text"
-                                                placeholder="Condición de fact." class="border p-2 rounded w-full"
-                                                readonly>
+                                                placeholder="Condición de fact." class="border p-2 rounded w-full">
                                         </div>
                                         {{-- <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Nombre</label>
                                             <input name="nombrecliente" type="text" placeholder="Nombre"
-                                                class="border p-2 rounded w-full" readonly>
+                                                class="border p-2 rounded w-full"  >
                                         </div> --}}
                                         {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> --}}
-                                            {{-- <div>
+                                        {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Número
                                                     de identidad</label>
                                                 <input name="documentocliente" type="number" placeholder="Documento"
                                                     class="border p-2 rounded w-full">
                                             </div> --}}
-                                            {{-- <div>
+                                        {{-- <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Licencia</label>
                                                 <input name="licenciacliente" type="number" placeholder="Licencia"
-                                                    class="border p-2 rounded w-full" readonly>
+                                                    class="border p-2 rounded w-full"  >
                                             </div>
                                             <div>
                                                 <label for="color"
@@ -140,7 +156,7 @@
                                                     factura</label>
                                                 <input name="condicioncliente" type="text"
                                                     placeholder="Condición de fact." class="border p-2 rounded w-full"
-                                                    readonly>
+                                                     >
                                             </div> --}}
                                         {{-- </div> --}}
                                     </div>
@@ -149,19 +165,19 @@
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Telefono</label>
                                             <input name="telefonocliente" type="text" placeholder="Teléfono"
-                                                class="border p-2 rounded w-full" readonly>
+                                                class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Email</label>
                                             <input name="emailcliente" type="text" placeholder="Email"
-                                                class="border p-2 rounded w-full" readonly>
+                                                class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Sector</label>
                                             <input name="sectorcliente" type="text" placeholder="Sector"
-                                                class="border p-2 rounded w-full" readonly>
+                                                class="border p-2 rounded w-full">
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +190,7 @@
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">VIN</label>
                                             <input name="VINvehiculo" type="text" placeholder="VIN"
-                                                class="border p-2 rounded w-full" readonly>
+                                                class="border p-2 rounded w-full">
                                         </div>
                                         <div>
                                             <label for="descripcionvehiculo"
@@ -194,13 +210,13 @@
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Cantidad</label>
                                                 <input name="cantidadvehiculo" type="number" placeholder="Cant."
-                                                    class="border p-2 rounded w-full" readonly>
+                                                    class="border p-2 rounded w-full">
                                             </div>
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Descuento</label>
                                                 <input name="descuentovehiculo" type="number" placeholder="Desc."
-                                                    class="border p-2 rounded w-full" readonly>
+                                                    class="border p-2 rounded w-full">
                                             </div>
                                         </div>
                                     </div>
@@ -209,29 +225,27 @@
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Precio</label>
                                             <input name="preciovehiculo" type="number" placeholder="Precio"
-                                                class="border p-2 rounded w-full" readonly>
+                                                class="border p-2 rounded w-full">
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">ITBIS</label>
                                                 <input name="itbisvehiculo" type="text"
-                                                    placeholder="ITBIS Vehiculo" class="border p-2 rounded w-full"
-                                                    readonly>
+                                                    placeholder="ITBIS Vehiculo" class="border p-2 rounded w-full">
                                             </div>
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Subtotal</label>
                                                 <input name="subtotalvehiculo" type="text" placeholder="Subtotal"
-                                                    class="border p-2 rounded w-full" readonly>
+                                                    class="border p-2 rounded w-full">
                                             </div>
                                         </div>
                                         <div>
                                             <label for="transmision"
                                                 class="block text-sm font-medium text-gray-700">Total</label>
                                             <input name="totalvehiculo" type="number" placeholder="TOTAL"
-                                                class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full"
-                                                readonly>
+                                                class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full">
                                         </div>
                                     </div>
                                 </div>
@@ -299,8 +313,7 @@
                                                     class="block text-sm font-medium text-gray-700">Monto a
                                                     pagar</label>
                                                 <input name="montoapagar" type="number" placeholder="TOTAL"
-                                                    class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full"
-                                                    readonly>
+                                                    class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full">
                                             </div>
                                         </div>
                                     </div>
@@ -316,8 +329,7 @@
                                                 class="block text-sm font-medium text-gray-700">Monto
                                                 solicitado</label>
                                             <input name="montosolicitado" type="text"
-                                                placeholder="Monto solicitado" class="border p-2 rounded w-full"
-                                                readonly>
+                                                placeholder="Monto solicitado" class="border p-2 rounded w-full">
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                             <div>
