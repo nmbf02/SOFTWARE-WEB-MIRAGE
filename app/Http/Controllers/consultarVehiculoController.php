@@ -15,12 +15,14 @@ class consultarVehiculoController extends Controller
      */
     public function consultarVehiculo($numerovehiculo = null)
     {
-        return view('components.vehiculo.consultavehiculo', compact('numerovehiculo'));
+        $vehiculos = Vehiculo::where('Status',1)->get();
+        // return view('components.vehiculo.consultavehiculo', compact('numerovehiculo'));
+        return view('components.vehiculo.consultavehiculo', ["numerovehiculo"=> $numerovehiculo, "vehiculos" => $vehiculos]);
     }
 
     public function index()
     {
-        $vehiculos = Vehiculo::all();
+        $vehiculos = Vehiculo::where('Status',1)->get();
         return response()->json($vehiculos);
     }
 

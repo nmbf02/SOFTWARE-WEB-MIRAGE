@@ -16,7 +16,7 @@ class RegitrarVehiculoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {      
         // dd($request->all());
         $request->validate([
             'VIN' => 'required|string',
@@ -79,11 +79,103 @@ class RegitrarVehiculoController extends Controller
         $crearVehiculo->IdSegmentoMercado = $request->SegmentoMercado;
         $crearVehiculo->IdTipoItbis = $request->TipoItbis;
         $crearVehiculo->IdGarantia = $request->garantiaVehiculo;
-        $crearVehiculo->Status = $request->status ? 1 : 0;
+        $crearVehiculo->Status = $request->Status =="on"? 1:0;
 
         // Save the Vehiculo instance to the database
+  
         $crearVehiculo->save();
 
+
         return redirect('vehicle-register')->with('success', 'Guardado con exito');
+    }
+
+    public function update(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'VIN' => 'required|string',
+            'descripcion' => 'required|string',
+            'estadoVehiculo' => 'required|exists:estadovehiculos,IdEstadoVehiculo',
+            'modeloVehiculo' => 'required|exists:modelovehiculos,IdModeloVehiculo',
+            'colorvehiculo' => 'required|exists:colorvehiculos,IdColorVehiculo',
+            // 'acabadoVehiculo' => 'required|exists:acabadocolorvehiculos,IdAcabadoColorVehiculo',
+            'tipoVehiculo' => 'required|exists:tipovehiculos,IdTipoVehiculo',
+            'ClasificacionVehiculo' => 'required|exists:clasificacionvehiculos,IdClasificacionVehiculo',
+            'traccionVehiculo' => 'required|exists:traccionvehiculos,IdTraccionVehiculo',
+            'trasnmisionVehiculo' => 'required|exists:transmisionvehiculos,IdTransmisionVehiculo',
+            'finalidadVehiculo' => 'required|exists:tipovehiculoconcesionario,IdTipoVehiculoConcesionario',
+            'motorcilindro' => 'required|string',
+            'serie' => 'required|string',
+            'ubicacionInventario' => 'required|exists:ubicacion,IdUbicacion',
+            'anoVehiculo' => 'required|integer',
+            'precio' => 'required|numeric',
+            'SeguroVehiculo' => 'required|exists:segurovehiculos,IdSeguroVehiculo',
+            'numeroplaca' => 'required|string',
+            'placaexhibicion' => 'required|string',
+            'chasis' => 'required|string',
+            'matricula' => 'required|string',
+            'marbete' => 'required|string',
+            'capacidadpasajeros' => 'required|integer',
+            'fechaexpedicion' => 'required|date',
+            'SegmentoMercado' => 'required|exists:segmentomercado,IdSegmentoMercado',
+            'TipoItbis' => 'required|exists:tipoitbis,IdTipoItbis',
+            'garantiaVehiculo' => 'required|exists:garantia,IdGarantia',
+            'status' => 'nullable|boolean',
+        ]);
+
+        $vehiculo = Vehiculo::where('IdVehiculo',$request->IdVehiculo)->where('Status',1)->first();
+        // dd($vehiculo,$request, $request->descripcion,$request->IdVehiculo);
+        if($vehiculo != null){
+            // Assign the request data to the Vehiculo instance
+            $vehiculo->VIN = $request->VIN;
+            $vehiculo->Descripcion = $request->descripcion;
+            $vehiculo->IdEstadoVehiculo = $request->estadoVehiculo;    
+            $vehiculo->IdModeloVehiculo = $request->modeloVehiculo;
+            $vehiculo->IdColorVehiculo = $request->colorvehiculo;
+            // $vehiculo->IdAcabadoColorVehiculo = $request->acabadoVehiculo;
+            $vehiculo->IdTipoVehiculo = $request->tipoVehiculo;
+            $vehiculo->IdClasificacionVehiculo = $request->ClasificacionVehiculo;
+            $vehiculo->IdTransmisionVehiculo = $request->trasnmisionVehiculo;
+            $vehiculo->IdTraccionVehiculo = $request->traccionVehiculo;
+            $vehiculo->MotorCilindro = $request->motorcilindro;
+            $vehiculo->IdTipoVehiculoConcesionario = $request->finalidadVehiculo;
+            $vehiculo->Serie = $request->serie;
+            $vehiculo->IdUbicacion = $request->ubicacionInventario;  
+            $vehiculo->AnoVehiculo = $request->anoVehiculo;
+            $vehiculo->Precio = $request->precio;
+            $vehiculo->IdSeguroVehiculo = $request->SeguroVehiculo;
+            $vehiculo->Placa = $request->numeroplaca;
+            $vehiculo->PlacaExhibicion = $request->placaexhibicion;
+            $vehiculo->Chasis = $request->chasis;
+            $vehiculo->Matricula = $request->matricula;
+            $vehiculo->Marbete = $request->marbete;
+            $vehiculo->CapacidadPasajeros = $request->capacidadpasajeros;
+            $vehiculo->FechaExpedicion = $request->fechaexpedicion;
+            $vehiculo->IdSegmentoMercado = $request->SegmentoMercado;
+            $vehiculo->IdTipoItbis = $request->TipoItbis;
+            $vehiculo->IdGarantia = $request->garantiaVehiculo;
+            $vehiculo->Status = $request->status ? 1 : 0;
+
+        }
+
+
+        // Save the Vehiculo instance to the database
+        $vehiculo->save();
+
+        return redirect('vehicle-register')->with('success', 'Guardado con exito');
+    }
+
+    public function destroy(Request $request,$IdVehiculo)
+    { 
+        $vehiculo = Vehiculo::where('IdVehiculo',$request->IdVehiculo)->where('Status',1)->first();
+        // dd($vehiculo,$request, $request->descripcion,$request->IdVehiculo);
+        if($vehiculo != null){ 
+            $vehiculo->Status = 2; //eliminado 
+            $vehiculo->save();
+        }
+ 
+
+        $vehiculos = Vehiculo::where('Status',1)->get(); 
+        return view('components.vehiculo.consultavehiculo', ["numerovehiculo"=> null, "vehiculos" => $vehiculos]);
     }
 }
