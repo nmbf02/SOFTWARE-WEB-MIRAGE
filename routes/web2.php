@@ -576,6 +576,10 @@ Route::Put('/EditarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, '
     ->middleware(['auth'])
     ->name('RegitrarVehiculo.update');
 
+    Route::Delete('/EliminarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, 'destroy'])
+    ->middleware(['auth'])
+    ->name('RegitrarVehiculo.destroy');
+
 Route::post('/convert-html-to-pdf', [PDFController::class, 'convertHTMLToPDF']);
 
 Route::Post('/RegitrarFactura/create', [RegitrarFacturaController::class, 'store'])

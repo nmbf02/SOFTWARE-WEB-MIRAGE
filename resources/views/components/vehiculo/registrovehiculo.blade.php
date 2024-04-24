@@ -22,8 +22,8 @@
                                 @if (request()->routeIs('registerVehicle' ))   
                             <form method="POST" action="{{ route('RegitrarVehiculo.store') }}">
                                 @else
-                            <form method="POST" action="{{ route('RegitrarVehiculo.update', $vehiculo->IdVehiculo) }}">
-                                @method('PUT')
+                            <form method="POST" action="{{ route('RegitrarVehiculo.update',@$vehiculo->IdVehiculo) }}">
+                                @method("PUT")
                                 @endif
 
                                 @csrf
@@ -45,7 +45,7 @@
                                         <div>
                                             <label for="estadoVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Estado</label>
-                                            <select name="estadoVehiculo" id="estadoVehiculo"
+                                            <select value="{{@$vehiculo->IdEstadoVehiculo}}" name="estadoVehiculo" id="estadoVehiculo"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione un estado">
                                                 @foreach ($estadoVehiculo as $vehiculoestado)
@@ -77,7 +77,7 @@
                                         <div>
                                             <label for="modeloVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Modelo</label>
-                                            <select name="modeloVehiculo" id="modeloVehiculo"
+                                            <select  value="{{@$vehiculo->IdModeloVehiculo}}" name="modeloVehiculo" id="modeloVehiculo"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione un modelo">
                                                 @foreach ($modeloVehiculo as $vehiculomodelo)
@@ -90,7 +90,7 @@
                                         <div>
                                             <label for="colorvehiculo"
                                                 class="block text-sm font-medium text-gray-700">Color</label>
-                                            <select name="colorvehiculo" id="colorvehiculo"
+                                            <select value="{{@$vehiculo->IdColorVehiculo}}" name="colorvehiculo" id="colorvehiculo"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione un color">
                                                 @foreach ($colorvehiculo as $vehiculocolor)
@@ -116,7 +116,7 @@
                                         <div>
                                             <label for="tipoVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Tipo</label>
-                                            <select name="tipoVehiculo" id="tipoVehiculo"
+                                            <select value="{{@$vehiculo->IdTipoVehiculo}}" name="tipoVehiculo" id="tipoVehiculo"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione un tipo">
                                                 @foreach ($tipoVehiculo as $vehiculotipo)
@@ -129,7 +129,7 @@
                                         <div>
                                             <label for="traccionVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Tracción</label>
-                                            <select name="traccionVehiculo" id="traccionVehiculo"
+                                            <select value="{{@$vehiculo->IdTraccionVehiculo}}" name="traccionVehiculo" id="traccionVehiculo"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione una tracción">
                                                 @foreach ($traccionVehiculo as $vehiculotraccion)
@@ -142,7 +142,7 @@
                                         <div>
                                             <label for="trasnmisionVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Transmisión</label>
-                                            <select name="trasnmisionVehiculo" id="trasnmisionVehiculo"
+                                            <select value="{{@$vehiculo->IdTransmisionVehiculo}}" name="trasnmisionVehiculo" id="trasnmisionVehiculo"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione una transmisión">
                                                 @foreach ($trasnmisionVehiculo as $vehiculotrasnmision)
@@ -155,7 +155,7 @@
                                         <div>
                                             <label for="ClasificacionVehiculo"
                                                 class="block text-sm font-medium text-gray-700">Clasificación</label>
-                                            <select name="ClasificacionVehiculo" id="ClasificacionVehiculo"
+                                            <select value="{{@$vehiculo->IdClasificacionVehiculo}}" name="ClasificacionVehiculo" id="ClasificacionVehiculo"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione una clasificación">
                                                 @foreach ($ClasificacionVehiculo as $clasificacion)
@@ -171,7 +171,7 @@
                                 <div>
                                     <label for="finalidadVehiculo"
                                         class="block text-sm font-medium text-gray-700">Finalidad del vehículo</label>
-                                    <select name="finalidadVehiculo" id="finalidadVehiculo"
+                                    <select value="{{@$vehiculo->IdTipoVehiculoConcesionario}}" name="finalidadVehiculo" id="finalidadVehiculo"
                                         class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Uso">
                                         @foreach ($finalidadVehiculo as $vehiculofinalidad)
@@ -191,7 +191,7 @@
                                                 <label for="motor-cilindro"
                                                     class="block text-sm font-medium text-gray-700">Motor del
                                                     cilindro</label>
-                                                <input name="motorcilindro" id="motor-cilindro" type="text"
+                                                <input value="{{@$vehiculo->MotorCilindro}}" name="motorcilindro" id="motor-cilindro" type="text"
                                                     placeholder="Motor del cilindro"
                                                     class="border p-2 rounded w-full">
                                             </div>
@@ -199,7 +199,7 @@
                                             <div>
                                                 <label for="serie"
                                                     class="block text-sm font-medium text-gray-700">Serie</label>
-                                                <input name="serie" id="serie" type="text"
+                                                <input value="{{@$vehiculo->Serie}}" name="serie" id="serie" type="text"
                                                     placeholder="Serie" class="border p-2 rounded w-full">
                                             </div>
                                         </div>
@@ -212,7 +212,7 @@
                                         <div>
                                             <label for="ubicacionInventario"
                                                 class="block text-sm font-medium text-gray-700">Ubicación</label>
-                                            <select name="ubicacionInventario" id="ubicacionInventario"
+                                            <select value="{{@$vehiculo->IdUbicacion}}" name="ubicacionInventario" id="ubicacionInventario"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione una ubicación">
                                                 @foreach ($ubicacionInventario as $ubicacion)
@@ -233,21 +233,21 @@
                                                 <label for="anoVehiculo"
                                                     class="block text-sm font-medium text-gray-700">Año del
                                                     Vehículo</label>
-                                                <input name="anoVehiculo" id="anoVehiculo" type="number"
+                                                <input value="{{@$vehiculo->AnoVehiculo}}" name="anoVehiculo" id="anoVehiculo" type="number"
                                                     placeholder="2024" class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="precio"
                                                     class="block text-sm font-medium text-gray-700">Precio</label>
-                                                <input name="precio" id="precio" type="number"
+                                                <input value="{{@$vehiculo->Precio}}" name="precio" id="precio" type="number"
                                                     placeholder="0.00" class="border p-2 rounded w-full">
                                             </div>
                                             <div class="mb-4">
                                                 <label for="SeguroVehiculo"
                                                     class="block text-sm font-medium text-gray-700">Seguro del
                                                     vehículo</label>
-                                                <select name="SeguroVehiculo" id="SeguroVehiculo"
+                                                <select value="{{@$vehiculo->IdSeguroVehiculo}}" name="SeguroVehiculo" id="SeguroVehiculo"
                                                     class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                     placeholder="Seleccione un seguro">
                                                     @foreach ($SeguroVehiculo as $seguro)
@@ -261,7 +261,7 @@
                                                 <label for="placa"
                                                     class="block text-sm font-medium text-gray-700">Número de
                                                     placa</label>
-                                                <input name="numeroplaca" id="placa" type="text"
+                                                <input value="{{@$vehiculo->Placa}}" name="numeroplaca" id="placa" type="text"
                                                     placeholder="Número de placa" class="border p-2 rounded w-full">
                                             </div>
 
@@ -269,7 +269,7 @@
                                                 <label for="placaExhibicion"
                                                     class="block text-sm font-medium text-gray-700">Placa de
                                                     exhibición</label>
-                                                <input name="placaexhibicion" id="placaExhibicion" type="text"
+                                                <input value="{{@$vehiculo->PlacaExhibicion}}" name="placaexhibicion" id="placaExhibicion" type="text"
                                                     placeholder="Placa de Exhibición"
                                                     class="border p-2 rounded w-full">
                                             </div>
@@ -277,21 +277,21 @@
                                             <div class="mb-4">
                                                 <label for="chasis"
                                                     class="block text-sm font-medium text-gray-700">Chasis</label>
-                                                <input name="chasis" id="chasis" type="text"
+                                                <input value="{{@$vehiculo->Chasis}}" name="chasis" id="chasis" type="text"
                                                     placeholder="Chasis" class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="matricula"
                                                     class="block text-sm font-medium text-gray-700">Matrícula</label>
-                                                <input name="matricula" id="matricula" type="text"
+                                                <input value="{{@$vehiculo->Matricula}}" name="matricula" id="matricula" type="text"
                                                     placeholder="Matrícula" class="border p-2 rounded w-full">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label for="marbete"
                                                     class="block text-sm font-medium text-gray-700">Marbete</label>
-                                                <input name="marbete" id="marbete" type="text"
+                                                <input value="{{@$vehiculo->Marbete}}" name="marbete" id="marbete" type="text"
                                                     placeholder="Marbete" class="border p-2 rounded w-full">
                                             </div>
 
@@ -299,7 +299,7 @@
                                                 <label for="capacidadPasajeros"
                                                     class="block text-sm font-medium text-gray-700">Capacidad de
                                                     pasajeros</label>
-                                                <input name="capacidadpasajeros" id="capacidadPasajeros"
+                                                <input value="{{@$vehiculo->CapacidadPasajeros}}" name="capacidadpasajeros" id="capacidadPasajeros"
                                                     type="number" placeholder="Capacidad de Pasajeros"
                                                     class="border p-2 rounded w-full">
                                             </div>
@@ -308,7 +308,7 @@
                                                 <label for="fechaExpedicion"
                                                     class="block text-sm font-medium text-gray-700">Fecha de
                                                     expedición</label>
-                                                <input name="fechaexpedicion" id="fechaExpedicion" type="date"
+                                                <input value="{{@$vehiculo->FechaExpedicion}}" name="fechaexpedicion" id="fechaExpedicion" type="date"
                                                     class="border p-2 rounded w-full">
                                             </div>
 
@@ -317,7 +317,7 @@
                                                 <label for="SegmentoMercado"
                                                     class="block text-sm font-medium text-gray-700">Segmento de
                                                     mercado</label>
-                                                <select name="SegmentoMercado" id="SegmentoMercado"
+                                                <select value="{{@$vehiculo->IdSegmentoMercado}}" name="SegmentoMercado" id="SegmentoMercado"
                                                     class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                     placeholder="Seleccione un seguro">
                                                     @foreach ($SegmentoMercado as $segmento)
@@ -331,7 +331,7 @@
                                             <div class="mb-4">
                                                 <label for="TipoItbis"
                                                     class="block text-sm font-medium text-gray-700">Tipo ITBIS</label>
-                                                <select name="TipoItbis" id="TipoItbis"
+                                                <select value="{{@$vehiculo->IdTipoItbis}}" name="TipoItbis" id="TipoItbis"
                                                     class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                     placeholder="Seleccione un ITBIS">
                                                     @foreach ($TipoItbis as $itbis)
@@ -345,7 +345,7 @@
                                             <div class="mb-4">
                                                 <label for="garantiaVehiculo"
                                                     class="block text-sm font-medium text-gray-700">Garantía</label>
-                                                <select name="garantiaVehiculo" id="garantiaVehiculo"
+                                                <select value="{{@$vehiculo->IdGarantia}}" name="garantiaVehiculo" id="garantiaVehiculo"
                                                     class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                     placeholder="Seleccione una garantía">
                                                     @foreach ($garantiaVehiculo as $garantia)
@@ -359,7 +359,7 @@
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                {{-- <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Subir archivos</h6>
                                     <div class="mb-4">
                                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
@@ -394,9 +394,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div>
-                                    <input type="checkbox" id="Estado_modelo" name="status" class="rounded">
+                                    <input checked="{{@$vehiculo->Status}}" type="checkbox" id="Estado_modelo" name="Status" class="rounded" >
                                     <label for="Estado_modelo"
                                         class="text-sm font-medium text-gray-700">Estado</label>
                                 </div>

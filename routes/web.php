@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
  * @controller VehicleConfigurationController
  * @method index
  */
-Route::get('vehicle-configuration', [VehicleConfigurationController::class, 'index']);
-Route::get('general-configuration', [GeneralConfigurationController::class, 'index']);
+Route::get('vehicle-configuration', [VehicleConfigurationController::class, 'index'])->name('configurationVehicle');
+Route::get('general-configuration', [GeneralConfigurationController::class, 'index'])->name('generalConfig');
 Route::get('vehicle-register', [VehicleRegisterController::class, 'index'])->name('registerVehicle');
-Route::get('vehicle-register/{id}', [VehicleRegisterController::class, 'edit'])->name('editVehicle');
+Route::get('vehicle-edit/{id}', [VehicleRegisterController::class, 'edit'])->name('editVehicle');
 Route::get('customer-register', [CustomerRegisterController::class, 'index']);
 Route::get('sales-register', [SalesRegisterController::class, 'index']);
 

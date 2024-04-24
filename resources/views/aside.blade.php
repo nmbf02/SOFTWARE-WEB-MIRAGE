@@ -177,11 +177,11 @@
                                 </svg>
                             </a>
                             <div x-show="VehiculoOpen" class="bg-gray-100 rounded-lg">
-                                <a href="/vehicle-configuration"
+                                <a href="{{ route('configurationVehicle') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Configuración
                                 </a>
-                                <a href="/vehicle-register"
+                                <a href="{{ route('registerVehicle') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2 pl-10">
                                     Registrar
                                 </a>

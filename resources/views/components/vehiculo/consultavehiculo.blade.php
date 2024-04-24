@@ -149,9 +149,14 @@
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form> --}}
                                         <a href="{{ route('editVehicle', ['id' => $vehiculo->IdVehiculo]) }}" class="btn btn-primary">Editar</a>
-                                        <form action="" style="display: inline-block;">
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
+                                         
+                                            <form action="{{ route('RegitrarVehiculo.destroy', $vehiculo->IdVehiculo) }}"
+                                                method="POST" >
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Eliminar</button> 
+                                            </form> 
+                                        
                                     </td>
                                 </tr>
                             @endforeach
