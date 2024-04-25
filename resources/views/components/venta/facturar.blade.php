@@ -84,7 +84,7 @@
                                         placeholder="Seleccione un cliente" onchange="this.form.submit() ">
                                         <option value="">Seleccionar cliente</option>
                                         @foreach ($clienteFactura as $cliente)
-                                            <option value="{{ $cliente->IdCliente }}">
+                                            <option value="{{ $cliente->IdCliente }}" {{ ($requestClienteFactura == $cliente->IdCliente) ? 'selected' : '' }}>
                                                 {{ $cliente->persona->Nombre }}
                                             </option>
                                         @endforeach
@@ -107,28 +107,26 @@
                                         <div>
                                             <label for="clienteFactura"
                                                 class="block text-sm font-medium text-gray-700">Cliente</label>
-                                            <select name="clienteFactura" id="clienteFactura"
+                                                
+                                                <input type="text" name="clienteFactura" id="clienteFactura"
+                                                value="{{ $client->persona->Nombre  }}"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                placeholder="Seleccione un cliente">
-                                                @foreach ($clienteFactura as $cliente)
-                                                    <option value="{{ $cliente->IdCliente }}">
-                                                        {{ $cliente->persona->Nombre }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                                readonly >
+
+                                         
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Licencia</label>
-                                            <input value="{{ $client['IdCategoriaLicencia']}}" name="licenciacliente" type="number" placeholder="Licencia"
-                                                class="border p-2 rounded w-full">
+                                            <input value="{{ $client->categoriaLicencia->Descripcion }}" name="licenciacliente" type="text" placeholder="Licencia"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Condición de
                                                 factura</label>
-                                            <input name="condicioncliente" type="text"
-                                                placeholder="Condición de fact." class="border p-2 rounded w-full">
+                                            <input value="{{ $client->IdCondicionFactura }}" name="condicioncliente" type="text"
+                                                placeholder="Condición de fact." class="border p-2 rounded w-full" readonly>
                                         </div>
                                         {{-- <div>
                                             <label for="color"
@@ -164,20 +162,20 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Telefono</label>
-                                            <input name="telefonocliente" type="text" placeholder="Teléfono"
-                                                class="border p-2 rounded w-full">
+                                            <input value="{{ $client->persona->Telefono }}" name="telefonocliente" type="text" placeholder="Teléfono"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Email</label>
-                                            <input name="emailcliente" type="text" placeholder="Email"
-                                                class="border p-2 rounded w-full">
+                                            <input value="{{ $client->persona->Email }}" name="emailcliente" type="text" placeholder="Email"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Sector</label>
-                                            <input name="sectorcliente" type="text" placeholder="Sector"
-                                                class="border p-2 rounded w-full">
+                                            <input value="{{ $client->persona->Sector->Descripcion }}" name="sectorcliente" type="text" placeholder="Sector"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                     </div>
                                 </div>
