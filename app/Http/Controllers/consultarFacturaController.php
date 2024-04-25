@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Venta;
+use App\Models\Cliente;
+
 class consultarFacturaController extends Controller
 {
     /**
@@ -12,6 +15,8 @@ class consultarFacturaController extends Controller
      */
     public function consultarFactura($numerofactura = null)
     {
-        return view('components.venta.consultar-factura', compact('numerofactura'));
+        $facturas = Venta::with('cliente.persona')->get();
+        
+        return view('components.venta.consultar-factura', compact('numerofactura', 'facturas'));
     }
 }

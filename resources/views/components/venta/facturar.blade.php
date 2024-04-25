@@ -125,7 +125,11 @@
                                         <div>
                                             <label for="clienteFactura"
                                                 class="block text-sm font-medium text-gray-700">Cliente</label>
-                                            <input type="text" name="clienteFactura" id="clienteFactura"
+                                                <input type="text" name="clienteFactura"
+                                                value="{{ isset($client->IdCliente) ? $client->IdCliente : '' }}"
+                                                style="display:none"
+                                                readonly>
+                                            <input type="text"  id="clienteFactura"
                                                 value="{{ isset($client->persona->Nombre) ? $client->persona->Nombre : '' }}"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 readonly>
@@ -220,6 +224,10 @@
                                         <div>
                                             <label for="descripcionvehiculo"
                                                 class="block text-sm font-medium text-gray-700">Descripción</label>
+                                                <input
+                                                value="{{ isset($vehicle->IdVehiculo) ? $vehicle->IdVehiculo : '' }}"
+                                                name="idvehiculo" type="text" placeholder="Descripción"
+                                                style="display:none;" readonly>
                                             <input
                                                 value="{{ isset($vehicle->Descripcion) ? $vehicle->Descripcion : '' }}"
                                                 name="descripcionvehiculo" type="text" placeholder="Descripción"

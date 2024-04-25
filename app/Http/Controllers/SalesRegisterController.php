@@ -26,7 +26,6 @@ class SalesRegisterController extends Controller
         $clienteFactura = Cliente::all();
         $descripcionvehiculo = Vehiculo::all();
 
-        
 //        dd($client);
 
         return view('components.venta.facturar', [
