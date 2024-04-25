@@ -23,8 +23,7 @@
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
                             {{-- Destino --}}
-                            <form method="POST" action="{{ route('Tipovehiculoconcesionario.store') }}"
-                                class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                            <form method="POST" action="{{ route('Tipovehiculoconcesionario.store') }}" class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
