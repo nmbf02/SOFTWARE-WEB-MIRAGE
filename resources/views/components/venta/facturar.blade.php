@@ -90,8 +90,22 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div>
+                                    <label for="vehiculoFactura"
+                                        class="block text-sm font-medium text-gray-700">VEHÍCULO</label>
+                                    <select name="vehiculoFactura" id="vehiculoFactura"
+                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Seleccione un vehiculo" onchange="this.form.submit() ">
+                                        <option value="">Seleccionar vehiculo</option>
+                                        @foreach ($descripcionvehiculo as $factura)
+                                            <option value="{{ $factura->IdVehiculo }}" {{ ($requestVehicleFactura == $factura->IdVehiculo) ? 'selected' : '' }}>
+                                                {{ $factura->Descripcion }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </form>
-                            
+                            <div class="p-2"></div>
                             <form method="POST" action="{{ route('RegitrarFactura.store') }}">
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
@@ -109,7 +123,7 @@
                                                 class="block text-sm font-medium text-gray-700">Cliente</label>
                                                 
                                                 <input type="text" name="clienteFactura" id="clienteFactura"
-                                                value="{{ $client->persona->Nombre  }}"
+                                                value="{{ (isset($client->persona->Nombre)) ? $client->persona->Nombre : ''  }}"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 readonly >
 
@@ -118,7 +132,7 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Licencia</label>
-                                            <input value="{{ $client->categoriaLicencia->Descripcion }}" name="licenciacliente" type="text" placeholder="Licencia"
+                                            <input value="{{ (isset($client->categoriaLicencia->Descripcion)) ? $client->categoriaLicencia->Descripcion : '' }}" name="licenciacliente" type="text" placeholder="Licencia"
                                                 class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
@@ -162,25 +176,27 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Telefono</label>
-                                            <input value="{{ $client->persona->Telefono }}" name="telefonocliente" type="text" placeholder="Teléfono"
+                                            <input value="{{ (isset($client->persona->Telefono)) ? $client->persona->Telefono : '' }}" name="telefonocliente" type="text" placeholder="Teléfono"
                                                 class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Email</label>
-                                            <input value="{{ $client->persona->Email }}" name="emailcliente" type="text" placeholder="Email"
+                                            <input value="{{ (isset($client->persona->Email)) ? $client->persona->Email : '' }}" name="emailcliente" type="text" placeholder="Email"
                                                 class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Sector</label>
-                                            <input value="{{ $client->persona->Sector->Descripcion }}" name="sectorcliente" type="text" placeholder="Sector"
+                                            <input value="{{ (isset($client->persona->Sector->Descripcion)) ? $client->persona->Sector->Descripcion : '' }}" name="sectorcliente" type="text" placeholder="Sector"
                                                 class="border p-2 rounded w-full" readonly>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
                                 {{-- Vehiculo --}}
+                                
+                                <div class="p-2"></div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">VEHÍCULO</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
