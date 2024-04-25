@@ -590,7 +590,7 @@ Route::Delete('/EliminarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::cla
 ->middleware(['auth'])
 ->name('RegitrarVehiculo.destroy');
 
-Route::post('/convert-html-to-pdf', [PDFController::class, 'convertHTMLToPDF']);
+Route::get('/DescargarFactura/{IdVenta}', [PDFController::class, 'generatePDF']);
 
 Route::Post('/RegitrarFactura/create', [RegitrarFacturaController::class, 'store'])
     ->middleware(['auth'])

@@ -15,7 +15,6 @@ class Venta extends Model
 
     protected $fillable = [
         'IdCliente',
-        'Fecha',
         'Subtotal',
         'Itbis',
         'Descuento',
