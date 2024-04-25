@@ -10,6 +10,7 @@ class RegitrarFacturaController extends Controller
 {
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'clienteFactura' => 'required|exists:clientes,IdCliente',
             'subtotalfactura' => 'required|numeric',
@@ -22,7 +23,7 @@ class RegitrarFacturaController extends Controller
             'cantidadvehiculo' => 'required|numeric',
             'preciovehiculo' => 'required|numeric',
             'subtotalvehiculo' => 'required|numeric',
-            'descuentovehiculo' => 'required|numeric',
+            'descuentovehiculo' => 'nullable|numeric',
             'itbisvehiculo' => 'required|numeric',
         ]);
 
@@ -41,6 +42,7 @@ class RegitrarFacturaController extends Controller
         //     'Total' => $request->montoapagar,
         //     'IdMoneda' => $request->monedafactura,
         // ]);
+        
         $venta->save();
 
         // foreach ($request->detalles as $detalle) {
@@ -52,10 +54,6 @@ class RegitrarFacturaController extends Controller
             'Subtotal' => $request->cantidadvehiculo * $request->preciovehiculo,
             'Descuento' => $request->descuentovehiculo ?? 0
         ]);
-
-
-
-
         return redirect('sales-register')->with('success', 'Guardado con exito');
     }
 }
