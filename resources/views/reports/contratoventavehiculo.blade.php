@@ -38,7 +38,7 @@
             <p><strong>Vendedor:</strong> MIRAGE</p>
             <p><strong>Dirección del Vendedor:</strong> Santiago de los caballeros, RD.</p>
             <p><strong>Comprador:</strong> {{ $cliente->persona->Nombre }}</p>
-            <p><strong>Dirección del Comprador:</strong> {{ $cliente->persona->sector->Descripcion }}</p>
+            {{-- <p><strong>Dirección del Comprador:</strong> {{ $cliente->persona->sector->Descripcion }}</p> --}}
         </div>
         <div class="section">
             <h2>Descripción del Vehículo</h2>
