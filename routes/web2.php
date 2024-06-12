@@ -92,6 +92,7 @@ use App\Http\Controllers\seguroconfiguracionController;
 use App\Http\Controllers\RegitrarVehiculoController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegitrarFacturaController;
+use App\Http\Controllers\consultarMantenimientoVehiculoController;
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -463,7 +464,7 @@ Route::get('/Canalcomunicacion', [CanalcomunicacionController::class, 'index'])
     ->middleware(['auth'])
     ->name('Canalcomunicacion');
 
-// CONDICION DE LA FACTURA 
+// CONDICION DE LA FACTURA
 Route::Post('/Condicionfactura/create', [CondicionfacturaController::class, 'store'])
     ->middleware(['auth'])
     ->name('Condicionfactura.store');
@@ -585,3 +586,7 @@ Route::get('/DescargarFactura/{IdVenta}', [PDFController::class, 'generatePDF'])
 Route::Post('/RegitrarFactura/create', [RegitrarFacturaController::class, 'store'])
     ->middleware(['auth'])
     ->name('RegitrarFactura.store');
+
+Route::get('/consultar-mantenimiento-vehiculo/{mantenimiento?}', [consultarMantenimientoVehiculoController::class, 'consultarMantenimientoVehiculo'])
+    ->middleware(['auth'])
+    ->name('consultar-mantenimiento-vehiculo');
