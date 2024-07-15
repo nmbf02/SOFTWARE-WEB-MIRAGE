@@ -324,6 +324,12 @@
                                                         placeholder="Descripción" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
+                                                    <label for="mantenimiento-acabado"
+                                                           class="block text-sm font-medium text-gray-700">Días mantenimiento</label>
+                                                    <input name="mantenimiento-acabado" type="number" min="0"
+                                                           placeholder="Días de mantenimiento" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
                                                     <input type="checkbox" name="status" class="rounded">
                                                     <label for="status"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
@@ -367,6 +373,12 @@
                                                         class="block text-sm font-medium text-gray-700">Descripción</label>
                                                     <input name="descripcion" type="text"
                                                         placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="mantenimiento-estado-vehiculo"
+                                                           class="block text-sm font-medium text-gray-700">Días mantenimiento</label>
+                                                    <input name="mantenimiento-estado-vehiculo" type="number" min="0"
+                                                           placeholder="Días de mantenimiento" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <input type="checkbox" name="status" class="rounded">
@@ -427,7 +439,7 @@
                                                     </select>
                                                 </div>
                                                 <div>
-                                                    <input name="status" type="checkbox" id="Estado_modelo" 
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
                                                         class="rounded">
                                                     <label for="Estado_modelo"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
@@ -485,7 +497,7 @@
                                                     </select>
                                                 </div>
                                                 <div>
-                                                    <input name="status" type="checkbox" id="Estado_modelo" 
+                                                    <input name="status" type="checkbox" id="Estado_modelo"
                                                         class="rounded">
                                                     <label for="Estado_modelo"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
@@ -518,12 +530,6 @@
 
                                         <div id="toggleContent10" class="hidden">
                                             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                                {{-- <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Seguro</label>
-                                                <input type="text" placeholder="Código del seguro"
-                                                    class="border p-2 rounded w-full">
-                                            </div> --}}
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Número de
@@ -596,6 +602,12 @@
                                                     </div>
                                                 </div>
                                                 <div>
+                                                    <label for="mantenimiento-seguro"
+                                                           class="block text-sm font-medium text-gray-700">Días mantenimiento</label>
+                                                    <input name="mantenimiento-seguro" type="number" min="0"
+                                                           placeholder="Días de mantenimiento" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
                                                     <input name="status" type="checkbox" id="Estado_modelo"
                                                         class="rounded">
                                                     <label for="Estado_modelo"
@@ -643,6 +655,12 @@
                                                         placeholder="Descripción" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
+                                                    <label for="mantenimiento-transmision"
+                                                           class="block text-sm font-medium text-gray-700">Días mantenimiento</label>
+                                                    <input name="mantenimiento-transmision" type="number" min="0"
+                                                           placeholder="Días de mantenimiento" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
                                                     <input type="checkbox" name="status" class="rounded">
                                                     <label for="Estado_modelo"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
@@ -675,18 +693,17 @@
                                         <!-- Sección a mostrar/ocultar -->
                                         <div id="toggleContent12" class="hidden">
                                             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                                {{-- <div>
-                                                    <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Código de
-                                                        tracción</label>
-                                                    <input type="text" placeholder="Código de tracción"
-                                                        class="border p-2 rounded w-full">
-                                                </div> --}}
                                                 <div>
                                                     <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Descripción</label>
                                                     <input name="descripcion" type="text"
                                                         placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="mantenimiento-traccion"
+                                                           class="block text-sm font-medium text-gray-700">Días mantenimiento</label>
+                                                    <input name="mantenimiento-traccion" type="number" min="0"
+                                                           placeholder="Días de mantenimiento" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <input type="checkbox" name="status" class="rounded">
@@ -826,8 +843,8 @@
                                                         placeholder="Descripción" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <input name="status" type="checkbox" id="Estado_modelo"
-                                                        name="Estado_modelo" class="rounded">
+                                                    <input type="checkbox" id="Estado_modelo"
+                                                           name="Estado_modelo" class="rounded">
                                                     <label for="Estado_modelo"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
@@ -887,8 +904,8 @@
                                                         placeholder="Descripción" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <input name="statusitbis" type="checkbox" id="Estado_modelo"
-                                                        name="Estado_modelo" class="rounded">
+                                                    <input type="checkbox" id="Estado_modelo"
+                                                        name="Estado_itbis" class="rounded">
                                                     <label for="Estado_modelo"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
