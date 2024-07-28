@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
                                 {{-- Tipo mantenimiento --}}
-                                {{-- <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
                                         <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo mantenimiento</h6>
                                         <button type="button"
@@ -162,7 +162,7 @@
                                                 @include('icons/hidden') <!-- Icono oculto inicialmente -->
                                             </div>
                                         </button>
-                                    </div> --}}
+                                    </div>
                                     <!-- Sección a mostrar/ocultar -->
                                     <div id="toggleContent2" class="hidden">
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
