@@ -209,6 +209,10 @@
                             </a>
                             <!-- Submenú de Mantenimiento -->
                             <div x-show="MantenimientoOpen" class="pl-10 bg-gray-100 rounded-lg">
+                                <a href="{{ route('consultar-sugerencia') }}"
+                                   class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
+                                    Sugerencia
+                                </a>
                                 <a href="{{ route('configuracion-mantenimiento') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Configuración

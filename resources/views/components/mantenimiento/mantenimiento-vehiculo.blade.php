@@ -25,55 +25,121 @@
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
                             <form>
-                                {{-- Orden de reparación --}}
+                                {{-- Orden de mantenimiento --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Orden de reparación</h6>
+                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Factura</h6>
                                     <div>
                                         <label for="color" class="block text-sm font-medium text-gray-700">Número de
-                                            orden</label>
-                                        <input type="text" placeholder="Número de orden"
+                                            factura</label>
+                                        <input type="text" placeholder="Número de factura"
                                             class="border p-2 rounded w-full">
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    {{-- Datos de mantenimiento --}}
+
+                                {{-- Datos de factura --}}
+                                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos del mantenimiento</h6>
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos factura</h6>
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Fecha de
+                                                        contrato</label>
+                                                    <input type="text" placeholder="Fecha factura"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Nombre del cliente</label>
+                                                    <input type="text" placeholder="Nombre del cliente"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Teléfono</label>
+                                                    <input type="text" placeholder="Nombre del cliente"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Identificación</label>
+                                                    <input type="text" placeholder="Nombre del cliente"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Identificación</label>
+                                                    <input type="text" placeholder="Nombre del cliente"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                                             <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Tipo
-                                                    de mantenimiento</label>
-                                                <select id="porcentajeMora" name="porcentajeMora"
-                                                    class="border p-2 rounded w-full">
-                                                    <option value="">Seleccionar</option>
-                                                </select>
+                                                <label for="color" class="block text-sm font-medium text-gray-700">VIN</label>
+                                                <input type="text" placeholder="VIN"
+                                                       class="border p-2 rounded w-full">
                                             </div>
                                             <div>
-                                                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Notas del chequeo..."
-                                                    class="border p-2 rounded w-full"></textarea>
+                                                <label for="color" class="block text-sm font-medium text-gray-700">Marca</label>
+                                                <input readonly type="text" placeholder="Marca"
+                                                       class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color" class="block text-sm font-medium text-gray-700">Modelo</label>
+                                                <input readonly type="text" placeholder="Modelo"
+                                                       class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color" class="block text-sm font-medium text-gray-700">Año</label>
+                                                <input readonly type="text" placeholder="Año"
+                                                       class="border p-2 rounded w-full">
+                                            </div>
+                                            <div>
+                                                <label for="color" class="block text-sm font-medium text-gray-700">Kilometraje</label>
+                                                <input readonly type="text" placeholder="Kilometraje "
+                                                       class="border p-2 rounded w-full">
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- Monto a pagar --}}
-                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Gastos por manteniminto</h6>
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
-                                                <div>
-                                                    <label for="color" class="block text-sm font-medium text-gray-700">Monto</label>
-                                                    <input type="number" placeholder="Monto gastado"
+                                </div>
+
+                                {{-- Asignacion de mantenimientos --}}
+                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Próximos mantenimientos </h6>
+                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+                                            <h1>Seleccione una o varias opciones</h1>
+                                            @if(session('success'))
+                                                <p>{{ session('success') }}</p>
+                                            @endif
+                                            <form action="/list" method="POST">
+                                                @csrf
+                                                <ul>
+                                                    @foreach($items as $item)
+                                                        <li>
+                                                            <label>
+                                                                <input type="checkbox" name="items[]" value="{{ $item }}">
+                                                                {{ $item }}
+                                                            </label>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                                <button type="submit">Guardar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Asignacion del mecanico --}}
+                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Asignación</h6>
+                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+                                            <div>
+                                                <label for="color"
+                                                       class="block text-sm font-medium text-gray-700">Mecanico</label>
+                                                <select id="mecanicoMantenimiento" name="mecanicoMantenimiento"
                                                         class="border p-2 rounded w-full">
-                                                </div>
-                                                <div>
-                                                    <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Moneda</label>
-                                                    <select id="porcentajeMora" name="porcentajeMora"
-                                                        class="border p-2 rounded w-full">
-                                                        <option value="">Seleccionar</option>
-                                                    </select>
-                                                </div>
+                                                    <option value="">Seleccionar</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
