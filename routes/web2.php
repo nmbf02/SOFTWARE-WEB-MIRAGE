@@ -93,6 +93,7 @@ use App\Http\Controllers\RegitrarVehiculoController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegitrarFacturaController;
 use App\Http\Controllers\consultarMantenimientoVehiculoController;
+use App\Http\Controllers\consultarSugerenciaController;
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -590,3 +591,7 @@ Route::Post('/RegitrarFactura/create', [RegitrarFacturaController::class, 'store
 Route::get('/consultar-mantenimiento-vehiculo/{mantenimiento?}', [consultarMantenimientoVehiculoController::class, 'consultarMantenimientoVehiculo'])
     ->middleware(['auth'])
     ->name('consultar-mantenimiento-vehiculo');
+
+Route::get('/consultar-sugerencia/{sugerenciamantenimiento?}', [consultarSugerenciaController::class, 'consultarSugerencia'])
+    ->middleware(['auth'])
+    ->name('consultar-sugerencia');
