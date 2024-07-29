@@ -18,6 +18,10 @@ class TipoEmpleado extends Model
         'Status'
     ];
 
+    protected $casts = [
+        'Status' => 'boolean',
+    ];
+
     // Aquí podrías definir relaciones con otros modelos si es necesario
     public function empleados()
     {

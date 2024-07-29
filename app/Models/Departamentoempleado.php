@@ -19,12 +19,6 @@ class DepartamentoEmpleado extends Model
         'Status'
     ];
 
-    // Relaciones con otras tablas
-    public function sucursal()
-    {
-        return $this->belongsTo('App\Models\Sucursal', 'IdSucursal');
-    }
-
     public function empleados()
     {
         return $this->hasMany('App\Models\Empleado', 'IdDepartamentoEmpleado');
