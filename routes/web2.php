@@ -88,12 +88,19 @@ use App\Http\Controllers\CuentabancoController;
 use App\Http\Controllers\GarantiaController;
 use App\Http\Controllers\CoberturaseguroController;
 use App\Http\Controllers\CompaniaseguroController;
+use App\Http\Controllers\consultaMantenimientoController;
+use App\Http\Controllers\EstadoOrdenReparacionController;
+use App\Http\Controllers\EstadoSolicitudCitaController;
+use App\Http\Controllers\FrecuenciaController;
+use App\Http\Controllers\MotivoOrdenReparacionController;
 use App\Http\Controllers\seguroconfiguracionController;
 use App\Http\Controllers\RegitrarVehiculoController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegitrarFacturaController;
 use App\Http\Controllers\consultarMantenimientoVehiculoController;
 use App\Http\Controllers\consultarSugerenciaController;
+use App\Models\EstadoOrdenReparacion;
+
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -311,6 +318,10 @@ Route::get('/mantenimiento-vehiculo/{mantenimientovehiculo?}', [registrarManteni
 Route::get('/configuracion-mantenimiento/{configuracionmantenimiento?}', [configuracionMantenimientoController::class, 'configuracionMantenimiento'])
     ->middleware(['auth'])
     ->name('configuracion-mantenimiento');
+
+Route::get('/consulta-mantenimiento/{consultamantenimiento?}', [consultaMantenimientoController::class, 'consultaMantenimiento'])
+->middleware(['auth'])
+->name('consulta-mantenimiento');
 
 Route::Post('/Estadocompras/create', [EstadocompraController::class, 'store'])
     ->middleware(['auth'])
@@ -578,9 +589,9 @@ Route::Put('/EditarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, '
     ->middleware(['auth'])
     ->name('RegitrarVehiculo.update');
 
-    Route::Delete('/EliminarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, 'destroy'])
-    ->middleware(['auth'])
-    ->name('RegitrarVehiculo.destroy');
+Route::Delete('/EliminarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, 'destroy'])
+->middleware(['auth'])
+->name('RegitrarVehiculo.destroy');
 
 Route::get('/DescargarFactura/{IdVenta}', [PDFController::class, 'generatePDF']);
 
@@ -595,3 +606,22 @@ Route::get('/consultar-mantenimiento-vehiculo/{mantenimiento?}', [consultarMante
 Route::get('/consultar-sugerencia/{sugerenciamantenimiento?}', [consultarSugerenciaController::class, 'consultarSugerencia'])
     ->middleware(['auth'])
     ->name('consultar-sugerencia');
+Route::Post('/EstadoSolicitudCita/create', [EstadoSolicitudCitaController::class, 'store'])
+->middleware(['auth'])
+->name('EstadoSolicitudCita.store');
+
+Route::Post('/EstadoOrdenReparacion/create', [EstadoOrdenReparacionController::class, 'store'])
+->middleware(['auth'])
+->name('EstadoOrdenReparacion.store');
+
+Route::Post('/Frecuencia/create', [FrecuenciaController::class, 'store'])
+->middleware(['auth'])
+->name('Frecuencia.store');
+
+Route::Post('/TipoMantenimiento/create', [TipoMantenimientoController::class, 'store'])
+->middleware(['auth'])
+->name('TipoMantenimiento.store');
+
+Route::Post('/MotivoOrdenReparacion/create', [MotivoOrdenReparacionController::class, 'store'])
+->middleware(['auth'])
+->name('MotivoOrdenReparacion.store');

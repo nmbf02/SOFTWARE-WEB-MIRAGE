@@ -217,7 +217,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Configuración
                                 </a>
-                                <a href="#"
+                                {{-- <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                     @click.prevent="PruebaConduccionOpen = !PruebaConduccionOpen">
                                     Prueba de conducción
@@ -239,7 +239,7 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Prueba de conducción
                                     </a>
-                                </div>
+                                </div> --}}
                                 <a href="{{ route('orden-reparacion') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Orden de reparación
