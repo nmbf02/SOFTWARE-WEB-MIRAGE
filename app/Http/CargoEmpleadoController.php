@@ -16,10 +16,10 @@ class CargoEmpleadoController extends Controller
      */
     public function index()
     {
-        $tipoEmpleado = CargoEmpleado::all();
+        $cargoemp = CargoEmpleado::all();
 
         // Retorna la vista con ambas variables. 
-        return view('components.nomina.configurar-nomina', compact('cargoEmp'));
+        return view('components.nomina.configurar-nomina', compact('cargoemp'));
     }
 
     public function create()
@@ -29,23 +29,18 @@ class CargoEmpleadoController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         try {
             $request->validate([
                 'descripcion' => 'required|string',
                 'status' => 'nullable|boolean',
             ]);
 
-            $tipoemp = new CargoEmpleado();
-            $tipoemp->Descripcion = $request->descripcion;
-
-            $tipoemp->Status = $request->status ? 1 : 0;
-
-            $tipoemp->save();
-
-
-            return redirect('configurar-nomina')->with('success', 'Cargo de empleado guardado con éxito.');
-            // return redirect()->route('Grupovehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
+            $cargoemp = new CargoEmpleado();
+            $cargoemp->Descripcion = $request->descripcion;
+            $cargoemp->Status = $request->status ? 1 : 0;
+            $cargoemp->save();
+            return view('components.nomina.configurar-nomina');
         } catch (QueryException $ex) {
             dd($ex);
         }
@@ -53,14 +48,14 @@ class CargoEmpleadoController extends Controller
 
     public function show(string $id)
     {
-        $tipoemp = CargoEmpleado::findOrFail($id);
-        return view('configurar_nomina.show', compact('cargoEmp'));
+        $cargoemp = CargoEmpleado::findOrFail($id);
+        return view('configurar_nomina.show', compact('cargoemp'));
     }
 
     public function edit(string $id)
     {
-        $tipoemp = CargoEmpleado::findOrFail($id);
-        return view('configurar_nomina.edit', compact('cargoEmp'));
+        $cargoemp = CargoEmpleado::findOrFail($id);
+        return view('configurar_nomina.edit', compact('cargoemp'));
     }
 
     public function update(Request $request, string $id)
@@ -70,16 +65,16 @@ class CargoEmpleadoController extends Controller
             'Status' => 'required|boolean',
         ]);
 
-        $tipoemp = CargoEmpleado::findOrFail($id);
-        $tipoemp->update($request->all());
+        $cargoemp = CargoEmpleado::findOrFail($id);
+        $cargoemp->update($request->all());
 
         return redirect()->route('configurar_nomina.index');
     }
 
     public function destroy(string $id)
     {
-        $tipoemp = CargoEmpleado::findOrFail($id);
-        $tipoemp->delete();
+        $cargoemp = CargoEmpleado::findOrFail($id);
+        $cargoemp->delete();
 
         return redirect()->route('configurar_nomina.index');
     }

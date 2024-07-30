@@ -27,7 +27,7 @@
                                 receive mail.</p> --}}
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
                                 {{-- Tipo empleado --}}
-                                <form action="POST" action="{{('TipoEmpleado.store')}}">
+                                <form method="POST" action="{{ route('TipoEmpleado.store') }}">
                                     @csrf
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                         <div class="inline-flex justify-between items-center w-full">
@@ -49,13 +49,13 @@
                                                 <div>
                                                     <label for="descripcion"
                                                         class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                    <input type="text" placeholder="Descripción"
+                                                    <input type="text" name="descripcion" placeholder="Descripción"
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" id="Estado-empleado" name="Estado-empleado"
+                                                    <input type="checkbox" id="status" name="status"
                                                         class="rounded">
-                                                    <label for="Estado-empleado"
+                                                    <label for="status"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
                                                 <x-button class="px-4 py-2">
@@ -66,7 +66,7 @@
                                     </div>
                                 </form>
                                 {{-- Cargo --}}
-                                <form action="POST" action="{{('CargoEmpleado.store')}}">
+                                <form method="POST" action="{{ route('CargoEmpleado.store') }}">
                                     @csrf
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                         <div class="inline-flex justify-between items-center w-full">
@@ -86,21 +86,15 @@
                                         <div id="toggleContent3" class="hidden">
                                             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                                 <div>
-                                                    <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Código</label>
-                                                    <input type="text" placeholder="Código"
-                                                        class="border p-2 rounded w-full">
-                                                </div>
-                                                <div>
-                                                    <label for="color"
+                                                    <label for="descripcion"
                                                         class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                    <input type="text" placeholder="Descripción"
+                                                    <input type="text" placeholder="Descripción" name="descripcion"
                                                         class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" id="Estado-compra" name="Estado-compra"
+                                                    <input type="checkbox" id="status" name="status"
                                                         class="rounded">
-                                                    <label for="Estado-compra"
+                                                    <label for="status"
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
                                                 <x-button class="px-4 py-2">
@@ -111,7 +105,7 @@
                                     </div>
                                 </form>
                                 {{-- Departamento --}}
-                                <form action="POST" action="{{('DepartamenteEmpleado.store')}}">
+                                <form method="POST" action="{{ route('DepartamentoEmpleado.store') }}">
                                     @csrf
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                         <div class="inline-flex justify-between items-center w-full">
@@ -132,12 +126,6 @@
                                             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                                 <div>
                                                     <label for="color"
-                                                        class="block text-sm font-medium text-gray-700">Código</label>
-                                                    <input type="text" placeholder="Código"
-                                                        class="border p-2 rounded w-full">
-                                                </div>
-                                                <div>
-                                                    <label for="color"
                                                         class="block text-sm font-medium text-gray-700">Descripción</label>
                                                     <input type="text" placeholder="Descripción"
                                                         class="border p-2 rounded w-full">
@@ -149,7 +137,7 @@
                                                         class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
                                                 <x-button class="px-4 py-2">
-                                                    {{ __('Salvar estado compra') }}
+                                                    {{ __('Salvar departamento') }}
                                                 </x-button>
                                             </div>
                                         </div>

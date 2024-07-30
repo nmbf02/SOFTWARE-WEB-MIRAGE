@@ -14,7 +14,6 @@ class DepartamentoEmpleado extends Model
     public $timestamps = false;  // Si la tabla no tiene campos timestamps (created_at, updated_at)
 
     protected $fillable = [
-        'IdSucursal',
         'Descripcion',
         'Status'
     ];

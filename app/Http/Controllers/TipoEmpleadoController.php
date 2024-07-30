@@ -17,9 +17,9 @@ class TipoEmpleadoController extends Controller
     public function index()
     {
         $tipoEmpleado = TipoEmpleado::all();
-
+        //dd($tipoEmpleado->all());
         // Retorna la vista con ambas variables. 
-        return view('components.nomina.configurar-nomina', compact('tipoEmp'));
+        return view('components.nomina.configurar-nomina', compact('tipoEmpleado'));
     }
 
     public function create()
@@ -29,7 +29,7 @@ class TipoEmpleadoController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         try {
             $request->validate([
                 'descripcion' => 'required|string',
@@ -43,9 +43,7 @@ class TipoEmpleadoController extends Controller
 
             $tipoemp->save();
 
-
-            return redirect('configurar-nomina')->with('success', 'Tipo de empleado guardado con éxito.');
-            // return redirect()->route('Grupovehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return view('components.nomina.configurar-nomina');
         } catch (QueryException $ex) {
             dd($ex);
         }

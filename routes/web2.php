@@ -403,30 +403,6 @@ Route::get('/Grupovehiculo', [GrupovehiculoController::class, 'index'])
     ->middleware(['auth'])
     ->name('Grupovehiculo');
 
-Route::Post('/TipoEmpleado/create', [TipoEmpleadoController::class, 'store'])
-    ->middleware(['auth'])
-    ->name('TipoEmpleado.store');
-
-Route::get('/TipoEmpleado', [TipoEmpleadoController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('TipoEmpleado');
-
-Route::Post('/CargoEmpleado/create', [CargoEmpleadoController::class, 'store'])
-->middleware(['auth'])
-->name('CargoEmpleado.store');
-
-Route::get('/CargoEmpleado', [CargoEmpleadoController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('CargoEmpleado');
-
-Route::Post('/DepartamentoEmpleado/create', [DepartamentoEmpleadoController::class, 'store'])
-->middleware(['auth'])
-->name('DepartamentoEmpleado.store');
-
-Route::get('/DepartamentoEmpleado', [DepartamentoEmpleadoController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('DepartamentoEmpleado');
-
 Route::Post('/Marcavehiculo/create', [MarcavehiculoController::class, 'store'])
     ->middleware(['auth'])
     ->name('Marcavehiculo.store');
@@ -622,3 +598,27 @@ Route::get('/consultar-mantenimiento-vehiculo/{mantenimiento?}', [consultarMante
 Route::get('/consultar-sugerencia/{sugerenciamantenimiento?}', [consultarSugerenciaController::class, 'consultarSugerencia'])
     ->middleware(['auth'])
     ->name('consultar-sugerencia');
+
+Route::Post('/TipoEmpleado/create', [TipoEmpleadoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('TipoEmpleado.store');
+
+Route::get('/TipoEmpleado', [TipoEmpleadoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('TipoEmpleado');
+
+Route::Post('/CargoEmpleado/create', [CargoEmpleadoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('CargoEmpleado.store');
+
+Route::get('/CargoEmpleado', [CargoEmpleadoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('CargoEmpleado');
+
+Route::Post('/DepartamentoEmpleado/create', [DepartamentoEmpleadoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('DepartamentoEmpleado.store');
+
+Route::get('/DepartamentoEmpleado', [DepartamentoEmpleadoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('DepartamentoEmpleado');
