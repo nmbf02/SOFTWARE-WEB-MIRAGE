@@ -99,6 +99,8 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegitrarFacturaController;
 use App\Http\Controllers\consultarMantenimientoVehiculoController;
 use App\Http\Controllers\consultarSugerenciaController;
+use App\Http\Controllers\TipoaceiteController;
+use App\Http\Controllers\TipomotorController;
 use App\Models\EstadoOrdenReparacion;
 
 
@@ -625,3 +627,20 @@ Route::Post('/TipoMantenimiento/create', [TipoMantenimientoController::class, 's
 Route::Post('/MotivoOrdenReparacion/create', [MotivoOrdenReparacionController::class, 'store'])
 ->middleware(['auth'])
 ->name('MotivoOrdenReparacion.store');
+
+Route::Post('/Tipoaceite/create', [TipoaceiteController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Tipoaceite.store');
+
+Route::get('/Tipoaceite', [TipoaceiteController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Tipoaceite');
+
+Route::Post('/Tipomotor/create', [TipomotorController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Tipomotor.store');
+
+Route::get('/Tipomotor', [TipomotorController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Tipomotor');
+
