@@ -962,6 +962,69 @@
                                         </div>
                                     </div>
                                 </form>
+                                {{-- TODO: Colocar un modal donde se puedan editar los periodos de tiempo--}}
+                                {{--Edad del vehiculo--}}
+                                <form method="POST" action="{{ route('Edadvehiculo.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Edad del vehículo</h6>
+                                            <button type="button"
+                                                    class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                    data-target="toggleContent20">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent20" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                <div>
+                                                    <label for="descripcion"
+                                                           class="block text-sm font-medium text-gray-700">Descripcion</label>
+                                                    <input name="descripcion" type="text"
+                                                           placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div
+                                                    class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                    <div>
+                                                        <label for="periodoUno" class="block text-sm font-medium text-gray-700">Primer periodo</label>
+                                                        <input id="periodoUno" name="periodoUno" type="text" placeholder="Periodo 1" min=0 class="border p-2 rounded w-full" oninput="validateNumberInput(this)">
+                                                    </div>
+                                                    <div>
+                                                        <label for="periodoDos" class="block text-sm font-medium text-gray-700">Segundo periodo</label>
+                                                        <input id="periodoDos" name="periodoDos" type="text" placeholder="Periodo 2" class="border p-2 rounded w-full" oninput="validateNumberInput(this)">
+                                                    </div>
+                                                    {{--Que solo se permita numeros--}}
+                                                    <script>
+                                                        function validateNumberInput(input) {
+                                                            input.value = input.value.replace(/[^0-9]/g, '');
+                                                        }
+                                                    </script>
+                                                </div>
+                                                {{--Modal para editar la edad vehicular--}}
+                                                <hr style="border-color: #FF914D" class="p-1">
+                                                <div>
+                                                    <label for="Editar"
+                                                           class="text-sm font-medium text-gray-700">EDITAR</label>
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="status"
+                                                           class="rounded">
+                                                    <label for="status"
+                                                           class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar edad vehicular') }}
+                                                </x-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -8,75 +8,61 @@ use App\Models\Aceite;
 
 class TipoaceiteController extends Controller
 {
-    // Display a listing of the resource.
     public function index()
     {
         $aceites = Aceite::all();
-        return view('components.vehiculo.configurar-vehiculo', compact('aceites'));
+        return view('components.vehiculo.configurar-vehiculo',compact('aceites'));
     }
 
-    // Show the form for creating a new resource.
     public function create()
     {
         return view('components.vehiculo.configurar-vehiculo');
     }
 
-    // Store a newly created resource in storage.
-
     public function store(Request $request)
     {
-        try {
-            // Validating the input data
-            $request->validate([
-                'Descripcion' => 'required|string',
-                'Status' => 'boolean',
-            ]);
+        $request->validate([
+            'descripcion' => 'required|string',
+            'status' => 'boolean',
+        ]);
 
-            // Creating a new instance of Tipoitbis
-            $tipoAceite = new Aceite();
-            $tipoAceite->Descripcion = $request->descripcion; // Correcting the field name for 'Descripcion'
-            $tipoAceite->Status = $request->status ? 1 : 0;
+        // Creating a new instance of Aceite
+        $tipoAceite = new Aceite();
+        $tipoAceite->Descripcion = $request->descripcion; // Correcting the field name for 'Descripcion'
+        $tipoAceite->Status = $request->status ? 1 : 0;
 
-            $tipoAceite->save();
+        $tipoAceite->save();
 
-            return redirect()->route('Tipoaceite')->with('success', 'Tipo de aceite guardado con éxito.');
-        } catch (QueryException $ex) {
-            dd($ex);
-        }
+        // Redirect the user to the Marcavehiculo index page with a success message
+        return redirect('vehicle-configuration')->with('success', 'Guardado con exito');
     }
 
-    // Display the specified resource.
     public function show(Aceite $aceite)
     {
         return view('tipoaceite.show', compact('aceite'));
     }
 
-    // Show the form for editing the specified resource.
     public function edit(Aceite $aceite)
     {
         return view('tipoaceite.edit', compact('aceite'));
     }
 
-    // Update the specified resource in storage.
     public function update(Request $request, Aceite $aceite)
     {
         $request->validate([
-            'Descripcion' => 'required|string|max:255',
-            'Status' => 'required|boolean',
+            'descripcion' => 'required|string|max:255',
+            'status' => 'required|boolean',
         ]);
 
-        $aceite->update($request->all());
+        $aceite->update($request->only(['descripcion', 'status']));
 
-        return redirect()->route('tipoaceite.index')
-            ->with('success', 'Aceite updated successfully.');
+        return redirect()->route('Tipoaceite')->with('success', 'Aceite actualizado con éxito.');
     }
 
-    // Remove the specified resource from storage.
     public function destroy(Aceite $aceite)
     {
         $aceite->delete();
 
-        return redirect()->route('tipoaceite.index')
-            ->with('success', 'Aceite deleted successfully.');
+        return redirect()->route('Tipoaceite')->with('success', 'Aceite eliminado con éxito.');
     }
 }

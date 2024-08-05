@@ -29,12 +29,12 @@ class AcabadocolorvehiculoController extends Controller
                 'status' => 'sometimes|boolean',
             ]);
 
-            $itbis = new Acabadocolorvehiculo();
-            $itbis->Descripcion = $request->descripcion;
+            $acabadovehiculo = new Acabadocolorvehiculo();
+            $acabadovehiculo->Descripcion = $request->descripcion;
 
-            $itbis->Status = $request->status ? 1 : 0;
+            $acabadovehiculo->Status = $request->status ? 1 : 0;
 
-            $itbis->save();
+            $acabadovehiculo->save();
 
             return redirect('vehicle-configuration')->with('success', 'Guardado con exito');
             // return redirect()->route('Acabadocolorvehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');

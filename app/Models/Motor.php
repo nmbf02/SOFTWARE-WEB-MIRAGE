@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Aceite extends Model
+class Motor extends Model
 {
     use HasFactory;
 
-    protected $table = 'Aceite';
-    protected $primaryKey = 'IdAceite';
+    protected $table = 'Motor';
+    protected $primaryKey = 'IdMotor';
     public $timestamps = true;
 
     protected $fillable = [
@@ -20,6 +20,6 @@ class Aceite extends Model
 
     public function vehiculos()
     {
-        return $this->hasMany(Vehiculo::class, 'IdAceite');
+        return $this->hasMany(Vehiculo::class, 'IdMotor');
     }
 }

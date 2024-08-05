@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Configuración de mantenimiento') }}
+            {{ __('Configuración de servicios de mantenimiento') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -13,14 +13,17 @@
                 <div class="bg-white dark:bg-gray-800 transition-colors duration-300">
                     <div class="containerh-full w-full bg-white relative overflow-y-auto lg:ml">
                         <div class="bg-white dark:bg-gray-700 {{-- shadow rounded-lg --}} p-6">
+                            {{--Titulo--}}
                             <div class="flex flex-wrap items-center justify-between">
                                 <div class="flex items-center justify-start">
-                                    <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                                        Configuración de mantenimiento
+                                    <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100 hover:text-blue-700">
+                                        Configuración de servicios | (Mantenimiento)
                                     </h1>
                                 </div>
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
+
+                            {{--Formulario de registro de servicio--}}
                             <form method="POST" action="{{route('EstadoSolicitudCita.store')}}" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                 {{-- Estado solicitud cita --}}
                                 @csrf
@@ -99,7 +102,7 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>

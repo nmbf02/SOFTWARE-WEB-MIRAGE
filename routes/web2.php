@@ -101,6 +101,7 @@ use App\Http\Controllers\consultarMantenimientoVehiculoController;
 use App\Http\Controllers\consultarSugerenciaController;
 use App\Http\Controllers\TipoaceiteController;
 use App\Http\Controllers\TipomotorController;
+use App\Http\Controllers\EdadvehiculoController;
 use App\Models\EstadoOrdenReparacion;
 
 
@@ -632,15 +633,18 @@ Route::Post('/Tipoaceite/create', [TipoaceiteController::class, 'store'])
     ->middleware(['auth'])
     ->name('Tipoaceite.store');
 
-Route::get('/Tipoaceite', [TipoaceiteController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('Tipoaceite');
+//Route::get('/Tipoaceite', [TipoaceiteController::class, 'index'])
+//    ->middleware(['auth'])
+//    ->name('Tipoaceite');
 
 Route::Post('/Tipomotor/create', [TipomotorController::class, 'store'])
     ->middleware(['auth'])
     ->name('Tipomotor.store');
 
-Route::get('/Tipomotor', [TipomotorController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('Tipomotor');
+//Route::get('/Tipomotor', [TipomotorController::class, 'index'])
+//    ->middleware(['auth'])
+//    ->name('Tipomotor');
 
+Route::Post('/Edadvehiculo/create', [EdadvehiculoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('Edadvehiculo.store');

@@ -24,5 +24,5 @@ Route::get('vehicle-register', [VehicleRegisterController::class, 'index'])->nam
 Route::get('vehicle-edit/{id}', [VehicleRegisterController::class, 'edit'])->name('editVehicle');
 Route::get('customer-register', [CustomerRegisterController::class, 'index']);
 Route::get('sales-register', [SalesRegisterController::class, 'index']) -> name ('salesRegister') ;
-
 include('web2.php');
+

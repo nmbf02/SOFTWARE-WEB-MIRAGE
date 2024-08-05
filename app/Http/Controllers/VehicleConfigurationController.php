@@ -10,6 +10,8 @@ use App\Models\Modelovehiculo;
 use App\Models\Acabadocolorvehiculo;
 use App\Models\Almacen;
 use App\Models\Sucursal;
+use App\Models\Aceite;
+use App\models\Motor;
 
 use Illuminate\Http\Request;
 
@@ -25,6 +27,9 @@ class VehicleConfigurationController extends Controller
         $aseguradoravehiculo = AseguradoraVehiculo::all();
         $Almacenvehiculo = Almacen::all();
         $SucursalVehiculo = Sucursal::all();
+        $AceiteVehiculo = Aceite::all();
+
+
 
         return view('components.vehiculo.configurar-vehiculo', [
             'gruposVehiculo' => $vehicleGroups,
@@ -34,7 +39,8 @@ class VehicleConfigurationController extends Controller
             'Monedaseguro' => $Monedaseguro,
             'aseguradoravehiculo' => $aseguradoravehiculo,
             'Almacenvehiculo' => $Almacenvehiculo,
-            'SucursalVehiculo' => $SucursalVehiculo
+            'SucursalVehiculo' => $SucursalVehiculo,
+            'AceiteVehiculo' => $AceiteVehiculo,
         ]);
     }
 }
