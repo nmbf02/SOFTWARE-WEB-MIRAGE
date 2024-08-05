@@ -44,10 +44,7 @@ class Cliente extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function persona()
-    {
-        return $this->belongsTo('App\Models\Persona', 'IdPersona');
-    }
+
 
     /**
      * Define la relación con TipoPersona.

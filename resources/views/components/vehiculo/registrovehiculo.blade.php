@@ -19,7 +19,7 @@
                             {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
                                 receive mail.</p> --}}
 
-                                @if (request()->routeIs('registerVehicle' ))   
+                                @if (request()->routeIs('registerVehicle' ))
                             <form method="POST" action="{{ route('RegitrarVehiculo.store') }}">
                                 @else
                             <form method="POST" action="{{ route('RegitrarVehiculo.update',@$vehiculo->IdVehiculo) }}">
@@ -165,6 +165,28 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        {{--Tipo de aceite--}}
+                                        <div>
+                                            <label for="AceiteVehiculo"
+                                                   class="block text-sm font-medium text-gray-700">Tipo de aceite</label>
+                                            <select value="{{@$vehiculo->IdAceite}}" name="AceiteVehiculo" id="AceiteVehiculo"
+                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    placeholder="Seleccione un tipo de aceite">
+                                                @foreach ($AceiteVehiculo as $aceite)
+                                                    <option value="{{ $aceite->IdAceite }}">
+                                                        {{ $aceite->Descripcion }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    {{--kilometraje--}}
+                                        <div>
+                                            <label for="kilometraje"
+                                                   class="block text-sm font-medium text-gray-700">Kilometraje</label>
+                                            <input value="{{@$vehiculo->kilometraje}}" name="kilometraje" id="kilometraje"
+                                                   type="number" min="0"
+                                                   placeholder="kilometraje actual" class="border p-2 rounded w-full">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
@@ -189,18 +211,39 @@
                                             <!-- Motor del cilindro -->
                                             <div>
                                                 <label for="motor-cilindro"
-                                                    class="block text-sm font-medium text-gray-700">Motor del
+                                                       class="block text-sm font-medium text-gray-700">Motor del
                                                     cilindro</label>
-                                                <input value="{{@$vehiculo->MotorCilindro}}" name="motorcilindro" id="motor-cilindro" type="text"
-                                                    placeholder="Motor del cilindro"
-                                                    class="border p-2 rounded w-full">
+                                                <input value="{{@$vehiculo->MotorCilindro}}" name="motorcilindro"
+                                                       id="motor-cilindro" type="text"
+                                                       placeholder="Motor del cilindro"
+                                                       class="border p-2 rounded w-full">
                                             </div>
-                                            <!-- Serie -->
-                                            <div>
-                                                <label for="serie"
-                                                    class="block text-sm font-medium text-gray-700">Serie</label>
-                                                <input value="{{@$vehiculo->Serie}}" name="serie" id="serie" type="text"
-                                                    placeholder="Serie" class="border p-2 rounded w-full">
+                                            <div
+                                                {{--Colocar el filtro de tipo de motor--}}
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                                    <!-- Serie -->
+                                                    <div>
+                                                        <label for="serie"
+                                                               class="block text-sm font-medium text-gray-700">Serie</label>
+                                                        <input value="{{@$vehiculo->Serie}}" name="serie" id="serie"
+                                                               type="text"
+                                                               placeholder="Serie" class="border p-2 rounded w-full">
+                                                    </div>
+                                                    {{--Tipo de motor--}}
+                                                    <div class="mb-4">
+                                                        <label for="MotorVehiculo"
+                                                               class="block text-sm font-medium text-gray-700">Tipo de motor</label>
+                                                        <select value="{{@$vehiculo->IdMotor}}" name="MotorVehiculo" id="MotorVehiculo"
+                                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                                placeholder="Seleccione un tipo de motor">
+                                                            @foreach ($MotorVehiculo as $motor)
+                                                                <option value="{{ $motor->IdMotor }}">
+                                                                    {{ $motor->Descripcion }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

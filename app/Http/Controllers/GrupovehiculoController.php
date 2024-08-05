@@ -21,7 +21,7 @@ class GrupovehiculoController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         try {
             $request->validate([
                 'descripcion' => 'required|string',
@@ -29,13 +29,13 @@ class GrupovehiculoController extends Controller
             ]);
 
             $itbis = new Grupovehiculo();
-            $itbis->Descripcion = $request->descripcion; 
+            $itbis->Descripcion = $request->descripcion;
 
             $itbis->Status = $request->status ? 1 : 0;
 
             $itbis->save();
 
-            
+
             return redirect('vehicle-configuration')->with('success', 'Estado de ITBIS guardado con éxito.');
             // return redirect()->route('Grupovehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {

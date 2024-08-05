@@ -884,12 +884,12 @@
                                         </div>
                                     </div>
                                 </form>
-                                {{-- Kilometraje --}}
-                                <form method="POST" action="{{ route('Tipoitbis.store') }}">
+                                {{--Mantenimiento de aceite--}}
+                                <form method="POST" action="{{ route('Tipoaceite.store') }}">
                                     @csrf
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                         <div class="inline-flex justify-between items-center w-full">
-                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Kilometraje</h6>
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Aceite</h6>
                                             <button type="button"
                                                     class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
                                                     data-target="toggleContent18">
@@ -905,146 +905,127 @@
                                         <div id="toggleContent18" class="hidden">
                                             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                                 <div>
-                                                    <label for="color"
-                                                           class="block text-sm font-medium text-gray-700">Kilometraje</label>
-                                                    <input name="porcentajeitibis" type="number"
-                                                           placeholder="Km" class="border p-2 rounded w-full">
+                                                    <label for="descripcion"
+                                                           class="block text-sm font-medium text-gray-700">Tipo de aceite</label>
+                                                    <input name="descripcion" type="text"
+                                                           placeholder="Tipo de aceite" class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" id="Estado_modelo"
-                                                           name="Estado_itbis" class="rounded">
-                                                    <label for="Estado_modelo"
+                                                    <input type="checkbox" id="status"
+                                                           name="status" class="rounded">
+                                                    <label for="status"
                                                            class="text-sm font-medium text-gray-700">Estado</label>
                                                 </div>
                                                 <x-button class="px-4 py-2">
-                                                    {{ __('Salvar Kilometraje') }}
+                                                    {{ __('Salvar tipo de aceite') }}
+                                                </x-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                {{--Mantenimiento de motor--}}
+                                <form method="POST" action="{{ route('Tipomotor.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Motor</h6>
+                                            <button type="button"
+                                                    class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                    data-target="toggleContent19">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent19" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                <div>
+                                                    <label for="color"
+                                                           class="block text-sm font-medium text-gray-700">Tipo de motor</label>
+                                                    <input name="descripcion" type="text"
+                                                           placeholder="Gasolina, eléctrico..." class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="status"
+                                                           name="status" class="rounded">
+                                                    <label for="status"
+                                                           class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar tipo de motor') }}
+                                                </x-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                {{-- TODO: Colocar un modal donde se puedan editar los periodos de tiempo--}}
+                                {{--Edad del vehiculo--}}
+                                <form method="POST" action="{{ route('Edadvehiculo.store') }}">
+                                    @csrf
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <div class="inline-flex justify-between items-center w-full">
+                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Edad del vehículo</h6>
+                                            <button type="button"
+                                                    class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                    data-target="toggleContent20">
+                                                <div class="icon">
+                                                    @include('icons/show') <!-- Icono visible por defecto -->
+                                                </div>
+                                                <div class="icon hidden">
+                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <!-- Sección a mostrar/ocultar -->
+                                        <div id="toggleContent20" class="hidden">
+                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                                <div>
+                                                    <label for="descripcion"
+                                                           class="block text-sm font-medium text-gray-700">Descripcion</label>
+                                                    <input name="descripcion" type="text"
+                                                           placeholder="Descripción" class="border p-2 rounded w-full">
+                                                </div>
+                                                <div
+                                                    class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 justify-between">
+                                                    <div>
+                                                        <label for="periodoUno" class="block text-sm font-medium text-gray-700">Primer periodo</label>
+                                                        <input id="periodoUno" name="periodoUno" type="text" placeholder="Periodo 1" min=0 class="border p-2 rounded w-full" oninput="validateNumberInput(this)">
+                                                    </div>
+                                                    <div>
+                                                        <label for="periodoDos" class="block text-sm font-medium text-gray-700">Segundo periodo</label>
+                                                        <input id="periodoDos" name="periodoDos" type="text" placeholder="Periodo 2" class="border p-2 rounded w-full" oninput="validateNumberInput(this)">
+                                                    </div>
+                                                    {{--Que solo se permita numeros--}}
+                                                    <script>
+                                                        function validateNumberInput(input) {
+                                                            input.value = input.value.replace(/[^0-9]/g, '');
+                                                        }
+                                                    </script>
+                                                </div>
+                                                {{--Modal para editar la edad vehicular--}}
+                                                <hr style="border-color: #FF914D" class="p-1">
+                                                <div>
+                                                    <label for="Editar"
+                                                           class="text-sm font-medium text-gray-700">EDITAR</label>
+                                                </div>
+                                                <div>
+                                                    <input name="status" type="checkbox" id="status"
+                                                           class="rounded">
+                                                    <label for="status"
+                                                           class="text-sm font-medium text-gray-700">Estado</label>
+                                                </div>
+                                                <x-button class="px-4 py-2">
+                                                    {{ __('Salvar edad vehicular') }}
                                                 </x-button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                            {{-- Mantenimiento general --}}
-                            <form method="POST" action="{{ route('Tipoitbis.store') }}"
-                                  class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-2">
-                                @csrf
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Mantenimiento</h6>
-                                        <button type="button"
-                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                                data-target="toggleContent17">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent17" class="hidden">
-                                        <div class="mb-3">
-                                            <label class=" block text-sm font-medium text-gray-400">Mantenimiento en meses</label>
-                                        </div>
-                                            <div class="grid grid-cols-1 md:grid-cols1 gap-4 mt-2">
-                                            <div>
-                                                <label for="marcaVehiculo"
-                                                       class="block text-sm font-medium text-gray-700">Marca del
-                                                    vehículo</label>
-                                                <select name="marcaVehiculo" id="marcaVehiculo"
-                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                        placeholder="Seleccione una marca">
-                                                    @foreach ($marcaVehiculo as $marca)
-                                                        <option value="{{ $marca->IdMarcaVehiculo }}">
-                                                            {{ $marca->Descripcion }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 mt-4">
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Cambio de aceite</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Cambio de aceite" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Filtro de aire</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Filtro de aire" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Filtro de combustible</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Filtro de combustible" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Filtro de cabina</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Filtro de cabina" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Cambio de frenos</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Cambio de frenos" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Alineacion de neumaticos</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Alineacion de neumaticos" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Revision de bateria</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Revision de baterias" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Cambio de Bujias</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Cambio de Bujias" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Revision de Suspensiones</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Revision de Suspensiones" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Cambio liquido de frenos</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Liquido de frenos" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="mantenimiento-acabado"
-                                                       class="block text-sm font-medium text-gray-700">Revision correas y mangueras</label>
-                                                <input name="mantenimiento-acabado" type="number" min="0" max="12"
-                                                       placeholder="Correas y mangueras" class="border p-2 rounded w-full">
-                                            </div>
-                                        </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
-                                            <div>
-                                                <input type="checkbox" id="Estado_mantenimiento"
-                                                       name="Estado_mantenimiento" class="rounded">
-                                                <label for="Estado_mantenimiento"
-                                                       class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar mantenimiento') }}
-                                            </x-button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
