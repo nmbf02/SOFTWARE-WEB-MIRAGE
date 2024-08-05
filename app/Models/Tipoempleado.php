@@ -11,11 +11,15 @@ class TipoEmpleado extends Model
 
     protected $table = 'tipoempleado';  // Asegúrate de que coincida con el nombre de tu tabla
     protected $primaryKey = 'IdTipoEmpleado';  // Clave primaria
-    public $timestamps = false;  // Si la tabla no tiene campos timestamps (created_at, updated_at)
+    public $timestamps = true;  // Si la tabla no tiene campos timestamps (created_at, updated_at)
 
     protected $fillable = [
         'Descripcion', 
         'Status'
+    ];
+
+    protected $casts = [
+        'Status' => 'boolean',
     ];
 
     // Aquí podrías definir relaciones con otros modelos si es necesario

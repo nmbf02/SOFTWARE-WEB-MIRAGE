@@ -17,22 +17,22 @@
                                 <label for="topbar-search" class="sr-only">Buscar</label>
                                 <div class="mt-1 relative lg:w-64">
                                     <input type="text" name="email" id="topbar-search"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-2 p-2.5"
-                                        placeholder="Número de factura ">
+                                           class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-2 p-2.5"
+                                           placeholder="Número de factura ">
                                 </div>
                             </form>
                         </div>
                         <div class="inline-flex items-center justify-center space-x-2 mr-3">
                             <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                 <button type="button"
-                                    class="inline-flex items-center px-3 py-2 border text-sm leading-4 font-medium rounded-md text-black transition ease-in-out duration-150"
-                                    style="background-color: #FF914D; border-color: white;"
-                                    onmouseover="this.style.backgroundColor='#E7814D'"
-                                    onmouseout="this.style.backgroundColor='#FF914D'"
-                                    onfocus="this.style.backgroundColor='#E7814D'"
-                                    onblur="this.style.backgroundColor='#FF914D'"
-                                    onmousedown="this.style.backgroundColor='#CC6C3B'"
-                                    onmouseup="this.style.backgroundColor='#E7814D'">
+                                        class="inline-flex items-center px-3 py-2 border text-sm leading-4 font-medium rounded-md text-black transition ease-in-out duration-150"
+                                        style="background-color: #FF914D; border-color: white;"
+                                        onmouseover="this.style.backgroundColor='#E7814D'"
+                                        onmouseout="this.style.backgroundColor='#FF914D'"
+                                        onfocus="this.style.backgroundColor='#E7814D'"
+                                        onblur="this.style.backgroundColor='#FF914D'"
+                                        onmousedown="this.style.backgroundColor='#CC6C3B'"
+                                        onmouseup="this.style.backgroundColor='#E7814D'">
                                     @include('icons/registrar')
                                 </button>
                             </div>
@@ -44,15 +44,15 @@
                                             <x-slot name="trigger">
                                                 <span class="inline-flex rounded-md">
                                                     <button type="button"
-                                                        class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
+                                                            class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
                                                         <span class="ml-2 hidden sm:inline-block">Descargar
                                                             factura</span>
                                                         <svg class="ml-2 -mr-0.5 h-4 w-4 hidden sm:inline-block"
-                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor">
+                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                             viewBox="0 0 24 24" stroke-width="1.5"
+                                                             stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                                                  d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
                                                         </svg>
                                                         <div class="block sm:hidden">
                                                             @include('icons/descargar')
@@ -89,14 +89,14 @@
                             </div>
                             <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                 <button type="button"
-                                    class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
+                                        class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
                                     @include('icons/imprimir')
                                     <span class="ml-2 hidden sm:inline-block">Imprimir</span>
                                 </button>
                             </div>
                             <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                 <button type="button"
-                                    class="group inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-red-600 hover:border-red-600 hover:text-white focus:outline-none focus:bg-red-600 focus:border-red-600 focus:text-white active:bg-red-700 active:border-red-700 transition ease-in-out duration-150">
+                                        class="group inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-red-600 hover:border-red-600 hover:text-white focus:outline-none focus:bg-red-600 focus:border-red-600 focus:text-white active:bg-red-700 active:border-red-700 transition ease-in-out duration-150">
                                     <div class="group-hover:hidden">
                                         @include('icons/borrar-negro') <!-- Icono visible por defecto -->
                                     </div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="flex-shrink-0">
                             <a href="#"
-                                class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View
+                               class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View
                                 all</a>
                         </div>
                     </div>
@@ -129,64 +129,64 @@
                                 <div class="shadow overflow-hidden sm:rounded-lg">
                                     <table class="min-w-full divide-y divide-gray-200">
                                         <thead class="bg-gray-50">
-                                            <tr>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Fact.
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Cliente
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Fecha
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Monto
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Moneda
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Estado
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Acta de venta
-                                                </th>
-                                            </tr>
+                                        <tr>
+                                            <th scope="col"
+                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Fact.
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Cliente
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Fecha
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Monto
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Moneda
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Estado
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Acta de venta
+                                            </th>
+                                        </tr>
                                         </thead>
                                         <tbody class="bg-white">
-                                            @foreach ($facturas as $factura)
-                                                <tr>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        {{ $factura->IdVenta }}
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        {{ $factura->cliente->persona->Nombre }}
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        {{ $factura->Fecha }}
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        {{ $factura->Total }}
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        {{ $factura->moneda->Descripcion }}
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        {{ $factura->Status }}
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        <a href="DescargarFactura/{{ $factura->IdVenta }}" target="_blank"
-                                                            class="text-cyan-600 hover:bg-gray-100 rounded-lg p-2">Descargar contrato</a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                        @foreach ($facturas as $factura)
+                                            <tr>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $factura->IdVenta }}
+                                                </td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $factura->cliente->persona->Nombre }}
+                                                </td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $factura->Fecha }}
+                                                </td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $factura->Total }}
+                                                </td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $factura->moneda->Descripcion }}
+                                                </td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    {{ $factura->Status }}
+                                                </td>
+                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                    <a href="DescargarFactura/{{ $factura->IdVenta }}" target="_blank"
+                                                       class="text-cyan-600 hover:bg-gray-100 rounded-lg p-2">Descargar contrato</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
                                         </tbody>
                                     </table>

@@ -97,7 +97,10 @@ use App\Http\Controllers\seguroconfiguracionController;
 use App\Http\Controllers\RegitrarVehiculoController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegitrarFacturaController;
-use App\Models\EstadoOrdenReparacion;
+use App\Http\Controllers\consultarMantenimientoVehiculoController;
+use App\Http\Controllers\consultarSugerenciaController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\TipoEmpleadoController;
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -275,10 +278,6 @@ Route::get('/configuracion-cxp/{configuracioncxp?}', [configuracionCXPController
 Route::get('/configurar-nomina/{configurarnomina?}', [configurarNominaController::class, 'configurarNomina'])
     ->middleware(['auth'])
     ->name('configurar-nomina');
-
-Route::get('/registrar-empleado{codigoempleado?}', [registrarEmpleadoController::class, 'codigoEmpleado'])
-    ->middleware(['auth'])
-    ->name('registrar-empleado');
 
 Route::get('/consultar-empleado/{datoempleado?}', [consultarEmpleadoController::class, 'consultarEmpleado'])
     ->middleware(['auth'])
@@ -473,7 +472,7 @@ Route::get('/Canalcomunicacion', [CanalcomunicacionController::class, 'index'])
     ->middleware(['auth'])
     ->name('Canalcomunicacion');
 
-// CONDICION DE LA FACTURA 
+// CONDICION DE LA FACTURA
 Route::Post('/Condicionfactura/create', [CondicionfacturaController::class, 'store'])
     ->middleware(['auth'])
     ->name('Condicionfactura.store');
@@ -590,28 +589,46 @@ Route::Delete('/EliminarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::cla
 ->middleware(['auth'])
 ->name('RegitrarVehiculo.destroy');
 
-Route::post('/convert-html-to-pdf', [PDFController::class, 'convertHTMLToPDF']);
+Route::get('/DescargarFactura/{IdVenta}', [PDFController::class, 'generatePDF']);
 
 Route::Post('/RegitrarFactura/create', [RegitrarFacturaController::class, 'store'])
     ->middleware(['auth'])
     ->name('RegitrarFactura.store');
 
-Route::Post('/EstadoSolicitudCita/create', [EstadoSolicitudCitaController::class, 'store'])
-->middleware(['auth'])
-->name('EstadoSolicitudCita.store');
+Route::get('/consultar-mantenimiento-vehiculo/{mantenimiento?}', [consultarMantenimientoVehiculoController::class, 'consultarMantenimientoVehiculo'])
+    ->middleware(['auth'])
+    ->name('consultar-mantenimiento-vehiculo');
 
-Route::Post('/EstadoOrdenReparacion/create', [EstadoOrdenReparacionController::class, 'store'])
-->middleware(['auth'])
-->name('EstadoOrdenReparacion.store');
+Route::get('/consultar-sugerencia/{sugerenciamantenimiento?}', [consultarSugerenciaController::class, 'consultarSugerencia'])
+    ->middleware(['auth'])
+    ->name('consultar-sugerencia');
 
-Route::Post('/Frecuencia/create', [FrecuenciaController::class, 'store'])
-->middleware(['auth'])
-->name('Frecuencia.store');
+Route::Post('/TipoEmpleado/create', [TipoEmpleadoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('TipoEmpleado.store');
 
-Route::Post('/TipoMantenimiento/create', [TipoMantenimientoController::class, 'store'])
-->middleware(['auth'])
-->name('TipoMantenimiento.store');
+Route::get('/TipoEmpleado', [TipoEmpleadoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('TipoEmpleado');
 
-Route::Post('/MotivoOrdenReparacion/create', [MotivoOrdenReparacionController::class, 'store'])
-->middleware(['auth'])
-->name('MotivoOrdenReparacion.store');
+// Registro de empleado
+Route::Post('/RegistrarEmpleado/create', [RegistrarEmpleadoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('RegistrarEmpleado.store');
+
+
+// Route::Post('/CargoEmpleado/create', [CargoEmpleadoController::class, 'store'])
+//     ->middleware(['auth'])
+//     ->name('CargoEmpleado.store');
+
+// Route::get('/CargoEmpleado', [CargoEmpleadoController::class, 'index'])
+//     ->middleware(['auth'])
+//     ->name('CargoEmpleado');
+
+// Route::Post('/DepartamentoEmpleado/create', [DepartamentoEmpleadoController::class, 'store'])
+//     ->middleware(['auth'])
+//     ->name('DepartamentoEmpleado.store');
+
+// Route::get('/DepartamentoEmpleado', [DepartamentoEmpleadoController::class, 'index'])
+//     ->middleware(['auth'])
+//     ->name('DepartamentoEmpleado');
