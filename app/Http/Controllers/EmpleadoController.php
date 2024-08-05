@@ -6,7 +6,7 @@ use App\Models\Empleado;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class RegistrarEmpleadoController extends Controller
+class EmpleadoController extends Controller
 {
     /**
      * @param  \Illuminate\Http\Request  $request
@@ -16,11 +16,10 @@ class RegistrarEmpleadoController extends Controller
     {      
         // dd($request->all());
         $request->validate([
-            'IdPersona' => 'int|exist:persona',
-            'Nombre' => 'required|exist:persona',
-            'Apellido' => 'required|exist:persona',
-            'Email' => 'required|exist:persona',
-            'Telefono' => 'required|exist:persona',
+            'nombre' => 'nullable|string',
+            'apellido' => 'nullable|string',
+            'email' => 'nullable|string',
+            'telefono' => 'nullable|string',
             'tipoEmpleado' => 'required|exists:tipoEmpleado,IdTipoEmpleado',
             'status' => 'nullable|boolean',
         ]);
@@ -40,7 +39,7 @@ class RegistrarEmpleadoController extends Controller
         $crearEmpleado->save();
 
 
-        return redirect('employee-register')->with('success', 'Guardado con exito');
+        return redirect('empleado-register')->with('success', 'Guardado con exito');
     }
 
     public function update(Request $request)
@@ -72,7 +71,7 @@ class RegistrarEmpleadoController extends Controller
         // Save the empleado instance to the database
         $empleado->save();
 
-        return redirect('employee-register')->with('success', 'Guardado con exito');
+        return redirect('empleado-register')->with('success', 'Guardado con exito');
     }
 
     public function destroy(Request $request,$Idempleado)

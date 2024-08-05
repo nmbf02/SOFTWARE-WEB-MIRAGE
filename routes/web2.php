@@ -84,8 +84,6 @@ use App\Http\Controllers\UbicacionController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\BancoController;
-use App\Http\Controllers\CargoEmpleadoController;
-use App\Http\Controllers\DepartamentoEmpleadoController;
 use App\Http\Controllers\CuentabancoController;
 use App\Http\Controllers\GarantiaController;
 use App\Http\Controllers\CoberturaseguroController;
@@ -96,6 +94,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegitrarFacturaController;
 use App\Http\Controllers\consultarMantenimientoVehiculoController;
 use App\Http\Controllers\consultarSugerenciaController;
+use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\TipoEmpleadoController;
 
 /**
@@ -274,10 +273,6 @@ Route::get('/configuracion-cxp/{configuracioncxp?}', [configuracionCXPController
 Route::get('/configurar-nomina/{configurarnomina?}', [configurarNominaController::class, 'configurarNomina'])
     ->middleware(['auth'])
     ->name('configurar-nomina');
-
-Route::get('/registrar-empleado{codigoempleado?}', [registrarEmpleadoController::class, 'codigoEmpleado'])
-    ->middleware(['auth'])
-    ->name('registrar-empleado');
 
 Route::get('/consultar-empleado/{datoempleado?}', [consultarEmpleadoController::class, 'consultarEmpleado'])
     ->middleware(['auth'])
@@ -581,9 +576,9 @@ Route::Put('/EditarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, '
     ->middleware(['auth'])
     ->name('RegitrarVehiculo.update');
 
-    Route::Delete('/EliminarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, 'destroy'])
-    ->middleware(['auth'])
-    ->name('RegitrarVehiculo.destroy');
+Route::Delete('/EliminarVehiculo/{IdVehiculo}', [RegitrarVehiculoController::class, 'destroy'])
+->middleware(['auth'])
+->name('RegitrarVehiculo.destroy');
 
 Route::get('/DescargarFactura/{IdVenta}', [PDFController::class, 'generatePDF']);
 
@@ -607,18 +602,27 @@ Route::get('/TipoEmpleado', [TipoEmpleadoController::class, 'index'])
     ->middleware(['auth'])
     ->name('TipoEmpleado');
 
-Route::Post('/CargoEmpleado/create', [CargoEmpleadoController::class, 'store'])
+// Registro de empleado
+Route::Post('/RegistrarEmpleado/create', [RegistrarEmpleadoController::class, 'store'])
     ->middleware(['auth'])
-    ->name('CargoEmpleado.store');
+    ->name('RegistrarEmpleado.store');
 
-Route::get('/CargoEmpleado', [CargoEmpleadoController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('CargoEmpleado');
+Route::Put('/EditarEmpleado/{Idempleado}', [RegistrarEmpleadoController::class, 'update'])
+->middleware(['auth'])
+->name('RegistrarEmpleado.update');
 
-Route::Post('/DepartamentoEmpleado/create', [DepartamentoEmpleadoController::class, 'store'])
-    ->middleware(['auth'])
-    ->name('DepartamentoEmpleado.store');
+// Route::Post('/CargoEmpleado/create', [CargoEmpleadoController::class, 'store'])
+//     ->middleware(['auth'])
+//     ->name('CargoEmpleado.store');
 
-Route::get('/DepartamentoEmpleado', [DepartamentoEmpleadoController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('DepartamentoEmpleado');
+// Route::get('/CargoEmpleado', [CargoEmpleadoController::class, 'index'])
+//     ->middleware(['auth'])
+//     ->name('CargoEmpleado');
+
+// Route::Post('/DepartamentoEmpleado/create', [DepartamentoEmpleadoController::class, 'store'])
+//     ->middleware(['auth'])
+//     ->name('DepartamentoEmpleado.store');
+
+// Route::get('/DepartamentoEmpleado', [DepartamentoEmpleadoController::class, 'index'])
+//     ->middleware(['auth'])
+//     ->name('DepartamentoEmpleado');

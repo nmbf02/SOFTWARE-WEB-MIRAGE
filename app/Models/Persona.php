@@ -47,7 +47,6 @@ class Persona extends Model
     {
         return $this->hasOne(Cliente::class, 'IdPersona');
     }
-
     public function Sector()
     {
         return $this->hasOne(Sector::class, 'IdSector');

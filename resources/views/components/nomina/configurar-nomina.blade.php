@@ -66,7 +66,7 @@
                                     </div>
                                 </form>
                                 {{-- Cargo --}}
-                                <form method="POST" action="{{ route('CargoEmpleado.store') }}">
+                                {{-- <form method="POST" action="{{ route('CargoEmpleado.store') }}">
                                     @csrf
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                         <div class="inline-flex justify-between items-center w-full">
@@ -103,9 +103,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </form> --}}
                                 {{-- Departamento --}}
-                                <form method="POST" action="{{ route('DepartamentoEmpleado.store') }}">
+                                {{-- <form method="POST" action="{{ route('DepartamentoEmpleado.store') }}">
                                     @csrf
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                         <div class="inline-flex justify-between items-center w-full">
@@ -142,7 +142,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </form> --}}
                             </div>
                         </div>
                     </div>
