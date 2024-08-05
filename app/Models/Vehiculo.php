@@ -14,39 +14,41 @@ class Vehiculo extends Model
     protected $primaryKey = 'IdVehiculo';  // Definiendo la llave primaria
 
     protected $fillable = [
-        'IdModeloVehiculo', 
+        'IdModeloVehiculo',
         'Descripcion',
-        'IdColorVehiculo', 
-        'IdEstadoVehiculo', 
+        'IdColorVehiculo',
+        'IdEstadoVehiculo',
         'AnoVehiculo',
-        'VIN', 
-        'Precio', 
-        'IdUbicacion', 
-        'IdSeguroVehiculo', 
+        'VIN',
+        'Precio',
+        'IdUbicacion',
+        'IdSeguroVehiculo',
         'IdTransmisionVehiculo',
-        'IdTraccionVehiculo', 
-        'MotorCilindro', 
-        'Serie', 
+        'IdTraccionVehiculo',
+        'MotorCilindro',
+        'Serie',
         'IdTipoVehiculoConcesionario',
-        'IdTipoVehiculo', 
-        'Placa', 
-        'PlacaExhibicion', 
-        'Chasis', 
-        'Matricula', 
+        'IdTipoVehiculo',
+        'Placa',
+        'PlacaExhibicion',
+        'Chasis',
+        'Matricula',
         'Marbete',
-        'CapacidadPasajeros', 
-        'FechaExpedicion', 
-        'IdSegmentoMercado', 
+        'CapacidadPasajeros',
+        'FechaExpedicion',
+        'IdSegmentoMercado',
         'IdClasificacionVehiculo',
-        'IdTipoItbis', 
-        'IdGarantia', 
+        'IdTipoItbis',
+        'IdGarantia',
+        'IdAceite',
+        'Kilometraje',
         'Status'
     ];
 
     protected $casts = [
         'Status' => 'boolean',
     ];
-    
+
     // Relaciones
     public function modeloVehiculo()
     {
@@ -111,5 +113,10 @@ class Vehiculo extends Model
     public function garantia()
     {
         return $this->belongsTo(Garantia::class, 'IdGarantia');
+    }
+
+    public function aceite()
+    {
+        return $this->belongsTo(Aceite::class, 'IdAceite');
     }
 }
