@@ -2,39 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
+use App\Models\Venta;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
 {
-    public function convertHTMLToPDF(Request $request)
+    public function generatePDF($IdVenta)
     {
-        $html = $request->input('html');
-        $format = $request->input('format', 'Letter');
-        $landscape = $request->input('landscape', true);
+        $venta = Venta::with('cliente', 'detalleVentas.vehiculo', 'moneda')->where('IdVenta', $IdVenta)->first();
 
-        // Comprueba si puppeteer está instalado correctamente
-        $isPuppeteerInstalled = Process::fromShellCommandline('npm list --depth=0 | grep puppeteer')->run();
-        if ($isPuppeteerInstalled) {
-            $process = new Process(['node', '-e', 'require("puppeteer")']);
-            $process->run();
+        $data = [
+            'venta' => $venta,
+            'cliente' => $venta->cliente,
+            'vehiculo' => $venta->detalleVentas->first()->vehiculo,
+            'moneda' => $venta->moneda,
+        ];
 
-            if (!$process->isSuccessful()) {
-                throw new ProcessFailedException($process);
-            }
-        } else {
-            throw new \Exception('Puppeteer is not installed. Please install it using npm install puppeteer');
-        }
+        $pdf = Pdf::loadView('reports.contratoventavehiculo', $data);
 
-        // Ejecuta el script Node.js
-        $process = new Process(['node', base_path('public/js/convertHTMLToPDF.js'), $html, $format, $landscape]);
-        $process->run();
-
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
-
-        return response()->file($process->getOutput());
+        return $pdf->stream('contratoventa.pdf');
     }
 }

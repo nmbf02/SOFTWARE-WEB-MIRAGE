@@ -76,22 +76,62 @@
                             {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
                                 receive mail.</p> --}}
                             <form method="GET" action="{{ route('salesRegister') }}">
-                                <div>
-                                    <label for="clienteFactura"
-                                        class="block text-sm font-medium text-gray-700">Cliente</label>
-                                    <select name="clienteFactura" id="clienteFactura"
-                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        placeholder="Seleccione un cliente" onchange="this.form.submit() ">
-                                        <option value="">Seleccionar cliente</option>
-                                        @foreach ($clienteFactura as $cliente)
-                                            <option value="{{ $cliente->IdCliente }}">
-                                                {{ $cliente->persona->Nombre }}
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    {{-- <div>
+                                        <label for="clienteFactura"
+                                            class="block text-sm font-medium text-gray-700">Cliente</label>
+                                        <select name="clienteFactura" id="clienteFactura"
+                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                            placeholder="Seleccione un cliente" onchange="this.form.submit() ">
+                                            <option value="">Seleccionar cliente</option>
+                                            @foreach ($clienteFactura as $cliente)
+                                                <option value="{{ $cliente->IdCliente }}"
+                                                    {{ $requestClienteFactura == $cliente->IdCliente ? 'selected' : '' }}>
+                                                    {{ $cliente->persona->Nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div> --}}
+                                    <div>
+                                        <label for="clienteFactura" class="block text-sm font-medium text-gray-700">Cliente</label>
+                                        <select name="clienteFactura" id="clienteFactura" class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Seleccione un cliente" onchange="this.form.submit()">
+                                            <option value="">Seleccionar cliente</option>
+                                            @foreach ($clienteFactura as $cliente)
+                                                <option value="{{ $cliente->IdCliente }}" {{ $requestClienteFactura == $cliente->IdCliente ? 'selected' : '' }}>
+                                                    {{ $cliente->persona->Nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    {{-- <div>
+                                        <label for="vehiculoFactura"
+                                            class="block text-sm font-medium text-gray-700">Vehículo</label>
+                                        <select name="vehiculoFactura" id="vehiculoFactura"
+                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                            placeholder="Seleccione un vehiculo" onchange="this.form.submit() ">
+                                            <option value="">Seleccionar vehiculo</option>
+                                            @foreach ($descripcionvehiculo as $factura)
+                                                <option value="{{ $factura->IdVehiculo }}"
+                                                    {{ $requestVehicleFactura == $factura->IdVehiculo ? 'selected' : '' }}>
+                                                    {{ $factura->Descripcion }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div> --}}
+                                    <div>
+                                        <label for="vehiculoFactura" class="block text-sm font-medium text-gray-700">Vehículo</label>
+                                        <select name="vehiculoFactura" id="vehiculoFactura" class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Seleccione un vehículo" onchange="this.form.submit()">
+                                            <option value="">Seleccionar vehículo</option>
+                                            @foreach ($descripcionvehiculo as $factura)
+                                            <option value="{{ $factura->IdVehiculo }}" {{ $requestVehicleFactura == $factura->IdVehiculo ? 'selected' : '' }}>
+                                                {{ $factura->Descripcion }}
                                             </option>
-                                        @endforeach
-                                    </select>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </form>
-                            
+                            <div class="p-2"></div>
                             <form method="POST" action="{{ route('RegitrarFactura.store') }}">
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
@@ -107,28 +147,30 @@
                                         <div>
                                             <label for="clienteFactura"
                                                 class="block text-sm font-medium text-gray-700">Cliente</label>
-                                            <select name="clienteFactura" id="clienteFactura"
+                                                <input type="text" name="clienteFactura"
+                                                value="{{ isset($client->IdCliente) ? $client->IdCliente : '' }}"
+                                                style="display:none"
+                                                readonly>
+                                            <input type="text"  id="clienteFactura"
+                                                value="{{ isset($client->persona->Nombre) ? $client->persona->Nombre : '' }}"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                placeholder="Seleccione un cliente">
-                                                @foreach ($clienteFactura as $cliente)
-                                                    <option value="{{ $cliente->IdCliente }}">
-                                                        {{ $cliente->persona->Nombre }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                                readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Licencia</label>
-                                            <input value="{{ $client['IdCategoriaLicencia']}}" name="licenciacliente" type="number" placeholder="Licencia"
-                                                class="border p-2 rounded w-full">
+                                            <input
+                                                value="{{ isset($client->categoriaLicencia->Descripcion) ? $client->categoriaLicencia->Descripcion : '' }}"
+                                                name="licenciacliente" type="text" placeholder="Licencia"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Condición de
                                                 factura</label>
-                                            <input name="condicioncliente" type="text"
-                                                placeholder="Condición de fact." class="border p-2 rounded w-full">
+                                            <input value="{{ $client->IdCondicionFactura }}" name="condicioncliente"
+                                                type="text" placeholder="Condición de fact."
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         {{-- <div>
                                             <label for="color"
@@ -164,58 +206,66 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Telefono</label>
-                                            <input name="telefonocliente" type="text" placeholder="Teléfono"
-                                                class="border p-2 rounded w-full">
+                                            <input
+                                                value="{{ isset($client->persona->Telefono) ? $client->persona->Telefono : '' }}"
+                                                name="telefonocliente" type="text" placeholder="Teléfono"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Email</label>
-                                            <input name="emailcliente" type="text" placeholder="Email"
-                                                class="border p-2 rounded w-full">
+                                            <input
+                                                value="{{ isset($client->persona->Email) ? $client->persona->Email : '' }}"
+                                                name="emailcliente" type="text" placeholder="Email"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Sector</label>
-                                            <input name="sectorcliente" type="text" placeholder="Sector"
-                                                class="border p-2 rounded w-full">
+                                            <input
+                                                value="{{ isset($client->persona->Sector->Descripcion) ? $client->persona->Sector->Descripcion : '' }}"
+                                                name="sectorcliente" type="text" placeholder="Sector"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="p-2"></div>
                                 {{-- Vehiculo --}}
+
+                                <div class="p-2"></div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">VEHÍCULO</h6>
+                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">DATOS DEL VEHÍCULO</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">VIN</label>
-                                            <input name="VINvehiculo" type="text" placeholder="VIN"
-                                                class="border p-2 rounded w-full">
+                                            <input value="{{ isset($vehicle->VIN) ? $vehicle->VIN : '' }}"
+                                                name="VINvehiculo" type="text" placeholder="VIN"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div>
                                             <label for="descripcionvehiculo"
                                                 class="block text-sm font-medium text-gray-700">Descripción</label>
-                                            <select name="descripcionvehiculo" id="descripcionvehiculo"
-                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                placeholder="Seleccione un vehículo">
-                                                @foreach ($descripcionvehiculo as $descripcion)
-                                                    <option value="{{ $descripcion->IdVehiculo }}">
-                                                        {{ $descripcion->Descripcion }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                                <input
+                                                value="{{ isset($vehicle->IdVehiculo) ? $vehicle->IdVehiculo : '' }}"
+                                                name="idvehiculo" type="text" placeholder="Descripción"
+                                                style="display:none;" readonly>
+                                            <input
+                                                value="{{ isset($vehicle->Descripcion) ? $vehicle->Descripcion : '' }}"
+                                                name="descripcionvehiculo" type="text" placeholder="Descripción"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Cantidad</label>
                                                 <input name="cantidadvehiculo" type="number" placeholder="Cant."
-                                                    class="border p-2 rounded w-full">
+                                                    class="border p-2 rounded w-full" >
                                             </div>
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Descuento</label>
-                                                <input name="descuentovehiculo" type="number" placeholder="Desc."
+                                                <input value="0" name="descuentovehiculo" type="number" placeholder="Descuento"
                                                     class="border p-2 rounded w-full">
                                             </div>
                                         </div>
@@ -224,28 +274,31 @@
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Precio</label>
-                                            <input name="preciovehiculo" type="number" placeholder="Precio"
-                                                class="border p-2 rounded w-full">
+                                            <input value="{{ isset($vehicle->Precio) ? $vehicle->Precio : '' }}"
+                                                name="preciovehiculo" type="number" placeholder="Precio"
+                                                class="border p-2 rounded w-full" readonly>
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">ITBIS</label>
                                                 <input name="itbisvehiculo" type="text"
-                                                    placeholder="ITBIS Vehiculo" class="border p-2 rounded w-full">
+                                                    placeholder="ITBIS Vehiculo" class="border p-2 rounded w-full"
+                                                    readonly>
                                             </div>
                                             <div>
                                                 <label for="color"
                                                     class="block text-sm font-medium text-gray-700">Subtotal</label>
                                                 <input name="subtotalvehiculo" type="text" placeholder="Subtotal"
-                                                    class="border p-2 rounded w-full">
+                                                    class="border p-2 rounded w-full" readonly>
                                             </div>
                                         </div>
                                         <div>
                                             <label for="transmision"
                                                 class="block text-sm font-medium text-gray-700">Total</label>
                                             <input name="totalvehiculo" type="number" placeholder="TOTAL"
-                                                class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full">
+                                                class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full"
+                                                readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -272,29 +325,8 @@
                                                     class="ml-2 block text-sm text-gray-900">Préstamo</label>
                                             </div>
                                         </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                            {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> --}}
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Descuento a
-                                                    factura</label>
-                                                <input name="descuentofactura" type="number"
-                                                    placeholder="Fecha de pago" class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Subtotal</label>
-                                                <input name="subtotalfactura" type="text" placeholder="Subtotal"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">ITBIS total</label>
-                                                <input name="itbisfactura" type="text" placeholder="ITBIS"
-                                                    class="border p-2 rounded w-full">
-                                            </div>
-                                        </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> --}}
                                             <div>
                                                 <label for="monedafactura"
                                                     class="block text-sm font-medium text-gray-700">Moneda</label>
@@ -310,14 +342,38 @@
                                             </div>
                                             <div>
                                                 <label for="color"
-                                                    class="block text-sm font-medium text-gray-700">Monto a
-                                                    pagar</label>
-                                                <input name="montoapagar" type="number" placeholder="TOTAL"
-                                                    class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full">
+                                                    class="block text-sm font-medium text-gray-700">Descuento a
+                                                    factura</label>
+                                                <input name="descuentofactura" type="number"
+                                                    placeholder="Fecha de pago" class="border p-2 rounded w-full"
+                                                    readonly>
                                             </div>
                                         </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">Subtotal</label>
+                                                <input name="subtotalfactura" type="text" placeholder="Subtotal"
+                                                    class="border p-2 rounded w-full" readonly>
+                                            </div>
+                                            <div>
+                                                <label for="color"
+                                                    class="block text-sm font-medium text-gray-700">ITBIS total</label>
+                                                <input name="itbisfactura" type="text" placeholder="ITBIS"
+                                                    class="border p-2 rounded w-full" readonly>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label for="color"
+                                                class="block text-sm font-medium text-gray-700">Monto a
+                                                pagar</label>
+                                            <input name="montoapagar" type="number" placeholder="TOTAL"
+                                                class="border p-2 rounded text-red-700 border-red-700 font-extrabold w-full"
+                                                readonly>
+                                        </div>
                                     </div>
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                    {{-- Se hara despues --}}
+                                    {{-- <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                         <div>
                                             <label for="color"
                                                 class="block text-sm font-medium text-gray-700">Monto inicial</label>
@@ -369,20 +425,80 @@
                                                     placeholder="Tasa de interés" class="border p-2 rounded w-full">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="p-2"></div>
                                 <x-button class="px-4 py-2">
                                     {{ __('Registrar factura') }}
                                 </x-button>
                             </form>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const cantidadInput = document.querySelector('input[name="cantidadvehiculo"]');
+                                    const descuentoInput = document.querySelector('input[name="descuentovehiculo"]');
+                                    const precioInput = document.querySelector('input[name="preciovehiculo"]');
+                                    const itbisInput = document.querySelector('input[name="itbisvehiculo"]');
+                                    const subtotalInput = document.querySelector('input[name="subtotalvehiculo"]');
+                                    const totalInput = document.querySelector('input[name="totalvehiculo"]');
+
+                                    const descuentoFacturaInput = document.querySelector('input[name="descuentofactura"]');
+                                    const subtotalFacturaInput = document.querySelector('input[name="subtotalfactura"]');
+                                    const itbisFacturaInput = document.querySelector('input[name="itbisfactura"]');
+                                    const montoAPagarInput = document.querySelector('input[name="montoapagar"]');
+
+                                    function calcularValores() {
+                                        const precio = parseFloat(precioInput.value) || 0;
+                                        const cantidad = parseInt(cantidadInput.value) || 0;
+                                        const descuentoPorcentaje = parseFloat(descuentoInput.value) || 0;
+
+                                        const baseSubtotal = precio * cantidad;
+                                        const descuento = baseSubtotal * (descuentoPorcentaje / 100);
+                                        const subtotal = baseSubtotal - descuento;
+                                        const itbis = subtotal * 0.18;
+                                        const total = subtotal + itbis;
+
+                                        // Actualizar los campos de vehículo
+                                        itbisInput.value = itbis.toFixed(2);
+                                        subtotalInput.value = subtotal.toFixed(2);
+                                        totalInput.value = total.toFixed(2);
+
+                                        // Actualizar los campos adicionales de la factura
+                                        descuentoFacturaInput.value = descuento.toFixed(2);
+                                        subtotalFacturaInput.value = subtotal.toFixed(2);
+                                        itbisFacturaInput.value = itbis.toFixed(2);
+                                        montoAPagarInput.value = total.toFixed(2);
+                                    }
+
+                                    cantidadInput.addEventListener('input', calcularValores);
+                                    descuentoInput.addEventListener('input', calcularValores);
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        
+        $(document).ready(function() {
+            $('#vehiculoFactura').select2({
+                placeholder: "Seleccione un vehículo",
+                allowClear: true
+            });
+        });
+
+        $(document).ready(function() {
+        $('#clienteFactura').select2({
+            placeholder: "Seleccione un cliente",
+            allowClear: true
+        });
+    });
+    </script>
+    
+    <script src="{{ asset('js/calculoVenta.js') }}"></script>
     @include ('footer')
-    <script src="/js/paginacion.js"></script>
 </x-app-layout>

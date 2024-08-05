@@ -11,31 +11,22 @@ class Empleado extends Model
 
     protected $table = 'empleados';  // Asegúrate de que coincida con el nombre de tu tabla
     protected $primaryKey = 'IdEmpleado';  // Clave primaria
-    public $timestamps = false;  // Si la tabla no tiene campos timestamps (created_at, updated_at)
-
+    public $timestamps = true;  // Si la tabla no tiene campos timestamps (created_at, updated_at)
+   
     protected $fillable = [
         'IdPersona',
-        'IdDepartamentoEmpleado',
         'IdTipoEmpleado',
-        'IdCargoEmpleado',
-        'IdTipoContratoEmpleado',
-        'MontoPagoPorHora',
-        'SalarioBase',
-        'HorasTrabajoSemanales',
-        'FechaIngreso',
-        'IdNominaEmpleado',
-        'Status'
+        'Status',
     ];
 
-    // Relaciones con otras tablas
     public function persona()
     {
         return $this->belongsTo('App\Models\Persona', 'IdPersona');
     }
 
-    public function departamento()
+    public function tipoPersona()
     {
-        return $this->belongsTo('App\Models\Departamentoempleado', 'IdDepartamentoEmpleado');
+        return $this->belongsTo('App\Models\TipoPersona', 'IdTipoPersona');
     }
 
     public function tipoEmpleado()
@@ -43,18 +34,7 @@ class Empleado extends Model
         return $this->belongsTo('App\Models\Tipoempleado', 'IdTipoEmpleado');
     }
 
-    public function cargo()
-    {
-        return $this->belongsTo('App\Models\Cargoempleado', 'IdCargoEmpleado');
-    }
-
-    public function tipoContrato()
-    {
-        return $this->belongsTo('App\Models\Tipocontratoempleado', 'IdTipoContratoEmpleado');
-    }
-
-    public function nomina()
-    {
-        return $this->belongsTo('App\Models\Nominaempleado', 'IdNominaEmpleado');
-    }
+    protected $casts = [
+        'Status' => 'boolean',
+    ];
 }

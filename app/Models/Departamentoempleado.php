@@ -14,16 +14,9 @@ class DepartamentoEmpleado extends Model
     public $timestamps = false;  // Si la tabla no tiene campos timestamps (created_at, updated_at)
 
     protected $fillable = [
-        'IdSucursal',
         'Descripcion',
         'Status'
     ];
-
-    // Relaciones con otras tablas
-    public function sucursal()
-    {
-        return $this->belongsTo('App\Models\Sucursal', 'IdSucursal');
-    }
 
     public function empleados()
     {
