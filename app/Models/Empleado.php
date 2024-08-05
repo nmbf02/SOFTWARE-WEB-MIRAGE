@@ -29,12 +29,12 @@ class Empleado extends Model
         return $this->belongsTo('App\Models\TipoPersona', 'IdTipoPersona');
     }
 
-    protected $casts = [
-        'Status' => 'boolean',
-    ];
-
     public function tipoEmpleado()
     {
         return $this->belongsTo('App\Models\Tipoempleado', 'IdTipoEmpleado');
     }
+
+    protected $casts = [
+        'Status' => 'boolean',
+    ];
 }

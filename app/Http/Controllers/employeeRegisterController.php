@@ -16,7 +16,7 @@ class employeeRegisterController extends Controller
         $tipoEmpleado = TipoEmpleado::all();
 
         return view('components.nomina.registrar-empleado', [
-            'tipoEmpleado' => $tipoEmpleado
+            'tipoEmpleado' => $tipoEmpleado,
         ]);
     }
 }

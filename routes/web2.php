@@ -607,9 +607,6 @@ Route::Post('/RegistrarEmpleado/create', [RegistrarEmpleadoController::class, 's
     ->middleware(['auth'])
     ->name('RegistrarEmpleado.store');
 
-Route::Put('/EditarEmpleado/{Idempleado}', [RegistrarEmpleadoController::class, 'update'])
-->middleware(['auth'])
-->name('RegistrarEmpleado.update');
 
 // Route::Post('/CargoEmpleado/create', [CargoEmpleadoController::class, 'store'])
 //     ->middleware(['auth'])
