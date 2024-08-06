@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Consulta de vehículos') }}
+            {{ __('Consulta de mantenimiento') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -125,8 +125,6 @@
                             <tr>
                                 <th  scope="col" class="px-6 py-4 font-bold text-gray-900 scope=">ID</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">VIN</th>
-                                <th scope="col" class="px-6 py-4 font-bold text-gray-900">Descripcion</th>
-                                <th scope="col" class="px-6 py-4 font-bold text-gray-900">Kilometraje</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">Precio</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">Año</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">Placa</th>
@@ -138,8 +136,6 @@
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-6 py-4">{{ $vehiculo->IdVehiculo }}</td>
                                     <td class="px-6 py-4">{{ $vehiculo->VIN }}</td>
-                                    <td class="px-6 py-4">{{ $vehiculo->Descripcion }}</td>
-                                    <td class="px-6 py-4">{{ $vehiculo->Kilometraje }}</td>
                                     <td class="px-6 py-4">{{ $vehiculo->Precio }}</td>
                                     <td class="px-6 py-4">{{ $vehiculo->AnoVehiculo }}</td>
                                     <td>{{ $vehiculo->Placa }}</td>
@@ -153,20 +149,20 @@
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form> --}}
                                         <a href="{{ route('editVehicle', ['id' => $vehiculo->IdVehiculo]) }}" class="btn btn-primary">Editar</a>
-
+                                         
                                             <form action="{{ route('RegitrarVehiculo.destroy', $vehiculo->IdVehiculo) }}"
                                                 method="POST" >
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                                            </form>
-
+                                                <button type="submit" class="btn btn-danger">Eliminar</button> 
+                                            </form> 
+                                        
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-
+                     
                 </div>
             </div>
         </div>
