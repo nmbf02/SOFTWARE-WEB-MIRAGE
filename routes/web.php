@@ -10,6 +10,7 @@ use App\Http\Controllers\VehicleRegisterController;
 use App\Http\Controllers\CustomerRegisterController;
 use App\Http\Controllers\SalesRegisterController;
 use App\Http\Controllers\employeeRegisterController;
+use App\Http\Controllers\ServicioMantenimientoController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -27,5 +28,7 @@ Route::get('customer-register', [CustomerRegisterController::class, 'index']);
 Route::get('sales-register', [SalesRegisterController::class, 'index']) -> name ('salesRegister') ;
 // Leudy
 Route::get('employee-register', [employeeRegisterController::class, 'index'])->name('employeeRegister');
+//Nathaly
+Route::get('services-maintenance', [ServicioMantenimientoController::class, 'index']) -> name ('ServicioMantenimiento') ;
 include('web2.php');
 

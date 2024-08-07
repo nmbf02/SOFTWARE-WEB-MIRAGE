@@ -244,29 +244,29 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Orden de reparación
                                 </a>
-                                <a href="#"
-                                   class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
-                                   @click.prevent="ServicioVehiculoOpen = !ServicioVehiculoOpen">
-                                    Servicios de vehículo
-                                    <svg :class="{ 'rotate-180': ServicioVehiculoOpen }"
-                                         class="ml-auto h-5 w-5 transform transition-transform duration-200"
-                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </a>
-                                <!-- Submenú de Mantenimiento de vehiculo -->
-                                <div x-show="ServicioVehiculoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="{{ route('mantenimiento-vehiculo') }}"
-                                       class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
-                                        Registro
-                                    </a>
-                                    <a href="{{ route('consultar-mantenimiento-vehiculo') }}"
-                                       class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
-                                        Consulta
-                                    </a>
-                                </div>
+{{--                                <a href="#"--}}
+{{--                                   class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"--}}
+{{--                                   @click.prevent="ServicioVehiculoOpen = !ServicioVehiculoOpen">--}}
+{{--                                    Servicios de vehículo--}}
+{{--                                    <svg :class="{ 'rotate-180': ServicioVehiculoOpen }"--}}
+{{--                                         class="ml-auto h-5 w-5 transform transition-transform duration-200"--}}
+{{--                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"--}}
+{{--                                         stroke="currentColor">--}}
+{{--                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"--}}
+{{--                                              d="M19 9l-7 7-7-7" />--}}
+{{--                                    </svg>--}}
+{{--                                </a>--}}
+{{--                                <!-- Submenú de Mantenimiento de vehiculo -->--}}
+{{--                                <div x-show="ServicioVehiculoOpen" class="pl-10 bg-gray-200 rounded-lg">--}}
+{{--                                    <a href="{{ route('mantenimiento-servicio') }}"--}}
+{{--                                       class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">--}}
+{{--                                        Registro--}}
+{{--                                    </a>--}}
+{{--                                    <a href="{{ route('consultar-mantenimiento-vehiculo') }}"--}}
+{{--                                       class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">--}}
+{{--                                        Consulta--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
                                 <a href="#"
                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                    @click.prevent="MantenimientoVehiculoOpen = !MantenimientoVehiculoOpen">
@@ -281,6 +281,10 @@
                                 </a>
                                 <!-- Submenú de Mantenimiento de vehiculo -->
                                 <div x-show="MantenimientoVehiculoOpen" class="pl-10 bg-gray-200 rounded-lg">
+                                    <a href="{{ route('servicio-mantenimiento') }}"
+                                       class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
+                                        Servicios
+                                    </a>
                                     <a href="{{ route('mantenimiento-vehiculo') }}"
                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Registro
