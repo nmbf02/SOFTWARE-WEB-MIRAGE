@@ -24,23 +24,24 @@
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-xs font-bold mb-2"
-                                                for="nombre">
+                                                   for="nombre">
                                                 Nombre
                                             </label>
                                             <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                value="{{@$empleado->Nombre}}" placeholder="Nombre" name="nombre">
+                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                   value="{{@$empleado->Nombre}}" placeholder="Nombre" name="nombre">
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-xs font-bold mb-2"
-                                                for="apellido">
+                                                   for="apellido">
                                                 Apellido
                                             </label>
                                             <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                value="{{@$empleado->Apellido}}" placeholder="Apellido" name="apellido">
+                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                   value="{{@$empleado->Apellido}}" placeholder="Apellido"
+                                                   name="apellido">
                                         </div>
                                     </div>
                                 </div>
@@ -52,23 +53,24 @@
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-xs font-bold mb-2"
-                                                for="telefono">
+                                                   for="telefono">
                                                 Teléfono
                                             </label>
                                             <input type="text"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300  bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                placeholder="Teléfono" value="{{@$empleado->Telefono}}" name="telefono">
+                                                   class="border-0 px-3 py-3 placeholder-blueGray-300  bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                   placeholder="Teléfono" value="{{@$empleado->Telefono}}"
+                                                   name="telefono">
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-xs font-bold mb-2"
-                                                for="email">
+                                                   for="email">
                                                 Email
                                             </label>
                                             <input type="email"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                value="{{@$empleado->Email}}" placeholder="Email" name="email">
+                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                   value="{{@$empleado->Email}}" placeholder="Email" name="email">
                                         </div>
                                     </div>
                                 </div>
@@ -81,13 +83,14 @@
                                     <div class="w-full lg:w-4/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-xs font-bold mb-2"
-                                                htmlfor="grid-password">
+                                                   htmlfor="grid-password">
                                                 Tipo de empleado
                                             </label>
                                             <div class="flex gap-2 items-center">
-                                                <select value="{{@$empleado->IdTipoEmpleado}}" id="tipoEmpleado" name="tipoEmpleado"
-                                                    class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                    required placeholder="Seleccione un tipo de Empleado">
+                                                <select value="{{@$empleado->IdTipoEmpleado}}" id="tipoEmpleado"
+                                                        name="tipoEmpleado"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        required placeholder="Seleccione un tipo de Empleado">
                                                     @foreach ($tipoEmpleado as $empleadotipo)
                                                         <option value="{{ $empleadotipo->IdTipoEmpleado }}">
                                                             {{ $empleadotipo->Descripcion }}
@@ -99,9 +102,10 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <input checked="{{@$empleado->Status}}" type="checkbox" id="Estado_empleado" name="Status" class="rounded" >
+                                    <input checked="{{@$empleado->Status}}" type="checkbox" id="Estado_empleado"
+                                           name="Status" class="rounded">
                                     <label for="Estado_empleado"
-                                        class="text-sm font-medium text-gray-700">Estado</label>
+                                           class="text-sm font-medium text-gray-700">Estado</label>
                                 </div>
                                 <div class="p-2"></div>
                                 <x-button class="px-4 py-2 mb-3">
@@ -114,9 +118,6 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-
     @include ('footer')
     <script src="/js/paginacion.js"></script>
 </x-app-layout>
