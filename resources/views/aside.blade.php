@@ -258,11 +258,11 @@
                                 </a>
                                 <!-- Submenú de Mantenimiento de vehiculo -->
                                 <div x-show="ServicioVehiculoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="{{ route('mantenimiento-vehiculo') }}"
+                                    <a href="{{ route('registrar-servicio') }}"
                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Registro
                                     </a>
-                                    <a href="{{ route('consultar-mantenimiento-vehiculo') }}"
+                                    <a href="{{ route('consultar-servicio') }}"
                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Consulta
                                     </a>
