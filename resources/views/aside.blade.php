@@ -217,7 +217,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Configuración
                                 </a>
-                                <a href="#"
+                                {{-- <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                     @click.prevent="PruebaConduccionOpen = !PruebaConduccionOpen">
                                     Prueba de conducción
@@ -239,7 +239,7 @@
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Prueba de conducción
                                     </a>
-                                </div>
+                                </div> --}}
                                 <a href="{{ route('orden-reparacion') }}"
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Orden de reparación
@@ -247,7 +247,7 @@
                                 <a href="#"
                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                    @click.prevent="MantenimientoVehiculoOpen = !MantenimientoVehiculoOpen">
-                                    Mantenimiento de vehículo
+                                    Servicios de vehículo
                                     <svg :class="{ 'rotate-180': MantenimientoVehiculoOpen }"
                                          class="ml-auto h-5 w-5 transform transition-transform duration-200"
                                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -605,7 +605,7 @@
                                 </a>
                                 <!-- Submenú para Reporte -->
                                 <div x-show="registrarNominaOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="{{ route('employeeRegister') }}"
+                                    <a href="{{ route('registrar-empleado') }}"
                                         class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2 pl-10">
                                         Empleado
                                     </a>

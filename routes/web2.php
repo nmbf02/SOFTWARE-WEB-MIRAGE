@@ -88,14 +88,22 @@ use App\Http\Controllers\CuentabancoController;
 use App\Http\Controllers\GarantiaController;
 use App\Http\Controllers\CoberturaseguroController;
 use App\Http\Controllers\CompaniaseguroController;
+use App\Http\Controllers\consultaMantenimientoController;
+use App\Http\Controllers\EstadoOrdenReparacionController;
+use App\Http\Controllers\EstadoSolicitudCitaController;
+use App\Http\Controllers\FrecuenciaController;
+use App\Http\Controllers\MotivoOrdenReparacionController;
 use App\Http\Controllers\seguroconfiguracionController;
 use App\Http\Controllers\RegitrarVehiculoController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\RegitrarFacturaController;
 use App\Http\Controllers\consultarMantenimientoVehiculoController;
 use App\Http\Controllers\consultarSugerenciaController;
-use App\Http\Controllers\EmpleadoController;
-use App\Http\Controllers\TipoEmpleadoController;
+use App\Http\Controllers\TipoaceiteController;
+use App\Http\Controllers\TipomotorController;
+use App\Http\Controllers\EdadvehiculoController;
+use App\Models\EstadoOrdenReparacion;
+
 
 /**
  * Ruta para descargar el manual de usuario.
@@ -274,6 +282,10 @@ Route::get('/configurar-nomina/{configurarnomina?}', [configurarNominaController
     ->middleware(['auth'])
     ->name('configurar-nomina');
 
+Route::get('/registrar-empleado{codigoempleado?}', [registrarEmpleadoController::class, 'codigoEmpleado'])
+    ->middleware(['auth'])
+    ->name('registrar-empleado');
+
 Route::get('/consultar-empleado/{datoempleado?}', [consultarEmpleadoController::class, 'consultarEmpleado'])
     ->middleware(['auth'])
     ->name('consultar-empleado');
@@ -309,6 +321,10 @@ Route::get('/mantenimiento-vehiculo/{mantenimientovehiculo?}', [registrarManteni
 Route::get('/configuracion-mantenimiento/{configuracionmantenimiento?}', [configuracionMantenimientoController::class, 'configuracionMantenimiento'])
     ->middleware(['auth'])
     ->name('configuracion-mantenimiento');
+
+Route::get('/consulta-mantenimiento/{consultamantenimiento?}', [consultaMantenimientoController::class, 'consultaMantenimiento'])
+->middleware(['auth'])
+->name('consulta-mantenimiento');
 
 Route::Post('/Estadocompras/create', [EstadocompraController::class, 'store'])
     ->middleware(['auth'])
@@ -593,20 +609,49 @@ Route::get('/consultar-mantenimiento-vehiculo/{mantenimiento?}', [consultarMante
 Route::get('/consultar-sugerencia/{sugerenciamantenimiento?}', [consultarSugerenciaController::class, 'consultarSugerencia'])
     ->middleware(['auth'])
     ->name('consultar-sugerencia');
+Route::Post('/EstadoSolicitudCita/create', [EstadoSolicitudCitaController::class, 'store'])
+->middleware(['auth'])
+->name('EstadoSolicitudCita.store');
 
-Route::Post('/TipoEmpleado/create', [TipoEmpleadoController::class, 'store'])
+Route::Post('/EstadoOrdenReparacion/create', [EstadoOrdenReparacionController::class, 'store'])
+->middleware(['auth'])
+->name('EstadoOrdenReparacion.store');
+
+Route::Post('/Frecuencia/create', [FrecuenciaController::class, 'store'])
+->middleware(['auth'])
+->name('Frecuencia.store');
+
+Route::Post('/TipoMantenimiento/create', [TipoMantenimientoController::class, 'store'])
+->middleware(['auth'])
+->name('TipoMantenimiento.store');
+
+Route::Post('/MotivoOrdenReparacion/create', [MotivoOrdenReparacionController::class, 'store'])
+->middleware(['auth'])
+->name('MotivoOrdenReparacion.store');
+
+Route::Post('/Tipoaceite/create', [TipoaceiteController::class, 'store'])
     ->middleware(['auth'])
-    ->name('TipoEmpleado.store');
+    ->name('Tipoaceite.store');
 
-Route::get('/TipoEmpleado', [TipoEmpleadoController::class, 'index'])
+//Route::get('/Tipoaceite', [TipoaceiteController::class, 'index'])
+//    ->middleware(['auth'])
+//    ->name('Tipoaceite');
+
+Route::Post('/Tipomotor/create', [TipomotorController::class, 'store'])
     ->middleware(['auth'])
-    ->name('TipoEmpleado');
+    ->name('Tipomotor.store');
 
-// Registro de empleado
-Route::Post('/RegistrarEmpleado/create', [RegistrarEmpleadoController::class, 'store'])
+//Route::get('/Tipomotor', [TipomotorController::class, 'index'])
+//    ->middleware(['auth'])
+//    ->name('Tipomotor');
+
+Route::Post('/Edadvehiculo/create', [EdadvehiculoController::class, 'store'])
     ->middleware(['auth'])
     ->name('RegistrarEmpleado.store');
 
+Route::Put('/EditarEmpleado/{Idempleado}', [RegistrarEmpleadoController::class, 'update'])
+->middleware(['auth'])
+->name('RegistrarEmpleado.update');
 
 // Route::Post('/CargoEmpleado/create', [CargoEmpleadoController::class, 'store'])
 //     ->middleware(['auth'])

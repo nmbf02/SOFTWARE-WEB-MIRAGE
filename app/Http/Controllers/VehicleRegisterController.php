@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aceite;
+use App\Models\Motor;
 use App\Models\ModeloVehiculo;
 use App\Models\ColorVehiculo;
 // use App\Models\AcabadoColorVehiculo;
@@ -38,6 +40,8 @@ class VehicleRegisterController extends Controller
         $SegmentoMercado = SegmentoMercado::all();
         $TipoItbis = TipoItbis::all();
         $garantiaVehiculo = Garantia::all();
+        $AceiteVehiculo = Aceite::all();
+        $MotorVehiculo = Motor::all();
 
         return view('components.vehiculo.registrovehiculo', [
             'estadoVehiculo' => $estadoVehiculo,
@@ -54,15 +58,17 @@ class VehicleRegisterController extends Controller
             'SegmentoMercado' => $SegmentoMercado,
             'TipoItbis' => $TipoItbis,
             'garantiaVehiculo' => $garantiaVehiculo,
+            'AceiteVehiculo' => $AceiteVehiculo,
+            'MotorVehiculo' => $MotorVehiculo,
         ]);
     }
     public function edit($id)
     {
-        
-        $vehiculos = Vehiculo::all(); 
+
+        $vehiculos = Vehiculo::all();
         if(!$id){
-            return 
-            
+            return
+
             view('components.vehiculo.consultavehiculo', ["numerovehiculo"=> null, "vehiculos" => $vehiculos]);
         }
 
@@ -80,14 +86,16 @@ class VehicleRegisterController extends Controller
         $SegmentoMercado = SegmentoMercado::all();
         $TipoItbis = TipoItbis::all();
         $garantiaVehiculo = Garantia::all();
+        $AceiteVehiculo = Aceite::all();
+        $MotorVehiculo = Motor::all();
 
         $vehiculo = Vehiculo::where('IdVehiculo',$id)->where('Status',1)->first();
 
         if(!$vehiculo){
-            $vehiculos = Vehiculo::where('Status',1)->get(); 
+            $vehiculos = Vehiculo::where('Status',1)->get();
             return view('components.vehiculo.consultavehiculo', ["numerovehiculo"=> null, "vehiculos" => $vehiculos]);
         }
- 
+
         return view('components.vehiculo.registrovehiculo', [
             'vehiculo' => $vehiculo,
             'estadoVehiculo' => $estadoVehiculo,
@@ -104,6 +112,8 @@ class VehicleRegisterController extends Controller
             'SegmentoMercado' => $SegmentoMercado,
             'TipoItbis' => $TipoItbis,
             'garantiaVehiculo' => $garantiaVehiculo,
+            'AceiteVehiculo' => $AceiteVehiculo,
+            'MotorVehiculo' => $MotorVehiculo,
         ]);
     }
 }

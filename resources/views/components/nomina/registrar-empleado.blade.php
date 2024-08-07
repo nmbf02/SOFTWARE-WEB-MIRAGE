@@ -14,8 +14,15 @@
                         <div class="bg-white dark:bg-gray-700 {{-- shadow rounded-lg --}} p-6">
                             <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Registrar empleado
                             </h1>
+                            
                             <hr style="border-color: #FF914D" class="p-2">
+                            @if (request()->routeIs('employeeRegister' ))   
                             <form method="POST" action="{{ route('RegistrarEmpleado.store') }}">
+                                @else
+                            <form method="POST" action="{{route('RegistrarEmpleado.update',@$empleado->IdEmpleado)}}">
+                                @method("PUT")
+                                @endif
+
                                 @csrf
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">
                                     Información del empleado
@@ -116,6 +123,7 @@
     </div>
     </div>
     </div>
+
 
     @include ('footer')
     <script src="/js/paginacion.js"></script>

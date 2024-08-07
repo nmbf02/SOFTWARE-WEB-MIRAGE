@@ -9,7 +9,6 @@ use App\Http\Controllers\GeneralConfigurationController;
 use App\Http\Controllers\VehicleRegisterController;
 use App\Http\Controllers\CustomerRegisterController;
 use App\Http\Controllers\SalesRegisterController;
-use App\Http\Controllers\employeeRegisterController;
 use Illuminate\Support\Facades\Route;
 
 /**
