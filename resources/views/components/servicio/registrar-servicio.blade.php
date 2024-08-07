@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Registrar vehículo') }}
+            {{ __('Registrar servcio de mantenimiento') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -13,17 +13,16 @@
                 <div class="bg-white dark:bg-gray-800 transition-colors duration-300">
                     <div class="containerh-full w-full bg-white relative overflow-y-auto lg:ml">
                         <div class="bg-white dark:bg-gray-700 {{-- shadow rounded-lg --}} p-6">
-                            <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Registrar vehículo
+                            <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Registrar servicio |
+                                Mantenimiento
                             </h1>
                             <hr style="border-color: #FF914D" class="p-2">
-                            {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
-                                receive mail.</p> --}}
 
-                            @if (request()->routeIs('registerVehicle' ))
+                            @if (request()->routeIs('registerService' ))
                                 <form method="POST" action="{{ route('RegitrarVehiculo.store') }}">
                                     @else
                                         <form method="POST"
-                                              action="{{ route('RegitrarVehiculo.update',@$vehiculo->IdVehiculo) }}">
+                                              action="{{ route('RegitrarVehiculo.update',@$servicio->IdVehiculo) }}">
                                             @method("PUT")
                                             @endif
 
@@ -67,19 +66,6 @@
                                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Descripción
                                                     detallada</h6>
                                                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                                    {{-- <div>
-                                                        <label for="marcaVehiculo"
-                                                            class="block text-sm font-medium text-gray-700">Marca</label>
-                                                        <select name="marcaVehiculo" id="marcaVehiculo"
-                                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                            placeholder="Seleccione una marca">
-                                                            @foreach ($marcaVehiculo as $vehiculomarca)
-                                                                <option value="{{ $vehiculomarca->IdMarcaVehiculo }}">
-                                                                    {{ $vehiculomarca->Descripcion }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div> --}}
                                                     <div>
                                                         <label for="modeloVehiculo"
                                                                class="block text-sm font-medium text-gray-700">Modelo</label>
@@ -108,19 +94,6 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    {{-- <div>
-                                                        <label for="acabadoVehiculo"
-                                                            class="block text-sm font-medium text-gray-700">Acabado</label>
-                                                        <select name="acabadoVehiculo" id="acabadoVehiculo"
-                                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                            placeholder="Seleccione un acabado">
-                                                            @foreach ($acabadoVehiculo as $vehiculoacabado)
-                                                                <option value="{{ $vehiculoacabado->IdAcabadoColorVehiculo }}">
-                                                                    {{ $vehiculoacabado->Descripcion }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div> --}}
                                                     <div>
                                                         <label for="tipoVehiculo"
                                                                class="block text-sm font-medium text-gray-700">Tipo</label>
@@ -197,7 +170,6 @@
                                                         </select>
                                                     </div>
                                                     {{--kilometraje--}}
-                                                    {{--TODO: Colocar si es milla o kilometro --}}
                                                     <div>
                                                         <label for="kilometraje"
                                                                class="block text-sm font-medium text-gray-700">Kilometraje</label>
@@ -441,42 +413,6 @@
                             </div>
                         </div>
                         <div class="p-2"></div>
-                        {{-- <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Subir archivos</h6>
-                            <div class="mb-4">
-                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                    <div>
-                                        <label for="Imagen"
-                                            class="block text-sm font-medium text-gray-700">Imagen</label>
-                                        <div
-                                            class="mt-1 flex justify-center px-6 pt- pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                            <div class="space-y-1 text-center">
-                                                <svg class="mx-auto h-12 w-12 text-white"
-                                                    stroke="currentColor" fill="none" viewBox="0 0 48 48"
-                                                    aria-hidden="true">
-                                                    <path
-                                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                        stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                                <div class="flex text-sm text-gray-600">
-                                                    <label for="file-upload"
-                                                        class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                                        <span class=""><b>Archivos</b></span>
-                                                        <input id="file-upload" type="file"
-                                                            class="sr-only">
-                                                    </label>
-                                                    <p class="pl-1"> o arrastrar y soltar.</p>
-                                                </div>
-                                                <p class="text-xs text-white">
-                                                    PNG, JPG, GIF up to 10MB
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div>
                             <input checked="{{@$vehiculo->Status}}" type="checkbox" id="Estado_modelo" name="Status"
                                    class="rounded">
