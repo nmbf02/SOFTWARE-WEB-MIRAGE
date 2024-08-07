@@ -647,4 +647,24 @@ Route::Post('/Tipomotor/create', [TipomotorController::class, 'store'])
 
 Route::Post('/Edadvehiculo/create', [EdadvehiculoController::class, 'store'])
     ->middleware(['auth'])
-    ->name('Edadvehiculo.store');
+    ->name('RegistrarEmpleado.store');
+
+Route::Put('/EditarEmpleado/{Idempleado}', [RegistrarEmpleadoController::class, 'update'])
+->middleware(['auth'])
+->name('RegistrarEmpleado.update');
+
+// Route::Post('/CargoEmpleado/create', [CargoEmpleadoController::class, 'store'])
+//     ->middleware(['auth'])
+//     ->name('CargoEmpleado.store');
+
+// Route::get('/CargoEmpleado', [CargoEmpleadoController::class, 'index'])
+//     ->middleware(['auth'])
+//     ->name('CargoEmpleado');
+
+// Route::Post('/DepartamentoEmpleado/create', [DepartamentoEmpleadoController::class, 'store'])
+//     ->middleware(['auth'])
+//     ->name('DepartamentoEmpleado.store');
+
+// Route::get('/DepartamentoEmpleado', [DepartamentoEmpleadoController::class, 'index'])
+//     ->middleware(['auth'])
+//     ->name('DepartamentoEmpleado');
