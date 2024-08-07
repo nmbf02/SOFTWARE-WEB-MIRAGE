@@ -648,12 +648,3 @@ Route::Post('/Tipomotor/create', [TipomotorController::class, 'store'])
 Route::Post('/Edadvehiculo/create', [EdadvehiculoController::class, 'store'])
     ->middleware(['auth'])
     ->name('Edadvehiculo.store');
-
-
-Route::get('/registrar-servicio{codigoservicio?}', [registrarServicioController::class, 'codigoEmpleado'])
-    ->middleware(['auth'])
-    ->name('registrar-servicio');
-
-Route::get('/consultar-servicio/{datoeservicio?}', [consultarServicioController::class, 'consultarEmpleado'])
-    ->middleware(['auth'])
-    ->name('consultar-servicio');

@@ -66,6 +66,17 @@ class Cliente extends Model
         return $this->belongsTo('App\Models\CategoriaLicencia', 'IdCategoriaLicencia');
     }
 
+    public function persona()
+    {
+        return $this->belongsTo('App\Models\persona', 'IdPersona');
+    }
+
+    public function consultarCliente()
+    {
+        $clientes = Cliente::with('persona', 'categoriaLicencia', 'tipoPersona', 'condicionFactura')->paginate(10);
+        return view('clientes.index', compact('clientes'));
+    }
+
     /**
      * Define la relación con CondicionFactura.
      *
