@@ -10,11 +10,12 @@ use Illuminate\Http\Request;
 class RegistrarEmpleadoController extends Controller
 {
     /**
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+
+    @param  \Illuminate\Http\Request  $request
+    @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {      
+    {
         //dd($request->all());
         $request->validate([
             'nombre' => 'required|string',
@@ -24,7 +25,7 @@ class RegistrarEmpleadoController extends Controller
             'tipoEmpleado' => 'required|exists:tipoEmpleado,IdTipoEmpleado',
             'status' => 'nullable|boolean',
         ]);
-    
+
         $persona = new Persona();
         $persona->Nombre = $request->nombre;
         $persona->Apellido = $request->apellido;
@@ -32,15 +33,12 @@ class RegistrarEmpleadoController extends Controller
         $persona->Telefono = $request->telefono;
         // Asegúrate de asignar todos los campos fillable que necesites aquí
         $persona->save();
-    
-        $empleado = new Empleado();
-        $empleado->IdPersona = $persona->IdPersona; // Asegúrate de que este sea el nombre correcto de la llave primaria
-        $empleado->IdTipoEmpleado = $request->tipoEmpleado;
-        $empleado->status = $request->status ? 1 : 0;
 
-        
+        $empleado = new Empleado();$empleado->IdPersona = $persona->IdPersona; // Asegúrate de que este sea el nombre correcto de la llave primaria$empleado->IdTipoEmpleado = $request->tipoEmpleado;$empleado->status = $request->status ? 1 : 0;
+
+
         $empleado->save();
-    
+
         return redirect('employee-register')->with('success', 'Empleado guardado con éxito.');
     }
 

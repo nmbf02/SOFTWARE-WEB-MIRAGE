@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
+
 class consultarEmpleadoController extends Controller
 {
     /**
@@ -10,8 +12,9 @@ class consultarEmpleadoController extends Controller
      * @param string|null $datoempleado Cualquier dato del empleado
      * @return \Illuminate\Http\Response
      */
-    public function consultarEmpleado($datoempleado = null)
+    public function consultarEmpleado($empleados = null)
     {
-        return view('components.nomina.consultar-empleado', compact('datoempleado'));
+        $empleados = Empleado::with('persona', 'tipoempleado')->paginate(10);
+        return view('components.nomina.consultar-empleado', compact('empleados'));
     }
 }
