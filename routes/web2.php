@@ -663,3 +663,7 @@ Route::get('/TipoEmpleado', [TipoEmpleadoController::class, 'index'])
 Route::Post('/RegistrarEmpleado/create', [RegistrarEmpleadoController::class, 'store'])
     ->middleware(['auth'])
     ->name('RegistrarEmpleado.store');
+
+Route::get('/consultar-empleado/{datoempleado?}', [consultarEmpleadoController::class, 'consultarEmpleado'])
+->middleware(['auth'])
+->name('consultar-empleado');
