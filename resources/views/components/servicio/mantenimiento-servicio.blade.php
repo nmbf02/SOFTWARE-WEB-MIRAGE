@@ -21,111 +21,99 @@
                                 </div>
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
-                            {{--Formulario de registro de servicio--}}
-                            <form method="POST" action="{{route('mantenimiento-mantenimiento.store')}}"
-                                  class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                {{-- Estado solicitud cita --}}
-                                @csrf
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipos de mantenimiento</h6>
-                                        <button type="button"
-                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                                data-target="toggleContent">
-                                            <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
-                                            </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent" class="hidden">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            {{--Nombre del servicio--}}
-                                            {{--TODO: AGREGAR TIPO DE MANTENIMIENTO--}}
-                                            <div>
-                                                <label for="descripcion"
-                                                       class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción" id="descripcion"
-                                                       name="descripcion"
-                                                       class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" id="status" name="status"
-                                                       class="rounded">
-                                                <label for="status"
-                                                       class="text-sm font-medium text-gray-700">Estado</label>
-                                            </div>
-                                            <x-button class="px-4 py-2">
-                                                {{ __('Salvar tipo de mantenimiento') }}
-                                            </x-button>
-                                        </div>
+                            {{--Formulario de seleccion de servicio--}}
+                            <form method="GET" action="{{ route('ServicioMantenimiento') }}">
+                                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                    <div>
+                                        <label for="tipoMantenimiento" class="block text-sm font-medium text-gray-700">Tipo
+                                            de mantenimiento</label>
+                                        <select name="tipoMantenimiento" id="tipoMantenimiento"
+                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                placeholder="Seleccione un tipo de mantenimiento"
+                                                onchange="this.form.submit()">
+                                            <option value="">Seleccione un tipo de mantenimiento</option>
+                                            @foreach ($tipoMantenimientos as $Mantenimiento)
+                                                <option
+                                                    value="{{ $Mantenimiento->IdTipoMantenimiento }}"{{ $requestTipoServicio == $Mantenimiento->IdTipoMantenimiento ? 'selected' : '' }}>
+                                                    {{ $Mantenimiento->Descripcion }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </form>
                             {{--Formulario de registro de servicio--}}
                             <form method="POST" action="{{route('servicio-mantenimiento.store')}}"
                                   class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                {{-- Estado solicitud cita --}}
+                                {{-- Tareas de mantenimiento --}}
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
                                         <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tareas de mantenimiento</h6>
                                         <button type="button"
-                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                                data-target="toggleContent1">
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150">
                                             <div class="icon">
                                                 @include('icons/show') <!-- Icono visible por defecto -->
                                             </div>
-                                            <div class="icon hidden">
-                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                            </div>
                                         </button>
                                     </div>
-                                    <!-- Sección a mostrar/ocultar -->
-                                    <div id="toggleContent1" class="hidden">
+                                    <div>
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                             {{--Nombre del servicio--}}
-                                            {{--TODO: AGREGAR TIPO DE MANTENIMIENTO--}}
+                                            {{-- Nombre del servicio --}}
                                             <div>
-                                                <label for="descripcion"
-                                                       class="block text-sm font-medium text-gray-700">Descripción</label>
-                                                <input type="text" placeholder="Descripción" id="descripcion"
-                                                       name="descripcion"
-                                                       class="border p-2 rounded w-full">
+                                                <label for="tipoMantenimiento"
+                                                       class="block text-sm font-medium text-gray-700">Nombre del
+                                                    servicio</label>
+
+                                                {{-- Campo oculto para enviar el ID del tipo de mantenimiento seleccionado --}}
+                                                <input type="hidden" name="tipoMantenimiento"
+                                                       value="{{ isset($typeMaintenance->IdTipoMantenimiento) ? $typeMaintenance->IdTipoMantenimiento : '' }}"
+                                                       readonly>
+
+                                                {{-- Campo de texto para mostrar la descripción del tipo de mantenimiento --}}
+                                                <input type="text" id="tipoMantenimiento"
+                                                       value="{{ isset($typeMaintenance->Descripcion) ? $typeMaintenance->Descripcion : '' }}"
+                                                       class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                       readonly>
                                             </div>
-                                            {{--Datos de kilometraje--}}
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                                 <div>
                                                     <label for="kilomentrajeInicial"
-                                                           class="block text-sm font-medium text-gray-700">Kilometraje inicial</label>
-                                                    <input type="number" placeholder="Kilometraje inicial" id="kilomentrajeInicial"
+                                                           class="block text-sm font-medium text-gray-700">Kilometraje
+                                                        inicial</label>
+                                                    <input type="number" placeholder="Kilometraje inicial"
+                                                           id="kilomentrajeInicial"
                                                            name="kilomentrajeInicial" min="0"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <label for="kilomentrajeFinal"
-                                                           class="block text-sm font-medium text-gray-700">Kilometraje final</label>
-                                                    <input type="number" placeholder="Kilometraje final" id="kilomentrajeFinal"
-                                                    name="kilomentrajeFinal"  min="0"
-                                                    class="border p-2 rounded w-full">
+                                                           class="block text-sm font-medium text-gray-700">Kilometraje
+                                                        final</label>
+                                                    <input type="number" placeholder="Kilometraje final"
+                                                           id="kilomentrajeFinal"
+                                                           name="kilomentrajeFinal" min="0"
+                                                           class="border p-2 rounded w-full">
                                                 </div>
                                             </div>
                                             {{--Datos de fecha de mantenimiento en lapso--}}
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                                 <div>
                                                     <label for="fechaInicial"
-                                                           class="block text-sm font-medium text-gray-700">Rango de fecha inicial</label>
-                                                    <input type="number" placeholder="Fecha manejada en meses" id="fechaInicial"
+                                                           class="block text-sm font-medium text-gray-700">Rango de
+                                                        fecha inicial</label>
+                                                    <input type="number" placeholder="Fecha manejada en meses"
+                                                           id="fechaInicial"
                                                            name="fechaInicial" min="1" max="12"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
                                                     <label for="fechaFinal"
-                                                           class="block text-sm font-medium text-gray-700">Rango de fecha final</label>
-                                                    <input type="number" placeholder="Fecha manejada en meses" id="fechaFinal"
+                                                           class="block text-sm font-medium text-gray-700">Rango de
+                                                        fecha final</label>
+                                                    <input type="number" placeholder="Fecha manejada en meses"
+                                                           id="fechaFinal"
                                                            name="fechaFinal" min="1" max="12"
                                                            class="border p-2 rounded w-full">
                                                 </div>
@@ -133,7 +121,8 @@
                                             <div>
                                                 <label for="nota"
                                                        class="block text-sm font-medium text-gray-700">Nota</label>
-                                                <textarea name="nota" id="nota" class="border p-2 rounded w-full">{{ old('Descripcion') }}</textarea>
+                                                <textarea name="nota" id="nota"
+                                                          class="border p-2 rounded w-full">{{ old('Descripcion') }}</textarea>
                                                 @error('Descripcion')
                                                 <div>{{ $message }}</div>
                                                 @enderror
@@ -158,6 +147,17 @@
             </div>
         </div>
     </div>
-    @include ('footer')
     <script src="{{ asset('js/show-hidden.js') }}"></script>
+    {{--    Script para filtro de tipo de servicio--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tipoMantenimiento').select2({
+                placeholder: "Seleccione un tipo de mantenimiento",
+                allowClear: true
+            });
+        });
+    </script>
+    @include ('footer')
 </x-app-layout>

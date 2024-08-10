@@ -77,21 +77,6 @@
                                 receive mail.</p> --}}
                             <form method="GET" action="{{ route('salesRegister') }}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    {{-- <div>
-                                        <label for="clienteFactura"
-                                            class="block text-sm font-medium text-gray-700">Cliente</label>
-                                        <select name="clienteFactura" id="clienteFactura"
-                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                            placeholder="Seleccione un cliente" onchange="this.form.submit() ">
-                                            <option value="">Seleccionar cliente</option>
-                                            @foreach ($clienteFactura as $cliente)
-                                                <option value="{{ $cliente->IdCliente }}"
-                                                    {{ $requestClienteFactura == $cliente->IdCliente ? 'selected' : '' }}>
-                                                    {{ $cliente->persona->Nombre }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div> --}}
                                     <div>
                                         <label for="clienteFactura" class="block text-sm font-medium text-gray-700">Cliente</label>
                                         <select name="clienteFactura" id="clienteFactura" class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Seleccione un cliente" onchange="this.form.submit()">
@@ -103,21 +88,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    {{-- <div>
-                                        <label for="vehiculoFactura"
-                                            class="block text-sm font-medium text-gray-700">Vehículo</label>
-                                        <select name="vehiculoFactura" id="vehiculoFactura"
-                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                            placeholder="Seleccione un vehiculo" onchange="this.form.submit() ">
-                                            <option value="">Seleccionar vehiculo</option>
-                                            @foreach ($descripcionvehiculo as $factura)
-                                                <option value="{{ $factura->IdVehiculo }}"
-                                                    {{ $requestVehicleFactura == $factura->IdVehiculo ? 'selected' : '' }}>
-                                                    {{ $factura->Descripcion }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div> --}}
                                     <div>
                                         <label for="vehiculoFactura" class="block text-sm font-medium text-gray-700">Vehículo</label>
                                         <select name="vehiculoFactura" id="vehiculoFactura" class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Seleccione un vehículo" onchange="this.form.submit()">
@@ -480,10 +450,9 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        
+
         $(document).ready(function() {
             $('#vehiculoFactura').select2({
                 placeholder: "Seleccione un vehículo",
@@ -498,7 +467,7 @@
         });
     });
     </script>
-    
+
     <script src="{{ asset('js/calculoVenta.js') }}"></script>
     @include ('footer')
 </x-app-layout>

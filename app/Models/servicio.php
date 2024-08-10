@@ -14,7 +14,7 @@ class Servicio extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'Descripcion',
+        'IdTipoMantenimiento',
         'KilometrajeInicial',
         'KilometrajeFinal',
         'DesdeFecha',
@@ -23,4 +23,11 @@ class Servicio extends Model
         'IdAceite',
         'Notas'
     ];
+
+    // Relación belongsTo, un Servicio pertenece a un TipoMantenimiento
+    public function tipoMantenimiento()
+    {
+        return $this->belongsTo('App\Models\TipoMantenimiento', 'IdTipoMantenimiento', 'IdTipoMantenimiento');
+    }
 }
+

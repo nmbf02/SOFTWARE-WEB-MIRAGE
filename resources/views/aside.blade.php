@@ -209,13 +209,13 @@
                             </a>
                             <!-- Submenú de Mantenimiento -->
                             <div x-show="MantenimientoOpen" class="pl-10 bg-gray-100 rounded-lg">
+                                <a href="{{ route('mantenimiento-mantenimiento') }}"
+                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
+                                    Configuración
+                                </a>
                                 <a href="{{ route('consultar-sugerencia') }}"
                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Sugerencia
-                                </a>
-                                <a href="{{ route('configuracion-mantenimiento') }}"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
-                                    Configuración
                                 </a>
                                 {{-- <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
@@ -240,10 +240,10 @@
                                         Prueba de conducción
                                     </a>
                                 </div> --}}
-                                <a href="{{ route('orden-reparacion') }}"
-                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
-                                    Orden de reparación
-                                </a>
+{{--                                <a href="{{ route('orden-reparacion') }}"--}}
+{{--                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">--}}
+{{--                                    Orden de reparación--}}
+{{--                                </a>--}}
 {{--                                <a href="#"--}}
 {{--                                   class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"--}}
 {{--                                   @click.prevent="ServicioVehiculoOpen = !ServicioVehiculoOpen">--}}
@@ -281,7 +281,7 @@
                                 </a>
                                 <!-- Submenú de Mantenimiento de vehiculo -->
                                 <div x-show="MantenimientoVehiculoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="{{ route('servicio-mantenimiento') }}"
+                                    <a href="/services-maintenance"
                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Servicios
                                     </a>

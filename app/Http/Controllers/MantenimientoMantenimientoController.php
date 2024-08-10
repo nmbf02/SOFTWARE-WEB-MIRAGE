@@ -11,12 +11,12 @@ class MantenimientoMantenimientoController extends Controller
     public function index()
     {
         $tipoMantenimiento = TipoMantenimiento::all();
-        return view('components.servicio.mantenimiento-servicio', compact('tipoMantenimiento'));
+        return view('components.mantenimiento.configuracion-mantenimiento', compact('tipoMantenimiento'));
     }
 
     public function create()
     {
-        return view('components.servicio.mantenimiento-servicio');
+        return view('components.mantenimiento.configuracion-mantenimiento');
     }
 
     public function store(Request $request)
@@ -33,8 +33,7 @@ class MantenimientoMantenimientoController extends Controller
             $tipoMantenimiento->Status = $request->status ? 1 : 0;
             $tipoMantenimiento->save();
 
-
-            return redirect('services-maintenance')->with('success', 'Guardado con éxito');
+            return redirect()->route('mantenimiento-mantenimiento')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

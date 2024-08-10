@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -6,23 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoMantenimiento extends Model
 {
-use HasFactory;
+    use HasFactory;
 
-// Define el nombre de la tabla si es diferente al nombre por defecto 'tipo_mantenimientos'
-protected $table = 'TipoMantenimiento';
+    // Define el nombre de la tabla si es diferente al nombre por defecto 'tipo_mantenimientos'
+    protected $table = 'TipoMantenimiento';
 
-// Si no estás utilizando timestamps (created_at, updated_at), puedes deshabilitarlo
-public $timestamps = false;
+    // Especifica la clave primaria si no es 'id'
+    protected $primaryKey = 'IdTipoMantenimiento';
 
-// Los atributos que se pueden asignar masivamente
-protected $fillable = [
-'Descripcion',
-'Status',
-];
+    // Si no estás utilizando timestamps (created_at, updated_at), puedes deshabilitarlo
+    public $timestamps = false;
 
-// Si los nombres de las columnas son diferentes de los definidos en el controlador, puedes especificarlo
-// protected $attributes = [
-//     'descripcion' => 'Descripcion',
-//     'status' => 'Status',
-// ];
+    // Los atributos que se pueden asignar masivamente
+    protected $fillable = [
+        'Descripcion',
+        'Status',
+    ];
+
+    // Relación hasMany, un TipoMantenimiento tiene muchos Servicios
+    public function servicios()
+    {
+        return $this->hasMany('App\Models\Servicio', 'IdTipoMantenimiento', 'IdTipoMantenimiento');
+    }
 }

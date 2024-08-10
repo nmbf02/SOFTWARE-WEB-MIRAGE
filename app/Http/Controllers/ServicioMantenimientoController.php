@@ -4,56 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Servicio;
 use App\Models\TipoMantenimiento;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class ServicioMantenimientoController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
-        $tipoMantenimiento = TipoMantenimiento::all();
-        $servicio = Servicio::all();
-        return view('components.servicio.mantenimiento-servicio', [
-            'tipoMantenimiento' => $tipoMantenimiento,
-            'servicio' => $servicio,
-        ]);
-    }
+        // Inicializar la variable para almacenar el TipoMantenimiento seleccionado
+        $typeMaintenance = new TipoMantenimiento();
 
-    public function store(Request $request)
-    {
-        // Validar los datos de la solicitud
-        $request->validate([
-            'Descripcion' => 'required|string',
-            'KilometrajeInicial' => 'required|integer',
-            'KilometrajeFinal' => 'required|integer',
-            'DesdeFecha' => 'required|date',
-            'HastaFecha' => 'required|date',
-            'Status' => 'nullable|boolean',
-            'IdAceite' => 'required|integer',
-            'Notas' => 'nullable|string',
-        ]);
-
-        try {
-            // Crear una nueva instancia del modelo Servicio
-            $servicio = new Servicio();
-
-            // Asignar los datos de la solicitud a la instancia del modelo
-            $servicio->Descripcion = $request->Descripcion;
-            $servicio->KilometrajeInicial = $request->KilometrajeInicial;
-            $servicio->KilometrajeFinal = $request->KilometrajeFinal;
-            $servicio->DesdeFecha = $request->DesdeFecha;
-            $servicio->HastaFecha = $request->HastaFecha;
-            $servicio->Status = $request->Status ? 1 : 0;
-            $servicio->IdAceite = $request->IdAceite;
-            $servicio->Notas = $request->Notas;
-
-            // Guardar la instancia del modelo en la base de datos
-            $servicio->save();
-
-            return redirect('registrarMantenimientoServicioController')->with('success', 'Guardado con éxito');
-        } catch (QueryException $ex) {
-            dd($ex);
+        // Si se ha enviado un `tipoMantenimiento`, buscar el registro en `TipoMantenimiento`
+        if(isset($request->tipoMantenimiento)) {
+            $typeMaintenance = TipoMantenimiento::findOrFail($request->tipoMantenimiento);
         }
+
+        // Obtener todos los registros de TipoMantenimiento y Servicio
+        $tipoMantenimientos = TipoMantenimiento::all();
+        $servicios = Servicio::with('tipoMantenimiento')->get(); // Cargar la relación tipoMantenimiento
+
+        // Retornar la vista con las variables adecuadas
+        return view('components.servicio.mantenimiento-servicio', [
+            'typeMaintenance' => $typeMaintenance,
+            'tipoMantenimientos' => $tipoMantenimientos, // Todos los registros de TipoMantenimiento
+            'servicios' => $servicios, // Todos los registros de Servicio con su relación
+            'requestTipoServicio' => $request->tipoMantenimiento
+        ]);
     }
 }
