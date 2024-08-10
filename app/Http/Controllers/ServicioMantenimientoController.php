@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Servicio;
+use App\Models\TipoMantenimiento;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,12 @@ class ServicioMantenimientoController extends Controller
 
     public function index()
     {
+        $tipoMantenimiento = TipoMantenimiento::all();
         $servicio = Servicio::all();
-        return view('components.servicio.mantenimiento-servicio', compact('servicio'));
-
+        return view('components.servicio.mantenimiento-servicio', [
+            'tipoMantenimiento' => $tipoMantenimiento,
+            'servicio' => $servicio,
+        ]);
     }
 
     public function store(Request $request)

@@ -105,6 +105,7 @@ use App\Http\Controllers\EdadvehiculoController;
 use App\Http\Controllers\TipoEmpleadoController;
 use App\Http\Controllers\registrarMantenimientoServicioController;
 use App\Http\Controllers\ServicioMantenimientoController;
+use App\Http\Controllers\MantenimientoMantenimientoController;
 use App\Models\EstadoOrdenReparacion;
 
 
@@ -681,3 +682,11 @@ Route::Post('/servicio-mantenimiento/create', [ServicioMantenimientoController::
 Route::get('/servicio-mantenimiento', [ServicioMantenimientoController::class, 'index'])
     ->middleware(['auth'])
     ->name('servicio-mantenimiento');
+
+Route::Post('/mantenimiento-mantenimiento/create', [MantenimientoMantenimientoController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('mantenimiento-mantenimiento.store');
+
+Route::get('/mantenimiento-mantenimiento', [MantenimientoMantenimientoController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('mantenimiento-mantenimiento');
