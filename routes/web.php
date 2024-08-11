@@ -31,4 +31,3 @@ Route::get('employee-register', [employeeRegisterController::class, 'index'])->n
 //Nathaly
 Route::get('services-maintenance', [ServicioMantenimientoController::class, 'index']) -> name ('ServicioMantenimiento') ;
 include('web2.php');
-

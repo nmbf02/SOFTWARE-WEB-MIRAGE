@@ -29,5 +29,11 @@ class Servicio extends Model
     {
         return $this->belongsTo('App\Models\TipoMantenimiento', 'IdTipoMantenimiento', 'IdTipoMantenimiento');
     }
+
+    // Relación belongsToMany con Motor
+    public function motores()
+    {
+        return $this->belongsToMany(Motor::class, 'ServicioMotor', 'IdServicio', 'IdMotor');
+    }
 }
 

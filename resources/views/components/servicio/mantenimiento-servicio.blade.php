@@ -43,7 +43,7 @@
                                 </div>
                             </form>
                             {{--Formulario de registro de servicio--}}
-                            <form method="POST" action="{{route('servicio-mantenimiento.store')}}"
+                            <form method="POST" action="{{route('RegistrarServicioMantenimiento.store')}}"
                                   class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                 {{-- Tareas de mantenimiento --}}
                                 @csrf
@@ -60,7 +60,6 @@
                                     <div>
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                             {{--Nombre del servicio--}}
-                                            {{-- Nombre del servicio --}}
                                             <div>
                                                 <label for="tipoMantenimiento"
                                                        class="block text-sm font-medium text-gray-700">Nombre del
@@ -105,7 +104,7 @@
                                                         fecha inicial</label>
                                                     <input type="number" placeholder="Fecha manejada en meses"
                                                            id="fechaInicial"
-                                                           name="fechaInicial" min="1" max="12"
+                                                           name="fechaInicial" min="1" max="24"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
@@ -114,10 +113,32 @@
                                                         fecha final</label>
                                                     <input type="number" placeholder="Fecha manejada en meses"
                                                            id="fechaFinal"
-                                                           name="fechaFinal" min="1" max="12"
+                                                           name="fechaFinal" min="1" max="24"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                             </div>
+{{--                                            Seleccionar uno o varios servicio--}}
+                                            <div>
+                                                <label for="tipoMotor" class="block text-sm font-medium text-gray-700">Seleccione el tipo de motor que aplica para esta tarea de mantenimiento</label>
+                                                <div id="tipoMotor" class="mt-2">
+                                                    @foreach($motores as $motor)
+                                                        <div class="flex items-center">
+                                                            <input
+                                                                type="checkbox"
+                                                                id="motor-{{ $motor->IdMotor }}"
+                                                                name="tipoMotor[]"
+                                                                value="{{ $motor->IdMotor }}"
+                                                                class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                                                                {{ (in_array($motor->IdMotor, old('tipoMotor', []))) ? 'checked' : '' }}>
+                                                            <label for="motor-{{ $motor->IdMotor }}" class="ml-2 block text-sm text-gray-900">
+                                                                {{ $motor->Descripcion }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+
+                                            {{--                                            Nota del servicio--}}
                                             <div>
                                                 <label for="nota"
                                                        class="block text-sm font-medium text-gray-700">Nota</label>
@@ -127,13 +148,14 @@
                                                 <div>{{ $message }}</div>
                                                 @enderror
                                             </div>
-
+{{--                                            Estado del servicio--}}
                                             <div>
                                                 <input type="checkbox" id="estado" name="estado"
                                                        class="rounded">
                                                 <label for="estado"
                                                        class="text-sm font-medium text-gray-700">Estado</label>
                                             </div>
+{{--                                            Boton de salvar el servicio--}}
                                             <x-button class="px-4 py-2">
                                                 {{ __('Salvar servicio') }}
                                             </x-button>
