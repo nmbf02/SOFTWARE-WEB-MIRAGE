@@ -10,6 +10,8 @@ use App\Http\Controllers\VehicleRegisterController;
 use App\Http\Controllers\CustomerRegisterController;
 use App\Http\Controllers\SalesRegisterController;
 use App\Http\Controllers\employeeRegisterController;
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -28,4 +30,11 @@ Route::get('sales-register', [SalesRegisterController::class, 'index']) -> name 
 // Leudy
 Route::get('employee-register', [employeeRegisterController::class, 'index'])->name('employeeRegister');
 include('web2.php');
+
+Route::get('contactanos', function(){
+    Mail::to('leudyluna99@gmail.com')
+        ->send(new ContactanosMailable);
+
+    return "Mensaje enviado";
+})->name('contactanos');
 
