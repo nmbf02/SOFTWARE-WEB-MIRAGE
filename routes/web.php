@@ -10,7 +10,8 @@ use App\Http\Controllers\VehicleRegisterController;
 use App\Http\Controllers\CustomerRegisterController;
 use App\Http\Controllers\SalesRegisterController;
 use App\Http\Controllers\employeeRegisterController;
-use App\Http\Controllers\ServicioMantenimientoController;
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -31,4 +32,11 @@ Route::get('employee-register', [employeeRegisterController::class, 'index'])->n
 //Nathaly
 Route::get('services-maintenance', [ServicioMantenimientoController::class, 'index']) -> name ('ServicioMantenimiento') ;
 include('web2.php');
+
+Route::get('contactanos', function(){
+    Mail::to('leudyluna99@gmail.com')
+        ->send(new ContactanosMailable);
+
+    return "Mensaje enviado";
+})->name('contactanos');
 
