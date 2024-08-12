@@ -22,4 +22,10 @@ class Motor extends Model
     {
         return $this->hasMany(Vehiculo::class, 'IdMotor');
     }
+
+    public function servicios()
+    {
+        return $this->belongsToMany(Servicio::class, 'ServicioMotor', 'IdMotor', 'IdServicio');
+    }
+
 }
