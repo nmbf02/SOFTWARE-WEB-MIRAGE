@@ -269,6 +269,29 @@
 {{--                                </div>--}}
                                 <a href="#"
                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
+                                   @click.prevent="ServicioVehiculoOpen = !ServicioVehiculoOpen">
+                                    Servicio
+                                    <svg :class="{ 'rotate-180': MantenimientoVehiculoOpen }"
+                                         class="ml-auto h-5 w-5 transform transition-transform duration-200"
+                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </a>
+                                <!-- Submenú de Mantenimiento de vehiculo -->
+                                <div x-show="ServicioVehiculoOpen" class="pl-10 bg-gray-200 rounded-lg">
+                                    <a href="/services-maintenance"
+                                       class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
+                                        Asignacion de kilometraje/motor
+                                    </a>
+                                    <a href="/services-aceite"
+                                       class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
+                                       Asignacion de aceite
+                                    </a>
+                                </div>
+                                <a href="#"
+                                   class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                    @click.prevent="MantenimientoVehiculoOpen = !MantenimientoVehiculoOpen">
                                     Mantenimiento de vehículo
                                     <svg :class="{ 'rotate-180': MantenimientoVehiculoOpen }"
@@ -281,10 +304,6 @@
                                 </a>
                                 <!-- Submenú de Mantenimiento de vehiculo -->
                                 <div x-show="MantenimientoVehiculoOpen" class="pl-10 bg-gray-200 rounded-lg">
-                                    <a href="/services-maintenance"
-                                       class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
-                                        Servicios
-                                    </a>
                                     <a href="{{ route('mantenimiento-vehiculo') }}"
                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                         Registro

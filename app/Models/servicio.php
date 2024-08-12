@@ -35,5 +35,10 @@ class Servicio extends Model
     {
         return $this->belongsToMany(Motor::class, 'ServicioMotor', 'IdServicio', 'IdMotor');
     }
+
+    public function tipoAceite()
+    {
+        return $this->belongsTo(Aceite::class,'IdAceite');
+    }
 }
 
