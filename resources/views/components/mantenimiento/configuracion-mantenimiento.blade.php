@@ -91,10 +91,10 @@
                                             </div>
                                             <div>
                                                 <label for="TAceite"
-                                                       class="block text-sm font-medium text-gray-700">Sucursal</label>
+                                                       class="block text-sm font-medium text-gray-700">Tipo de aceite</label>
                                                 <select name="TAceite" id="TAceiteo"
                                                         class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                        placeholder="Seleccione una sucursal">
+                                                        placeholder="Seleccione un tipo de aceite">
                                                     @foreach ($TAceite as $tipoDeAceite)
                                                         <option value="{{ $tipoDeAceite->IdAceite }}">
                                                             {{ $tipoDeAceite->Descripcion }}
@@ -123,8 +123,8 @@
                                                                    placeholder="Kilómetros" readonly>
                                                         </div>
                                                         <button type="button" onclick="convertirMillasAKilometros()"
-                                                                class="mt-2 px-4 py-2 bg-blue-500 border-amber-700 text-orange-500 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                                            Convertir
+                                                                  class="h-1/2 my-auto text-center text-orange-500 bg-white hover:bg-orange-100">
+                                                            Igualar
                                                         </button>
                                                     </div>
                                                 </div>
@@ -133,18 +133,18 @@
                                                         <label for="kilomentraje"
                                                                class="block text-sm font-medium text-gray-700">Kilometraje
                                                             </label>
-                                                        <input type="number" placeholder="Kilometraje inicial"
+                                                        <input type="number" placeholder="Kilometraje"
                                                                id="kilomentraje"
-                                                               name="kilomentrajeInicial" min="0"
+                                                               name="kilomentraje" min="0"
                                                                class="border p-2 rounded w-full">
                                                     </div>
                                                     {{--Datos de fecha de mantenimiento en lapso--}}
                                                     <div>
-                                                        <label for="fechaInicial"
+                                                        <label for="lapsoDeTiempo"
                                                                class="block text-sm font-medium text-gray-700">Lapso de tiempo</label>
                                                         <input type="number" placeholder="Rango manejado en meses"
-                                                               id="fechaInicial"
-                                                               name="fechaInicial" min="1" max="24"
+                                                               id="lapsoDeTiempo"
+                                                               name="lapsoDeTiempo" min="1" max="24"
                                                                class="border p-2 rounded w-full">
                                                     </div>
                                                 </div>
@@ -253,4 +253,16 @@
     </div>
     @include ('footer')
     <script src="{{ asset('js/show-hidden.js') }}"></script>
+    <script>
+        function convertirMillasAKilometros() {
+            const millas = document.getElementById('millas').value;
+            const kilometros = millas * 1.60934;
+            document.getElementById('kilometros').value = kilometros.toFixed(2);
+        }
+
+        function igualarKilometraje() {
+            const kilometros = document.getElementById('kilometros').value;
+            document.getElementById('kilomentraje').value = kilometros;
+        }
+    </script>
 </x-app-layout>

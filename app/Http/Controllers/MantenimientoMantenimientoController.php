@@ -33,7 +33,7 @@ class MantenimientoMantenimientoController extends Controller
             $tipoMantenimiento->Status = $request->status ? 1 : 0;
             $tipoMantenimiento->save();
 
-            return redirect()->route('mantenimiento-mantenimiento')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect()->route('maintenance-configuration')->with('success', 'Estado de ITBIS guardado con éxito.');
         } catch (QueryException $ex) {
             dd($ex);
         }

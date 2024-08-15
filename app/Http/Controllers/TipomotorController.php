@@ -33,7 +33,7 @@ class TipomotorController extends Controller
         $aceiteMotor->save();
 
         // Redirect the user to the vehicle configuration page with a success message
-        return redirect('vehicle-configuration')->with('success', 'Guardado con éxito');
+        return redirect('maintenance-configuration')->with('success', 'Guardado con éxito');
     }
 
     public function show(AceiteMotor $aceiteMotor)
