@@ -884,84 +884,84 @@
                                         </div>
                                     </div>
                                 </form>
-                                {{--Mantenimiento de aceite--}}
-                                <form method="POST" action="{{ route('Tipoaceite.store') }}">
-                                    @csrf
-                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                        <div class="inline-flex justify-between items-center w-full">
-                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Aceite</h6>
-                                            <button type="button"
-                                                    class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                                    data-target="toggleContent18">
-                                                <div class="icon">
-                                                    @include('icons/show') <!-- Icono visible por defecto -->
-                                                </div>
-                                                <div class="icon hidden">
-                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                                </div>
-                                            </button>
-                                        </div>
-                                        <!-- Sección a mostrar/ocultar -->
-                                        <div id="toggleContent18" class="hidden">
-                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                                <div>
-                                                    <label for="descripcion"
-                                                           class="block text-sm font-medium text-gray-700">Tipo de aceite</label>
-                                                    <input name="descripcion" type="text"
-                                                           placeholder="Tipo de aceite" class="border p-2 rounded w-full">
-                                                </div>
-                                                <div>
-                                                    <input type="checkbox" id="status"
-                                                           name="status" class="rounded">
-                                                    <label for="status"
-                                                           class="text-sm font-medium text-gray-700">Estado</label>
-                                                </div>
-                                                <x-button class="px-4 py-2">
-                                                    {{ __('Salvar tipo de aceite') }}
-                                                </x-button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                {{--Mantenimiento de motor--}}
-                                <form method="POST" action="{{ route('Tipomotor.store') }}">
-                                    @csrf
-                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                        <div class="inline-flex justify-between items-center w-full">
-                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Motor</h6>
-                                            <button type="button"
-                                                    class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
-                                                    data-target="toggleContent19">
-                                                <div class="icon">
-                                                    @include('icons/show') <!-- Icono visible por defecto -->
-                                                </div>
-                                                <div class="icon hidden">
-                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->
-                                                </div>
-                                            </button>
-                                        </div>
-                                        <!-- Sección a mostrar/ocultar -->
-                                        <div id="toggleContent19" class="hidden">
-                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                                <div>
-                                                    <label for="color"
-                                                           class="block text-sm font-medium text-gray-700">Tipo de motor</label>
-                                                    <input name="descripcion" type="text"
-                                                           placeholder="Gasolina, eléctrico..." class="border p-2 rounded w-full">
-                                                </div>
-                                                <div>
-                                                    <input type="checkbox" id="status"
-                                                           name="status" class="rounded">
-                                                    <label for="status"
-                                                           class="text-sm font-medium text-gray-700">Estado</label>
-                                                </div>
-                                                <x-button class="px-4 py-2">
-                                                    {{ __('Salvar tipo de motor') }}
-                                                </x-button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+{{--                                --}}{{--Mantenimiento de aceite--}}
+{{--                                <form method="POST" action="{{ route('Tipoaceite.store') }}">--}}
+{{--                                    @csrf--}}
+{{--                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">--}}
+{{--                                        <div class="inline-flex justify-between items-center w-full">--}}
+{{--                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Aceite</h6>--}}
+{{--                                            <button type="button"--}}
+{{--                                                    class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"--}}
+{{--                                                    data-target="toggleContent18">--}}
+{{--                                                <div class="icon">--}}
+{{--                                                    @include('icons/show') <!-- Icono visible por defecto -->--}}
+{{--                                                </div>--}}
+{{--                                                <div class="icon hidden">--}}
+{{--                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->--}}
+{{--                                                </div>--}}
+{{--                                            </button>--}}
+{{--                                        </div>--}}
+{{--                                        <!-- Sección a mostrar/ocultar -->--}}
+{{--                                        <div id="toggleContent18" class="hidden">--}}
+{{--                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">--}}
+{{--                                                <div>--}}
+{{--                                                    <label for="descripcion"--}}
+{{--                                                           class="block text-sm font-medium text-gray-700">Tipo de aceite</label>--}}
+{{--                                                    <input name="descripcion" type="text"--}}
+{{--                                                           placeholder="Tipo de aceite" class="border p-2 rounded w-full">--}}
+{{--                                                </div>--}}
+{{--                                                <div>--}}
+{{--                                                    <input type="checkbox" id="status"--}}
+{{--                                                           name="status" class="rounded">--}}
+{{--                                                    <label for="status"--}}
+{{--                                                           class="text-sm font-medium text-gray-700">Estado</label>--}}
+{{--                                                </div>--}}
+{{--                                                <x-button class="px-4 py-2">--}}
+{{--                                                    {{ __('Salvar tipo de aceite') }}--}}
+{{--                                                </x-button>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
+{{--                                --}}{{--Mantenimiento de motor--}}
+{{--                                <form method="POST" action="{{ route('Tipomotor.store') }}">--}}
+{{--                                    @csrf--}}
+{{--                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">--}}
+{{--                                        <div class="inline-flex justify-between items-center w-full">--}}
+{{--                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Motor</h6>--}}
+{{--                                            <button type="button"--}}
+{{--                                                    class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"--}}
+{{--                                                    data-target="toggleContent19">--}}
+{{--                                                <div class="icon">--}}
+{{--                                                    @include('icons/show') <!-- Icono visible por defecto -->--}}
+{{--                                                </div>--}}
+{{--                                                <div class="icon hidden">--}}
+{{--                                                    @include('icons/hidden') <!-- Icono oculto inicialmente -->--}}
+{{--                                                </div>--}}
+{{--                                            </button>--}}
+{{--                                        </div>--}}
+{{--                                        <!-- Sección a mostrar/ocultar -->--}}
+{{--                                        <div id="toggleContent19" class="hidden">--}}
+{{--                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">--}}
+{{--                                                <div>--}}
+{{--                                                    <label for="color"--}}
+{{--                                                           class="block text-sm font-medium text-gray-700">Tipo de motor</label>--}}
+{{--                                                    <input name="descripcion" type="text"--}}
+{{--                                                           placeholder="Gasolina, eléctrico..." class="border p-2 rounded w-full">--}}
+{{--                                                </div>--}}
+{{--                                                <div>--}}
+{{--                                                    <input type="checkbox" id="status"--}}
+{{--                                                           name="status" class="rounded">--}}
+{{--                                                    <label for="status"--}}
+{{--                                                           class="text-sm font-medium text-gray-700">Estado</label>--}}
+{{--                                                </div>--}}
+{{--                                                <x-button class="px-4 py-2">--}}
+{{--                                                    {{ __('Salvar tipo de motor') }}--}}
+{{--                                                </x-button>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
                                 {{-- TODO: Colocar un modal donde se puedan editar los periodos de tiempo--}}
                                 {{--Edad del vehiculo--}}
                                 <form method="POST" action="{{ route('Edadvehiculo.store') }}">
