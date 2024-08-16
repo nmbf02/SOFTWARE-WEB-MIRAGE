@@ -36,6 +36,6 @@ class AceiteController extends Controller
         $Aceite->Status = $request->status ? 1 : 0;
         $Aceite->save();
 
-        return redirect('maintenance-configuration')->with('success', 'Guardado con exito');
+        return redirect('services-maintenance')->with('success', 'Guardado con exito');
     }
 }

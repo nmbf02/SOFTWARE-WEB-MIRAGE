@@ -247,7 +247,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <div class="p-2"></div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Inventario</h6>

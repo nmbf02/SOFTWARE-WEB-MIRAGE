@@ -652,10 +652,6 @@ Route::Post('/Tipomotor/create', [TipomotorController::class, 'store'])
     ->middleware(['auth'])
     ->name('Tipomotor.store');
 
-//Route::get('/Tipomotor', [TipomotorController::class, 'index'])
-//    ->middleware(['auth'])
-//    ->name('Tipomotor');
-
 Route::Post('/Edadvehiculo/create', [EdadvehiculoController::class, 'store'])
     ->middleware(['auth'])
     ->name('Edadvehiculo.store');
@@ -693,10 +689,6 @@ Route::get('/servicio-mantenimiento', [ServicioMantenimientoController::class, '
 Route::Post('/mantenimiento-mantenimiento/create', [MantenimientoMantenimientoController::class, 'store'])
     ->middleware(['auth'])
     ->name('mantenimiento-mantenimiento.store');
-
-//Route::get('/mantenimiento-mantenimiento', [MantenimientoMantenimientoController::class, 'index'])
-//    ->middleware(['auth'])
-//    ->name('mantenimiento-mantenimiento');
 
 Route::Post('/RegistrarServicioMantenimiento/create', [RegistrarServicioMantenimientoController::class, 'store'])
     ->middleware(['auth'])
