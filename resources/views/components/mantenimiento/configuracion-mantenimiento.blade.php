@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                             </form>
-                            {{-- Formulario de regristo de aceite --}}
+                            {{-- Formulario de registro de aceite --}}
                             <form method="POST" action="{{ route('Aceite.store') }}"
                                   class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                 @csrf
@@ -102,51 +102,39 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                                 <div>
-                                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                                        <div>
-                                                            <label for="millas"
-                                                                   class="block text-sm font-medium text-gray-700">Ingrese
-                                                                la distancia en millas:</label>
-                                                            <input type="number" id="millas" name="millas"
-                                                                   class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                                                   placeholder="Millas">
-                                                        </div>
-                                                        <div>
-                                                            <label for="kilometros"
-                                                                   class="block text-sm font-medium text-gray-700">Distancia
-                                                                en
-                                                                kilómetros:</label>
-                                                            <input type="text" id="kilometros" name="kilometros"
-                                                                   class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                                                   placeholder="Kilómetros" readonly>
-                                                        </div>
-                                                        <button type="button" onclick="convertirMillasAKilometros()"
-                                                                  class="h-1/2 my-auto text-center text-orange-500 bg-white hover:bg-orange-100">
-                                                            Igualar
-                                                        </button>
-                                                    </div>
+                                                    <label for="millas"
+                                                           class="block text-sm font-medium text-gray-700">Conversión de millas a kilometros:</label>
+                                                    <input type="number" id="millas" name="millas"
+                                                           class="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                           placeholder="Millas" onblur="convertirMillasAKilometraje()">
                                                 </div>
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                                    <div>
-                                                        <label for="kilomentraje"
-                                                               class="block text-sm font-medium text-gray-700">Kilometraje
-                                                            </label>
-                                                        <input type="number" placeholder="Kilometraje"
-                                                               id="kilomentraje"
-                                                               name="kilomentraje" min="0"
-                                                               class="border p-2 rounded w-full">
-                                                    </div>
-                                                    {{--Datos de fecha de mantenimiento en lapso--}}
-                                                    <div>
-                                                        <label for="lapsoDeTiempo"
-                                                               class="block text-sm font-medium text-gray-700">Lapso de tiempo</label>
-                                                        <input type="number" placeholder="Rango manejado en meses"
-                                                               id="lapsoDeTiempo"
-                                                               name="lapsoDeTiempo" min="1" max="24"
-                                                               class="border p-2 rounded w-full">
-                                                    </div>
+                                                <div>
+                                                    <label for="kilomentraje"
+                                                           class="block text-sm font-medium text-gray-700">Kilometraje
+                                                    </label>
+                                                    <input type="number" placeholder="Kilometraje"
+                                                           id="kilomentraje"
+                                                           name="kilomentraje" min="0"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                {{--Datos de fecha de mantenimiento en lapso--}}
+                                                <div>
+                                                    <label for="lapsoDeTiempo"
+                                                           class="block text-sm font-medium text-gray-700">Lapso de tiempo</label>
+                                                    <input type="number" placeholder="Rango manejado en meses"
+                                                           id="lapsoDeTiempo"
+                                                           name="lapsoDeTiempo" min="1" max="24"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="precio"
+                                                           class="block text-sm font-medium text-gray-700">Precio</label>
+                                                    <input type="number" placeholder="Precio del producto"
+                                                           id="precio"
+                                                           name="precio" min="0"
+                                                           class="border p-2 rounded w-full">
                                                 </div>
                                             </div>
                                             <div>
@@ -254,15 +242,10 @@
     @include ('footer')
     <script src="{{ asset('js/show-hidden.js') }}"></script>
     <script>
-        function convertirMillasAKilometros() {
+        function convertirMillasAKilometraje() {
             const millas = document.getElementById('millas').value;
-            const kilometros = millas * 1.60934;
-            document.getElementById('kilometros').value = kilometros.toFixed(2);
-        }
-
-        function igualarKilometraje() {
-            const kilometros = document.getElementById('kilometros').value;
-            document.getElementById('kilomentraje').value = kilometros;
+            const kilometraje = millas * 1.60934;
+            document.getElementById('kilomentraje').value = Math.round(kilometraje); // Redondea al número entero más cercano
         }
     </script>
 </x-app-layout>

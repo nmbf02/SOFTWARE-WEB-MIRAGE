@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Aceite;
+use App\Models\ConfiguracionAceite;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
@@ -21,6 +21,7 @@ class AceiteController extends Controller
             'TAceite'=> 'required|exists:Aceite,IdAceite',
             'kilomentraje' => 'required|numeric',
             'lapsoDeTiempo' => 'required|numeric',
+            'precio' => 'required|numeric',
             'status' => 'nullable|boolean',
         ]);
 
@@ -29,6 +30,9 @@ class AceiteController extends Controller
         // Assign the request data to the provinciageneral instance
         $Aceite->Descripcion = $request->descripcion;
         $Aceite->IdAceite = $request->TAceite;
+        $Aceite->Kilometraje = $request->kilomentraje;
+        $Aceite->LapsoDeTiempo = $request->lapsoDeTiempo;
+        $Aceite->Precio = $request->precio;
         $Aceite->Status = $request->status ? 1 : 0;
         $Aceite->save();
 
