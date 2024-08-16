@@ -10,6 +10,7 @@ class RegistrarServicioMantenimientoController extends Controller
 {
     public function store(Request $request)
     {
+//        dd($request->all());
         $validated = $request->validate([
             'tipoMotor' => 'required|exists:Motor,IdMotor',
             'tipoMantenimiento' => 'required|exists:TipoMantenimiento,IdTipoMantenimiento',
@@ -32,7 +33,6 @@ class RegistrarServicioMantenimientoController extends Controller
         $servicioNuevo->HastaFecha = $request->fechaFinal;
         $servicioNuevo->Notas = $request->nota;
         $servicioNuevo->Status = $request->status ? 1 : 0;
-        dd($servicioNuevo->all());
         // Guardar el servicio
         $servicioNuevo->save();
 

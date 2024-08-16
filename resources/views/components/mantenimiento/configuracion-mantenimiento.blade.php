@@ -311,7 +311,7 @@
                                                            class="block text-sm font-medium text-gray-700">Motor según combustible</label>
 
                                                     {{-- Campo oculto para enviar el ID del tipo de mantenimiento seleccionado --}}
-                                                    <input type="hidden" name="TipoMotor"
+                                                    <input type="hidden" name="tipoMotor"
                                                            value="{{ isset($typeMotor->IdMotor) ? $typeMotor->IdMotor : '' }}"
                                                            readonly>
 
