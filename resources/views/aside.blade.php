@@ -213,10 +213,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Configuración
                                 </a>
-                                <a href="{{ route('consultar-sugerencia') }}"
-                                   class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
-                                    Sugerencia
-                                </a>
+                                <a href="" class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"> Dashboard </a>
                                 {{-- <a href="#"
                                     class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                     @click.prevent="PruebaConduccionOpen = !PruebaConduccionOpen">
@@ -267,7 +264,7 @@
 {{--                                        Consulta--}}
 {{--                                    </a>--}}
 {{--                                </div>--}}
-                                <a href="#"
+                                {{-- <a href="#"
                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                    @click.prevent="ServicioVehiculoOpen = !ServicioVehiculoOpen">
                                     Servicio
@@ -289,7 +286,7 @@
                                        class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-300 transition duration-75 p-2">
                                        Asignacion de aceite
                                     </a>
-                                </div>
+                                </div> --}}
                                 <a href="#"
                                    class="flex items-center text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2"
                                    @click.prevent="MantenimientoVehiculoOpen = !MantenimientoVehiculoOpen">
@@ -313,6 +310,10 @@
                                         Consulta
                                     </a>
                                 </div>
+                                <a href="{{ route('consultar-sugerencia') }}"
+                                   class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
+                                    Sugerencia
+                                </a>
                             </div>
                         </div>
                         {{-- Inventario --}}

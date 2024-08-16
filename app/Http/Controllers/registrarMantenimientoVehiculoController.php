@@ -12,6 +12,6 @@ class registrarMantenimientoVehiculoController extends Controller
      */
     public function mantenimientoVehiculo()
     {
-        return view('components.mantenimiento.configuracion-mantenimiento');
+        return view('components.mantenimiento.mantenimiento-vehiculo');
     }
 }

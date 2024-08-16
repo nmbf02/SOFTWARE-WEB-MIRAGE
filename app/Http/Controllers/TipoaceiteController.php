@@ -23,12 +23,14 @@ class TipoaceiteController extends Controller
     {
         $request->validate([
             'descripcion' => 'required|string',
+            'kilometraje' => 'requiered|int',
             'status' => 'boolean',
         ]);
 
         // Creating a new instance of Aceite
         $tipoAceite = new Aceite();
         $tipoAceite->Descripcion = $request->descripcion; // Correcting the field name for 'Descripcion'
+        $tipoAceite->KilometrajeAceite = $request->kilometraje;
         $tipoAceite->Status = $request->status ? 1 : 0;
 
         $tipoAceite->save();
@@ -51,6 +53,7 @@ class TipoaceiteController extends Controller
     {
         $request->validate([
             'descripcion' => 'required|string|max:255',
+            'kilometraje' => 'requiered|int',
             'status' => 'required|boolean',
         ]);
 

@@ -638,9 +638,9 @@ Route::Post('/Tipoaceite/create', [TipoaceiteController::class, 'store'])
     ->middleware(['auth'])
     ->name('Tipoaceite.store');
 
-//Route::get('/Tipoaceite', [TipoaceiteController::class, 'index'])
-//    ->middleware(['auth'])
-//    ->name('Tipoaceite');
+Route::get('/Tipoaceite', [TipoaceiteController::class, 'index'])
+   ->middleware(['auth'])
+   ->name('Tipoaceite');
 
 Route::Post('/Tipomotor/create', [TipomotorController::class, 'store'])
     ->middleware(['auth'])

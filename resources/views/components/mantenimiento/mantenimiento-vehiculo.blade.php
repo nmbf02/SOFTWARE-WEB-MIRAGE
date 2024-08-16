@@ -34,68 +34,71 @@
                                         <input type="text" placeholder="Número de factura"
                                             class="border p-2 rounded w-full">
                                     </div>
+                                    <div class="mt-5">
+                                        <label for="color" class="block text-sm font-medium text-gray-700">Fecha
+                                            factura</label>
+                                        <input type="text" placeholder="Fecha factura"
+                                            class="border p-2 rounded w-full">
+                                    </div>
                                 </div>
                                 <div class="p-2"></div>
 
-                                {{-- Datos de factura --}}
+                                {{-- Datos de Cliente --}}
                                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos factura</h6>
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos Cliente</h6>
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                             <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
-                                                <div>
-                                                    <label for="color" class="block text-sm font-medium text-gray-700">Fecha de
-                                                        contrato</label>
-                                                    <input type="text" placeholder="Fecha factura"
-                                                           class="border p-2 rounded w-full">
-                                                </div>
                                                 <div>
                                                     <label for="color" class="block text-sm font-medium text-gray-700">Nombre del cliente</label>
                                                     <input type="text" placeholder="Nombre del cliente"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <label for="color" class="block text-sm font-medium text-gray-700">Teléfono</label>
-                                                    <input type="text" placeholder="Nombre del cliente"
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Cedula</label>
+                                                    <input type="text" placeholder="Cedula"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <label for="color" class="block text-sm font-medium text-gray-700">Identificación</label>
-                                                    <input type="text" placeholder="Nombre del cliente"
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Telefono</label>
+                                                    <input type="text" placeholder="Telefono"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                                 <div>
-                                                    <label for="color" class="block text-sm font-medium text-gray-700">Identificación</label>
-                                                    <input type="text" placeholder="Nombre del cliente"
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Email</label>
+                                                    <input type="text" placeholder="Email"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
-                                            <div>
-                                                <label for="color" class="block text-sm font-medium text-gray-700">VIN</label>
-                                                <input type="text" placeholder="VIN"
-                                                       class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color" class="block text-sm font-medium text-gray-700">Marca</label>
-                                                <input readonly type="text" placeholder="Marca"
-                                                       class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color" class="block text-sm font-medium text-gray-700">Modelo</label>
-                                                <input readonly type="text" placeholder="Modelo"
-                                                       class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color" class="block text-sm font-medium text-gray-700">Año</label>
-                                                <input readonly type="text" placeholder="Año"
-                                                       class="border p-2 rounded w-full">
-                                            </div>
-                                            <div>
-                                                <label for="color" class="block text-sm font-medium text-gray-700">Kilometraje</label>
-                                                <input readonly type="text" placeholder="Kilometraje "
-                                                       class="border p-2 rounded w-full">
+                                    </div>
+                                </div>
+                                {{-- Datos de vehiculo --}}
+                                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                    <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos Vehiculo</h6>
+                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">VIN</label>
+                                                    <input type="text" placeholder="VIN"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Motor</label>
+                                                    <input type="text" placeholder="Motor"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Aceite</label>
+                                                    <input type="text" placeholder="Aceite"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="color" class="block text-sm font-medium text-gray-700">Kilometaje</label>
+                                                    <input type="text" placeholder="Kilometraje"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -103,47 +106,44 @@
 
                                 {{-- Asignacion de mantenimientos --}}
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Próximos mantenimientos </h6>
+                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tareas de Mantenimiento</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
-                                            <h1>Seleccione una o varias opciones</h1>
-                                            @if(session('success'))
-                                                <p>{{ session('success') }}</p>
-                                            @endif
-                                            <form action="/list" method="POST">
-                                                @csrf
-                                                <ul>
-                                                    @foreach($items as $item)
-                                                        <li>
-                                                            <label>
-                                                                <input type="checkbox" name="items[]" value="{{ $item }}">
-                                                                {{ $item }}
-                                                            </label>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                                <button type="submit">Guardar</button>
-                                            </form>
-                                        </div>
+                                        <form>
+                                            {{-- @csrf --}}
+                                            <table style="width: 100%; border-collapse: collapse;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Nombre</th>
+                                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Desde que fecha</th>
+                                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Kilometraje</th>
+                                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Precio</th>
+                                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Seleccionar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{-- @foreach($mantenimientos as $mantenimiento) --}}
+                                                    <tr>
+                                                        {{-- <td>{{ $mantenimiento->nombre }}</td>
+                                                        <td>{{ $mantenimiento->fecha }}</td>
+                                                        <td>{{ $mantenimiento->kilometraje }}</td>
+                                                        <td>{{ $mantenimiento->precio }}</td> --}}
+                                                        <td style="border: 1px solid #ddd; padding: 8px;"></td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;"></td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;"></td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;"></td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                                                            <input type="checkbox" name="mantenimiento_id" style="display: block; margin: 0 auto;">
+                                                        </td>
+                                                    </tr>
+                                                    {{-- @endforeach --}}
+                                                </tbody>
+                                            </table>                                            
+                                        </form>
                                     </div>
                                 </div>
 
                                 {{-- Asignacion del mecanico --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Asignación</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
-                                            <div>
-                                                <label for="color"
-                                                       class="block text-sm font-medium text-gray-700">Mecanico</label>
-                                                <select id="mecanicoMantenimiento" name="mecanicoMantenimiento"
-                                                        class="border p-2 rounded w-full">
-                                                    <option value="">Seleccionar</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <br>
                                 <div class="p-2"></div>
                                 <x-button class="px-4 py-2">
                                     {{ __('Registrar mantenimiento') }}

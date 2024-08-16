@@ -11,8 +11,7 @@
             <div id="main-content" class="h-full w-full bg-white relative overflow-y-auto lg:ml-64">
                 <div class="bg-white dark:bg-gray-800 transition-colors duration-300">
                     <div class="containerh-full w-full bg-white relative overflow-y-auto lg:ml">
-                        <div class="bg-white dark:bg-gray-700 {{-- shadow rounded-lg --}} p-6">
-                            {{--Titulo--}}
+                        <div class="bg-white dark:bg-gray-700 p-6">
                             <div class="flex flex-wrap items-center justify-between">
                                 <div class="flex items-center justify-start">
                                     <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100 hover:text-blue-700">
@@ -21,7 +20,6 @@
                                 </div>
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
-                            {{--Formulario de seleccion de servicio--}}
                             <form method="GET" action="{{ route('ServicioAceite') }}">
                                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                     <div>
@@ -40,10 +38,8 @@
                                     </div>
                                 </div>
                             </form>
-                            {{--Formulario de registro de servicio--}}
                             <form method="POST" action="{{route('RegistrarServicioMantenimiento.store')}}"
                                   class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                {{-- Tareas de mantenimiento --}}
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
@@ -51,26 +47,48 @@
                                         <button type="button"
                                                 class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150">
                                             <div class="icon">
-                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                                @include('icons/show')
                                             </div>
                                         </button>
                                     </div>
-                                    {{--Nombre del servicio--}}
                                     <div>
                                         <label for="tipoAceite"
                                                class="block text-sm font-medium text-gray-700">Nombre del
                                             servicio</label>
-
-                                        {{-- Campo oculto para enviar el ID del tipo de mantenimiento seleccionado --}}
                                         <input type="hidden" name="tipoAceite"
                                                value="{{ isset($typeAceite->IdAceite) ? $typeAceite->IdAceite : '' }}"
                                                readonly>
-
-                                        {{-- Campo de texto para mostrar la descripción del tipo de mantenimiento --}}
                                         <input type="text" id="tipoAceite"
                                                value="{{ isset($typeAceite->Descripcion) ? $typeAceite->Descripcion : '' }}"
                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                readonly>
+                                    </div>
+                                    <br>
+                                    {{-- Mostrar los servicios obtenidos en una tabla --}}
+                                    <div class="mt-6">
+                                        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Servicios Disponibles</h2>
+                                        <div class="overflow-x-auto">
+                                            <table class="min-w-full bg-white dark:bg-gray-700">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="py-2 px-4 border-b">Seleccionar</th>
+                                                        <th class="py-2 px-4 border-b">Descripción del Servicio</th>
+                                                        <th class="py-2 px-4 border-b">Tipo de Aceite</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($servicios as $servicio)
+                                                        <tr>
+                                                            <td class="py-2 px-4 border-b text-center">
+                                                                <input type="checkbox" name="servicios[]" value="{{ $servicio->IdServicio }}" class="rounded">
+                                                            </td>
+                                                            <td class="py-2 px-4 border-b">{{ $servicio->Descripcion }}</td>
+                                                            <td class="py-2 px-4 border-b">{{ $servicio->tipoAceite->Descripcion ?? 'Sin tipo de aceite' }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                     <br>
                                     <div>
@@ -96,7 +114,6 @@
         </div>
     </div>
     <script src="{{ asset('js/show-hidden.js') }}"></script>
-    {{--    Script para filtro de tipo de servicio--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>

@@ -15,6 +15,7 @@ class Aceite extends Model
 
     protected $fillable = [
         'Descripcion',
+        'KilometrajeAceite',
         'Status',
     ];
 
