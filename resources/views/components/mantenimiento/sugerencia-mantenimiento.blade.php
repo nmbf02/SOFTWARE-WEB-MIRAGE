@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Sugerencia para mantenimiento') }}
+            {{ __('Sugerencia de mantenimiento de vehículo') }}
         </h2>
     </x-slot>
     @include ('aside')
@@ -20,82 +20,17 @@
                             <div class="flex flex-wrap items-center justify-between">
                                 <div class="flex items-center justify-start">
                                     <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                                        Sugerencia para mantenimiento</h1>
+                                        Sugerencia de mantenimiento</h1>
                                 </div>
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
                             <form>
-                                {{-- Orden de mantenimiento --}}
-                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                    <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Documento</h6>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                        <div>
-                                            <label for="color" class="block text-sm font-medium text-gray-700">Factura</label>
-                                            <input type="text" placeholder="Número de factura"
-                                                   class="border p-2 rounded w-full">
-                                        </div>
-                                        <div>
-                                            <label for="color" class="block text-sm font-medium text-gray-700">Mantenimiento</label>
-                                            <input type="text" placeholder="Número de mantenimiento"
-                                                   class="border p-2 rounded w-full">
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <label for="color" class="block text-sm font-medium text-gray-700">Fecha
-                                            del documento</label>
-                                        <input type="text"
-                                               class="border p-2 rounded w-full" readonly>
-                                    </div>
-                                </div>
-                                <div class="p-2"></div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    {{-- Datos de Cliente --}}
-                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                        <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos Cliente</h6>
-                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                                    <div>
-                                                        <label for="color"
-                                                               class="block text-sm font-medium text-gray-700">Nombre
-                                                            del cliente</label>
-                                                        <input type="text" placeholder="Nombre del cliente"
-                                                               class="border p-2 rounded w-full" readonly>
-                                                    </div>
-                                                    <div>
-                                                        <label for="color"
-                                                               class="block text-sm font-medium text-gray-700">Cedula</label>
-                                                        <input type="text" placeholder="Cedula"
-                                                               class="border p-2 rounded w-full" readonly>
-                                                    </div>
-                                                    <div>
-                                                        <label for="color"
-                                                               class="block text-sm font-medium text-gray-700">Telefono</label>
-                                                        <input type="text" placeholder="Telefono"
-                                                               class="border p-2 rounded w-full" readonly>
-                                                    </div>
-                                                    <div>
-                                                        <label for="color"
-                                                               class="block text-sm font-medium text-gray-700">Email</label>
-                                                        <input type="text" placeholder="Email"
-                                                               class="border p-2 rounded w-full" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- Datos de vehiculo --}}
+                                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                     <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                         <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                             <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos Vehiculo</h6>
                                             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                                    <div>
-                                                        <label for="color"
-                                                               class="block text-sm font-medium text-gray-700">VIN</label>
-                                                        <input type="text" placeholder="VIN"
-                                                               class="border p-2 rounded w-full" readonly>
-                                                    </div>
+                                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                                     <div>
                                                         <label for="color"
                                                                class="block text-sm font-medium text-gray-700">Motor</label>
@@ -168,13 +103,6 @@
                                         </form>
                                     </div>
                                 </div>
-
-                                {{-- Asignacion del mecanico --}}
-                                <br>
-                                <div class="p-2"></div>
-                                <x-button class="px-4 py-2">
-                                    {{ __('Registrar mantenimiento') }}
-                                </x-button>
                             </form>
                         </div>
                     </div>
