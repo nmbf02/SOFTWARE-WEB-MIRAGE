@@ -705,10 +705,8 @@ Route::Post('/servicio-aceite/create', [ServicioAceiteController::class, 'store'
 
 Route::get('/suggestion', [SugerenciaController::class, 'index'])
     ->middleware(['auth'])
-    ->name('servicio-aceite');
+    ->name('suggestion');
 
 Route::Post('/AceiteMotor/create', [AceiteMotorController::class, 'store'])
     ->middleware(['auth'])
     ->name('AceiteMotor.store');
-
-    ->name('suggestion');
