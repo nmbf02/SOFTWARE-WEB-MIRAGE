@@ -5,6 +5,7 @@
  */
 
 use App\Http\Controllers\VehicleConfigurationController;
+use App\Http\Controllers\MaintenanceConfigurationController;
 use App\Http\Controllers\GeneralConfigurationController;
 use App\Http\Controllers\VehicleRegisterController;
 use App\Http\Controllers\CustomerRegisterController;
@@ -34,6 +35,7 @@ Route::get('employee-register', [employeeRegisterController::class, 'index'])->n
 //Nathaly
 Route::get('services-maintenance', [ServicioMantenimientoController::class, 'index']) -> name ('ServicioMantenimiento') ;
 Route::get('services-aceite', [ServicioAceiteController::class, 'index']) -> name ('ServicioAceite') ;
+Route::get('maintenance-configuration', [MaintenanceConfigurationController::class, 'index'])->name('configurationVehicle');
 include('web2.php');
 
 Route::get('contactanos', function(){

@@ -36,7 +36,7 @@ class TipoaceiteController extends Controller
         $tipoAceite->save();
 
         // Redirect the user to the Marcavehiculo index page with a success message
-        return redirect('vehicle-configuration')->with('success', 'Guardado con exito');
+        return redirect('services-maintenance')->with('success', 'Guardado con exito');
     }
 
     public function show(Aceite $aceite)

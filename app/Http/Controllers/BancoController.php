@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Banco;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -22,7 +21,7 @@ class BancoController extends Controller
             'descripcion' => 'required|string',
             'sectorConfiguracion'=> 'required|exists:sector,IdSector',
             'telefono' => 'required|string',
-            'email' => 'required|string|email',            
+            'email' => 'required|string|email',
             'status' => 'nullable|boolean',
         ]);
 
