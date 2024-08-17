@@ -339,7 +339,7 @@
                                                            readonly>
                                                 </div>
                                             </div>
-                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                                                 <div>
                                                     <label for="kilomentrajeInicial"
                                                            class="block text-sm font-medium text-gray-700">Kilometraje
@@ -374,6 +374,14 @@
                                                     <input type="number" placeholder="Fecha manejada en meses"
                                                            id="fechaFinal"
                                                            name="fechaFinal" min="1" max="24"
+                                                           class="border p-2 rounded w-full">
+                                                </div>
+                                                <div>
+                                                    <label for="precio"
+                                                           class="block text-sm font-medium text-gray-700">precio</label>
+                                                    <input type="number" placeholder="$"
+                                                           id="precio"
+                                                           name="precio" min="0"
                                                            class="border p-2 rounded w-full">
                                                 </div>
                                             </div>

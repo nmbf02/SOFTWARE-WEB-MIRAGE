@@ -21,7 +21,8 @@ class Servicio extends Model
         'DesdeFecha',
         'HastaFecha',
         'Status',
-        'Notas'
+        'Notas',
+        'Precio'
     ];
 
     public function tipoMotor()

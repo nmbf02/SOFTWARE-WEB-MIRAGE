@@ -19,6 +19,7 @@ class RegistrarServicioMantenimientoController extends Controller
             'fechaInicial' => 'nullable|numeric',
             'fechaFinal' => 'nullable|numeric',
             'nota' => 'nullable|string',
+            'precio' => 'nullable|numeric',
             'status' => 'nullable|boolean',
         ]);
 
@@ -32,6 +33,7 @@ class RegistrarServicioMantenimientoController extends Controller
         $servicioNuevo->DesdeFecha = $request->fechaInicial;
         $servicioNuevo->HastaFecha = $request->fechaFinal;
         $servicioNuevo->Notas = $request->nota;
+        $servicioNuevo->Precio = $request->precio;
         $servicioNuevo->Status = $request->status ? 1 : 0;
         // Guardar el servicio
         $servicioNuevo->save();
