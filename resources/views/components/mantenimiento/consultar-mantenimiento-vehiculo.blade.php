@@ -24,20 +24,6 @@
                         </div>
                         <div class="inline-flex items-center justify-center space-x-2 mr-3">
                             <div class="flex-end flex flex-col space-y-0.3 justify-end">
-                                <button type="button"
-                                        class="inline-flex items-center px-3 py-2 border text-sm leading-4 font-medium rounded-md text-black transition ease-in-out duration-150"
-                                        style="background-color: #FF914D; border-color: white;"
-                                        onmouseover="this.style.backgroundColor='#E7814D'"
-                                        onmouseout="this.style.backgroundColor='#FF914D'"
-                                        onfocus="this.style.backgroundColor='#E7814D'"
-                                        onblur="this.style.backgroundColor='#FF914D'"
-                                        onmousedown="this.style.backgroundColor='#CC6C3B'"
-                                        onmouseup="this.style.backgroundColor='#E7814D'">
-                                    @include('icons/registrar')
-                                </button>
-                            </div>
-
-                            <div class="flex-end flex flex-col space-y-0.3 justify-end">
                                 <div class="sm:flex sm:items-center ">
                                     <div class="relative">
                                         <x-dropdown align="right" width="60">
@@ -131,7 +117,7 @@
                                         <tr>
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Mant.
+                                                Num Mant.
                                             </th>
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -140,6 +126,10 @@
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Fecha Registro
+                                            </th>
+                                            <th scope="col"
+                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Fecha de proximo mantenimiento
                                             </th>
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
