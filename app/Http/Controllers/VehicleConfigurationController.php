@@ -28,6 +28,7 @@ class VehicleConfigurationController extends Controller
         $Almacenvehiculo = Almacen::all();
         $SucursalVehiculo = Sucursal::all();
         $AceiteVehiculo = Aceite::all();
+        $tipoMotor =Motor::all();
 
 
 
@@ -41,6 +42,7 @@ class VehicleConfigurationController extends Controller
             'Almacenvehiculo' => $Almacenvehiculo,
             'SucursalVehiculo' => $SucursalVehiculo,
             'AceiteVehiculo' => $AceiteVehiculo,
+            'tipoMotor' => $tipoMotor,
         ]);
     }
 }
