@@ -37,7 +37,7 @@
                                     <div class="mt-5">
                                         <label for="color" class="block text-sm font-medium text-gray-700">Fecha
                                             factura</label>
-                                        <input type="text" placeholder="Fecha factura"
+                                        <input type="date" placeholder="Fecha factura"
                                             class="border p-2 rounded w-full">
                                     </div>
                                 </div>
