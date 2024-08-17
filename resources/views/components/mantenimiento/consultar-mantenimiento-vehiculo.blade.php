@@ -18,7 +18,7 @@
                                 <div class="mt-1 relative lg:w-64">
                                     <input type="text" name="email" id="topbar-search"
                                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-2 p-2.5"
-                                           placeholder="Número de factura ">
+                                           placeholder="Número de Mantenimiento ">
                                 </div>
                             </form>
                         </div>
@@ -45,8 +45,7 @@
                                                 <span class="inline-flex rounded-md">
                                                     <button type="button"
                                                             class="inline-flex items-center px-3 py-2 border border-black text-sm leading-4 font-medium rounded-md text-black bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 active:bg-gray-100 transition ease-in-out duration-150">
-                                                        <span class="ml-2 hidden sm:inline-block">Descargar
-                                                            factura</span>
+                                                        <span class="ml-2 hidden sm:inline-block">Descargar Mantenimientos</span>
                                                         <svg class="ml-2 -mr-0.5 h-4 w-4 hidden sm:inline-block"
                                                              xmlns="http://www.w3.org/2000/svg" fill="none"
                                                              viewBox="0 0 24 24" stroke-width="1.5"
@@ -114,7 +113,7 @@
                 <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                     <div class="mb-4 flex items-center justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Gestión de facturas</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Gestión de Mantenimiento</h3>
                             <span class="text-base font-normal text-gray-500">Consulta</span>
                         </div>
                         <div class="flex-shrink-0">
@@ -132,15 +131,15 @@
                                         <tr>
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Fact.
+                                                Mant.
                                             </th>
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Cliente
+                                                Factura
                                             </th>
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Fecha
+                                                Fecha Registro
                                             </th>
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -148,45 +147,11 @@
                                             </th>
                                             <th scope="col"
                                                 class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Moneda
-                                            </th>
-                                            <th scope="col"
-                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Estado
-                                            </th>
-                                            <th scope="col"
-                                                class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Acta de venta
+                                                Label de Mantenimiento
                                             </th>
                                         </tr>
                                         </thead>
                                         <tbody class="bg-white">
-                                        @foreach ($facturas as $factura)
-                                            <tr>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    {{ $factura->IdVenta }}
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    {{ $factura->cliente->persona->Nombre }}
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    {{ $factura->Fecha }}
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    {{ $factura->Total }}
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    {{ $factura->moneda->Descripcion }}
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    {{ $factura->Status }}
-                                                </td>
-                                                <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                    <a href="DescargarFactura/{{ $factura->IdVenta }}" target="_blank"
-                                                       class="text-cyan-600 hover:bg-gray-100 rounded-lg p-2">Descargar contrato</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
 
                                         </tbody>
                                     </table>
