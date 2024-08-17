@@ -28,7 +28,7 @@
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo de ceite</h6>
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo de aceite</h6>
                                         <button type="button"
                                                 class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
                                                 data-target="toggleContent00">
@@ -197,6 +197,72 @@
                                     </div>
                                 </div>
                             </form>
+                            {{-- Formulario de Aceite según motor--}}
+                            <form method="POST" action="{{ route('AceiteMotor.store') }}"
+                                  class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                @csrf
+                                <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
+                                    <div class="inline-flex justify-between items-center w-full">
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Aceite según motor</h6>
+                                        <button type="button"
+                                                class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
+                                                data-target="toggleContentam">
+                                            <div class="icon">
+                                                @include('icons/show') <!-- Icono visible por defecto -->
+                                            </div>
+                                            <div class="icon hidden">
+                                                @include('icons/hidden') <!-- Icono oculto inicialmente -->
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <!-- Sección a mostrar/ocultar -->
+                                    <div id="toggleContentam" class="hidden">
+                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+                                            <div>
+                                                <label for="motorVehiculo"
+                                                       class="block text-sm font-medium text-gray-700">
+                                                    Tipo de motor según combustible
+                                                </label>
+                                                <select name="motorVehiculo" id="motorVehiculo"
+                                                        class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        placeholder="Seleccione un motor">
+                                                    @foreach ($motorVehiculo as $motor)
+                                                        <option value="{{ $motor->IdMotor }}">
+                                                            {{ $motor->Descripcion }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="tipoAceite" class="block text-sm font-medium text-gray-700">
+                                                    Seleccione el tipo de aceite que aplica para este motor
+                                                </label>
+                                                <div id="tipoAceite" class="mt-2">
+                                                    @foreach($Aceites as $Aceite)
+                                                        <div class="flex items-center">
+                                                            <input
+                                                                type="checkbox"
+                                                                id="Aceite-{{ $Aceite->IdAceite }}"
+                                                                name="tipoAceite[]"
+                                                                value="{{ $Aceite->IdAceite }}"
+                                                                class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                                                                {{ in_array($Aceite->IdAceite, old('tipoAceite', [])) ? 'checked' : '' }}>
+                                                            <label for="Aceite-{{ $Aceite->IdAceite }}"
+                                                                   class="ml-2 block text-sm text-gray-900">
+                                                                {{ $Aceite->Descripcion }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <x-button class="px-4 py-2">
+                                                {{ __('Salvar aceite - motor') }}
+                                            </x-button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
                             {{--Formulario de registro de servicio--}}
                             <form method="POST" action="{{route('mantenimiento-mantenimiento.store')}}"
                                   class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
@@ -256,7 +322,8 @@
                             <form method="GET" action="{{ route('ServicioMantenimiento') }}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                     <div>
-                                        <label for="tipoMotor" class="block text-sm font-medium text-gray-700">Motor</label>
+                                        <label for="tipoMotor"
+                                               class="block text-sm font-medium text-gray-700">Motor</label>
                                         <select name="tipoMotor" id="tipoMotor"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                 placeholder="Seleccione un motor"
@@ -308,7 +375,8 @@
                                                 {{--Nombre del motor--}}
                                                 <div>
                                                     <label for="tipoMotor"
-                                                           class="block text-sm font-medium text-gray-700">Motor según combustible</label>
+                                                           class="block text-sm font-medium text-gray-700">Motor según
+                                                        combustible</label>
 
                                                     {{-- Campo oculto para enviar el ID del tipo de mantenimiento seleccionado --}}
                                                     <input type="hidden" name="tipoMotor"

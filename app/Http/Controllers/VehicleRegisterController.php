@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Aceite;
+use App\Models\configuracionaceite;
 use App\Models\Motor;
 use App\Models\ModeloVehiculo;
 use App\Models\ColorVehiculo;
@@ -40,7 +40,7 @@ class VehicleRegisterController extends Controller
         $SegmentoMercado = SegmentoMercado::all();
         $TipoItbis = TipoItbis::all();
         $garantiaVehiculo = Garantia::all();
-        $AceiteVehiculo = Aceite::all();
+        $AceiteVehiculo = ConfiguracionAceite::all();
         $MotorVehiculo = Motor::all();
 
         return view('components.vehiculo.registrovehiculo', [
@@ -86,7 +86,7 @@ class VehicleRegisterController extends Controller
         $SegmentoMercado = SegmentoMercado::all();
         $TipoItbis = TipoItbis::all();
         $garantiaVehiculo = Garantia::all();
-        $AceiteVehiculo = Aceite::all();
+        $AceiteVehiculo = ConfiguracionAceite::all();
         $MotorVehiculo = Motor::all();
 
         $vehiculo = Vehiculo::where('IdVehiculo',$id)->where('Status',1)->first();

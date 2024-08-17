@@ -40,7 +40,7 @@ Route::get('suggestion', [SugerenciaController::class, 'index'])->name('sugerenc
 //Nathaly
 Route::get('services-maintenance', [ServicioMantenimientoController::class, 'index']) -> name ('ServicioMantenimiento') ;
 Route::get('services-aceite', [ServicioAceiteController::class, 'index']) -> name ('ServicioAceite') ;
-Route::get('maintenance-configuration', [MaintenanceConfigurationController::class, 'index'])->name('configurationVehicle');
+Route::get('maintenance-configuration', [MaintenanceConfigurationController::class, 'index'])->name('maintenanceConfiguration');
 include('web2.php');
 
 Route::get('contactanos', function(){
