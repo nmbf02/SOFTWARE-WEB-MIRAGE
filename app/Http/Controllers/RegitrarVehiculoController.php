@@ -47,7 +47,7 @@ class RegitrarVehiculoController extends Controller
             'SegmentoMercado' => 'required|exists:segmentomercado,IdSegmentoMercado',
             'TipoItbis' => 'required|exists:tipoitbis,IdTipoItbis',
             'garantiaVehiculo' => 'required|exists:garantia,IdGarantia',
-            'AceiteVehiculo' => 'required|exists:Aceite,IdAceite',
+            'AceiteVehiculo' => 'required|exists:configuracionaceite,Idconfiguracionaceite',
             'MotorVehiculo' => 'required|exists:Motor,IdMotor',
             'status' => 'nullable|boolean',
         ]);
@@ -83,7 +83,7 @@ class RegitrarVehiculoController extends Controller
         $crearVehiculo->IdTipoItbis = $request->TipoItbis;
         $crearVehiculo->IdGarantia = $request->garantiaVehiculo;
         $crearVehiculo->Kilometraje = $request->kilometraje;
-        $crearVehiculo->IdAceite = $request-> AceiteVehiculo;
+        $crearVehiculo->Idconfiguracionaceite = $request-> AceiteVehiculo;
         $crearVehiculo->IdMotor = $request-> MotorVehiculo;
         $crearVehiculo->Status = $request->Status =="on"? 1:0;
 
@@ -127,7 +127,7 @@ class RegitrarVehiculoController extends Controller
             'SegmentoMercado' => 'required|exists:segmentomercado,IdSegmentoMercado',
             'TipoItbis' => 'required|exists:tipoitbis,IdTipoItbis',
             'garantiaVehiculo' => 'required|exists:garantia,IdGarantia',
-            'AceiteVehiculo' => 'required|exists:Aceite,IdAceite',
+            'AceiteVehiculo' => 'required|exists:ConfiguracionAceite,IdConfiguracionAceite',
             'MotorVehiculo' => 'required|exists:Motor,IdMotor',
             'status' => 'nullable|boolean',
         ]);
@@ -164,7 +164,7 @@ class RegitrarVehiculoController extends Controller
             $vehiculo->IdTipoItbis = $request->TipoItbis;
             $vehiculo->IdGarantia = $request->garantiaVehiculo;
             $vehiculo->Kilometraje = $request->kilometraje;
-            $vehiculo->IdAceite = $request->Aceite;
+            $vehiculo->IdConfiguracionaceite = $request->ConfiguracionAceite;
             $vehiculo->IdMotor = $request->Motor;
             $vehiculo->Status = $request->status ? 1 : 0;
 
