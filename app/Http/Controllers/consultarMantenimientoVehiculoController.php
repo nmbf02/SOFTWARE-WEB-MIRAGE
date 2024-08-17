@@ -15,8 +15,8 @@ class consultarMantenimientoVehiculoController extends Controller
      */
     public function consultarMantenimientoVehiculo($mantenimiento = null)
     {
-        $mantenimiento = Venta::with('cliente.persona')->get();
+        // $mantenimiento = Venta::with('cliente.persona')->get();
 
-        return view('components.venta.consultar-factura', compact('mantenimiento', 'facturas'));
+        return view('components.mantenimiento.consultar-mantenimiento-vehiculo');
     }
 }
