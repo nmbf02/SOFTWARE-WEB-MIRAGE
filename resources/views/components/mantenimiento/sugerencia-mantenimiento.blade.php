@@ -23,39 +23,42 @@
                                         Sugerencia de mantenimiento</h1>
                                 </div>
                             </div>
-                            <hr style="border-color: #FF914D" class="p-2">
-                            <form>
-                                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                        <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
-                                            <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos Vehiculo</h6>
-                                            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                                                    <div>
-                                                        <label for="color"
-                                                               class="block text-sm font-medium text-gray-700">Motor</label>
-                                                        <input type="text" placeholder="Motor"
-                                                               class="border p-2 rounded w-full" readonly>
-                                                    </div>
-                                                    <div>
-                                                        <label for="color"
-                                                               class="block text-sm font-medium text-gray-700">Aceite</label>
-                                                        <input type="text" placeholder="Aceite"
-                                                               class="border p-2 rounded w-full" readonly>
-                                                    </div>
-                                                    <div>
-                                                        <label for="color"
-                                                               class="block text-sm font-medium text-gray-700">Kilometaje
-                                                            actual</label>
-                                                        <input type="text" placeholder="Kilometraje actual"
-                                                               class="border p-2 rounded w-full" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <hr style="border-color: #FF914D" class="p-2">
+                            {{-- <p class="text-gray-600 dark:text-gray-300 mb-6">Use a permanent address where you can
+                                receive mail.</p> --}}
+                                <form method="GET" action="{{ route('suggestion') }}">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div>
+                                            <label for="kilometraje" class="block text-sm font-medium text-gray-700">Kilometraje</label>
+                                            <input type="number" name="kilometraje" id="kilometraje" class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{ $kilometraje ?? '' }}">
+                                        </div>
+                                        <div>
+                                            <label for="tipoMotor" class="block text-sm font-medium text-gray-700">Motor</label>
+                                            <select name="tipoMotor" id="tipoMotor" class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onchange="this.form.submit()">
+                                                <option value="0" selected>Seleccione un tipo de Motor</option>
+                                                @foreach ($tipoMotor as $Motor)
+                                                    <option value="{{ $Motor->id }}" {{ $requestTipoMotor == $Motor->id ? 'selected' : '' }}>
+                                                        {{ $Motor->descripcion }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label for="aceite" class="block text-sm font-medium text-gray-700">Aceite</label>
+                                            <select name="aceite" id="aceite" class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                                <option value="">Seleccionar un tipo de aceite según Motor</option>
+                                                @foreach ($aceites as $aceite)
+                                                    <option value="{{ $aceite->id }}">
+                                                        {{ $aceite->descripcion }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
+                                
                                 {{-- Asignacion de mantenimientos --}}
+                                <div>
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tareas de Mantenimiento</h6>
                                     <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
@@ -103,7 +106,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </form>
+                                </div>
                         </div>
                     </div>
                 </div>

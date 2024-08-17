@@ -702,14 +702,6 @@ Route::Post('/servicio-aceite/create', [ServicioAceiteController::class, 'store'
 ->middleware(['auth'])
 ->name('servicio-aceite.store');
 
-Route::Post('/AceiteSugerencia/create', [AceiteSugerenciaController::class, 'store'])
-->middleware(['auth'])
-->name('AceiteSugerencia.store');
-
-Route::Post('/MotorSugerencia/create', [MotorSugerenciaController::class, 'store'])
-->middleware(['auth'])
-->name('MotorSugerencia.store');
-
-// Route::get('/sugerencia-mantenimiento', [SugerenciaController::class, 'index'])
-//     ->middleware(['auth'])
-//     ->name('sugerencia-mantenimiento');
+Route::get('/suggestion', [SugerenciaController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('suggestion');
