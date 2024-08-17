@@ -28,7 +28,7 @@
                                 @csrf
                                 <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                     <div class="inline-flex justify-between items-center w-full">
-                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo de ceite</h6>
+                                        <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tipo de aceite</h6>
                                         <button type="button"
                                                 class="toggle-button inline-flex items-center px-3 py-2 transition ease-in-out duration-150"
                                                 data-target="toggleContent00">
