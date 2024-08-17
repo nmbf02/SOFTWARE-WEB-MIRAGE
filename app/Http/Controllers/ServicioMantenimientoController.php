@@ -27,6 +27,8 @@ class ServicioMantenimientoController extends Controller
         $servicios = Servicio::with('tipoMantenimiento')->get();
         $motores = Motor::all();
         $TAceite = Aceite::all();
+        $motorVehiculo = Motor::all();
+        $Aceites = Aceite::all();
 
 
         return view('components.mantenimiento.configuracion-mantenimiento', [
@@ -38,6 +40,8 @@ class ServicioMantenimientoController extends Controller
             'requestTipoServicio' => $request->tipoMantenimiento,
             'requestTipoMotor' => $request->tipoMotor,
             'TAceite' => $TAceite,
+            'motorVehiculo' => $motorVehiculo,
+            'Aceites' => $Aceites,
         ]);
     }
 }
