@@ -695,7 +695,7 @@ Route::Post('/RegistrarServicioMantenimiento/create', [RegistrarServicioMantenim
     ->middleware(['auth'])
     ->name('RegistrarServicioMantenimiento.store');
 
-Route::Post('/RegistrarMantenimientoVehiculo/create', [RegistrarMantenimientoVehiculoController::class, 'store'])
+Route::Post('/RegistrarMantenimientoVehiculo/create', [registrarMantenimientoVehiculoController::class, 'store'])
     ->middleware(['auth'])
     ->name('RegistrarMantenimientoVehiculo.store');
 

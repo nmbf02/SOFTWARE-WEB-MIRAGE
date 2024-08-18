@@ -27,4 +27,9 @@ class ConfiguracionAceite extends Model
     {
         return $this->hasMany(Vehiculo::class, 'IdAceite');
     }
+
+    public function vehiculos()
+    {
+        return $this->hasMany(Vehiculo::class, 'IdConfiguracionAceite');
+    }
 }

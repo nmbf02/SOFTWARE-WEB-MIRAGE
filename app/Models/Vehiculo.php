@@ -125,9 +125,12 @@ class Vehiculo extends Model
         return $this->belongsTo(Motor::class, 'IdMotor');
     }
 
-    public function configuracionAceite()
+    public function configuracionAceite(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(ConfiguracionAceite::class, 'IdConfiguracionAceite');
     }
-
+    public function mantenimientos()
+    {
+        return $this->hasMany(Mantenimiento::class, 'IdVehiculo');
+    }
 }

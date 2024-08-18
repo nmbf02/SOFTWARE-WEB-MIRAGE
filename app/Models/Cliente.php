@@ -86,4 +86,10 @@ class Cliente extends Model
     {
         return $this->belongsTo('App\Models\CondicionFactura', 'IdCondicionFactura');
     }
+
+    public function mantenimientos()
+    {
+        return $this->hasMany(Mantenimiento::class, 'IdCliente');
+    }
+
 }

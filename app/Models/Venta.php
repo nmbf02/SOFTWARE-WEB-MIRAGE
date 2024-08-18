@@ -66,7 +66,8 @@ class Venta extends Model
         return $this->belongsTo(Vehiculo::class, 'IdVehiculo');
     }
 
-
-
-
+    public function mantenimientos()
+    {
+        return $this->hasMany(Mantenimiento::class, 'IdVenta');
+    }
 }

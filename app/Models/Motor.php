@@ -32,5 +32,9 @@ class Motor extends Model
     {
         return $this->belongsToMany(Aceite::class, 'AceiteMotor', 'IdMotor', 'IdAceite');
     }
+    public function servicio()
+    {
+        return $this->hasMany(Servicio::class, 'IdMotor');
+    }
 
 }

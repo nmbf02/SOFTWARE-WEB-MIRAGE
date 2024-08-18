@@ -20,6 +20,7 @@ class Mantenimiento extends Model
         'FechaProximoMantenimiento',
         'FechaMantenimientoActual',
         'IdEmpleado',
+        'IdConfiguracionAceite',
         'Monto'
     ];
 
@@ -53,10 +54,14 @@ class Mantenimiento extends Model
         return $this->belongsTo(Empleado::class, 'IdEmpleado');
     }
 
+    public function configuracionaceite()
+    {
+        return $this->belongsTo(ConfiguracionAceite::class, 'IdConfiguracionAceite');
+    }
+
     // Relación con la tabla DetalleMantenimiento
     public function detalles()
     {
         return $this->hasMany(DetalleMantenimiento::class, 'IdMantenimiento');
     }
 }
-

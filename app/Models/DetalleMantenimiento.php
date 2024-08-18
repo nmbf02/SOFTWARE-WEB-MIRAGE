@@ -27,4 +27,5 @@ class DetalleMantenimiento extends Model
     {
         return $this->belongsTo(Servicio::class, 'IdServicio');
     }
+
 }

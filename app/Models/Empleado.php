@@ -12,7 +12,7 @@ class Empleado extends Model
     protected $table = 'empleados';  // Asegúrate de que coincida con el nombre de tu tabla
     protected $primaryKey = 'IdEmpleado';  // Clave primaria
     public $timestamps = true;  // Si la tabla no tiene campos timestamps (created_at, updated_at)
-   
+
     protected $fillable = [
         'IdPersona',
         'IdTipoEmpleado',
@@ -32,6 +32,11 @@ class Empleado extends Model
     public function tipoEmpleado()
     {
         return $this->belongsTo('App\Models\Tipoempleado', 'IdTipoEmpleado');
+    }
+
+    public function mantenimientos()
+    {
+        return $this->hasMany(Mantenimiento::class, 'IdEmpleado');
     }
 
     protected $casts = [

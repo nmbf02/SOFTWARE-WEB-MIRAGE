@@ -26,7 +26,8 @@
                         {{--Formulario de seleccion--}}
                         <form method="GET" action="{{ route('SeleccionMantenimiento') }}"
                               class="bg-white dark:bg-gray-700 p-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                {{--Factura--}}
                                 <div>
                                     <label for="factura" class="block text-sm font-medium text-gray-700">Num.
                                         Factura</label>
@@ -42,6 +43,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                {{--Mantenimiento--}}
                                 <div>
                                     <label for="mantenimiento" class="block text-sm font-medium text-gray-700">Num.
                                         Mantenimiento</label>
@@ -57,13 +59,44 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                {{--Mecanico--}}
+                                <div>
+                                    <label for="mecanico"
+                                           class="block text-sm font-medium text-gray-700">Mecánico</label>
+                                    <select name="mecanico" id="mecanico"
+                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                            onchange="this.form.submit()">
+                                        <option value="">Seleccione un mecánico</option>
+                                        @foreach ($mecanicomantenimiento as $mecanicom)
+                                            <option
+                                                value="{{ $mecanicom->IdEmpleado }}" {{ $requestMecanicoMantenimiento == $mecanicom->IdEmpleado ? 'selected' : '' }}>
+                                                {{ $mecanicom->persona->Nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{--Aceite--}}
+                                <div>
+                                    <label for="aceitemant"
+                                           class="block text-sm font-medium text-gray-700">Aceite</label>
+                                    <select name="aceitemant" id="aceitemant"
+                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                            onchange="this.form.submit()">
+                                        <option value="">Seleccione un aceite</option>
+                                        @foreach ($aceitemt as $aceite)
+                                            <option
+                                                value="{{ $aceite->IdConfiguracionAceite }}" {{ $requestAceiteMantenimiento == $aceite->IdConfiguracionAceite ? 'selected' : '' }}>
+                                                {{ $aceite->Descripcion }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </form>
                         {{--Vista de informacion--}}
                         <form method="POST" action="{{route('RegistrarMantenimientoVehiculo.store')}}"
                               class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                             @csrf
-                            {{--Listo--}}
                             {{-- Informacion documento --}}
                             <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Documento</h6>
@@ -115,7 +148,6 @@
                             </div>
                             <div class="p-2"></div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                {{--Listo--}}
                                 {{-- Datos de Cliente --}}
                                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
@@ -154,7 +186,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{--Listo--}}
                                 {{-- Datos de vehiculo --}}
                                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
@@ -162,7 +193,8 @@
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                                 <div>
-                                                    <label for="vin" class="block text-sm font-medium text-gray-700">VIN</label>
+                                                    <label for="vin"
+                                                           class="block text-sm font-medium text-gray-700">VIN</label>
                                                     <input type="text" id="vin"
                                                            value="{{ $detalleVenta->vehiculo->VIN ?? '' }}"
                                                            class="border p-2 rounded w-full" readonly>
@@ -183,7 +215,9 @@
                                                 </div>
 
                                                 <div>
-                                                    <label for="kilometraje" class="block text-sm font-medium text-gray-700">Kilometraje actual</label>
+                                                    <label for="kilometraje"
+                                                           class="block text-sm font-medium text-gray-700">Kilometraje
+                                                        actual</label>
                                                     <input type="text" id="kilometraje"
                                                            value="{{ $detalleVenta->vehiculo->Kilometraje ?? '' }}"
                                                            class="border p-2 rounded w-full" readonly>
@@ -193,10 +227,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        {{--TODO: Faltan asignacion de mantenimiento--}}
-                        <form>
-                            {{-- Asignacion de mantenimientos --}}
+
+                            {{--TODO: Faltan asignacion de mantenimiento--}}
                             <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tareas de Mantenimiento</h6>
                                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
@@ -221,6 +253,9 @@
                                                     Kilometraje final
                                                 </th>
                                                 <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">
+                                                    Procedimiento
+                                                </th>
+                                                <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">
                                                     Precio
                                                 </th>
                                                 <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">
@@ -229,30 +264,74 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {{-- @foreach($mantenimientos as $mantenimiento) --}}
-                                            <tr>
-                                                {{-- <td>{{ $mantenimiento->nombre }}</td>
-                                                <td>{{ $mantenimiento->fecha }}</td>
-                                                <td>{{ $mantenimiento->kilometraje }}</td>
-                                                <td>{{ $mantenimiento->precio }}</td> --}}
-                                                <td style="border: 1px solid #ddd; padding: 8px;"></td>
-                                                <td style="border: 1px solid #ddd; padding: 8px;"></td>
-                                                <td style="border: 1px solid #ddd; padding: 8px;"></td>
-                                                <td style="border: 1px solid #ddd; padding: 8px;"></td>
-                                                <td style="border: 1px solid #ddd; padding: 8px;"></td>
-                                                <td style="border: 1px solid #ddd; padding: 8px;"></td>
-                                                <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
-                                                    <input type="checkbox" name="mantenimiento_id"
-                                                           style="display: block; margin: 0 auto;">
-                                                </td>
-                                            </tr>
-                                            {{-- @endforeach --}}
+                                            @if(collect($servicios)->isEmpty())
+                                                <tr>
+                                                    <td colspan="8" style="text-align: center;">
+                                                        No se encontraron mantenimientos para el kilometraje y motor
+                                                        seleccionados.
+                                                    </td>
+                                                </tr>
+                                            @else
+                                                @foreach($servicios as $servicio)
+                                                    <tr>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->TipoMantenimiento->Descripcion }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->DesdeFecha }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->HastaFecha }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->KilometrajeInicial }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->KilometrajeFinal }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->Nota }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->Precio }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                                                            <input type="checkbox" name="servicios[]"
+                                                                   value="{{ $servicio->IdServicio }}"
+                                                                   style="display: block; margin: 0 auto;">
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
                                             </tbody>
                                         </table>
                                     </form>
                                 </div>
                             </div>
-                            {{-- Asignacion del mecanico --}}
+                            <!-- Información general -->
+                            <div class="p-1 mt-5">
+                                <div class="mt-3 mb-6 rounded-md shadow-lg">
+                                    <div class="px-4 flex justify-between">
+                                        <span class="font-semibold text-sm">Mecánico</span>
+                                        <span class="font-bold sm:text-sm"
+                                              id="Empleado">{{ $empleado->persona->Nombre ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="px-4 flex justify-between">
+                                        <span class="font-semibold text-sm">Aceite a utilizar</span>
+                                        <span class="font-bold sm:text-sm"
+                                              id="ConfiguracionAceite">{{ $aceiteSeleccionado->Descripcion ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class=" px-4 flex justify-between ">
+                                        <span class="font-semibold text-sm">Kilometraje actual</span>
+                                        <span class="font-bold sm:text-sm" id="KilometrajeActual">{{ $vehiculo ? $vehiculo->Kilometraje : 'N/A' }} KM</span>
+                                    </div>
+                                    <div class="px-4 flex justify-between">
+                                        <span class="font-semibold text-sm">Kilometraje próximo</span>
+                                        <span class="font-bold sm:text-sm" id="KilometrajeProximo">{{ $kilometrajeProximo ?? '0' }} KM</span>
+                                    </div>
+                                    <div class="px-4 flex justify-between">
+                                        <span class="font-semibold text-sm">Fecha del mantenimiento actual</span>
+                                        <span class="font-bold sm:text-sm"
+                                              id="FechaMantenimientoActual"> {{ $mantenimiento->FechaMantenimientoActual ? $mantenimiento->FechaMantenimientoActual->format('d/m/Y') : now()->format('d/m/Y') }}</span>
+                                    </div>
+                                    <div class="px-4 flex justify-between">
+                                        <span class="font-semibold text-sm">Fecha del próximo mantenimiento</span>
+                                        <span class="font-bold sm:text-sm"
+                                              id="FechaProximoMantenimiento">{{ $fechaProximoMantenimiento ? $fechaProximoMantenimiento->format('d/m/Y') : 'dd/mm/yyyy' }}</span>
+                                    </div>
+                                    <div class="border-t-2 mt-3 py-2 px-4 flex items-center justify-between">
+                                        <span class="font-semibold text-2xl">Total</span>
+                                        <span class="font-bold text-2xl"
+                                              id="total">{{ number_format($mantenimiento->Monto ?? 0, 2) }}</span>
+                                    </div>
+                                </div>
+                            </div>
                             <br>
                             <div class="p-2"></div>
                             <x-button class="px-4 py-2">
@@ -263,7 +342,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     @include ('footer')
     {{-- Script para filtro --}}
@@ -283,6 +361,24 @@
         $(document).ready(function () {
             $('#mantenimiento').select2({
                 placeholder: "Ingrese num. mantenimiento",
+                allowClear: true
+            });
+        });
+    </script>
+    {{--Script de filtro de empleado--}}
+    <script>
+        $(document).ready(function () {
+            $('#mecanico').select2({
+                placeholder: "Seleccione un mecánico",
+                allowClear: true
+            });
+        });
+    </script>
+    {{--Script de filtro de aceite--}}
+    <script>
+        $(document).ready(function () {
+            $('#aceitemant').select2({
+                placeholder: "Seleccione un aceite",
                 allowClear: true
             });
         });

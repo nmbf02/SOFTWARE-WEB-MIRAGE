@@ -34,5 +34,17 @@ class Servicio extends Model
     {
         return $this->belongsTo(Aceite::class,'IdTipoMantenimiento');
     }
+
+    public function motor()
+    {
+        return $this->belongsTo(Motor::class, 'IdMotor');
+    }
+
+    // Relación con DetalleMantenimiento: Un servicio puede estar en muchos detalles de mantenimiento
+    public function detallesMantenimiento()
+    {
+        return $this->hasMany(DetalleMantenimiento::class, 'IdServicio');
+    }
+
 }
 
