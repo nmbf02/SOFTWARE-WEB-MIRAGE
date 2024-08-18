@@ -127,6 +127,7 @@
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">VIN</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">Descripcion</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">Kilometraje</th>
+                                <th scope="col" class="px-6 py-4 font-bold text-gray-900">Aceite</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">Precio</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">Año</th>
                                 <th scope="col" class="px-6 py-4 font-bold text-gray-900">Placa</th>
@@ -140,6 +141,9 @@
                                     <td class="px-6 py-4">{{ $vehiculo->VIN }}</td>
                                     <td class="px-6 py-4">{{ $vehiculo->Descripcion }}</td>
                                     <td class="px-6 py-4">{{ $vehiculo->Kilometraje }}</td>
+                                    <td class="px-6 py-4">
+                                        {{ $vehiculo->ConfiguracionAceite ? $vehiculo->ConfiguracionAceite->Descripcion : 'No configurado' }}
+                                    </td>
                                     <td class="px-6 py-4">{{ $vehiculo->Precio }}</td>
                                     <td class="px-6 py-4">{{ $vehiculo->AnoVehiculo }}</td>
                                     <td>{{ $vehiculo->Placa }}</td>

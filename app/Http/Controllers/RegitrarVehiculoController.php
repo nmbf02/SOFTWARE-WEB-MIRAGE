@@ -47,7 +47,7 @@ class RegitrarVehiculoController extends Controller
             'SegmentoMercado' => 'required|exists:segmentomercado,IdSegmentoMercado',
             'TipoItbis' => 'required|exists:tipoitbis,IdTipoItbis',
             'garantiaVehiculo' => 'required|exists:garantia,IdGarantia',
-            'AceiteVehiculo' => 'required|exists:configuracionaceite,Idconfiguracionaceite',
+            'AceiteVehiculo' => 'required|exists:configuracionaceite,IdConfiguracionAceite',
             'MotorVehiculo' => 'required|exists:Motor,IdMotor',
             'status' => 'nullable|boolean',
         ]);

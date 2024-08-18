@@ -127,7 +127,7 @@ class Vehiculo extends Model
 
     public function configuracionAceite()
     {
-        return $this->belongsTo(Aceite::class, 'IdConfiguracionAceite');
+        return $this->belongsTo(ConfiguracionAceite::class, 'IdConfiguracionAceite');
     }
 
 }
