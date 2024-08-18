@@ -14,6 +14,7 @@ use App\Http\Controllers\employeeRegisterController;
 use App\Http\Controllers\ServicioMantenimientoController;
 use App\Http\Controllers\ServicioAceiteController;
 use App\Http\Controllers\SeleccionMantenimientoController;
+use App\Http\Controllers\SugerenciaController;
 use App\Mail\ContactanosMailable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,10 @@ Route::get('customer-register', [CustomerRegisterController::class, 'index']);
 Route::get('sales-register', [SalesRegisterController::class, 'index']) -> name ('salesRegister') ;
 // Leudy
 Route::get('employee-register', [employeeRegisterController::class, 'index'])->name('employeeRegister');
+
+// Sugerencia
+Route::get('suggestion', [SugerenciaController::class, 'index'])->name('sugerencia-mantenimiento');
+
 //Nathaly
 Route::get('services-maintenance', [ServicioMantenimientoController::class, 'index']) -> name ('ServicioMantenimiento') ;
 Route::get('services-aceite', [ServicioAceiteController::class, 'index']) -> name ('ServicioAceite') ;

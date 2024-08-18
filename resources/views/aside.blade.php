@@ -213,7 +213,7 @@
                                     class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Configuración
                                 </a>
-                                <a href="{{ route('consultar-sugerencia') }}"
+                                <a href="/suggestion"
                                    class="block text-base text-gray-900 font-normal rounded-lg hover:bg-gray-200 transition duration-75 p-2">
                                     Sugerencia
                                 </a>

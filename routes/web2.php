@@ -109,6 +109,10 @@ use App\Http\Controllers\MantenimientoMantenimientoController;
 use App\Http\Controllers\ServicioAceiteController;
 use App\Http\Controllers\AceiteController;
 use App\Http\Controllers\AceiteMotorController;
+use App\Http\Controllers\SugerenciaController;
+use App\Http\Controllers\TipoMantenimientoController;
+use App\Http\Controllers\AceiteSugerenciaController;
+use App\Http\Controllers\MotorSugerenciaControllerr;
 use App\Models\EstadoOrdenReparacion;
 
 
@@ -695,9 +699,9 @@ Route::Post('/servicio-aceite/create', [ServicioAceiteController::class, 'store'
 ->middleware(['auth'])
 ->name('servicio-aceite.store');
 
-Route::get('/servicio-aceite', [ServicioAceiteController::class, 'index'])
+Route::get('/suggestion', [SugerenciaController::class, 'index'])
     ->middleware(['auth'])
-    ->name('servicio-aceite');
+    ->name('suggestion');
 
 Route::Post('/AceiteMotor/create', [AceiteMotorController::class, 'store'])
     ->middleware(['auth'])
