@@ -710,3 +710,5 @@ Route::get('/suggestion', [SugerenciaController::class, 'index'])
 Route::Post('/AceiteMotor/create', [AceiteMotorController::class, 'store'])
     ->middleware(['auth'])
     ->name('AceiteMotor.store');
+
+// Leudy Was here
