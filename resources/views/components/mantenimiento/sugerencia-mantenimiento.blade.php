@@ -76,9 +76,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if($mantenimientos->isEmpty())
+                                                @if(collect($mantenimientos)->isEmpty())
                                                     <tr>
-                                                        <td colspan="6" style="text-align: center;">No se encontraron mantenimientos para el kilometraje y motor seleccionados.</td>
+                                                    <td colspan="6" style="text-align: center;">No se encontraron mantenimientos para el kilometraje y motor seleccionados.</td>
                                                     </tr>
                                                 @else
                                                     @foreach($mantenimientos as $mantenimiento)
