@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Venta;
 use App\Models\Mantenimiento;
-
 use Illuminate\Http\Request;
 
 class SeleccionMantenimientoController extends Controller
@@ -15,6 +14,8 @@ class SeleccionMantenimientoController extends Controller
         $typeSales = new Venta();
         $typeMaintenance = new Mantenimiento();
 
+        $detalleVenta = null;
+        
         // Venta (Factura)
         if (isset($request->factura)) {
             $typeSales = Venta::with([

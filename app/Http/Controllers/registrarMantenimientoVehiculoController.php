@@ -1,6 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Mantenimiento;
+use Illuminate\Http\Request;
+use App\Models\DetalleMantenimiento;
+use Illuminate\Support\Facades\Redirect;
+
 
 class registrarMantenimientoVehiculoController extends Controller
 {
@@ -44,6 +49,6 @@ class registrarMantenimientoVehiculoController extends Controller
         }
 
         // Redireccionar o mostrar un mensaje de éxito
-        return redirect('registrar-mantenimiento')->with('success', 'Guardado con exito');
+        return redirect('SeleccionMantenimiento')->with('success', 'Guardado con exito');
     }
 }
