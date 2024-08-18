@@ -31,6 +31,11 @@ class Venta extends Model
         return $this->belongsTo('App\Models\Cliente', 'IdCliente');
     }
 
+    public function clientes()
+    {
+        return $this->belongsTo('App\Models\Cliente', 'IdCliente');
+    }
+
     public function usuario()
     {
         return $this->belongsTo('App\Models\Usuario', 'IdUsuario');

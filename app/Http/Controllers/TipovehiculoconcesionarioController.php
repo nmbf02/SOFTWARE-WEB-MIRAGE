@@ -15,7 +15,7 @@ class TipovehiculoconcesionarioController extends Controller
         $estados = Tipovehiculoconcesionario::all();
         // return view('estado_compras.index', compact('estados'));
         return view('components.vehiculo.configurar-vehiculo', compact('estados'));
-        
+
     }
 
 
@@ -39,23 +39,23 @@ class TipovehiculoconcesionarioController extends Controller
                 'descripcion' => 'required|string', // La columna 'Descripcion' debe ser validada
                 'status' => 'sometimes|boolean', // 'Status' es un bit que se manejará como booleano
             ]);
-    
+
             // Crear una nueva instancia del modelo Tipovehiculoconcesionario
             $estadoCompra = new Tipovehiculoconcesionario();
             $estadoCompra->Descripcion = $request->descripcion;
             if($request->status=="on"){
-                $estadoCompra->Status = 1; 
-                
+                $estadoCompra->Status = 1;
+
             }else{
-                
-                $estadoCompra->Status = 0; 
+
+                $estadoCompra->Status = 0;
             }
-    
+
             // Guardar el nuevo Tipovehiculoconcesionario en la base de datos
             $estadoCompra->save();
-    
+
             // Redirigir al usuario a la vista index con un mensaje de éxito
-            return redirect()->route('Tipovehiculoconcesionario')->with('success', 'Estado de compra guardado con éxito.');
+            return redirect('vehicle-configuration')->with('success', 'Guardado con exito');
 
         }catch(QueryException $ex){
             dd($ex);

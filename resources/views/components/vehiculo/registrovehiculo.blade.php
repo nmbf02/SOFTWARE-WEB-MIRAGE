@@ -268,7 +268,7 @@
                                                                         class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                                         placeholder="Seleccione un tipo de aceite">
                                                                     @foreach ($AceiteVehiculo as $aceite)
-                                                                        <option value="{{ $aceite->IdAceite }}">
+                                                                        <option value="{{ $aceite->IdConfiguracionAceite }}">
                                                                             {{ $aceite->Descripcion }}
                                                                         </option>
                                                                     @endforeach

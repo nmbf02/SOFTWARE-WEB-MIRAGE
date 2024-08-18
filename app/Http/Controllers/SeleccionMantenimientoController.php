@@ -17,7 +17,7 @@ class SeleccionMantenimientoController extends Controller
 
         // Venta (Factura)
         if (isset($request->factura)) {
-            $typeSales = Venta::findOrFail($request->factura);
+            $typeSales = Venta::with('Clientes.Persona')->findOrFail($request->factura);
         }
 
         // Mantenimiento

@@ -40,7 +40,7 @@ class Vehiculo extends Model
         'IdClasificacionVehiculo',
         'IdTipoItbis',
         'IdGarantia',
-        'IdAceite',
+        'IdConfiguracionAceite',
         'Kilometraje',
         'Status'
     ];
@@ -117,6 +117,6 @@ class Vehiculo extends Model
 
     public function aceite()
     {
-        return $this->belongsTo(Aceite::class, 'IdAceite');
+        return $this->belongsTo(Aceite::class, 'IdConfiguracionAceite');
     }
 }

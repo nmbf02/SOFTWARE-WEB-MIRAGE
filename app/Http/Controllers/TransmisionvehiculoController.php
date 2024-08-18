@@ -30,13 +30,13 @@ class TransmisionvehiculoController extends Controller
             ]);
 
             $itbis = new Transmisionvehiculo();
-            $itbis->Descripcion = $request->descripcion; 
+            $itbis->Descripcion = $request->descripcion;
 
             $itbis->Status = $request->status ? 1 : 0;
 
             $itbis->save();
 
-            return redirect()->route('Transmisionvehiculo')->with('success', 'Estado de ITBIS guardado con éxito.');
+            return redirect('vehicle-configuration')->with('success', 'Guardado con exito');
         } catch (QueryException $ex) {
             dd($ex);
         }
