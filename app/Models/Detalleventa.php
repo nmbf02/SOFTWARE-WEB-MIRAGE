@@ -31,5 +31,4 @@ class DetalleVenta extends Model
         return $this->belongsTo(Vehiculo::class, 'IdVehiculo');
     }
 
-    // Puede agregar más relaciones aquí
 }

@@ -56,8 +56,17 @@ class Venta extends Model
         return $this->belongsTo('App\Models\SolicitudPrestamoVehiculo', 'IdSolicitudPrestamoVehiculo');
     }
 
-    public function detalleVentas() // Método de relación
+    public function detalleVentas()
     {
         return $this->hasMany(DetalleVenta::class, 'IdVenta');
     }
+
+    public function vehiculo()
+    {
+        return $this->belongsTo(Vehiculo::class, 'IdVehiculo');
+    }
+
+
+
+
 }

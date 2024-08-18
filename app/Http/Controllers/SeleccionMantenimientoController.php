@@ -17,7 +17,14 @@ class SeleccionMantenimientoController extends Controller
 
         // Venta (Factura)
         if (isset($request->factura)) {
-            $typeSales = Venta::with('Clientes.Persona')->findOrFail($request->factura);
+            $typeSales = Venta::with([
+                'cliente.persona',
+                'detalleVentas.vehiculo.motor',
+                'detalleVentas.vehiculo.configuracionAceite'
+            ])->findOrFail($request->factura);
+
+            // Obtener el primer (y único) DetalleVenta
+            $detalleVenta = $typeSales->detalleVentas->first();
         }
 
         // Mantenimiento
@@ -36,6 +43,7 @@ class SeleccionMantenimientoController extends Controller
             'mantenimientoMantenimiento' => $mantenimientoMantenimiento,
             'requestmt' => $request->factura,
             'requestmm' => $request->mantenimiento,
+            'detalleVenta' => $detalleVenta // Pasamos el detalleVenta a la vista
         ]);
     }
 }

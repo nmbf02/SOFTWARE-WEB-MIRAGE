@@ -75,12 +75,12 @@
 
                                         {{-- Campo oculto para enviar el ID del tipo de mantenimiento seleccionado --}}
                                         <input type="hidden" name="factura"
-                                               value="{{ isset($typeSales->IdFactura) ? $typeSales->IdFactura : '' }}"
+                                               value="{{ isset($typeSales->IdVenta) ? $typeSales->IdVenta : '' }}"
                                                readonly>
 
                                         {{-- Campo de texto para mostrar la descripción del tipo de mantenimiento --}}
                                         <input type="text" id="factura"
-                                               value="{{ isset($typeSales->IdFactura) ? $typeSales->IdFactura : '' }}"
+                                               value="{{ isset($typeSales->IdVenta) ? $typeSales->IdVenta : '' }}"
                                                class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                readonly>
                                     </div>
@@ -121,7 +121,7 @@
                                     <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                         <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos Cliente</h6>
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                                 <div>
                                                     <label for="cliente"
                                                            class="block text-sm font-medium text-gray-700">Cliente</label>
@@ -133,14 +133,6 @@
                                                            value="{{ isset($typeSales ->clientes->persona->Nombre) ? $typeSales->clientes->persona->Nombre : '' }}"
                                                            class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                            readonly>
-                                                </div>
-
-                                                <div>
-                                                    <label for="cedula"
-                                                           class="block text-sm font-medium text-gray-700">Cédula</label>
-                                                    <input type="text" id="cedula"
-                                                           value="{{ isset($typeSales->clientes->persona->Cedula) ? $typeSales->clientes->persona->Cedula : '' }}"
-                                                           class="border p-2 rounded w-full" readonly>
                                                 </div>
 
                                                 <div>
@@ -170,35 +162,30 @@
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                                 <div>
-                                                    <label for="vin"
-                                                           class="block text-sm font-medium text-gray-700">VIN</label>
+                                                    <label for="vin" class="block text-sm font-medium text-gray-700">VIN</label>
                                                     <input type="text" id="vin"
-                                                           value="{{ isset($typeSales->Vehiculos->VIN) ? $typeSales->vehiculo->VIN : '' }}"
+                                                           value="{{ $detalleVenta->vehiculo->VIN ?? '' }}"
                                                            class="border p-2 rounded w-full" readonly>
                                                 </div>
 
                                                 <div>
-                                                    <label for="motor"
-                                                           class="block text-sm font-medium text-gray-700">Motor</label>
+                                                    <label for="motor" class="block text-sm font-medium text-gray-700">Motor</label>
                                                     <input type="text" id="motor"
-                                                           value="{{ isset($typeSales->Vehiculos->Motor->Descripcion) ? $typeSales->vehiculo->motor->Descripcion : '' }}"
+                                                           value="{{ $detalleVenta->vehiculo->motor->Descripcion ?? '' }}"
                                                            class="border p-2 rounded w-full" readonly>
                                                 </div>
 
                                                 <div>
-                                                    <label for="aceite"
-                                                           class="block text-sm font-medium text-gray-700">Aceite</label>
+                                                    <label for="aceite" class="block text-sm font-medium text-gray-700">Aceite</label>
                                                     <input type="text" id="aceite"
-                                                           value="{{ isset($typeSales->Vehiculos->ConfiguracionAceite->Descripcion) ? $typeSales->vehiculo->configuracionAceite->Descripcion : '' }}"
+                                                           value="{{ $detalleVenta->vehiculo->ConfiguracionAceite->Descripcion ?? '' }}"
                                                            class="border p-2 rounded w-full" readonly>
                                                 </div>
 
                                                 <div>
-                                                    <label for="kilometraje"
-                                                           class="block text-sm font-medium text-gray-700">Kilometraje
-                                                        actual</label>
+                                                    <label for="kilometraje" class="block text-sm font-medium text-gray-700">Kilometraje actual</label>
                                                     <input type="text" id="kilometraje"
-                                                           value="{{ isset($typeSales->Vehiculos->Kilometraje) ? $typeSales->vehiculo->Kilometraje : '' }}"
+                                                           value="{{ $detalleVenta->vehiculo->Kilometraje ?? '' }}"
                                                            class="border p-2 rounded w-full" readonly>
                                                 </div>
                                             </div>
