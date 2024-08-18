@@ -706,7 +706,3 @@ Route::get('/suggestion', [SugerenciaController::class, 'index'])
 Route::Post('/AceiteMotor/create', [AceiteMotorController::class, 'store'])
     ->middleware(['auth'])
     ->name('AceiteMotor.store');
-
-Route::Post('/RegistrarMantenimientoVehiculo/create', [RegistrarMantenimientoVehiculoController::class, 'store'])
-    ->middleware(['auth'])
-    ->name('RegistrarMantenimientoVehiculo.store');
