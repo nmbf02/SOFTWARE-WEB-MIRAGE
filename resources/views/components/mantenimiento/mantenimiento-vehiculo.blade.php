@@ -147,6 +147,7 @@
                                 </div>
                             </div>
                             <div class="p-2"></div>
+                            {{--Datos del cliente y vehiculo--}}
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                 {{-- Datos de Cliente --}}
                                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
@@ -227,12 +228,11 @@
                                     </div>
                                 </div>
                             </div>
-
                             {{--TODO: Faltan asignacion de mantenimiento--}}
                             <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tareas de Mantenimiento</h6>
                                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
-                                    <form>
+                                    <div>
                                         {{-- @csrf --}}
                                         <table style="width: 100%; border-collapse: collapse;">
                                             <thead>
@@ -291,7 +291,7 @@
                                             @endif
                                             </tbody>
                                         </table>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Información general -->
@@ -332,9 +332,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
-                            <div class="p-2"></div>
-                            <x-button class="px-4 py-2">
+                            <x-button class="px-1 py-1">
                                 {{ __('Registrar mantenimiento') }}
                             </x-button>
                         </form>

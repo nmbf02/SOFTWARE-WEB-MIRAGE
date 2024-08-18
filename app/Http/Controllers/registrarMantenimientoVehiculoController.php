@@ -37,9 +37,9 @@ class registrarMantenimientoVehiculoController extends Controller
         $aceiteSeleccionado = ConfiguracionAceite::findOrFail($validated['aceitemant']);
 
         // Filtrar servicios que se pueden aplicar al motor y cuyo kilometraje es válido
-        $serviciosDisponibles = Servicio::where('IdMotor', $motor->id)
-            ->where('KilometrajeAceite', '<=', $validated['kilometraje'])
-            ->where('KilometrajeInicial', '<=', $validated['kilometraje'])
+        $serviciosDisponibles = Servicio::where('IdMotor', $motor->IdMotor)
+            ->where('KilometrajeAceite', '>=', $validated['kilometraje'])
+            ->where('KilometrajeInicial', '>=', $validated['kilometraje'])
             ->get();
 
         // Filtrar solo los servicios seleccionados por el usuario que son válidos para el motor y kilometraje
