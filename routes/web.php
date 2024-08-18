@@ -13,6 +13,7 @@ use App\Http\Controllers\SalesRegisterController;
 use App\Http\Controllers\employeeRegisterController;
 use App\Http\Controllers\ServicioMantenimientoController;
 use App\Http\Controllers\ServicioAceiteController;
+use App\Http\Controllers\SeleccionMantenimientoController;
 use App\Mail\ContactanosMailable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::get('employee-register', [employeeRegisterController::class, 'index'])->n
 Route::get('services-maintenance', [ServicioMantenimientoController::class, 'index']) -> name ('ServicioMantenimiento') ;
 Route::get('services-aceite', [ServicioAceiteController::class, 'index']) -> name ('ServicioAceite') ;
 Route::get('maintenance-configuration', [MaintenanceConfigurationController::class, 'index'])->name('maintenanceConfiguration');
+Route::get('registrar-mantenimiento', [SeleccionMantenimientoController::class, 'index']) -> name ('SeleccionMantenimiento') ;
 include('web2.php');
 
 Route::get('contactanos', function(){

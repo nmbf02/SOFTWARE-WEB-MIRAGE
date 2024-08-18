@@ -25,18 +25,24 @@
                             </div>
                             <hr style="border-color: #FF914D" class="p-2">
                             {{--Formulario de seleccion--}}
-                            <form method="GET" action="{{ route('SeleccionMantenimiento') }}">
+                            <form method="GET" action="{{ route('SeleccionMantenimiento') }}" class="bg-white dark:bg-gray-700 p-6">
+                                <div class="flex flex-wrap items-center justify-between">
+                                    <div class="flex items-center justify-start">
+                                        <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+                                            Registrar mantenimiento de vehículo
+                                        </h1>
+                                    </div>
+                                </div>
+                                <hr style="border-color: #FF914D" class="p-2">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                     <div>
                                         <label for="factura" class="block text-sm font-medium text-gray-700">Num. Factura</label>
                                         <select name="factura" id="factura"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                placeholder="Ingrese num. factura"
                                                 onchange="this.form.submit()">
                                             <option value="">Seleccione una factura</option>
                                             @foreach ($mantenimientoFactura as $mt)
-                                                <option
-                                                    value="{{ $mt->IdVenta }}"{{ $requestmt == $mt->Idventa ? 'selected' : '' }}>
+                                                <option value="{{ $mt->IdVenta }}" {{ $requestmt == $mt->IdVenta ? 'selected' : '' }}>
                                                     {{ $mt->IdVenta }}
                                                 </option>
                                             @endforeach
@@ -46,12 +52,10 @@
                                         <label for="mantenimiento" class="block text-sm font-medium text-gray-700">Num. Mantenimiento</label>
                                         <select name="mantenimiento" id="mantenimiento"
                                                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                placeholder="Ingrese num. mantenimiento"
                                                 onchange="this.form.submit()">
                                             <option value="">Seleccione un mantenimiento</option>
                                             @foreach ($mantenimientoMantenimiento as $mm)
-                                                <option
-                                                    value="{{ $mm->IdMantenimiento }}"{{ $requestmm == $mm->IdMantenimiento ? 'selected' : '' }}>
+                                                <option value="{{ $mm->IdMantenimiento }}" {{ $requestmm == $mm->IdMantenimiento ? 'selected' : '' }}>
                                                     {{ $mm->IdMantenimiento }}
                                                 </option>
                                             @endforeach
