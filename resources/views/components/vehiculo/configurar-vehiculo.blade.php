@@ -962,7 +962,6 @@
 {{--                                        </div>--}}
 {{--                                    </div>--}}
 {{--                                </form>--}}
-                                {{-- TODO: Colocar un modal donde se puedan editar los periodos de tiempo--}}
                                 {{--Edad del vehiculo--}}
                                 <form method="POST" action="{{ route('Edadvehiculo.store') }}">
                                     @csrf
