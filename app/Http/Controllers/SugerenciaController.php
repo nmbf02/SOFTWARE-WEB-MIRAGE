@@ -6,6 +6,7 @@ use App\Models\Vehiculo;
 use App\Models\Motor;
 use App\Models\Aceite;
 use App\Models\Mantenimiento;
+use App\Models\SugerenciaMantenimiento;
 use Illuminate\Http\Request;
 
 class SugerenciaController extends Controller
@@ -30,7 +31,7 @@ class SugerenciaController extends Controller
                     })->first();
 
                     if ($aceiteRecomendado) {
-                        $mantenimientos = Mantenimiento::where('IdMotor', $typeMotor->IdMotor)
+                        $mantenimientos = SugerenciaMantenimiento::where('IdMotor', $typeMotor->IdMotor)
                                 ->where('KilometrajeRecomendado', '<=', $kilometraje)
                                 ->get();
                     }
