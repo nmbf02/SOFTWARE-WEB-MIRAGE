@@ -34,6 +34,10 @@ class Servicio extends Model
     {
         return $this->belongsTo(Aceite::class,'IdTipoMantenimiento');
     }
+    public function tipoMantenimiento_Nathaly()
+    {
+        return $this->belongsTo(TipoMantenimiento::class,'IdTipoMantenimiento');
+    }
 
     public function motor()
     {

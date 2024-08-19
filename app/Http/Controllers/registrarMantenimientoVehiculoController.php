@@ -9,69 +9,92 @@ use App\Models\Vehiculo;
 use App\Models\Servicio;
 use App\Models\ConfiguracionAceite;
 use Illuminate\Support\Facades\Redirect;
+use mysql_xdevapi\Exception;
 
 class registrarMantenimientoVehiculoController extends Controller
 {
     public function store(Request $request)
     {
+        try{
+
+            $mantenimiento2=[
+                'factura'=>$request->factura,
+                'mantenimiento'=>$request->mantenimiento,
+                'cliente'=>$request->cliente,
+                'idVehiculo'=>$request->idVehiculo,
+                'mecanico'=> $request->mecanico,
+                'fechaActual'=>$request->fechaActual,
+                'kilometraje'=>$request->kilometraje,
+                'KilometrajeProximo'=>$request->KilometrajeProximo,
+                'totalInput'=>$request->totalInput,
+                'FechaMantenimientoActual'=>$request->FechaMantenimientoActual,
+                'FechaProximoMantenimiento'=>$request->FechaProximoMantenimiento,
+                'aceiteSeleccionado'=>$request->aceiteSeleccionado,
+                'servicios'=>$request->input('servicios'),
+            ];
+
+//        dd($mantenimiento2);
         // Validar los datos de la solicitud
-        $validated = $request->validate([
-            'factura' => 'nullable|exists:venta,IdVenta',
-            'mantenimiento' => 'nullable|exists:mantenimiento,IdMantenimiento',
-            'cliente' => 'required|exists:clientes,IdCliente',
-            'vin' => 'required|exists:vehiculos,VIN',
-            'kilometraje' => 'required|integer|min:0',
-            'servicios' => 'required|array',
-            'servicios.*' => 'exists:servicio,IdServicio',
-            'aceitemant' => 'required|exists:configuracion_aceite,IdConfiguracionAceite' // Validar que el aceite seleccionado existe
-        ]);
+//        $validated = $request->validate([
+//            'factura' => 'nullable|exists:venta,IdVenta',
+//            'mantenimiento' => 'nullable|exists:mantenimiento,IdMantenimiento',
+//            'mecanico' => 'nullable|Empleado,IdEmpleado',
+////            'aceitemant' => 'required|ConfiguracionAceite,IdConfiguracionAceite',
+//            'cliente' => 'required|exists:clientes,IdCliente',
+//            'idVehiculo' => 'required|exists:Vehiculos,IdVehiculo',
+////            'KilometrajeProximo' => 'required|integer|min:0',
+////            'FechaProximoMantenimiento' => 'required|date',
+////            'Empleado' => 'nullable|exists:empleado,IdEmpleado',
+//            'kilometraje' => 'required|integer|min:0',
+////            'total' => 'required|integer|min:0',
+////            'servicios' => 'required|array',
+////            'servicios.*' => 'servicio,IdServicio'
+//        ]);
 
         // Obtener el vehículo asociado al VIN
-        $vehiculo = Vehiculo::where('VIN', $validated['vin'])->firstOrFail();
+        $vehiculo = Vehiculo::where('VIN', $request['vin'])->firstOrFail();
 
 
         // Obtener el motor asociado al vehículo
         $motor = $vehiculo->motor;
 
         // Obtener el aceite seleccionado
-        $aceiteSeleccionado = ConfiguracionAceite::findOrFail($validated['aceitemant']);
-
-        // Filtrar servicios que se pueden aplicar al motor y cuyo kilometraje es válido
-        $serviciosDisponibles = Servicio::where('IdMotor', $motor->IdMotor)
-            ->where('KilometrajeAceite', '>=', $validated['kilometraje'])
-            ->where('KilometrajeInicial', '>=', $validated['kilometraje'])
-            ->get();
-
-        // Filtrar solo los servicios seleccionados por el usuario que son válidos para el motor y kilometraje
-        $serviciosSeleccionados = $serviciosDisponibles->whereIn('IdServicio', $validated['servicios']);
+        $aceiteSeleccionado = ConfiguracionAceite::findOrFail($request['aceitemant']);
 
         // Crear un nuevo mantenimiento
         $mantenimiento = new Mantenimiento();
-        $mantenimiento->IdVenta = $validated['factura'];
-        $mantenimiento->IdMantenimientoAnterior = $validated['mantenimiento'] ?? null;
-        $mantenimiento->IdCliente = $validated['cliente'];
-        $mantenimiento->IdVehiculo = $vehiculo->id;
-        $mantenimiento->KilometrajeActual = $validated['kilometraje'];
-        $mantenimiento->KilometrajeProximo = $this->calcularKilometrajeProximo($vehiculo, $validated['kilometraje'], $aceiteSeleccionado->Kilometraje);
-        $mantenimiento->FechaMantenimientoActual = now();
-        $mantenimiento->FechaProximoMantenimiento = now()->addMonths($aceiteSeleccionado->LapsoDeTiempo);
-        $mantenimiento->IdEmpleado = auth()->user()->id;
-        $mantenimiento->Monto = $this->calcularMontoTotal($serviciosSeleccionados->pluck('IdServicio')->toArray());
+            $mantenimiento->IdVenta = $request->factura;
+            $mantenimiento->IdMantenimientoAnterior = $request-> mantenimiento;
+            $mantenimiento->IdCliente = $request->cliente;
+            $mantenimiento->IdVehiculo =  $request->idVehiculo;
+            $mantenimiento->KilometrajeActual =  $request->kilometraje;
+            $mantenimiento->KilometrajeProximo = $request->KilometrajeProximo;
+            $mantenimiento->FechaProximoMantenimiento = $request->FechaProximoMantenimiento;
+            $mantenimiento->FechaMantenimientoActual = $request->FechaMantenimientoActual;
+            $mantenimiento->FechaActual = now();
+            $mantenimiento->IdEmpleado = $request->mecanico;
+            $mantenimiento->Monto = $request->totalInput;
+            $mantenimiento->IdConfiguracionAceite = $request->aceiteSeleccionado;
 
-        // Guardar el mantenimiento en la base de datos
-        $mantenimiento->save();
+            $mantenimiento->save();
 
-        // Guardar los detalles del mantenimiento (servicios)
-        foreach ($serviciosSeleccionados as $servicio) {
-            $detalleMantenimiento = new DetalleMantenimiento();
-            $detalleMantenimiento->IdMantenimiento = $mantenimiento->id;
-            $detalleMantenimiento->IdServicio = $servicio->IdServicio;
-            $detalleMantenimiento->Precio = $servicio->Precio;
-            $detalleMantenimiento->save();
+            if($request->servicios!=null){
+            foreach ($request->input('servicios') as $servicio) {
+                $detalleMantenimiento = new DetalleMantenimiento();
+                $detalleMantenimiento->IdMantenimiento = $mantenimiento->IdMantenimiento;
+                $detalleMantenimiento->IdServicio = $servicio->IdServicio;
+                $detalleMantenimiento->Precio = $servicio->Precio;
+                $detalleMantenimiento->save();
+            }
         }
+        // Guardar los detalles del mantenimiento (servicios)
 
         // Redireccionar o mostrar un mensaje de éxito
-        return redirect('registrar-mantenimiento')->with('success', 'Guardado con éxito');
+
+//        return redirect('registrar-mantenimiento')->with('success', 'Guardado con éxito');
+        return redirect()->route('SeleccionMantenimiento');
+        }  catch (Exception $e){
+            dd($e);}
     }
 
     private function calcularKilometrajeProximo($vehiculo, $kilometrajeActual, $kilometrajeAceite)
@@ -83,4 +106,5 @@ class registrarMantenimientoVehiculoController extends Controller
     {
         return Servicio::whereIn('IdServicio', $servicios)->sum('Precio');
     }
+
 }

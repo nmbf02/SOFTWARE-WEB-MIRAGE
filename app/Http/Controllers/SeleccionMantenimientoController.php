@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ConfiguracionAceite;
+use App\Models\Servicio;
 use App\Models\Venta;
+use App\models\motor;
 use App\Models\Mantenimiento;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
@@ -12,6 +14,7 @@ class SeleccionMantenimientoController extends Controller
 {
     public function index(Request $request)
     {
+
         // Inicialización de variables
         $typeSales = new Venta();
         $typeMaintenance = new Mantenimiento();
@@ -21,6 +24,8 @@ class SeleccionMantenimientoController extends Controller
         $aceiteSeleccionado = null; // Inicializamos la variable del aceite seleccionado
         $kilometrajeProximo = null; // Inicializamos la variable para el kilometraje próximo
         $fechaProximoMantenimiento = null; // Inicializamos la variable para la fecha del próximo mantenimiento
+        $IdMotor = null;
+        $servicios = null;
 
         // Venta (Factura)
         if (isset($request->factura)) {
@@ -32,7 +37,14 @@ class SeleccionMantenimientoController extends Controller
 
             // Obtener el primer (y único) DetalleVenta
             $detalleVenta = $typeSales->detalleVentas->first();
+            $IdMotor  = $detalleVenta->vehiculo->IdMotor;
         }
+
+        if($IdMotor != null){
+            $servicios = Servicio::where('IdMotor', $IdMotor)->where('KilometrajeInicial', '<=', $detalleVenta->vehiculo->Kilometraje)
+                    ->where('KilometrajeFinal', '>=', $detalleVenta->vehiculo->Kilometraje)->with('tipoMantenimiento_Nathaly')->get();
+        }
+//        dd($servicios);
 
         // Mantenimiento
         if (isset($request->mantenimiento)) {
@@ -40,9 +52,9 @@ class SeleccionMantenimientoController extends Controller
 
             if ($detalleVenta) {
                 // Filtra los servicios según el kilometraje del vehículo y el mantenimiento actual
-                $servicios = Servicio::where('KilometrajeInicial', '<=', $detalleVenta->vehiculo->Kilometraje)
-                    ->where('KilometrajeFinal', '>=', $detalleVenta->vehiculo->Kilometraje)
-                    ->get();
+//                $servicios = Servicio::where('KilometrajeInicial', '<=', $detalleVenta->vehiculo->Kilometraje)
+//                    ->where('KilometrajeFinal', '>=', $detalleVenta->vehiculo->Kilometraje)
+//                    ->get();
             }
         }
 

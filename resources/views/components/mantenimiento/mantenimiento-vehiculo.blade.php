@@ -94,7 +94,7 @@
                             </div>
                         </form>
                         {{--Vista de informacion--}}
-                        <form method="POST" action="{{route('RegistrarMantenimientoVehiculo.store')}}"
+                        <form method="POST" action="{{route('RegistrarMantenimientoVehiculo')}}"
                               class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                             @csrf
                             {{-- Informacion documento --}}
@@ -193,11 +193,61 @@
                                         <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Datos Vehiculo</h6>
                                         <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                                <div class="hidden">
+                                                    <input type="hidden" name="idVehiculo"
+                                                           value="{{ $detalleVenta->vehiculo->IdVehiculo ?? '' }}"
+                                                           readonly>
+                                                </div>
+                                                {{--Empleado--}}
+                                                <div class="hidden">
+                                                    <input type="hidden" name="mecanico"
+                                                           value="{{ $empleado->persona->IdPersona ?? '' }}"
+                                                           readonly>
+                                                </div>
+                                                {{--Fecha--}}
+                                                <div class="hidden">
+                                                    <input type="hidden" name="fechaActual"
+                                                           value="{{ $empleado->persona->IdPersona ?? '' }}"
+                                                           readonly>
+                                                </div>
+                                                {{--kilometrajeProximo--}}
+                                                <div class="hidden">
+                                                    <input type="hidden" name="KilometrajeProximo"
+                                                           value="{{ $kilometrajeProximo  ?? '' }}"
+                                                           readonly>
+                                                </div>
+                                                {{--Monto--}}
+                                                <div class="hidden">
+                                                    <input type="hidden" name="totalInput" id="totalInput"
+                                                           readonly>
+                                                </div>
+                                                {{--FechaProximoMantenimiento--}}
+                                                <div class="hidden">
+                                                    <input type="hidden" name="FechaProximoMantenimiento" id="FechaProximoMantenimiento"
+                                                           value="{{ $fechaProximoMantenimiento ? $fechaProximoMantenimiento->format('d/m/Y') : 'dd/mm/yyyy' }}"
+                                                           readonly>
+                                                </div>
+                                                {{--FechaMantenimientoActual--}}
+                                                <div class="hidden">
+                                                    <input type="hidden" name="FechaMantenimientoActual" id="FechaMantenimientoActual"
+                                                           value="{{  $mantenimiento->FechaMantenimientoActual ? $mantenimiento->FechaMantenimientoActual->format('d/m/Y') : now()->format('d/m/Y') }}"
+                                                           readonly>
+                                                </div>
+                                                {{--Aceite--}}
+                                                <div class="hidden">
+                                                    <input type="hidden" name="aceiteSeleccionado" id="aceiteSeleccionado"
+                                                           value="{{@@$aceiteSeleccionado->IdConfiguracionAceite }}"
+                                                           readonly>
+                                                </div>
+                                                {{--Hasta aqui--}}
+
+
+
                                                 <div>
                                                     <label for="vin"
                                                            class="block text-sm font-medium text-gray-700">VIN</label>
                                                     <input type="text" id="vin"
-                                                           value="{{ $detalleVenta->vehiculo->VIN ?? '' }}"
+                                                           value="{{ now()->format('d/m/Y') }}"
                                                            class="border p-2 rounded w-full" readonly>
                                                 </div>
 
@@ -219,7 +269,7 @@
                                                     <label for="kilometraje"
                                                            class="block text-sm font-medium text-gray-700">Kilometraje
                                                         actual</label>
-                                                    <input type="text" id="kilometraje"
+                                                    <input type="text" id="kilometraje" name="kilometraje"
                                                            value="{{ $detalleVenta->vehiculo->Kilometraje ?? '' }}"
                                                            class="border p-2 rounded w-full" readonly>
                                                 </div>
@@ -228,7 +278,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{--TODO: Faltan asignacion de mantenimiento--}}
                             <div class="bg-white dark:bg-gray-700 p-2 rounded-lg shadow">
                                 <h6 class="text-sm mt-3 mb-6 font-bold uppercase">Tareas de Mantenimiento</h6>
                                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
@@ -266,24 +315,27 @@
                                             <tbody>
                                             @if(collect($servicios)->isEmpty())
                                                 <tr>
-                                                    <td colspan="8" style="text-align: center;">
-                                                        No se encontraron mantenimientos para el kilometraje y motor
-                                                        seleccionados.
+                                                    <td colspan="8" style="text-align: center;">No se encontraron
+                                                        mantenimientos para el kilometraje y motor seleccionados.
                                                     </td>
                                                 </tr>
                                             @else
                                                 @foreach($servicios as $servicio)
                                                     <tr>
-                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->TipoMantenimiento->Descripcion }}</td>
-                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->DesdeFecha }}</td>
-                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->HastaFecha }}</td>
-                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->KilometrajeInicial }}</td>
-                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->KilometrajeFinal }}</td>
-                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->Nota }}</td>
-                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->Precio }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->tipoMantenimiento_Nathaly->Descripcion }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->DesdeFecha != NULL ? $servicio->DesdeFecha.' Meses' : 'N/A' }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->HastaFecha != NULL ? $servicio->HastaFecha.' Meses' : 'N/A' }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->KilometrajeInicial ?? 'N/A' }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->KilometrajeFinal ?? 'N/A' }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;">{{ $servicio->Nota ?? 'N/A' }}</td>
+                                                        <td style="border: 1px solid #ddd; padding: 8px;"
+                                                            data-price="{{ $servicio->Precio ?? 0 }}">
+                                                            {{ $servicio->Precio ?? 'N/A' }}
+                                                        </td>
                                                         <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
                                                             <input type="checkbox" name="servicios[]"
                                                                    value="{{ $servicio->IdServicio }}"
+                                                                   class="service-checkbox"
                                                                    style="display: block; margin: 0 auto;">
                                                         </td>
                                                     </tr>
@@ -327,8 +379,7 @@
                                     </div>
                                     <div class="border-t-2 mt-3 py-2 px-4 flex items-center justify-between">
                                         <span class="font-semibold text-2xl">Total</span>
-                                        <span class="font-bold text-2xl"
-                                              id="total">{{ number_format($mantenimiento->Monto ?? 0, 2) }}</span>
+                                        <span class="font-bold text-2xl" id="total">0.00</span>
                                     </div>
                                 </div>
                             </div>
@@ -378,6 +429,28 @@
             $('#aceitemant').select2({
                 placeholder: "Seleccione un aceite",
                 allowClear: true
+            });
+        });
+    </script>
+    {{--    Suma de total--}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('.service-checkbox');
+            const totalElement = document.getElementById('total');
+            const totalInput = document.getElementById('totalInput');
+
+            checkboxes.forEach(function (checkbox) {
+                checkbox.addEventListener('change', function () {
+                    let total = 0;
+                    checkboxes.forEach(function (checkbox) {
+                        if (checkbox.checked) {
+                            const price = parseFloat(checkbox.closest('tr').querySelector('[data-price]').getAttribute('data-price'));
+                            total += price;
+                        }
+                    });
+                    totalElement.textContent = total.toFixed(2);
+                    totalInput.value = total.toFixed(2);
+                });
             });
         });
     </script>
