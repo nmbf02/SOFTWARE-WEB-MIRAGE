@@ -201,13 +201,13 @@
                                                 {{--Empleado--}}
                                                 <div class="hidden">
                                                     <input type="hidden" name="mecanico"
-                                                           value="{{ $empleado->persona->IdPersona ?? '' }}"
+                                                           value="{{ $empleado->IdEmpleado ?? '' }}"
                                                            readonly>
                                                 </div>
                                                 {{--Fecha--}}
                                                 <div class="hidden">
                                                     <input type="hidden" name="fechaActual"
-                                                           value="{{ $empleado->persona->IdPersona ?? '' }}"
+                                                           value="{{ now()->format('Y-m-d')}}"
                                                            readonly>
                                                 </div>
                                                 {{--kilometrajeProximo--}}
@@ -224,13 +224,13 @@
                                                 {{--FechaProximoMantenimiento--}}
                                                 <div class="hidden">
                                                     <input type="hidden" name="FechaProximoMantenimiento" id="FechaProximoMantenimiento"
-                                                           value="{{ $fechaProximoMantenimiento ? $fechaProximoMantenimiento->format('d/m/Y') : 'dd/mm/yyyy' }}"
+                                                           value="{{ $mantenimiento->fechaProximoMantenimiento}}"
                                                            readonly>
                                                 </div>
                                                 {{--FechaMantenimientoActual--}}
                                                 <div class="hidden">
                                                     <input type="hidden" name="FechaMantenimientoActual" id="FechaMantenimientoActual"
-                                                           value="{{  $mantenimiento->FechaMantenimientoActual ? $mantenimiento->FechaMantenimientoActual->format('d/m/Y') : now()->format('d/m/Y') }}"
+                                                           value="{{  $mantenimiento->FechaMantenimientoActual}}"
                                                            readonly>
                                                 </div>
                                                 {{--Aceite--}}
@@ -246,8 +246,8 @@
                                                 <div>
                                                     <label for="vin"
                                                            class="block text-sm font-medium text-gray-700">VIN</label>
-                                                    <input type="text" id="vin"
-                                                           value="{{ now()->format('d/m/Y') }}"
+                                                    <input type="text" id="vin" name="vin"
+                                                           value="{{ @$detalleVenta->vehiculo->VIN }}"
                                                            class="border p-2 rounded w-full" readonly>
                                                 </div>
 
@@ -370,12 +370,15 @@
                                     <div class="px-4 flex justify-between">
                                         <span class="font-semibold text-sm">Fecha del mantenimiento actual</span>
                                         <span class="font-bold sm:text-sm"
-                                              id="FechaMantenimientoActual"> {{ $mantenimiento->FechaMantenimientoActual ? $mantenimiento->FechaMantenimientoActual->format('d/m/Y') : now()->format('d/m/Y') }}</span>
+                                              id="FechaMantenimientoActual"> {{ now()->format('Y-m-d') }}</span>
                                     </div>
                                     <div class="px-4 flex justify-between">
                                         <span class="font-semibold text-sm">Fecha del próximo mantenimiento</span>
                                         <span class="font-bold sm:text-sm"
-                                              id="FechaProximoMantenimiento">{{ $fechaProximoMantenimiento ? $fechaProximoMantenimiento->format('d/m/Y') : 'dd/mm/yyyy' }}</span>
+                                              id="FechaProximoMantenimiento">{{ $fechaProximoMantenimiento ? $fechaProximoMantenimiento->format('Y-m-d') : 'Y-m-d' }}</span>
+                                        <input type="hidden" name="FechaProximoMantenimiento"
+                                               value="{{ $fechaProximoMantenimiento ? $fechaProximoMantenimiento->format('Y-m-d') : 'Y-m-d' }}"
+                                               readonly>
                                     </div>
                                     <div class="border-t-2 mt-3 py-2 px-4 flex items-center justify-between">
                                         <span class="font-semibold text-2xl">Total</span>

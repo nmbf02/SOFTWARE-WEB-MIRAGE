@@ -31,6 +31,7 @@ class registrarMantenimientoVehiculoController extends Controller
                 'FechaProximoMantenimiento'=>$request->FechaProximoMantenimiento,
                 'aceiteSeleccionado'=>$request->aceiteSeleccionado,
                 'servicios'=>$request->input('servicios'),
+                'VIN' => $request->vin,
             ];
 
 //        dd($mantenimiento2);
@@ -59,7 +60,7 @@ class registrarMantenimientoVehiculoController extends Controller
         $motor = $vehiculo->motor;
 
         // Obtener el aceite seleccionado
-        $aceiteSeleccionado = ConfiguracionAceite::findOrFail($request['aceitemant']);
+//        $aceiteSeleccionado = ConfiguracionAceite::where('IdConfiguracionAceite',$request['aceitemant'])->first();
 
         // Crear un nuevo mantenimiento
         $mantenimiento = new Mantenimiento();
@@ -70,20 +71,23 @@ class registrarMantenimientoVehiculoController extends Controller
             $mantenimiento->KilometrajeActual =  $request->kilometraje;
             $mantenimiento->KilometrajeProximo = $request->KilometrajeProximo;
             $mantenimiento->FechaProximoMantenimiento = $request->FechaProximoMantenimiento;
-            $mantenimiento->FechaMantenimientoActual = $request->FechaMantenimientoActual;
+            $mantenimiento->FechaMantenimientoActual = now()->format('Y-m-d');
             $mantenimiento->FechaActual = now();
             $mantenimiento->IdEmpleado = $request->mecanico;
             $mantenimiento->Monto = $request->totalInput;
             $mantenimiento->IdConfiguracionAceite = $request->aceiteSeleccionado;
 
+
             $mantenimiento->save();
+
+//            dd($mantenimiento);
 
             if($request->servicios!=null){
             foreach ($request->input('servicios') as $servicio) {
                 $detalleMantenimiento = new DetalleMantenimiento();
-                $detalleMantenimiento->IdMantenimiento = $mantenimiento->IdMantenimiento;
-                $detalleMantenimiento->IdServicio = $servicio->IdServicio;
-                $detalleMantenimiento->Precio = $servicio->Precio;
+                $detalleMantenimiento->IdMantenimiento = $mantenimiento->id;
+                $detalleMantenimiento->IdServicio = $servicio;
+                $detalleMantenimiento->Precio = 0;
                 $detalleMantenimiento->save();
             }
         }
@@ -91,9 +95,9 @@ class registrarMantenimientoVehiculoController extends Controller
 
         // Redireccionar o mostrar un mensaje de éxito
 
-//        return redirect('registrar-mantenimiento')->with('success', 'Guardado con éxito');
-        return redirect()->route('SeleccionMantenimiento');
-        }  catch (Exception $e){
+        return redirect('SeleccionMantenimiento')->with('success', 'Guardado con éxito');
+//        return redirect()->route('SeleccionMantenimiento');
+        }  catch (\Exception $e){
             dd($e);}
     }
 
